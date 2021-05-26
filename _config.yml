@@ -1,0 +1,18 @@
+﻿title: "Документация"
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    default_lang: sql
+    css_class   : 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+remote_theme: pmarsceill/just-the-docs
+color_scheme: custom_colors
+#lang: ru
+search_enabled: true
+

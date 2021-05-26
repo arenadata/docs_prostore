@@ -1,0 +1,25 @@
+//custom styles for images and captions
+
+.figure-center {
+  margin: 0;
+  text-align: center;
+}
+
+.figure-caption-center {
+  text-align: center;
+  @include fs-2;
+}
+
+// custom styles for links
+
+a:link {
+  color: $link-color;
+//  color: #12976b;
+}
+
+a:visited {
+  color: darken($link-color,3%);
+//  color: #15a872;
+}
+
+@import "../color_schemes/monochrome.scss";
