@@ -43,12 +43,12 @@ has_toc: false
 
 ![](check_sum_по_таблице_целиком.png){:height="40%" width="40%"}
 {: .figure-center}
-*Ответ CHECK_SUM по всей логической таблице*
+*Ответ CHECK_SUM по логической таблице*
 {: .figure-caption-center}
 
 ![](check_sum_по_логической_бд.png){:height="40%" width="40%"}
 {: .figure-center}
-*Ответ CHECK_SUM по всей логической базе данных*
+*Ответ CHECK_SUM по логической базе данных*
 {: .figure-caption-center}
 
 На рисунке ниже показан примера ответа при наличии расхождений в данных между СУБД хранилища.
