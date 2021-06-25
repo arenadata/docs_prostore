@@ -41,12 +41,12 @@ has_toc: false
 *Ответ CHECK_SUM по указанным столбцам таблицы*
 {: .figure-caption-center}
 
-![](check_sum_по_таблице_целиком.png){:height="40%" width="40%"}
+![](check_sum_по_таблице_целиком.png){:height="50%" width="50%"}
 {: .figure-center}
 *Ответ CHECK_SUM по логической таблице*
 {: .figure-caption-center}
 
-![](check_sum_по_логической_бд.png){:height="40%" width="40%"}
+![](check_sum_по_логической_бд.png){:height="50%" width="50%"}
 {: .figure-center}
 *Ответ CHECK_SUM по логической базе данных*
 {: .figure-caption-center}
