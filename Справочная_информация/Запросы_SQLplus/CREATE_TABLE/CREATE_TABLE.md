@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: CREATE TABLE
-nav_order: 12
+nav_order: 13
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -42,7 +42,7 @@ CREATE TABLE [db_name.]table_name (
   column_name_3 datatype_3,
   PRIMARY KEY (column_list_1)
 ) DISTRIBUTED BY (column_list_2)
-DATASOURCE_TYPE (datasource_aliases)
+[DATASOURCE_TYPE (datasource_aliases)]
 ```
 
 ## Параметры
@@ -59,6 +59,7 @@ DATASOURCE_TYPE (datasource_aliases)
     должны быть из числа столбцов `column_list_1`;
 *   `datasource_aliases` — список псевдонимов СУБД хранилища, в которых нужно разместить данные таблицы. 
     Элементы списка перечисляются через запятую. Возможные значения: `adb`, `adqm`, `adg`.
+    Значения можно указывать без кавычек (например, `adb`) или двойных кавычках (например, `"adb"`).
 
 ## Ограничения
 
