@@ -61,6 +61,8 @@ CHECK_SUM(delta_num[, [db_name.]table_name[, square-bracketed_column_list]])
 
 ## Примеры
 
+### Запрос по столбцам логической таблицы
+
 Расчет контрольной суммы по трем столбцам таблицы `sales` в десятой дельте:
 ```sql
 CHECK_SUM(10,sales.sales,[identification_number, transaction_date, product_code])
@@ -80,6 +82,8 @@ CHECK_SUM(10,sales.sales,[identification_number, transaction_date, product_code]
 *Ответ CHECK_SUM при наличии расхождений*
 {: .figure-caption-center}
 
+### Запрос по логической таблице (всем столбцам таблицы)
+
 Расчет контрольной суммы по всей таблице `sales` в десятой дельте:
 ```sql
 CHECK_SUM(10,sales.sales)
@@ -91,6 +95,8 @@ CHECK_SUM(10,sales.sales)
 {: .figure-center}
 *Ответ CHECK_SUM по логической таблице*
 {: .figure-caption-center}
+
+### Запрос по логической базе данных
 
 Расчет контрольной суммы по всей логической базе данных `sales` в десятой дельте:
 ```sql
