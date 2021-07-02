@@ -116,7 +116,7 @@ FROM [db_name.]entity_name
     комбинирование сущностей логической и сервисной баз данных в одном запросе не поддерживается.
 *   Если ключами секции `JOIN` выступают поля типа Nullable, то строки, где хотя бы один из ключей 
     имеет значение NULL, не соединяются.
-*   Директива FOR SYSTEM_TIME AS OF LATEST_UNCOMMITTED_DELTA не поддерживается для материализованных 
+*   Директива `FOR SYSTEM_TIME AS OF LATEST_UNCOMMITTED_DELTA` не поддерживается для материализованных 
     представлений, так как они не хранят горячие данные.
 *   Если для материализованного представления указана директива `FOR SYSTEM_TIME AS OF STARTED IN 
     (delta_num1, delta_num2)` или `FOR SYSTEM_TIME AS OF FINISHED IN (delta_num1, delta_num2)`,
