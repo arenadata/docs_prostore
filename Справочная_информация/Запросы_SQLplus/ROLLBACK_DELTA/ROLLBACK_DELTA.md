@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: ROLLBACK DELTA
-nav_order: 26
+nav_order: 27
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
