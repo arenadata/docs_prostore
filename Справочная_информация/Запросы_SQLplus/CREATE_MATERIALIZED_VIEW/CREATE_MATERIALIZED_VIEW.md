@@ -102,11 +102,11 @@ DATASOURCE_TYPE = 'adb'
 
 Создание материализованного представления на основе одной логической таблицы (`sales`) с агрегацией и группировкой:
 ```sql
-CREATE MATERIALIZED VIEW sales.sales_by_stores (
+CREATE MATERIALIZED VIEW sales.sales_by_stores3 (
 store_id INT NOT NULL,
 product_code VARCHAR(256) NOT NULL,
 product_units INT NOT NULL,
-PRIMARY KEY (store_id)
+PRIMARY KEY (store_id, product_code)
 )
 DISTRIBUTED BY (store_id)
 DATASOURCE_TYPE (adg)
