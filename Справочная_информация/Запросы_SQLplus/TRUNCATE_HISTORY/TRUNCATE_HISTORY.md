@@ -62,7 +62,7 @@ TRUNCATE HISTORY [db_name.]table_name FOR SYSTEM_TIME AS OF date_time_expression
 *   `date_time_expression` — выражение, определяющее категорию удаляемых записей. Может принимать 
     следующие значения:
 
-    *   `'YYYY-MM-DD HH:MM:SS'` — удаление архивных записей по указанный момент времени;
+    *   `'yyyy-MM-dd HH:mm:ss'` — удаление архивных записей по указанный момент времени;
 
     *   `'infinite'` — удаление всех актуальных и архивных записей;
 

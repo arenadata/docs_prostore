@@ -100,7 +100,8 @@ FROM [db_name.]entity_name
 
 Директива указывается в формате `FOR SYSTEM_TIME time_expression`, где выражение `time_expression` 
 принимает одно из следующих значений:
-*   `AS OF 'YYYY-MM-DD HH:MM:SS'` — для запроса данных, актуальных на указанную дату и время;
+*   `AS OF 'yyyy-MM-dd HH:mm:ss'` — для запроса данных, актуальных на указанную дату и время. Возможные форматы 
+    даты и времени см. [ниже](#форматы-даты-и-времени);
 *   `AS OF DELTA_NUM delta_num` — для запроса данных, актуальных на дату и время закрытия дельты 
     с номером `delta_num`;
 *   `AS OF LATEST_UNCOMMITTED_DELTA` — для запроса данных на текущий момент, включая данные, загруженные 
@@ -112,6 +113,18 @@ FROM [db_name.]entity_name
 *   `FINISHED IN (delta_num1, delta_num2)` — для запроса данных, удаленных в период между дельтой 
     `delta_num1` и дельтой `delta_num2` (включительно).
 
+## Форматы даты и времени
+
+Дату и время в запросах можно указывать в следующих форматах:
+* с точностью до секунд: `yyyy-MM-dd HH:mm:ss` (например, 2021-05-25 18:00:17);
+* с любой точностью от десятых секунд (`S`) до микросекунд (`SSSSSS`): 
+    * `yyyy-MM-dd HH:mm:ss.S`,
+    * `yyyy-MM-dd HH:mm:ss.SS`,
+    * `yyyy-MM-dd HH:mm:ss.SSS` (например, 2021-05-25 18:00:17.876),
+    * `yyyy-MM-dd HH:mm:ss.SSSS`,
+    * `yyyy-MM-dd HH:mm:ss.SSSSS`, 
+    * `yyyy-MM-dd HH:mm:ss.SSSSSS` (например, 2021-05-25 18:00:17.876784).
+  
 ## Ограничения
 
 *   Запрос может обращаться либо к логической БД, либо к сервисной БД (см. [SELECT FROM INFORMATION_SCHEMA](../SELECT_FROM_INFORMATION_SCHEMA/SELECT_FROM_INFORMATION_SCHEMA.md)), 
