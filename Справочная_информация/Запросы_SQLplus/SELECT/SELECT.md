@@ -113,7 +113,7 @@ FROM [db_name.]entity_name
 *   `FINISHED IN (delta_num1, delta_num2)` — для запроса данных, удаленных в период между дельтой 
     `delta_num1` и дельтой `delta_num2` (включительно).
 
-Следующие значения директивы не поддерживаются для материализованных представлений:
+Следующие значения директивы не поддерживаются в запросах к материализованным представлениям:
 * `FOR SYSTEM_TIME AS OF LATEST_UNCOMMITTED_DELTA`;
 * `FOR SYSTEM_TIME AS OF STARTED IN (delta_num1, delta_num2)`, если хотя бы одна дельта из диапазона 
   отсутствует в материализованном представлении;   
@@ -138,6 +138,8 @@ FROM [db_name.]entity_name
     но ни к обеим одновременно.
 *   Если ключами секции `JOIN` выступают поля типа Nullable, то строки, где хотя бы один из ключей 
     имеет значение NULL, не соединяются.
+*   Для SELECT-подзапроса, указываемого в составе запроса [CREATE MATERIALIZED VIEW](../CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md), 
+    не поддерживается оператор `ORDER BY`. 
 
 ## Примеры
 
