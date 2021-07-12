@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: TRUNCATE HISTORY
-nav_order: 29
+nav_order: 30
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
