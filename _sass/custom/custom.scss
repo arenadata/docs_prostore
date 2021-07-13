@@ -25,14 +25,14 @@ a:visited {
 
 @import "../color_schemes/monochrome.scss";
 
-// custom styles for lists
+// custom margins for lists
 
 li:first-child {
     margin-top: -0.5em;
 }
 
-// custom styles for headings
+// custom margins for headings
 
-h2 {
-    margin-bottom: 30px;
+h2 + p {
+   margin-top: 30px;
 }
