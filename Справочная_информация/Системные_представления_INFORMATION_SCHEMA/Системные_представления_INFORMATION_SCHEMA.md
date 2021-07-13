@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: Системные представления (INFORMATION_SCHEMA)
-nav_order: 7
+nav_order: 8
 parent: Справочная информация
 has_children: false
 ---
