@@ -24,3 +24,15 @@ a:visited {
 }
 
 @import "../color_schemes/monochrome.scss";
+
+// custom styles for lists
+
+li:first-child {
+    margin-top: 0;
+}
+
+// custom styles for headings
+
+h2 {
+    margin-bottom: 1.6em;
+}
