@@ -135,7 +135,7 @@ FROM [db_name.]entity_name
 ## Ограничения
 
 *   Запрос может обращаться либо к логической БД, либо к сервисной БД (см. [SELECT FROM INFORMATION_SCHEMA](../SELECT_FROM_INFORMATION_SCHEMA/SELECT_FROM_INFORMATION_SCHEMA.md)), 
-    но ни к обеим одновременно.
+    но не к обеим одновременно.
 *   Если ключами секции `JOIN` выступают поля типа Nullable, то строки, где хотя бы один из ключей 
     имеет значение NULL, не соединяются.
 *   Для SELECT-подзапроса, указываемого в составе запроса [CREATE MATERIALIZED VIEW](../CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md), 
