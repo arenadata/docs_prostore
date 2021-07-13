@@ -44,7 +44,7 @@ COMMIT DELTA SET date_time_expression
 
 ## Параметры
 
-*   `date_time_expression` — метка даты и времени вида `'YYYY-MM-DD HH:MM:SS'`.
+*   `date_time_expression` — метка даты и времени вида `'yyyy-MM-dd HH:mm:ss'`.
 
 ## Ограничения
 

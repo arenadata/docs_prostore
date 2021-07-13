@@ -24,3 +24,15 @@ a:visited {
 }
 
 @import "../color_schemes/monochrome.scss";
+
+// custom margins for lists
+
+li:first-child {
+    margin-top: -0.5em;
+}
+
+// custom margins for headings
+
+h2 {
+  padding-bottom: 0.6em;
+}
