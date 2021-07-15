@@ -53,7 +53,7 @@ INSERT INTO [db_name.]ext_table_name SELECT ...
 
 ## Ограничения
 
-*   Секция [DATASOURCE_TYPE](../SELECT/SELECT.md#param_datasource_type) игнорируется в SELECT-подзапросе.
+*   Ключевое слово [DATASOURCE_TYPE](../SELECT/SELECT.md#param_datasource_type) игнорируется в SELECT-подзапросе.
 *   Выгружаемые данные должны быть доступны в СУБД, выбранной для выгрузки в конфигурации системы.
 
 ## Пример

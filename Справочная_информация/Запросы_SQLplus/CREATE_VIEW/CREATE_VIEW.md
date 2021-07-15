@@ -44,8 +44,8 @@ CREATE OR REPLACE VIEW [db_name.]view_name AS SELECT query
 *   логических представлений,
 *   [системных представлений](../../Системные_представления_INFORMATION_SCHEMA/Системные_представления_INFORMATION_SCHEMA.md) 
     `INFORMATION_SCHEMA`,
-*   директивы [FOR SYSTEM_TIME](../SELECT/SELECT.md#sect_for_system_time),
-*   секции `DATASOURCE_TYPE`.
+*   ключевого слова [FOR SYSTEM_TIME](../SELECT/SELECT.md#sect_for_system_time),
+*   ключевого слова `DATASOURCE_TYPE`.
 
 ## Пример
 
