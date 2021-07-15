@@ -1,14 +1,14 @@
 ﻿---
 layout: default
-title: SELECT FROM INFORMATION SCHEMA
-nav_order: 29
+title: SELECT FROM INFORMATION_SCHEMA
+nav_order: 30
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
 has_toc: false
 ---
 
-# SELECT FROM INFORMATION SCHEMA
+# SELECT FROM INFORMATION_SCHEMA
 
 Запрос позволяет получить метаданные объектов [логической схемы](../../../Обзор_понятий_компонентов_и_связей/Основные_понятия/Логическая_схема_данных/Логическая_схема_данных.md), 
 описанные в разделе [Системные представления (INFORMATION_SCHEMA)](../../Системные_представления_INFORMATION_SCHEMA/Системные_представления_INFORMATION_SCHEMA.md). 
