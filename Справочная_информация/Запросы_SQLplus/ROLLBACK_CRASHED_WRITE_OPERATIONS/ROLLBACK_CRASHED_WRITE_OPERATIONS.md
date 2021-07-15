@@ -1,4 +1,4 @@
-﻿---
+---
 layout: default
 title: ROLLBACK CRASHED_WRITE_OPERATIONS
 nav_order: 26
