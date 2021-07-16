@@ -16,7 +16,7 @@ has_toc: false
     Содержание раздела
   </summary>
   {: .text-delta }
-- TOC
+1. TOC
 {:toc}
 </details>
 
