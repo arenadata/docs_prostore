@@ -8,6 +8,16 @@ has_toc: false
 ---
 
 # Поддержка SQL
+{: .no_toc }
+
+<details markdown="block">
+  <summary>
+    Содержание раздела
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
 
 В [SELECT](../Запросы_SQLplus/SELECT/SELECT.md)-запросах к данным можно использовать функции, описанные 
 в таблице ниже.

@@ -9,6 +9,16 @@ has_toc: false
 ---
 
 # SELECT FROM INFORMATION_SCHEMA
+{: .no_toc }
+
+<details markdown="block">
+  <summary>
+    Содержание раздела
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
 
 Запрос позволяет получить метаданные объектов [логической схемы](../../../Обзор_понятий_компонентов_и_связей/Основные_понятия/Логическая_схема_данных/Логическая_схема_данных.md), 
 описанные в разделе [Системные представления (INFORMATION_SCHEMA)](../../Системные_представления_INFORMATION_SCHEMA/Системные_представления_INFORMATION_SCHEMA.md). 
