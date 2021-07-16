@@ -10,12 +10,12 @@ has_toc: false
 
 # SELECT
 
-<details open markdown="block">
+<details markdown="block">
   <summary>
     Содержание раздела
   </summary>
   {: .text-delta }
-- TOC
+1. TOC
 {:toc}
 </details>
 
