@@ -81,6 +81,8 @@ CREATE TABLE [db_name.]table_name (
 
 ## Примеры
 
+### Таблица с размещением данных во всех СУБД хранилища
+
 Создание логической таблицы с размещением данных во всех СУБД хранилища:
 ```sql
 CREATE TABLE sales.sales (
@@ -95,6 +97,8 @@ CREATE TABLE sales.sales (
 DISTRIBUTED BY (identification_number)
 ```
 
+### Таблица с составным первичным ключом
+
 Создание логической таблицы с составным первичным ключом и размещением данных во всех СУБД хранилища:
 ```sql
 CREATE TABLE sales.stores (
@@ -107,6 +111,8 @@ CREATE TABLE sales.stores (
 )
 DISTRIBUTED BY (identification_number)
 ```
+
+### Таблица с размещением данных в ADQM и ADG
 
 Создание логической таблицы с размещением данных в ADQM и ADG (без размещения в ADB):
 ```sql
