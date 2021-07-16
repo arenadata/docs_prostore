@@ -9,6 +9,7 @@ has_toc: false
 ---
 
 # SELECT
+{: .no_toc }
 
 <details markdown="block">
   <summary>
