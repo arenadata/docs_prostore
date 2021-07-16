@@ -88,6 +88,8 @@ DATASOURCE_TYPE = origin_datasource_alias
 
 ## Примеры
 
+### Представление на основе одной таблицы с условием
+
 Создание материализованного представления на основе одной логической таблицы (`sales`) с размещением данных 
 в ADG:
 
@@ -108,6 +110,8 @@ AS SELECT * FROM sales.sales
 DATASOURCE_TYPE = 'adb'
 ```
 
+### Представление на основе одной таблицы с условием, агрегацией и группировкой
+
 Создание материализованного представления на основе одной логической таблицы (`sales`) с агрегацией и группировкой:
 ```sql
 CREATE MATERIALIZED VIEW sales.sales_by_stores (
@@ -123,6 +127,8 @@ AS SELECT store_id, product_code, SUM(product_units) as product_units FROM sales
    GROUP BY store_id, product_code
 DATASOURCE_TYPE = 'adb'
 ```
+
+### Представление на основе двух таблиц
 
 Создание материализованного представления на основе соединения двух логических таблиц (`sales` и `stores`):
 ```sql
