@@ -32,14 +32,14 @@ has_toc: false
 На рисунке ниже показаны параметры JDBC-драйвера DTM в SQL-клиенте DBeaver.
 
 <a id="img_driver_settings"></a>
-![](Настройки_драйвера.png){:height="50%" width="50%"}
+![](driver_parameters.png){:height="50%" width="50%"}
 {: .figure-center}
 *Параметры JDBC-драйвера*
 {: .figure-caption-center}
 
 На рисунке ниже показаны параметры подключения к системе с использованием драйвера DTM.
 
-![](Настройки_подключения.png){:height="50%" width="50%"}
+![](connection_parameters.png){:height="50%" width="50%"}
 {: .figure-center}
 *Параметры подключения к системе*
 {: .figure-caption-center}
