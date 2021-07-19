@@ -1,6 +1,9 @@
 ﻿---
-nav_exclude: true
-search_exclude: true
+layout: default
+title: Введение
+nav_order: 1
+has_children: true
+has_toc: false
 ---
 
 # Введение
@@ -14,4 +17,4 @@ DTM (далее — система) — система для построени
     
 Работа с системой возможна с помощью любых программных инструментов, которые предоставляют подключение через JDBC-интерфейс. 
 Для запросов к системе используется декларативный язык запросов на основе SQL, в некоторых случаях совпадающий 
-с SQL-стандартом (см. [Запросы SQL+](./reference/sql_plus_requests/sql_plus_requests.md)).  
+с SQL-стандартом (см. [Запросы SQL+](../reference/sql_plus_requests/sql_plus_requests.md)).  
