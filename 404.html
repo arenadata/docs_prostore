@@ -6,29 +6,29 @@
 <body>
 <script type="text/javascript">
 
-var pathURL = decodeURI(document.location.pathname);
+var pathURL = decodeURI(document.location.pathname).toLowerCase();
 alert(pathURL);
 switch(pathURL)
     {
-        case "/docs_prostore/Введение/Введение.html":
+        case "/docs_prostore/Введение/Введение.html".toLowerCase():
         location.replace("https://arenadata.github.io/docs_prostore/introduction/introduction.html");
         break;
-        case "/docs_prostore/Введение/Термины_и_определения/Термины_и_определения.html":
+        case "/docs_prostore/Введение/Термины_и_определения/Термины_и_определения.html".toLowerCase():
         location.replace("https://arenadata.github.io/docs_prostore/introduction/terms/terms.html");
         break;
-        case "/docs_prostore/Введение/Поддерживаемые_СУБД_хранилища/Поддерживаемые_СУБД_хранилища.html":
+        case "/docs_prostore/Введение/Поддерживаемые_СУБД_хранилища/Поддерживаемые_СУБД_хранилища.html".toLowerCase():
         location.replace("https://arenadata.github.io/docs_prostore/introduction/supported_DBMS/supported_DBMS.html");
         break;
-        case "/docs_prostore/Обзор_понятий_компонентов_и_связей/Обзор_понятий_компонентов_и_связей.html":
+        case "/docs_prostore/Обзор_понятий_компонентов_и_связей/Обзор_понятий_компонентов_и_связей.html".toLowerCase():
         location.replace("https://arenadata.github.io/docs_prostore/overview/overview.html");
         break;
-        case "/docs_prostore/Обзор_понятий_компонентов_и_связей/Основные_понятия/Основные_понятия.html":
+        case "/docs_prostore/Обзор_понятий_компонентов_и_связей/Основные_понятия/Основные_понятия.html".toLowerCase():
         location.replace("https://arenadata.github.io/docs_prostore/overview/main_concepts/main_concepts.html");
         break;
-        case "/docs_prostore/Обзор_понятий_компонентов_и_связей/Основные_понятия/Логическая_схема_данных/Логическая_схема_данных.html":
+        case "/docs_prostore/Обзор_понятий_компонентов_и_связей/Основные_понятия/Логическая_схема_данных/Логическая_схема_данных.html".toLowerCase():
         location.replace("https://arenadata.github.io/docs_prostore/overview/main_concepts/logical_schema/logical_schema.html");
         break;
-        case "/docs_prostore/Обзор_понятий_компонентов_и_связей/Основные_понятия/Логическая_база_данных/Логическая_база_данных.html":
+        case "/docs_prostore/Обзор_понятий_компонентов_и_связей/Основные_понятия/Логическая_база_данных/Логическая_база_данных.html".toLowerCase():
         location.replace("https://arenadata.github.io/docs_prostore/overview/main_concepts/logical_db/logical_db.html");
         break;
         default: 
