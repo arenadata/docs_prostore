@@ -6,8 +6,8 @@
 <body>
 <script type="text/javascript">
 
-String pathURL = decodeURI(document.location.pathname).toLowerCase();
-alert(pathURL);
+var pathURL = decodeURI(document.location.pathname).toLowerCase();
+alert(pathURL === "/docs_prostore/Введение/Введение.html".toLowerCase());
 switch(pathURL)
     {
         case "/docs_prostore/Введение/Введение.html".toLowerCase():
