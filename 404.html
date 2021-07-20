@@ -6,7 +6,7 @@
 <body>
 <script type="text/javascript">
 
-var pathURL = decodeURI(document.location.pathname).toLowerCase();
+String pathURL = decodeURI(document.location.pathname).toLowerCase();
 alert(pathURL);
 switch(pathURL)
     {
@@ -33,7 +33,6 @@ switch(pathURL)
         break;
         default: 
             location.replace("https://arenadata.github.io/docs_prostore");
-        break;
     }
 </script>
 <noscript>
