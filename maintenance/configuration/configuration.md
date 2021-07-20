@@ -174,33 +174,34 @@ timeZone: ${CORE_TIME_ZONE:UTC}
 
 ### Настройки СУБД ADB
 ``` yaml
-# настройка СУБД ADB
+# настройки ADB
 adb:
-# настройка источника данных СУБД ADB
+# настройки источника данных ADB
   datasource:
-# имя пользователя/логин для авторизации в СУБД ADB
+# имя пользователя/логин для авторизации в ADB
     user: ${ADB_USERNAME:dtm}
-# пароль для авторизации в СУБД ADB
+# пароль для авторизации в ADB
     password: ${ADB_PASS:dtm}
-# сетевой адрес хоста с СУБД ADB
+# сетевой адрес хоста с ADB
     host: ${ADB_HOST:10.92.3.105}
-# сетевой адрес порта на хосте с СУБД ADB
+# сетевой адрес порта на хосте с ADB
     port: ${ADB_PORT:5432}
-# максимальный размер пула подключений к СУБД ADB
+# максимальное количество подключений к ADB в одном потоке; 
+# максимальное количество подключений к ADB в целом по всем потокам равно произведению poolSize и executorsCount 
     poolSize: ${ADB_MAX_POOL_SIZE:5}
-# количество потоков, исполняющих запросы к СУБД ADB
+# количество одновременных потоков, исполняющих запросы к ADB
     executorsCount: ${ADB_EXECUTORS_COUNT:20}
-# максимальный размер результата, возвращаемого по FETCH-запросу к СУБД ADB
+# максимальный размер результата, возвращаемого по FETCH-запросу к ADB
     fetchSize: ${ADB_FETCH_SIZE:1000}
-# настройки механизма загрузки данных в СУБД ADB
+# настройки механизма загрузки данных в ADB
   mppw:
-# наименование консьюмер-группы СУБД ADB для взаимодействия с брокером сообщений Kafka
+# наименование консьюмер-группы ADB для взаимодействия с брокером сообщений Kafka
     consumerGroup: ${ADB_LOAD_GROUP:adb-emulator-load-adb}
-# максимальный размер пула подключений к СУБД ADB для операций загрузки
+# максимальный размер пула подключений к ADB для операций загрузки
     poolSize: ${ADB_MPPW_POOL_SIZE:2}
 # значение тайм-аута ожидания (в миллисекундах) для остановки загрузки
     stopTimeoutMs: ${ADB_MPPW_STOP_TIMEOUT_MS:86400000}
-# предельное количество сообщений для операции загрузки в СУБД ADB
+# предельное количество сообщений для операции загрузки в ADB
     defaultMessageLimit: ${ADB_MPPW_DEFAULT_MESSAGE_LIMIT:100}
 # значение тайм-аута ожидания (в миллисекундах) для FDW-коннектора ADB
     fdwTimeoutMs: ${ADB_MPPW_FDW_TIMEOUT_MS:1000}
@@ -210,23 +211,23 @@ adb:
 
 ### Настройки СУБД ADG
 ``` yaml
-# настройка СУБД ADG
+# настройки ADG
 adg:
   tarantool:
     db:
-# сетевой адрес хоста с СУБД ADG
+# сетевой адрес хоста с ADG
       host: ${TARANTOOL_DB_HOST:10.92.3.120}
-# сетевой адрес порта на хосте с СУБД ADG
+# сетевой адрес порта на хосте с ADG
       port: ${TARANTOOL_DB_PORT:3306}
-# имя пользователя/логин для авторизации в СУБД ADG
+# имя пользователя/логин для авторизации в ADG
       user: ${TARANTOOL_DB_USER:admin}
-# пароль для авторизации в СУБД ADG
+# пароль для авторизации в ADG
       password: ${TARANTOOL_DB_PASS:memstorage-cluster-cookie}
-# максимальный интервал времени ожидания выполнения операции СУБД ADG до тайм-аута
+# максимальный интервал времени ожидания выполнения операции ADG до тайм-аута
       operationTimeout: ${TARANTOOL_DB_OPER_TIMEOUT:60000}
 # максимальное количество повторных попыток выполнения операции
       retryCount: ${TARANTOOL_DB_RETRY_COUNT:0}
-# движок СУБД ADG
+# движок ADG
       engine: ${TARANTOOL_DEFAULT_ENGINE:MEMTX}
 # настройки картриджа Tatantool
     cartridge:
@@ -234,10 +235,10 @@ adg:
       url: ${TARANTOOL_CATRIDGE_URL:http://10.92.3.120:8086}
 # настройки механизма загрузки данных
   mppw:
-# наименование консьюмер-группы СУБД ADG для взаимодействия с брокером сообщений Kafka
+# наименование консьюмер-группы ADG для взаимодействия с брокером сообщений Kafka
     consumerGroup: ${ADG_CONSUMER_GROUP:tarantool-group-csv}
     kafka:
-# максимальное количество сообщений в топике Kafka на раздел СУБД ADG
+# максимальное количество сообщений в топике Kafka на раздел ADG
       maxNumberOfMessagesPerPartition: ${ADG_MAX_MSG_PER_PARTITION:200}
 # время простоя (в секундах) callback-функции
       callbackFunctionSecIdle: ${ADG_CB_FUNC_IDLE:100}
@@ -257,31 +258,31 @@ adg:
     resetTimeout: ${ADG_CIRCUIT_BREAKER_RESET_TIMEOUT:10000}
 # настройки для подключений веб-клиентов
   web-client:
-# максимальный размер пула подключений веб-клиентов к СУБД ADG
+# максимальный размер пула подключений веб-клиентов к ADG
     max-pool-size: ${ADG_WEB_CLIENT_MAX_POOL_SIZE:100}
 ```
 
 ### Настройки СУБД ADQM
 ``` yaml
-# настройки СУБД ADQM
+# настройки ADQM
 adqm:
-# настройка источника данных СУБД ADQM
+# настройка источника данных ADQM
   datasource:
-# наименование СУБД ADQM
+# наименование ADQM
     database: ${ADQM_DB_NAME:upload}
-# имя пользователя/логин для авторизации в СУБД ADQM
+# имя пользователя/логин для авторизации в ADQM
     user: ${ADQM_USERNAME:}
-# пароль для авторизации в СУБД ADQM
+# пароль для авторизации в ADQM
     password: ${ADQM_PASS:}
-# сетевой адрес хоста с СУБД ADQM и номер порта на хосте
+# сетевой адрес хоста с ADQM и номер порта на хосте
     hosts: ${ADQM_HOSTS:10.92.3.30:8123}
-# интервал времени ожидания отклика соединения с СУБД ADQM до тайм-аута
+# интервал времени ожидания отклика соединения с ADQM до тайм-аута
     socketTimeout: ${ADQM_SOCKET_TIMEOUT:30000}
-# интервал времени ожидания завершения обмена данными с СУБД ADQM до тайм-аута
+# интервал времени ожидания завершения обмена данными с ADQM до тайм-аута
     dataTransferTimeout: ${ADQM_DATA_TRANSFER_TIMEOUT:10000}
 # настройки DDL-операторов
   ddl:
-# наименование кластера СУБД ADQM
+# наименование кластера ADQM
     cluster: ${ADQM_CLUSTER:test_arenadata}
 # настройки механизма выгрузки данных из ADQM
   mppr:
@@ -291,24 +292,24 @@ adqm:
     versionUrl: ${ADQM_MPPR_CONNECTOR_VERSION_URL:http://10.92.3.14:8086/versions}
 # настройки механизма загрузки данных ADQM
   mppw:
-# наименование консьюмер-группы СУБД ADQM для загрузки данных в СУБД ADQM
+# наименование консьюмер-группы ADQM для загрузки данных в ADQM
 # не используется
     consumerGroup: ${ADQM_CONSUMER_GROUP:adqm}
 # сетевой адрес брокера сообщений Kafka
     kafkaBrokers: ${ADQM_BROKERS:10.92.3.31:9092}
-# тип интерфейса для загрузки данных в СУБД ADQM
+# тип интерфейса для загрузки данных в ADQM
     loadType: ${ADQM_MPPW_LOAD_TYPE:REST}
-# сетевой адрес и путь к REST-интерфейсу для загрузки новых данных в СУБД ADQM
+# сетевой адрес и путь к REST-интерфейсу для загрузки новых данных в ADQM
     restStartLoadUrl: ${ADQM_REST_START_LOAD_URL:http://10.92.3.86:8090/newdata/adqm/start}
-# сетевой адрес и путь к REST-интерфейсу для остановки загрузки данных в СУБД ADQM
+# сетевой адрес и путь к REST-интерфейсу для остановки загрузки данных в ADQM
     restStopLoadUrl: ${ADQM_REST_STOP_LOAD_URL:http://10.92.3.86:8090/newdata/adqm/stop}
 # сетевой адрес и путь для получения информации о версии коннектора
     versionUrl: ${ADQM_MPPW_CONNECTOR_VERSION_URL:http://10.92.3.86:8090/versions}
-# наименование коньсюмер-группы для загрузки данных в СУБД ADQM через REST API
+# наименование коньсюмер-группы для загрузки данных в ADQM через REST API
     restLoadConsumerGroup: ${ADQM_REST_LOAD_GROUP:adb-emulator-load-adqm}
 # настройки для подключений веб-клиентов
   web-client:
-# максимальный размер пула подключений веб-клиентов к СУБД ADQM
+# максимальный размер пула подключений веб-клиентов к ADQM
     max-pool-size: ${ADQM_WEB_CLIENT_MAX_POOL_SIZE:100}
 ```
 
