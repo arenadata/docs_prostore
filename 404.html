@@ -6,7 +6,7 @@
 <body>
 <script type="text/javascript">
 
-var pathURL = document.location.pathname;
+var pathURL = decodeURI(document.location.pathname);
 alert(pathURL);
 switch(pathURL)
     {
