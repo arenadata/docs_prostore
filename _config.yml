@@ -16,3 +16,5 @@ color_scheme: custom_colors
 #lang: ru
 search_enabled: true
 
+search:
+  rel_url: false
