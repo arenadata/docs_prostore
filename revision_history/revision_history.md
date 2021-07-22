@@ -8,21 +8,30 @@ has_toc: false
 
 # История изменений
 
-## Текущая версия документации (4.0)
+## Текущая версия документации (4.1)
 
 Изменения:
-* описаны [материализованные представления](../overview/main_concepts/materialized_view/materialized_view.md);
-* описаны [возможные форматы даты и времени в запросах](../reference/timestamp_formats/timestamp_formats.md);
-* добавлен раздел [Проверка наличия логической сущности](../working_with_system/logical_schema_update/entity_presence_check/entity_presence_check.md);
-* добавлен раздел [Настройка JSON-логов](../maintenance/json_logs_configuration/json_logs_configuration.md);
-* в [конфигурацию](../maintenance/configuration/configuration.md) добавлены параметры для управления 
-  материализованными представлениями: 
-  * `MATERIALIZED_VIEWS_SYNC_PERIOD_MS`,
-  * `MATERIALIZED_VIEWS_RETRY_COUNT`, 
-  * `MATERIALIZED_VIEWS_RETRY_COUNT`.
+* добавлено ключевое слово `OFFSET`, 
+  [доступное в SELECT-запросах](../reference/sql_plus_requests/SELECT/SELECT.md#ключевое-слово-offset);
+* добавлено ключевое слово `FETCH NEXT <N> ROWS ONLY` как полная альтернатива ключевому слову `LIMIT <N>` 
+  в [SELECT](../reference/sql_plus_requests/SELECT/SELECT.md)-запросах;
+* обновлено описание запроса [ROLLBACK DELTA](../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md): 
+  теперь запрос отменяет как завершенные, так и выполняемые операции записи.
 
 ## Архивные версии документации
- 
+
+Версия 4.0
+
+Изменения:
+* описаны материализованные представления;
+* описаны возможные форматы даты и времени в запросах;
+* добавлен раздел «Проверка наличия логической сущности»;
+* добавлен раздел «Настройка JSON-логов»;
+* в конфигурацию добавлены параметры для управления материализованными представлениями:
+  * `MATERIALIZED_VIEWS_SYNC_PERIOD_MS`,
+  * `MATERIALIZED_VIEWS_RETRY_COUNT`,
+  * `MATERIALIZED_VIEWS_RETRY_COUNT`.
+
 [Версия 3.7.3](https://arenadata.github.io/docs_prostore_archive/v3-7-3/)
 
 Изменения:
@@ -33,4 +42,4 @@ has_toc: false
 * описан запрос ROLLBACK CRASHED_WRITE_OPERATIONS;
 * доработаны разделы CHECK_DATA и CHECK_SUM: описаны алгоритм и пример расчета контрольной суммы;
 * уточнено описание формата загрузки и формата выгрузки данных;
-* в разделе "Минимальные системные требования" версия ADG обновлена до 2.7.2.
+* в разделе «Минимальные системные требования» версия ADG обновлена до 2.7.2.
