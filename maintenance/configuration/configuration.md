@@ -180,6 +180,10 @@ timeZone: ${CORE_TIME_ZONE:UTC}
     maximumSize: ${CACHE_MAXIMUM_SIZE:100000}
 # время (в минутах) устаревания кэша после последнего момента обращения к нему
     expireAfterAccessMinutes: ${CACHE_EXPIRE_AFTER_ACCESS_MINUTES:99960}
+# настройки отката дельты
+  delta:
+# периодичность проверки операций записи, требующих остановки, в миллисекундах 
+    rollback-status-calls-ms: ${DELTA_ROLLBACK_STATUS_CALLS_MS:2000}      
 ```
 
 ### Настройки СУБД ADB
@@ -198,9 +202,9 @@ adb:
     port: ${ADB_PORT:5432}
 # максимальное количество подключений к ADB в одном потоке; 
 # максимальное количество подключений к ADB в целом по всем потокам равно произведению poolSize и executorsCount 
-    poolSize: ${ADB_MAX_POOL_SIZE:5}
+    poolSize: ${ADB_MAX_POOL_SIZE:3}
 # количество одновременных потоков, исполняющих запросы к ADB
-    executorsCount: ${ADB_EXECUTORS_COUNT:20}
+    executorsCount: ${ADB_EXECUTORS_COUNT:3}
 # максимальный размер результата, возвращаемого по FETCH-запросу к ADB
     fetchSize: ${ADB_FETCH_SIZE:1000}
 # настройки механизма загрузки данных в ADB
