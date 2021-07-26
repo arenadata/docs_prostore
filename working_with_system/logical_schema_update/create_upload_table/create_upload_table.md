@@ -8,12 +8,12 @@ has_children: false
 has_toc: false
 ---
 
-# Создание внешней таблицы загрузки
+# Создание внешней таблицы загрузки {#create_upload_table}
 
 Чтобы создать [внешнюю таблицу загрузки](../../../overview/main_concepts/external_table/external_table.md) 
 в [логической БД](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [CREATE UPLOAD EXTERNAL TABLE](../../../reference/sql_plus_requests/CREATE_UPLOAD_EXTERNAL_TABLE/CREATE_UPLOAD_EXTERNAL_TABLE.md) 
-(см. пример [ниже](#пример)). При успешном выполнении запроса внешняя таблица загрузки появляется в 
+(см. пример [ниже](#examples)). При успешном выполнении запроса внешняя таблица загрузки появляется в 
 [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md). 
 
 **Совет:** для удобства разделения таблиц загрузки и выгрузки рекомендуется задавать имя таблицы, 
@@ -22,9 +22,9 @@ has_toc: false
 **Примечание:** внешняя таблица представляет собой декларацию источника данных и формата загрузки данных и 
 не хранит сами данные.
 
-Наличие внешней таблицы можно проверить, как описано в разделе [Проверка наличия внешней таблицы](../entity_presence_check/entity_presence_check.md#проверка-наличия-внешней-таблицы).
+Наличие внешней таблицы можно проверить, как описано в разделе [Проверка наличия внешней таблицы](../entity_presence_check/entity_presence_check.md#ext_table_check).
 
-## Пример
+## Пример {#examples}
 
 ```sql
 -- выбор базы данных sales по умолчанию

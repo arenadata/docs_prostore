@@ -56,13 +56,13 @@ has_toc: false
 *Удаление архивной записи по запросу с меткой времени*
 {: .figure-caption-center}
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 TRUNCATE HISTORY [db_name.]table_name FOR SYSTEM_TIME AS OF date_time_expression
 [WHERE filter_expression]
 ```
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных. Указывается опционально, если выбрана логическая БД, 
     [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
@@ -80,7 +80,7 @@ TRUNCATE HISTORY [db_name.]table_name FOR SYSTEM_TIME AS OF date_time_expression
 *   `filter_expression` — условие выбора записей, подлежащих удалению.
 
 
-## Пример
+## Пример {#examples}
 
 Удаление архивных записей таблицы `sales`, в которых значение столбца `product_units` меньше `10`, 
 по момент времени `'2019-12-23 15:15:14'`:

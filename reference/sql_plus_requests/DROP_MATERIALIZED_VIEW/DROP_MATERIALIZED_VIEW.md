@@ -23,7 +23,7 @@ has_toc: false
 Материализованное представление удаляется из [логической схемы данных](../../../overview/main_concepts/logical_schema/logical_schema.md) 
 при удалении данных из последней СУБД.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 DROP MATERIALIZED VIEW [IF EXISTS] [db_name.]materialized_view_name
@@ -35,7 +35,7 @@ DROP MATERIALIZED VIEW [IF EXISTS] [db_name.]materialized_view_name
 удаленному представлению, так и по несуществующему представлению; иначе, если ключевое слово не указано — только 
 по успешно удаленному представлению.
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, из которой удаляется материализованное представление. 
     Параметр опционален, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
@@ -45,7 +45,7 @@ DROP MATERIALIZED VIEW [IF EXISTS] [db_name.]materialized_view_name
     (например, `'adg'`) или двойных кавычках (например, `"adg"`). Если ключевое слово `DATASOURCE_TYPE` 
     с псевдонимом не указано, данные удаляются из всех СУБД хранилища.
     
-## Примеры
+## Примеры {#examples}
 
 Удаление материализованного представления с удалением данных из всех СУБД хранилища:
 ```sql

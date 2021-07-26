@@ -35,7 +35,7 @@ has_toc: false
 **Примечание:** изменение внешней таблицы недоступно. Для замены некорректной внешней таблицы необходимо 
 удалить ее и создать новую.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 CREATE UPLOAD EXTERNAL TABLE [db_name.]ext_table_name (
@@ -48,7 +48,7 @@ FORMAT 'AVRO'
 [MESSAGE_LIMIT messages_per_segment]
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, в которой создается внешняя таблица. Указание опционально, 
     если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
@@ -65,7 +65,7 @@ FORMAT 'AVRO'
     в составе одного блока на один поток загрузки. Значение подбирается в зависимости от параметров 
     производительности инфраструктуры.
     
-## Пример
+## Пример {#examples}
 
 ```sql
 CREATE UPLOAD EXTERNAL TABLE sales.sales_ext_upload (

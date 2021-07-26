@@ -28,13 +28,13 @@ has_toc: false
 *   объект ResultSet c выбранными записями при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 SELECT column_list FROM [INFORMATION_SCHEMA.]system_view_name [AS alias_name]
 ```
 
-Описание параметров запроса см. [ниже](#параметры).
+Описание параметров запроса см. [ниже](#parameters).
 
 Префикс `INFORMATION_SCHEMA` перед именем системного представления опционален, если до этого был выполнен 
 запрос [USE INFORMATION_SCHEMA](../USE_INFORMATION_SCHEMA/USE_INFORMATION_SCHEMA.md). Для имен системных 
@@ -57,20 +57,20 @@ SELECT column_list FROM [INFORMATION_SCHEMA.]system_view_name [AS alias_name]
 *   `FULL [OUTER]` — полное внешнее соединение,
 *   `CROSS` — декартово произведение, ключи соединения не указываются.
 
-## Параметры
+## Параметры {#parameters}
 
 *   `column_list` — список выбираемых столбцов. Допустимо указывать символ `*` для выбора всех столбцов;
 *   `system_view_name` — имя системного представления, из которого запрашивается информация. Возможные 
     значения см. в разделе [Системные представления (INFORMATION_SCHEMA)](../../system_views/system_views.md);
 *   `alias_name` — псевдоним системного представления.
 
-## Ограничения
+## Ограничения {#restrictions}
 
 Не допускается комбинирование подзапросов к `INFORMATION_SCHEMA` с подзапросами к логическим базам данных.
 
-## Примеры
+## Примеры {#examples}
 
-### Запрос списка всех логических БД окружения
+### Запрос списка всех логических БД окружения {#all_dbs_example}
 
 Запрос списка всех [логических БД](../../../overview/main_concepts/logical_db/logical_db.md) 
 [окружения](../../../overview/main_concepts/environment/environment.md) 
@@ -80,7 +80,7 @@ SELECT schema_name FROM INFORMATION_SCHEMA.schemata
 ORDER BY schema_name
 ```
 
-### Запрос информации о сущностях логической БД
+### Запрос информации о сущностях логической БД {#entity_list_example}
 
 Запрос информации о логических сущностях логической БД `SALES`:
 ```sql
@@ -88,7 +88,7 @@ SELECT * FROM INFORMATION_SCHEMA.tables
 WHERE table_schema = 'SALES'
 ```
 
-### Запрос имен, типов и столбцов логических сущностей
+### Запрос имен, типов и столбцов логических сущностей {#entity_info_example}
 
 Запрос списка имен, типов и столбцов логических сущностей окружения:
 ```sql

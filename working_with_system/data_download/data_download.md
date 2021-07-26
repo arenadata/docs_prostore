@@ -6,11 +6,11 @@ parent: Работа с системой
 has_children: false
 ---
 
-# Выгрузка данных
+# Выгрузка данных {#data_download}
 
 Система позволяет выгружать актуальные и архивные данные, а также совокупность изменений, выполненных 
 в рамках указанных дельт. Возможные способы выбора данных к выгрузке описаны в секции 
-[FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#sect_for_system_time) раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
+[FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time) раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
 
 Для выгрузки данных нужен существующий топик Kafka. Если в брокере сообщений Kafka настроено 
 автоматическое создание топиков, то дополнительные действия не требуются. Иначе необходимо создать топик, 
@@ -34,7 +34,7 @@ has_children: false
 
 Созданные внешние таблицы выгрузки можно использовать повторно или удалить.
 
-## Пример
+## Пример {#example}
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
 USE sales

@@ -7,12 +7,12 @@ grand_parent: Работа с системой
 has_children: false
 ---
 
-# Создание внешней таблицы выгрузки
+# Создание внешней таблицы выгрузки {#create_download_table}
 
 Чтобы создать [внешнюю таблицу выгрузки](../../../overview/main_concepts/external_table/external_table.md) 
 в [логической БД](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [CREATE DOWNLOAD EXTERNAL TABLE](../../../reference/sql_plus_requests/CREATE_DOWNLOAD_EXTERNAL_TABLE/CREATE_DOWNLOAD_EXTERNAL_TABLE.md) 
-(см. пример [ниже](#пример)). При успешном выполнении запроса внешняя таблица загрузки появляется 
+(см. пример [ниже](#examples)). При успешном выполнении запроса внешняя таблица загрузки появляется 
 в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
 
 **Совет:** для удобства разделения таблиц выгрузки и загрузки рекомендуется задавать имя таблицы, 
@@ -21,9 +21,9 @@ has_children: false
 **Примечание:** внешняя таблица представляет собой декларацию приемника данных и формата выгрузки данных и 
 не хранит сами данные.
 
-Наличие внешней таблицы можно проверить, как описано в разделе [Проверка наличия внешней таблицы](../entity_presence_check/entity_presence_check.md#проверка-наличия-внешней-таблицы).
+Наличие внешней таблицы можно проверить, как описано в разделе [Проверка наличия внешней таблицы](../entity_presence_check/entity_presence_check.md#ext_table_check).
 
-## Пример
+## Пример {#examples}
 
 ```sql
 -- выбор базы данных sales по умолчанию

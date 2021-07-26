@@ -52,7 +52,7 @@ has_toc: false
     при явном перечислении столбцов. Подробнее о требованиях к загружаемым данным см. в разделе 
     [Формат загрузки данных](../../upload_format/upload_format.md).
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 Запрос с явным перечислением столбцов внешней таблицы:
 ```sql
@@ -64,7 +64,7 @@ INSERT INTO [db_name.]table_name SELECT column_list FROM [db_name.]ext_table_nam
 INSERT INTO [db_name.]table_name SELECT * FROM [db_name.]ext_table_name
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных. Опционально, если выбрана логическая БД, 
     [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
@@ -73,12 +73,12 @@ INSERT INTO [db_name.]table_name SELECT * FROM [db_name.]ext_table_name
     логической таблицы. Если внешняя таблица содержит служебное поле `sys_op`, оно не указывается;
 *   `ext_table_name` — имя внешней таблицы загрузки.
 
-## Ограничения
+## Ограничения {#restrictions}
 
 Выполнение запроса возможно только при наличии открытой дельты 
 (см. [BEGIN DELTA](../BEGIN_DELTA/BEGIN_DELTA.md)).
 
-## Пример
+## Пример {#examples}
 
 Пример загрузки данных с открытием и закрытием дельты:
 ```sql

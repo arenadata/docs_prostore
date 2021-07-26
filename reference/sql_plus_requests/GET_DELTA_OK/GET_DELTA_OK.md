@@ -25,7 +25,7 @@ has_toc: false
 *   `delta_date` — дата и время закрытия,
 *   `[cn_from, cn_to]` — диапазон номеров выполненных [операций записи](../../../overview/main_concepts/write_operation/write_operation.md).
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 GET_DELTA_OK()

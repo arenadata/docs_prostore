@@ -7,11 +7,11 @@ has_children: true
 has_toc: false
 ---
 
-# Запрос данных
+# Запрос данных {#data_reading}
 
 Система позволяет запрашивать небольшие объемы актуальных и архивных данных, а также изменений, 
 выполненных в рамках указанных дельт. Возможные способы выборки данных описаны в секции 
-[FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#sect_for_system_time) раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
+[FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time) раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
 
 **Примечание:** под небольшим объемом данных подразумевается результат, содержащий десятки строк.
 Для запроса большого объема данных следует использовать функцию [выгрузки данных](../data_download/data_download.md).
@@ -33,7 +33,7 @@ has_toc: false
 *Запрос небольшого объема данных*
 {: .figure-caption-center}
 
-## Пример
+## Пример {#example}
 
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию

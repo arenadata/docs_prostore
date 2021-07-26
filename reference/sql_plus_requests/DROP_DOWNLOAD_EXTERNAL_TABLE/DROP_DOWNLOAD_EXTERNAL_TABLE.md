@@ -17,19 +17,19 @@ has_toc: false
 *   пустой объект ResultSet при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 DROP DOWNLOAD EXTERNAL TABLE [db_name.]ext_table_name
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, из которой удаляется внешняя таблица выгрузки. Указывается 
     опционально, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `ext_table_name` — имя удаляемой внешней таблицы выгрузки.
 
-## Пример
+## Пример {#examples}
 
 ```sql
 DROP DOWNLOAD EXTERNAL TABLE sales.sales_ext_download

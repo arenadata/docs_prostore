@@ -6,13 +6,13 @@ has_children: false
 has_toc: false
 ---
 
-# История изменений
+# История изменений {#revision_history}
 
-## Текущая версия документации (4.1)
+## Текущая версия документации (4.1) {#current}
 
 Изменения:
 * добавлено ключевое слово `OFFSET`, 
-  [доступное в SELECT-запросах](../reference/sql_plus_requests/SELECT/SELECT.md#ключевое-слово-offset);
+  [доступное в SELECT-запросах](../reference/sql_plus_requests/SELECT/SELECT.md#offset);
 * добавлено ключевое слово `FETCH NEXT <N> ROWS ONLY` как полная альтернатива ключевому слову `LIMIT <N>` 
   в [SELECT](../reference/sql_plus_requests/SELECT/SELECT.md)-запросах;
 * обновлено описание запроса [ROLLBACK DELTA](../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md): 
@@ -22,14 +22,14 @@ has_toc: false
   * значение параметра `ADB_MAX_POOL_SIZE` изменено с 5 на 3;
   * добавлен новый параметр `DELTA_ROLLBACK_STATUS_CALLS_MS`.
 
-## Архивные версии документации
+## Архивные версии документации {#archive}
 
 Версия 4.0
 
 Изменения:
 * описаны [материализованные представления](../overview/main_concepts/materialized_view/materialized_view.md);
 * описаны возможные [форматы даты и времени в запросах](../reference/timestamp_formats/timestamp_formats.md);
-* добавлен раздел [Проверка наличия логической сущности]((../working_with_system/logical_schema_update/entity_presence_check/entity_presence_check.md));
+* добавлен раздел [Проверка наличия логической сущности](../working_with_system/logical_schema_update/entity_presence_check/entity_presence_check.md);
 * добавлен раздел [Настройка JSON-логов](../maintenance/json_logs_configuration/json_logs_configuration.md);
 * в [конфигурацию](../maintenance/configuration/configuration.md) добавлены параметры для управления материализованными 
   представлениями:

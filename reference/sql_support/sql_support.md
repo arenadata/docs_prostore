@@ -7,7 +7,7 @@ has_children: false
 has_toc: false
 ---
 
-# Поддержка SQL
+# Поддержка SQL {#sql_support}
 {: .no_toc }
 
 <details markdown="block">
@@ -90,15 +90,15 @@ has_toc: false
 | UNION | − | − | −
 | UPPER | + | + | +
 
-## Примеры неподдерживаемых запросов
+## Примеры неподдерживаемых запросов {#examples}
 
-### AVG
+### AVG {#avg}
 
 ```sql
 SELECT AVG(product_units) FROM sales.sales
 ```
 
-### CROSS JOIN
+### CROSS JOIN {#cross_join}
 
 ```sql
 SELECT *
@@ -109,7 +109,7 @@ LIMIT 5
 DATASOURCE_TYPE = 'ADQM'
 ```
 
-### FULL JOIN
+### FULL JOIN {#full_join}
 
 ```sql
 SELECT *
@@ -121,7 +121,7 @@ LIMIT 5
 DATASOURCE_TYPE = 'ADG'
 ```
 
-### JOIN для трех таблиц
+### JOIN для трех таблиц {#join_for_three_tables}
 
 ```sql
 SELECT *
@@ -135,7 +135,7 @@ ORDER BY t.territory_id
 DATASOURCE_TYPE = 'ADQM'
 ```
 
-### JOIN с подзапросом
+### JOIN с подзапросом {#join_with_subquery}
 
 ```sql
 SELECT *
@@ -147,7 +147,7 @@ ORDER BY s.store_id
 DATASOURCE_TYPE = 'ADQM'
 ```
 
-### RIGHT JOIN
+### RIGHT JOIN {#right_join}
 
 ```sql
 SELECT *

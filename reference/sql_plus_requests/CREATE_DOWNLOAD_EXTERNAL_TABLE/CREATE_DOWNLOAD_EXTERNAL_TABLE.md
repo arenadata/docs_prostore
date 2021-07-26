@@ -35,7 +35,7 @@ has_toc: false
 **Примечание:** изменение внешней таблицы недоступно. Для замены некорректной внешней таблицы необходимо 
 удалить ее и создать новую.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 CREATE DOWNLOAD EXTERNAL TABLE [db_name.]ext_table_name(
@@ -48,7 +48,7 @@ FORMAT 'AVRO'
 [CHUNK_SIZE records_per_message]
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, в которой создается внешняя таблица. Указывается опционально, 
     если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
@@ -63,7 +63,7 @@ FORMAT 'AVRO'
 *   `records_per_message` — максимальное количество записей, выгружаемых из хранилища в одном сообщении 
     топика Каfka.
 
-## Пример
+## Пример {#examples}
 
 ```sql
 CREATE DOWNLOAD EXTERNAL TABLE sales.sales_ext_download (
