@@ -6,4 +6,4 @@ parent: Работа с системой
 has_children: true
 ---
 
-# Другие функции
+# Другие функции {#other_features}

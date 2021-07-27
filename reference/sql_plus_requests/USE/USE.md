@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: USE
-nav_order: 32
+nav_order: 33
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -32,17 +32,17 @@ has_toc: false
 **Примечание:** альтернативно можно определить логическую базу данных по умолчанию в настройках 
 JDBC-подключения (см. [Определение логической БД по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md)).
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 USE db_name
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, подлежащей установке по умолчанию.
 
-## Пример
+## Пример {#examples}
 
 ```sql
 USE sales

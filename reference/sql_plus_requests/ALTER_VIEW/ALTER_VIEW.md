@@ -20,13 +20,13 @@ has_toc: false
 **Примечание:** логическое представление можно также изменить с помощью запроса `CREATE OR REPLACE VIEW` 
 (см. [CREATE VIEW](../CREATE_VIEW/CREATE_VIEW.md)).
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 ALTER VIEW [db_name.]view_name AS SELECT query
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, в которой находится логическое представление. 
     Указывается опционально, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
@@ -34,16 +34,16 @@ ALTER VIEW [db_name.]view_name AS SELECT query
 *   `query` — [SELECT](../SELECT/SELECT.md)\-подзапрос, на основе которого строится новый вид 
     логического представления.
 
-## Ограничения
+## Ограничения {#restrictions}
 
 В подзапросе `query` не допускается использование:
 *   логических представлений,
 *   [системных представлений](../../system_views/system_views.md) 
     INFORMATION_SCHEMA,
-*   директивы [FOR SYSTEM_TIME](../SELECT/SELECT.md#sect_for_system_time),
-*   секции [DATASOURCE_TYPE](../SELECT/SELECT.md#param_datasource_type).
+*   ключевого слова [FOR SYSTEM_TIME](../SELECT/SELECT.md#for_system_time),
+*   ключевого слова [DATASOURCE_TYPE](../SELECT/SELECT.md#param_datasource_type).
 
-## Пример
+## Пример {#examples}
 
 ```sql
 ALTER VIEW sales.stores_by_sold_products AS

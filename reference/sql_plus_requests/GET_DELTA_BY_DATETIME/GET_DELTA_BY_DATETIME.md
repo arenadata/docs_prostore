@@ -25,18 +25,18 @@ has_toc: false
 *   `delta_date` — дата и время закрытия дельты,
 *   `[cn_from, cn_to]` — диапазон номеров выполненных [операций записи](../../../overview/main_concepts/write_operation/write_operation.md).
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 GET_DELTA_BY_DATETIME(date_time_expression)
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `date_time_expression` — момент даты-времени вида `'YYYY-MM-DD hh:mm:ss'`. Возможные форматы см. в разделе
     [Форматы даты и времени](../../timestamp_formats/timestamp_formats.md). 
 
-## Пример
+## Пример {#examples}
 
 ```sql
 GET_DELTA_BY_DATETIME('2021-03-25 07:30:32')

@@ -9,6 +9,16 @@ has_toc: false
 ---
 
 # CREATE TABLE
+{: .no_toc }
+
+<details markdown="block">
+  <summary>
+    Содержание раздела
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
 
 Запрос позволяет создать [логическую таблицу](../../../overview/main_concepts/logical_table/logical_table.md) 
 в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md). 
@@ -33,7 +43,7 @@ has_toc: false
 **Примечание:** изменение логической таблицы недоступно. Для замены некорректной таблицы необходимо 
 удалить ее и создать новую.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 CREATE TABLE [db_name.]table_name (
@@ -45,7 +55,7 @@ CREATE TABLE [db_name.]table_name (
 [DATASOURCE_TYPE (datasource_aliases)]
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, в которой создается логическая таблица. Указывается 
     опционально, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
@@ -61,7 +71,7 @@ CREATE TABLE [db_name.]table_name (
     Элементы списка перечисляются через запятую. Возможные значения: `adb`, `adqm`, `adg`.
     Значения можно указывать без кавычек (например, `adb`) или двойных кавычках (например, `"adb"`).
 
-## Ограничения
+## Ограничения {#restrictions}
 
 *   Имена столбцов должны быть уникальны в рамках логической таблицы.
 *   Недопустимо использование зарезервированных имен столбцов: `sys_op`, `sys_from`, `sys_to`, 
@@ -69,7 +79,9 @@ CREATE TABLE [db_name.]table_name (
 *   Первичный ключ должен включать все столбцы ключа шардирования.
 *   Ключ шардирования может содержать только целочисленные столбцы.
 
-## Примеры
+## Примеры {#examples}
+
+### Таблица с размещением данных во всех СУБД хранилища {#example_with_all_dbms}
 
 Создание логической таблицы с размещением данных во всех СУБД хранилища:
 ```sql
@@ -85,6 +97,8 @@ CREATE TABLE sales.sales (
 DISTRIBUTED BY (identification_number)
 ```
 
+### Таблица с составным первичным ключом {#example_with_compound_pk}
+
 Создание логической таблицы с составным первичным ключом и размещением данных во всех СУБД хранилища:
 ```sql
 CREATE TABLE sales.stores (
@@ -97,6 +111,8 @@ CREATE TABLE sales.stores (
 )
 DISTRIBUTED BY (identification_number)
 ```
+
+### Таблица с размещением данных в ADQM и ADG {#example_with_adqm_adg}
 
 Создание логической таблицы с размещением данных в ADQM и ADG (без размещения в ADB):
 ```sql

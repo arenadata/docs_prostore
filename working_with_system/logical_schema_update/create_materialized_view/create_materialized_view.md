@@ -7,17 +7,17 @@ grand_parent: Работа с системой
 has_children: false
 ---
 
-# Создание материализованного представления
+# Создание материализованного представления {#create_materialized_view}
 
 Чтобы создать [материализованное представление](../../../overview/main_concepts/materialized_view/materialized_view.md) 
 в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [CREATE MATERIALIZED VIEW](../../../reference/sql_plus_requests/CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md) 
-(см. пример [ниже](#пример)). При успешном выполнении запроса материализованное представление появляется 
+(см. пример [ниже](#examples)). При успешном выполнении запроса материализованное представление появляется 
 в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
 
-Наличие материализованного представления можно проверить, как описано в разделе [Проверка наличия материализованного представления](../entity_presence_check/entity_presence_check.md#проверка-наличия-материализованного-представления).
+Наличие материализованного представления можно проверить, как описано в разделе [Проверка наличия материализованного представления](../entity_presence_check/entity_presence_check.md#mat_view_check).
 
-## Пример
+## Пример {#examples}
 
 ```sql
 -- выбор базы данных sales по умолчанию
