@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# Окружение
+# Окружение {#environment}
 
 _Окружение_ — совокупность [логических баз данных](../logical_db/logical_db.md), 
 доступных при работе с системой. Инсталляция системы работает с окружением, заданным в [конфигурации](../../../maintenance/configuration/configuration.md).

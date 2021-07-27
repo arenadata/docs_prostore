@@ -17,7 +17,7 @@ has_toc: false
 *   пустой объект ResultSet при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 Создание логического представления:
 ```sql
@@ -29,7 +29,7 @@ CREATE VIEW [db_name.]view_name AS SELECT query
 CREATE OR REPLACE VIEW [db_name.]view_name AS SELECT query
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, в которой создается или заменяется логическое представление. 
     Указывается опционально, если выбрана логическая БД, 
@@ -38,16 +38,16 @@ CREATE OR REPLACE VIEW [db_name.]view_name AS SELECT query
     представления имя должно быть уникально среди логических сущностей логической БД;
 *   `query` — [SELECT](../SELECT/SELECT.md)-подзапрос, на основе которого строится логическое представление.
 
-## Ограничения
+## Ограничения {#restrictions}
 
 В подзапросе `query` не допускается использование:
 *   логических представлений,
 *   [системных представлений](../../system_views/system_views.md) 
     `INFORMATION_SCHEMA`,
-*   директивы [FOR SYSTEM_TIME](../SELECT/SELECT.md#sect_for_system_time),
-*   секции `DATASOURCE_TYPE`.
+*   ключевого слова [FOR SYSTEM_TIME](../SELECT/SELECT.md#for_system_time),
+*   ключевого слова `DATASOURCE_TYPE`.
 
-## Пример
+## Пример {#examples}
 
 ```sql
 CREATE VIEW sales.stores_by_sold_products AS

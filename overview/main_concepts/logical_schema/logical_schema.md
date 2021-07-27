@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# Логическая схема данных
+# Логическая схема данных {#logical_schema}
 
 _Логическая схема данных_ — внешнее представление структуры данных [окружения](../environment/environment.md), 
 единое для всех [поддерживаемых СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 

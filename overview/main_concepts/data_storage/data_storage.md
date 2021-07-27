@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# Хранилище данных
+# Хранилище данных {#data_storage}
 
 _Физическое хранилище данных (далее — хранилище)_ — совокупность 
 [СУБД различного типа](../../../introduction/supported_DBMS/supported_DBMS.md), 

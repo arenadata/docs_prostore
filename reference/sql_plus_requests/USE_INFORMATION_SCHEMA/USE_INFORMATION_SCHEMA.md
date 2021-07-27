@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: USE INFORMATION_SCHEMA
-nav_order: 33
+nav_order: 34
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -23,7 +23,7 @@ has_toc: false
     при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 USE INFORMATION_SCHEMA

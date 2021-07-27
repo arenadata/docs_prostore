@@ -20,19 +20,19 @@ has_toc: false
 При успешном выполнении запроса логическое представление удаляется из 
 [логической схемы данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 DROP VIEW [db_name.]view_name
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, из которой удаляется логическое представление. Указывается 
     опционально, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `view_name` — имя удаляемого логического представления.
 
-## Пример
+## Пример {#examples}
 
 ```sql
 DROP VIEW sales.stores_by_sold_products

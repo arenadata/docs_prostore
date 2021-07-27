@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# Физическая таблица
+# Физическая таблица {#physical_table}
 
 _Физическая таблица_ — таблица СУБД [хранилища](../data_storage/data_storage.md), каждая запись 
 которой описывает состояние объекта [логической таблицы](../logical_table/logical_table.md) 

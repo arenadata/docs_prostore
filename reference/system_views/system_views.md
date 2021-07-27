@@ -6,7 +6,17 @@ parent: Справочная информация
 has_children: false
 ---
 
-# Системные представления (INFORMATION_SCHEMA)
+# Системные представления (INFORMATION_SCHEMA) {#system_views}
+{: .no_toc }
+
+<details markdown="block">
+  <summary>
+    Содержание раздела
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
 
 Набор системных представлений (INFORMATION_SCHEMA) предоставляет доступ к метаданным 
 [логической схемы данных](../../overview/main_concepts/logical_schema/logical_schema.md) 
@@ -19,7 +29,7 @@ has_children: false
 
 Набор системных представлений и их свойств фиксирован и недоступен для изменения.
 
-## schemata
+## Представление schemata {#schemata}
 
 Системное представление `schemata` содержит список [логических баз данных](../../overview/main_concepts/logical_db/logical_db.md) 
 [окружения](../../overview/main_concepts/environment/environment.md). 
@@ -28,7 +38,7 @@ has_children: false
     по умолчанию — public;
 *   `schema_name` — наименование логической базы данных.
 
-## tables
+## Представление tables {#tables}
 
 Системное представление `tables` содержит список [логических таблиц](../../overview/main_concepts/logical_table/logical_table.md), 
 [логических представлений](../../overview/main_concepts/logical_view/logical_view.md) 
@@ -41,7 +51,7 @@ has_children: false
 *   `table_type` — тип объекта. Возможные значения: BASE TABLE — логическая таблица или материализованное 
     представление, VIEW — логическое представление.
 
-## columns
+## Представление columns {#columns}
 
 Системное представление `columns` содержит список столбцов логических таблиц и представлений окружения. 
 По каждому столбцу доступна следующая информация:
@@ -59,7 +69,7 @@ has_children: false
     от 0 (точность до секунд) до 6 (точность до микросекунд).
 *   `data_type` — тип данных столбца. Возможные значения см. в разделе [Логические типы данных](../supported_data_types/logical_data_types/logical_data_types.md).
 
-## table_constraints
+## Представление table_constraints {#table_constraints}
 
 Системное представление `table_constraints` содержит список ограничений логических таблиц и представлений 
 окружения. По каждому ограничению доступна следующая информация:
@@ -74,7 +84,7 @@ has_children: false
 *   `constraint_type` — тип ограничения. Возможные значения: primary key — первичный ключ, sharding key — 
     ключ шардирования.
     
-## key_column_usage
+## Представление key_column_usage {#key_column_usage}
 
 Системное представление `key_column_usage` содержит список столбцов окружения, с которыми связаны 
 какие-либо ограничения. По каждому столбцу доступна следующая информация:
@@ -89,7 +99,7 @@ has_children: false
 *   `column_name` — наименование столбца, на который накладывается ограничение;
 *   `ordinal_position` — порядковый номер поля в ключе (нумерация начинается с 1).
 
-## Взаимосвязь системных представлений
+## Взаимосвязь системных представлений {#view_relationship}
 
 На рисунке ниже показана взаимосвязь системных представлений.
 

@@ -24,12 +24,12 @@ has_toc: false
 *   `delta_date` — дата и время закрытия дельты,
 *   `[cn_from, cn_to]` — диапазон номеров выполненных [операций записи](../../../overview/main_concepts/write_operation/write_operation.md).
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 GET_DELTA_BY_NUM(delta_num)
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `delta_num` — целый неотрицательный номер дельты.

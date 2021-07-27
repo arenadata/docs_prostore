@@ -24,7 +24,7 @@ has_toc: false
 *Ответ CHECK_VERSIONS*
 {: .figure-caption-center}
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 CHECK_VERSIONS()

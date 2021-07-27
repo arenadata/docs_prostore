@@ -7,11 +7,11 @@ grand_parent: Работа с системой
 has_children: false
 ---
 
-# Удаление логической таблицы
+# Удаление логической таблицы {#drop_table}
 
 Чтобы удалить [логическую таблицу](../../../overview/main_concepts/logical_table/logical_table.md) 
 и ее данные, выполните запрос [DROP TABLE](../../../reference/sql_plus_requests/DROP_TABLE/DROP_TABLE.md) 
-(см. пример [ниже](#пример)).
+(см. пример [ниже](#examples)).
 
 При успешном выполнении запроса все данные, связанные с логической таблицей, удаляются из указанных 
 [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../../overview/main_concepts/data_storage/data_storage.md). 
@@ -19,9 +19,9 @@ has_children: false
 при удалении данных таблицы из последней СУБД (см. секцию `DATASOURCE_TYPE` 
 в разделе [DROP TABLE](../../../reference/sql_plus_requests/DROP_TABLE/DROP_TABLE.md)).
 
-Наличие логической таблицы можно проверить, как описано в разделе [Проверка наличия логической таблицы](../entity_presence_check/entity_presence_check.md#проверка-наличия-логической-таблицы).
+Наличие логической таблицы можно проверить, как описано в разделе [Проверка наличия логической таблицы](../entity_presence_check/entity_presence_check.md#table_check).
 
-## Пример
+## Пример {#examples}
 
 ```sql
 -- выбор базы данных sales по умолчанию

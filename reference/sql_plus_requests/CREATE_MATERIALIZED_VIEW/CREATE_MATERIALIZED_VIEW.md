@@ -9,6 +9,16 @@ has_toc: false
 ---
 
 # CREATE MATERIALIZED VIEW
+{: .no_toc }
+
+<details markdown="block">
+  <summary>
+    Содержание раздела
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
 
 Запрос позволяет создать [материализованное представление](../../../overview/main_concepts/materialized_view/materialized_view.md) 
 в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md). 
@@ -29,7 +39,7 @@ has_toc: false
 **Примечание:** изменение материализованного представления недоступно. Для замены некорректного
 материализованного представления необходимо удалить его и создать новое.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 CREATE MATERIALIZED VIEW [db_name.]materialized_view_name (
@@ -43,7 +53,7 @@ AS SELECT query
 DATASOURCE_TYPE = origin_datasource_alias
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, в которой создается материализованное представление. Параметр 
     опционален, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
@@ -63,7 +73,7 @@ DATASOURCE_TYPE = origin_datasource_alias
 *   `origin_datasource_alias` — псевдоним СУБД, которая служит источником данных. 
     Возможные значения: `adb`. Значение указывается в одинарных кавычках (например, `'adb'`).
     
-## Ограничения
+## Ограничения {#restrictions}
 
 *   Имена столбцов должны быть уникальны в рамках представления.
 *   Столбцы не могут иметь имена, зарезервированные для служебного использования: `sys_op`, `sys_from`, 
@@ -73,10 +83,12 @@ DATASOURCE_TYPE = origin_datasource_alias
 *   Подзапрос может обращаться только к [логическим таблицам](../../../overview/main_concepts/logical_table/logical_table.md) 
     и только той логической базы данных, которой принадлежит материализованное представление.
 *   Подзапрос не может содержать следующие элементы: 
-    * директиву [FOR SYSTEM_TIME](../SELECT/SELECT.md#sect_for_system_time),
-    * оператор `ORDER BY`.
+    * ключевое слово [FOR SYSTEM_TIME](../SELECT/SELECT.md#for_system_time),
+    * ключевое слово `ORDER BY`.
 
-## Примеры
+## Примеры {#examples}
+
+### Представление на основе одной таблицы с условием {#example_with_condition}
 
 Создание материализованного представления на основе одной логической таблицы (`sales`) с размещением данных 
 в ADG:
@@ -98,6 +110,8 @@ AS SELECT * FROM sales.sales
 DATASOURCE_TYPE = 'adb'
 ```
 
+### Представление на основе одной таблицы с условием, агрегацией и группировкой {#example_with_group_by}
+
 Создание материализованного представления на основе одной логической таблицы (`sales`) с агрегацией и группировкой:
 ```sql
 CREATE MATERIALIZED VIEW sales.sales_by_stores (
@@ -113,6 +127,8 @@ AS SELECT store_id, product_code, SUM(product_units) as product_units FROM sales
    GROUP BY store_id, product_code
 DATASOURCE_TYPE = 'adb'
 ```
+
+### Представление на основе двух таблиц {#example_with_join}
 
 Создание материализованного представления на основе соединения двух логических таблиц (`sales` и `stores`):
 ```sql

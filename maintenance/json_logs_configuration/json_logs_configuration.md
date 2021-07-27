@@ -6,10 +6,10 @@ parent: Эксплуатация
 has_children: false
 ---
 
-# Настройка JSON-логов
+# Настройка JSON-логов {#json_logs_configuration}
 
 Система поддерживает конфигурацию и отображение JSON-логов проекта [Logback](http://logback.qos.ch/index.html). 
-Помимо [стандартных параметров]((http://logback.qos.ch/manual/configuration.html)), таких как время 
+Помимо [стандартных параметров](http://logback.qos.ch/manual/configuration.html), таких как время 
 сообщения, уровень логирования и т.д., система позволяет отображать в логах уникальные идентификаторы запросов.
 
 Если отображение идентификаторов настроено, для каждого [запроса SQL+](../../reference/sql_plus_requests/sql_plus_requests.md) 

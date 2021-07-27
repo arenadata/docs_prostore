@@ -6,19 +6,29 @@ parent: Эксплуатация
 has_children: false
 ---
 
-# Конфигурация
+# Конфигурация {#configuration}
+{: .no_toc }
+
+<details markdown="block">
+  <summary>
+    Содержание раздела
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
 
 Конфигурация системы задается в текстовом файле YAML-формата. Параметры конфигурации организованы 
 в иерархическую структуру типа дерево.
 
 В разделе представлен примеры актуальных файлов конфигурации системы: [конфигурации сервиса исполнения 
-запросов](#конфигурация-сервиса-исполнения-запросов) и [конфигурации сервиса мониторинга статусов Kafka](#конфигурация-сервиса-мониторинга-статусов-kafka). 
+запросов](#core_configuration) и [конфигурации сервиса мониторинга статусов Kafka](#status_monitor_configuration). 
 Перед каждым параметром указан комментарий, поясняющий назначение этого параметра. Для наглядности конфигурация сервиса исполнения
 запросов параметры разделена на отдельные секции.
 
-## Конфигурация сервиса исполнения запросов
+## Конфигурация сервиса исполнения запросов {#core_configuration}
 
-### Настройки журналирования
+### Настройки журналирования {#logging_parameters}
 ``` yaml
 # раздел настроек журналирования
 logging:
@@ -27,7 +37,7 @@ logging:
 io.arenadata.dtm.query.execution: TRACE
 ```
 
-### Настройки управления DTM
+### Настройки управления DTM {#dtm_parameters}
 ``` yaml
 # раздел настроек управления DTM
 management:
@@ -45,7 +55,7 @@ management:
         include: ${DTM_METRICS_SCOPE:info, health, requests}
 ```
 
-### Настройки сервиса исполнения запросов
+### Настройки сервиса исполнения запросов {#core_parameters}
 ``` yaml
 # раздел настроек сервиса исполнения запросов
 core:
@@ -170,9 +180,13 @@ timeZone: ${CORE_TIME_ZONE:UTC}
     maximumSize: ${CACHE_MAXIMUM_SIZE:100000}
 # время (в минутах) устаревания кэша после последнего момента обращения к нему
     expireAfterAccessMinutes: ${CACHE_EXPIRE_AFTER_ACCESS_MINUTES:99960}
+# настройки отката дельты
+  delta:
+# периодичность проверки операций записи, требующих остановки, в миллисекундах 
+    rollback-status-calls-ms: ${DELTA_ROLLBACK_STATUS_CALLS_MS:2000}      
 ```
 
-### Настройки СУБД ADB
+### Настройки СУБД ADB {#adb_parameters}
 ``` yaml
 # настройки ADB
 adb:
@@ -188,9 +202,9 @@ adb:
     port: ${ADB_PORT:5432}
 # максимальное количество подключений к ADB в одном потоке; 
 # максимальное количество подключений к ADB в целом по всем потокам равно произведению poolSize и executorsCount 
-    poolSize: ${ADB_MAX_POOL_SIZE:5}
+    poolSize: ${ADB_MAX_POOL_SIZE:3}
 # количество одновременных потоков, исполняющих запросы к ADB
-    executorsCount: ${ADB_EXECUTORS_COUNT:20}
+    executorsCount: ${ADB_EXECUTORS_COUNT:3}
 # максимальный размер результата, возвращаемого по FETCH-запросу к ADB
     fetchSize: ${ADB_FETCH_SIZE:1000}
 # настройки механизма загрузки данных в ADB
@@ -209,7 +223,7 @@ adb:
   with-history-table: ${ADB_WITH_HISTORY_TABLE:false}
 ```
 
-### Настройки СУБД ADG
+### Настройки СУБД ADG {#adg_parameters}
 ``` yaml
 # настройки ADG
 adg:
@@ -262,7 +276,7 @@ adg:
     max-pool-size: ${ADG_WEB_CLIENT_MAX_POOL_SIZE:100}
 ```
 
-### Настройки СУБД ADQM
+### Настройки СУБД ADQM {#adqm_parameters}
 ``` yaml
 # настройки ADQM
 adqm:
@@ -313,7 +327,7 @@ adqm:
     max-pool-size: ${ADQM_WEB_CLIENT_MAX_POOL_SIZE:100}
 ```
 
-## Конфигурация сервиса мониторинга статусов Kafka
+## Конфигурация сервиса мониторинга статусов Kafka {#status_monitor_configuration}
 
 ``` yaml
 # настройки cервиса мониторинга статусов Kafka

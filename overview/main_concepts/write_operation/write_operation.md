@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# Операция записи
+# Операция записи {#write_operation}
 
 _Операция записи_ — операция загрузки нового состояния объектов из внешнего источника в 
 [логическую таблицу](../logical_table/logical_table.md). В рамках [дельты](../delta/delta.md) 

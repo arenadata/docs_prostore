@@ -5,7 +5,7 @@ nav_order: 6
 has_children: false
 ---
 
-# Ресурсы
+# Ресурсы {#resources}
 
 [github-репозиторий Prostore](https://github.com/arenadata/prostore)
 
