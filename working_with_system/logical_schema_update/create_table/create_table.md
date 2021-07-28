@@ -7,17 +7,17 @@ grand_parent: Работа с системой
 has_children: false
 ---
 
-# Создание логической таблицы
+# Создание логической таблицы {#create_table}
 
 Чтобы создать [логическую таблицу](../../../overview/main_concepts/logical_table/logical_table.md) 
 в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [CREATE TABLE](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md) 
-(см. пример [ниже](#пример)). При успешном выполнении запроса логическая таблица появляется в 
+(см. пример [ниже](#examples)). При успешном выполнении запроса логическая таблица появляется в 
 [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
 
-Наличие логической таблицы можно проверить, как описано в разделе [Проверка наличия логической таблицы](../entity_presence_check/entity_presence_check.md#проверка-наличия-логической-таблицы).
+Наличие логической таблицы можно проверить, как описано в разделе [Проверка наличия логической таблицы](../entity_presence_check/entity_presence_check.md#table_check).
 
-## Пример
+## Пример {#examples}
 
 ```sql
 -- выбор базы данных sales по умолчанию

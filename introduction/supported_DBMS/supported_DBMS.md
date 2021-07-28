@@ -7,7 +7,7 @@ has_children: false
 has_toc: false
 ---
 
-# Поддерживаемые СУБД хранилища
+# Поддерживаемые СУБД хранилища {#supported_DBMS}
 
 Система поддерживает работу со следующими СУБД [хранилища](../../overview/main_concepts/data_storage/data_storage.md):
 *   **Arenadata DB (ADB)** — СУБД с массивно-параллельной архитектурой (Massive parallel processing, MPP), 

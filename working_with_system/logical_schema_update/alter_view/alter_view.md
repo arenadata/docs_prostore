@@ -7,7 +7,7 @@ grand_parent: Работа с системой
 has_children: false
 ---
 
-# Изменение логического представления
+# Изменение логического представления {#alter_view}
 
 Чтобы изменить [логическое представление](../../../overview/main_concepts/logical_view/logical_view.md) 
 в [логической БД](../../../overview/main_concepts/logical_db/logical_db.md), 
@@ -16,7 +16,7 @@ has_children: false
 
 При успешном выполнении запроса логическое представление изменит свой вид.
 
-## Пример
+## Пример {#examples}
 
 ```sql
 -- выбор sales как логической базы данных по умолчанию

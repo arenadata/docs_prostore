@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# Порядок обработки запросов на выгрузку данных
+# Порядок обработки запросов на выгрузку данных {#download_processing}
 
 Запрос на выгрузку данных обрабатывается в следующем порядке:
 1.  Внешняя информационная система формирует запрос [INSERT INTO download_external_table](../../../reference/sql_plus_requests/INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md), 

@@ -1,7 +1,7 @@
----
+﻿---
 layout: default
 title: ROLLBACK CRASHED_WRITE_OPERATIONS
-nav_order: 26
+nav_order: 28
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -26,7 +26,7 @@ has_toc: false
 *   объект ResultSet c записями, каждая из которых содержит имя [логической таблицы](../../../overview/main_concepts/logical_table/logical_table.md) в столбце `table_name`
     и номер отмененной операции записи в столбце `sys_cn_operations`.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 ROLLBACK CRASHED_WRITE_OPERATIONS

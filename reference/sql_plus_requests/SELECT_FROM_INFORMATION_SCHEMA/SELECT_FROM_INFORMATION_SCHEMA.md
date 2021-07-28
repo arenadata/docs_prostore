@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: SELECT FROM INFORMATION_SCHEMA
-nav_order: 30
+nav_order: 31
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -9,6 +9,16 @@ has_toc: false
 ---
 
 # SELECT FROM INFORMATION_SCHEMA
+{: .no_toc }
+
+<details markdown="block">
+  <summary>
+    Содержание раздела
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
 
 Запрос позволяет получить метаданные объектов [логической схемы](../../../overview/main_concepts/logical_schema/logical_schema.md), 
 описанные в разделе [Системные представления (INFORMATION_SCHEMA)](../../system_views/system_views.md). 
@@ -18,26 +28,26 @@ has_toc: false
 *   объект ResultSet c выбранными записями при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 SELECT column_list FROM [INFORMATION_SCHEMA.]system_view_name [AS alias_name]
 ```
 
-Описание параметров запроса см. [ниже](#параметры).
+Описание параметров запроса см. [ниже](#parameters).
 
 Префикс `INFORMATION_SCHEMA` перед именем системного представления опционален, если до этого был выполнен 
 запрос [USE INFORMATION_SCHEMA](../USE_INFORMATION_SCHEMA/USE_INFORMATION_SCHEMA.md). Для имен системных 
 представлений и столбцов можно использовать псевдонимы.
 
-В запросе поддерживаются следующие секции, которые должны быть указаны в порядке их перечисления:
+В запросе поддерживаются следующие ключевые слова, которые должны быть указаны в порядке их перечисления:
 *   `JOIN ON` — для соединения данных нескольких системных представлений;
 *   `WHERE` — для указания условий выбора данных;
 *   `GROUP BY` — для группировки данных;
 *   `ORDER BY` — для сортировки данных;
 *   `LIMIT` — для ограничения количества возвращаемых строк.
 
-**Внимание:** строковые значения столбцов в секции `WHERE` необходимо указывать в верхнем регистре 
+**Внимание:** строковые значения столбцов для ключевого слова `WHERE` необходимо указывать в верхнем регистре 
 (например, `WHERE table_schema = 'SALES'`).
 
 Поддерживаются следующие типы соединений системных представлений:
@@ -47,18 +57,20 @@ SELECT column_list FROM [INFORMATION_SCHEMA.]system_view_name [AS alias_name]
 *   `FULL [OUTER]` — полное внешнее соединение,
 *   `CROSS` — декартово произведение, ключи соединения не указываются.
 
-## Параметры
+## Параметры {#parameters}
 
 *   `column_list` — список выбираемых столбцов. Допустимо указывать символ `*` для выбора всех столбцов;
 *   `system_view_name` — имя системного представления, из которого запрашивается информация. Возможные 
     значения см. в разделе [Системные представления (INFORMATION_SCHEMA)](../../system_views/system_views.md);
 *   `alias_name` — псевдоним системного представления.
 
-## Ограничения
+## Ограничения {#restrictions}
 
 Не допускается комбинирование подзапросов к `INFORMATION_SCHEMA` с подзапросами к логическим базам данных.
 
-## Примеры
+## Примеры {#examples}
+
+### Запрос списка всех логических БД окружения {#all_dbs_example}
 
 Запрос списка всех [логических БД](../../../overview/main_concepts/logical_db/logical_db.md) 
 [окружения](../../../overview/main_concepts/environment/environment.md) 
@@ -68,11 +80,15 @@ SELECT schema_name FROM INFORMATION_SCHEMA.schemata
 ORDER BY schema_name
 ```
 
+### Запрос информации о сущностях логической БД {#entity_list_example}
+
 Запрос информации о логических сущностях логической БД `SALES`:
 ```sql
 SELECT * FROM INFORMATION_SCHEMA.tables
 WHERE table_schema = 'SALES'
 ```
+
+### Запрос имен, типов и столбцов логических сущностей {#entity_info_example}
 
 Запрос списка имен, типов и столбцов логических сущностей окружения:
 ```sql

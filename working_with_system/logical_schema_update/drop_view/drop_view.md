@@ -7,19 +7,19 @@ grand_parent: Работа с системой
 has_children: false
 ---
 
-# Удаление логического представления
+# Удаление логического представления {#drop_view}
 
 Чтобы удалить [логическое представление](../../../overview/main_concepts/logical_view/logical_view.md) 
 из [логической БД](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [DROP VIEW](../../../reference/sql_plus_requests/DROP_VIEW/DROP_VIEW.md) 
-(см. пример [ниже](#пример)).
+(см. пример [ниже](#examples)).
 
 При успешном выполнении запроса логическое представление удаляется из [логической схемы данных](../../../overview/main_concepts/logical_schema/logical_schema.md). 
 Удаление логического представления никак не отражается в [хранилище](../../../overview/main_concepts/data_storage/data_storage.md).
 
-Наличие логического представления можно проверить, как описано в разделе [Проверка наличия логического представления](../entity_presence_check/entity_presence_check.md#проверка-наличия-логического-представления).
+Наличие логического представления можно проверить, как описано в разделе [Проверка наличия логического представления](../entity_presence_check/entity_presence_check.md#view_check).
 
-## Пример
+## Пример {#examples}
 
 ```sql
 -- выбор базы данных sales по умолчанию

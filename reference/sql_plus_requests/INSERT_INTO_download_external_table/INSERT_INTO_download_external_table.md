@@ -39,24 +39,24 @@ has_toc: false
 *   Имена и порядок следования столбцов должны совпадать в SELECT-подзапросе на выгрузку данных и 
     внешней таблице выгрузки.
 
-## Синтаксис
+## Синтаксис {#syntax}
 
 ```sql
 INSERT INTO [db_name.]ext_table_name SELECT ...
 ```
 
-## Параметры
+## Параметры {#parameters}
 
 *   `db_name` — имя логической базы данных, из которой выгружаются данные. Указывается опционально, 
     если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `ext_table_name` — имя внешней таблицы выгрузки.
 
-## Ограничения
+## Ограничения {#restrictions}
 
-*   Секция [DATASOURCE_TYPE](../SELECT/SELECT.md#param_datasource_type) игнорируется в SELECT-подзапросе.
+*   Ключевое слово [DATASOURCE_TYPE](../SELECT/SELECT.md#param_datasource_type) игнорируется в SELECT-подзапросе.
 *   Выгружаемые данные должны быть доступны в СУБД, выбранной для выгрузки в конфигурации системы.
 
-## Пример
+## Пример {#examples}
 
 ```sql
 INSERT INTO sales.sales_ext_download

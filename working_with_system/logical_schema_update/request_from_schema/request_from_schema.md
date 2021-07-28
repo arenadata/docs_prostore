@@ -7,14 +7,14 @@ grand_parent: Работа с системой
 has_children: false
 ---
 
-# Запрос метаданных логической схемы
+# Запрос метаданных логической схемы {#request_from_schema}
 
 Чтобы запросить метаданные объектов [логической схемы данных](../../../overview/main_concepts/logical_schema/logical_schema.md), 
 выполните запрос [SELECT FROM INFORMATION_SCHEMA](../../../reference/sql_plus_requests/SELECT_FROM_INFORMATION_SCHEMA/SELECT_FROM_INFORMATION_SCHEMA.md) 
-(см. примеры [ниже](#примеры)). Доступно получение информации о сущностях и их свойствах, перечисленных 
+(см. примеры [ниже](#examples)). Доступно получение информации о сущностях и их свойствах, перечисленных 
 в разделе [Системные представления (INFORMATION_SCHEMA)](../../../reference/system_views/system_views.md).
 
-## Примеры
+## Примеры {#examples}
 
 Запрос списка всех [логических БД](../../../overview/main_concepts/logical_db/logical_db.md) 
 [окружения](../../../overview/main_concepts/environment/environment.md) 
