@@ -11,31 +11,22 @@ has_toc: false
 
 Систему можно разворачивать различными способами, устанавливая различные наборы 
 [связанных компонентов]((../../overview/interactions/interactions.md)), — в зависимости от целей проекта. 
-Однако есть основные способы разворачивания системы:
+Однако есть основные схемы развертывания системы:
 * с кластерами каждой из следующих СУБД хранилища: ADB, ADQM и ADG;
 * с сервером одной СУБД хранилища — ADP.
 
-На рисунке ниже показана схема развертывания системы с ADB, ADQM и ADG.
-
-<!--
-![](deployment_with_3_dbms.png)
-{: .figure-center}
-*Схема развертывания с ADB, ADQM и ADG*
-{: .figure-caption-center}
--->
-
-
-![](deployment_with_3_dbms-2.svg)
-{: .figure-center}
-*Схема развертывания с ADB, ADQM и ADG*
-{: .figure-caption-center}
+На рисунке ниже показана схема развертывания системы с ADB, ADQM и ADG. Стрелки направлены от вызывающих компонентов 
+к вызываемым.
 
 ![](deployment_with_3_dbms.svg)
 {: .figure-center}
 *Схема развертывания с ADB, ADQM и ADG*
 {: .figure-caption-center}
 
-![](deployment_with_3_dbms-3.svg)
+На рисунке ниже показана схема развертывания системы с ADP. Стрелки направлены от вызывающих компонентов
+к вызываемым.
+
+![](deployment_with_1_dbms.svg)
 {: .figure-center}
-*Схема развертывания с ADB, ADQM и ADG*
+*Схема развертывания с ADP*
 {: .figure-caption-center}
