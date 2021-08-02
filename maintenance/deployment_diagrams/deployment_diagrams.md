@@ -29,3 +29,13 @@ has_toc: false
 {: .figure-center}
 *Схема развертывания с ADB, ADQM и ADG*
 {: .figure-caption-center}
+
+![](deployment_with_3_dbms.png)
+{: .figure-center}
+*Схема развертывания с ADB, ADQM и ADG*
+{: .figure-caption-center}
+
+![](deployment_with_3_dbms-3.png)
+{: .figure-center}
+*Схема развертывания с ADB, ADQM и ADG*
+{: .figure-caption-center}
