@@ -24,71 +24,71 @@ has_toc: false
 
 [СУБД](../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../overview/main_concepts/data_storage/data_storage.md) 
 имеют ограничения на использование некоторых функций в запросах, вызванные особенностями этих СУБД. 
-Наиболее полный синтаксис запросов доступен в ADB.
+Наиболее полный синтаксис запросов доступен в ADB и ADP.
 
-| Функция | Доступна в ADB | Доступна в ADQM | Доступна в ADG
+| Функция | Доступна в ADB | Доступна в ADQM | Доступна в ADG | Доступна в ADP
 |:-|:-:|:-:|:-:
-| ABS | + | + | +
-| ACOS | + | + | −
-| ASIN | + | + | −
-| ATAN | + | + | −
-| ATAN2 | + | − | −
-| AVG | − | − | −
-| BIT_AND | + | − | −
-| BIT_OR | + | − | −
-| CASE | + | + | +
-| CAST | + | + | +
-| CBRT | + | − | −
-| CEIL | +<br>аргумент FLOAT | + | −
-| CEILING | +<br>аргумент FLOAT | + | −
-| CHAR | − | − | −
-| COALESCE | + | + | +
-| COS | + | + | −
-| COUNT | + | + | +
-| CROSS JOIN | + | − | +
-| DEGREES | + | − | −
-| EXCEPT | − | − | −
-| EXP | + | + | −
-| FLOOR | +<br>аргумент FLOAT | + | −
-| FULL JOIN | + | − | −
-| GREATEST | − | − | −
-| HEX | − | − | −
-| IFNULL | − | − | −
-| INTERSECT | − | − | −
-| JOIN для трех таблиц | + | − | +
-| JOIN с подзапросом | + | − | +
-| LEAST | − | − | −
-| LENGTH | − | − | −
-| LIKELY | − | − | −
-| LN | + | + | −
-| LOG | − | − | −
-| LOWER | + | + | +
-| MAX | + | + | +
-| MIN | + | + | +
-| MOD | + | − | −
-| NULLIF | + | + | +
-| OCTET_LENGTH | − | − | −
-| PI | − | − | −
-| POSITION | + | − | −
-| POWER | + | + | −
-| PRINTF | − | − | −
-| QUOTE | − | − | −
-| RADIANS | + | − | −
-| RANDOM | − | − | −
-| REPLACE | + | + | +
-| RIGHT JOIN | + | + | −
-| ROUND | +<br>аргумент FLOAT | + | −
-| SIGN | +<br>аргумент FLOAT | − | −
-| SIN | + | + | −
-| SQRT | + | + | −
-| SUBSTRING | + | + | −
-| SUM | + | + | +
-| TAN | + | + | −
-| TRIM | + | + | +
-| TRUNC | − | − | −
-| TYPEOF | − | − | −
-| UNION | − | − | −
-| UPPER | + | + | +
+| ABS | + | + | + | +
+| ACOS | + | + | − | +
+| ASIN | + | + | − | +
+| ATAN | + | + | − | +
+| ATAN2 | + | − | − | +
+| AVG | − | − | − | −
+| BIT_AND | + | − | − | +
+| BIT_OR | + | − | − | +
+| CASE | + | + | + | +
+| CAST | + | + | + | +
+| CBRT | + | − | − | +
+| CEIL | +<br>для аргумента типа FLOAT | + | − | +<br>для аргумента типа FLOAT
+| CEILING | +<br>для аргумента типа FLOAT | + | − | +<br>для аргумента типа FLOAT
+| CHAR | − | − | − | −
+| COALESCE | + | + | + | +
+| COS | + | + | − | +
+| COUNT | + | + | + | +
+| CROSS JOIN | + | − | + | +
+| DEGREES | + | − | − | +
+| EXCEPT | − | − | − | −
+| EXP | + | + | − | +
+| FLOOR | +<br>для аргумента типа FLOAT | + | − | +<br>для аргумента типа FLOAT
+| FULL JOIN | + | − | − | +
+| GREATEST | − | − | − | −
+| HEX | − | − | − | −
+| IFNULL | − | − | − | −
+| INTERSECT | − | − | − | −
+| JOIN для трех таблиц | + | − | + | +
+| JOIN с подзапросом | + | − | + | +
+| LEAST | − | − | − | −
+| LENGTH | − | − | − | −
+| LIKELY | − | − | − | −
+| LN | + | + | − | +
+| LOG | − | − | − | −
+| LOWER | + | + | + | +
+| MAX | + | + | + | +
+| MIN | + | + | + | +
+| MOD | + | − | − | +
+| NULLIF | + | + | + | +
+| OCTET_LENGTH | − | − | − | −
+| PI | − | − | − | −
+| POSITION | + | − | − | +
+| POWER | + | + | − | +
+| PRINTF | − | − | − | −
+| QUOTE | − | − | − | −
+| RADIANS | + | − | − | +
+| RANDOM | − | − | − | −
+| REPLACE | + | + | + | +
+| RIGHT JOIN | + | + | − | +
+| ROUND | +<br>для аргумента типа FLOAT | + | − | +<br>для аргумента типа FLOAT
+| SIGN | +<br>для аргумента типа FLOAT | − | − | +<br>для аргумента типа FLOAT
+| SIN | + | + | − | +
+| SQRT | + | + | − | +
+| SUBSTRING | + | + | − | +
+| SUM | + | + | + | +
+| TAN | + | + | − | +
+| TRIM | + | + | + | +
+| TRUNC | − | − | − | −
+| TYPEOF | − | − | − | −
+| UNION | − | − | − | −
+| UPPER | + | + | + | +
 
 ## Примеры неподдерживаемых запросов {#examples}
 
