@@ -25,17 +25,17 @@ has_toc: false
 -->
 
 
-![](deployment_with_3_dbms-2.png)
+![](deployment_with_3_dbms-2.svg)
 {: .figure-center}
 *Схема развертывания с ADB, ADQM и ADG*
 {: .figure-caption-center}
 
-![](deployment_with_3_dbms.png)
+![](deployment_with_3_dbms.svg)
 {: .figure-center}
 *Схема развертывания с ADB, ADQM и ADG*
 {: .figure-caption-center}
 
-![](deployment_with_3_dbms-3.png)
+![](deployment_with_3_dbms-3.svg)
 {: .figure-center}
 *Схема развертывания с ADB, ADQM и ADG*
 {: .figure-caption-center}
