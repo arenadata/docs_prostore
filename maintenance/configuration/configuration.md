@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: Конфигурация
-nav_order: 2
+nav_order: 3
 parent: Эксплуатация
 has_children: false
 ---
@@ -62,7 +62,7 @@ core:
 # настройки плагинов
   plugins:
 # список работающих плагинов к соответствующим СУБД
-    active: ${CORE_PLUGINS_ACTIVE:ADG, ADB, ADQM}
+    active: ${CORE_PLUGINS_ACTIVE:ADG, ADB, ADQM, ADP}
 # настройки профилей приоритетности СУБД по категориям SQL-запросов
     category:
       mapping:
@@ -207,6 +207,12 @@ adb:
     executorsCount: ${ADB_EXECUTORS_COUNT:3}
 # максимальный размер результата, возвращаемого по FETCH-запросу к ADB
     fetchSize: ${ADB_FETCH_SIZE:1000}
+# максимальный размер кэша запроса prepared statement 
+    preparedStatementsCacheMaxSize: ${ADB_PREPARED_CACHE_MAX_SIZE:256}
+# максимальный размер запроса prepared statement, который может быть закэширован 
+    preparedStatementsCacheSqlLimit: ${ADB_PREPARED_CACHE_SQL_LIMIT:2048}
+# признак кэширования запросов prepared statement
+    preparedStatementsCache: ${ADB_PREPARED_CACHE:true}    
 # настройки механизма загрузки данных в ADB
   mppw:
 # наименование консьюмер-группы ADB для взаимодействия с брокером сообщений Kafka
@@ -220,7 +226,7 @@ adb:
 # значение тайм-аута ожидания (в миллисекундах) для FDW-коннектора ADB
     fdwTimeoutMs: ${ADB_MPPW_FDW_TIMEOUT_MS:1000}
 # признак использования исторических таблиц
-  with-history-table: ${ADB_WITH_HISTORY_TABLE:false}
+    with-history-table: ${ADB_WITH_HISTORY_TABLE:false}
 ```
 
 ### Настройки СУБД ADG {#adg_parameters}
@@ -325,6 +331,51 @@ adqm:
   web-client:
 # максимальный размер пула подключений веб-клиентов к ADQM
     max-pool-size: ${ADQM_WEB_CLIENT_MAX_POOL_SIZE:100}
+```
+
+### Настройки СУБД ADP {#adp_parameters}
+``` yaml
+# настройки ADP
+adp:
+# настройка источника данных ADP
+  datasource:
+# имя пользователя/логин для авторизации в ADP
+    user: ${ADP_USERNAME:dtm}
+# пароль для авторизации в ADP
+    password: ${ADP_PASS:dtm}
+# сетевой адрес хоста с ADP
+    host: ${ADP_HOST:localhost}
+# сетевой адрес порта на хосте с ADP
+    port: ${ADP_PORT:5432}
+# максимальное количество подключений к ADP в одном потоке; 
+# максимальное количество подключений к ADP в целом по всем потокам равно произведению poolSize и executorsCount
+    poolSize: ${ADP_MAX_POOL_SIZE:3}
+# количество одновременных потоков, исполняющих запросы к ADP
+    executorsCount: ${ADP_EXECUTORS_COUNT:3}
+# максимальный размер результата, возвращаемого по FETCH-запросу к ADP
+    fetchSize: ${ADP_FETCH_SIZE:1000}
+# максимальный размер кэша запроса prepared statement 
+    preparedStatementsCacheMaxSize: ${ADP_PREPARED_CACHE_MAX_SIZE:256}
+# максимальный размер запроса prepared statement, который может быть закэширован 
+    preparedStatementsCacheSqlLimit: ${ADP_PREPARED_CACHE_SQL_LIMIT:2048}
+# признак кэширования запросов prepared statement
+    preparedStatementsCache: ${ADP_PREPARED_CACHE:true}
+# настройки механизма загрузки данных в ADP
+  mppw:
+# сетевой адрес и путь к REST-интерфейсу для загрузки данных в ADP
+    restStartLoadUrl: ${ADP_REST_START_LOAD_URL:http://localhost:8096/newdata/start}
+# сетевой адрес и путь к REST-интерфейсу для остановки загрузки данных в ADP
+    restStopLoadUrl: ${ADP_REST_STOP_LOAD_URL:http://localhost:8096/newdata/stop}
+# сетевой адрес и путь для получения информации о версии коннектора
+    restVersionUrl: ${ADP_MPPW_CONNECTOR_VERSION_URL:http://localhost:8096/versions}
+# наименование коньсюмер-группы для загрузки данных в ADP через REST API
+    kafkaConsumerGroup: ${ADP_KAFKA_CONSUMER_GROUP:adp-load}
+# настройки механизма выгрузки данных из ADP 
+  mppr:
+# сетевой адрес и путь для запросов на выгрузку данных
+    restLoadUrl: ${ADP_MPPR_QUERY_URL:http://localhost:8094/query}
+# сетевой адрес и путь для получения информации о версии коннектора
+    restVersionUrl: ${ADP_MPPR_CONNECTOR_VERSION_URL:http://localhost:8094/versions}  
 ```
 
 ## Конфигурация сервиса мониторинга статусов Kafka {#status_monitor_configuration}
