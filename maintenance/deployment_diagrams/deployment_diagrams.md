@@ -17,10 +17,12 @@ has_toc: false
 
 На рисунке ниже показана схема развертывания системы с ADB, ADQM и ADG.
 
+<!--
 ![](deployment_with_3_dbms.png)
 {: .figure-center}
 *Схема развертывания с ADB, ADQM и ADG*
 {: .figure-caption-center}
+-->
 
 
 ![](deployment_with_3_dbms-2.png)
