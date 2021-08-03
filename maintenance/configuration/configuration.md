@@ -62,18 +62,18 @@ core:
 # настройки плагинов
   plugins:
 # список работающих плагинов к соответствующим СУБД
-    active: ${CORE_PLUGINS_ACTIVE:ADG, ADB, ADQM, ADP}
+    active: ${CORE_PLUGINS_ACTIVE:ADG, ADB, ADP, ADQM}
 # настройки профилей приоритетности СУБД по категориям SQL-запросов
     category:
       mapping:
 # профиль для общих реляционных запросов
-        RELATIONAL: ${DTM_CORE_PLUGINS_RELATIONAL:ADB, ADQM, ADG}
+        RELATIONAL: ${DTM_CORE_PLUGINS_RELATIONAL:ADB, ADP, ADQM, ADG}
 # профиль для запросов аналитики
-        ANALYTICAL: ${DTM_CORE_PLUGINS_ANALYTICAL:ADQM, ADB, ADG}
+        ANALYTICAL: ${DTM_CORE_PLUGINS_ANALYTICAL:ADQM, ADB, ADP, ADG}
 # профиль для запросов ключ-значение
-        DICTIONARY: ${DTM_CORE_PLUGINS_DICTIONARY:ADG, ADB, ADQM}
+        DICTIONARY: ${DTM_CORE_PLUGINS_DICTIONARY:ADG, ADB, ADP, ADQM}
 # профиль для других категорий запросов
-        UNDEFINED:  ${DTM_CORE_PLUGINS_UNDEFINED:ADB, ADQM, ADG}
+        UNDEFINED:  ${DTM_CORE_PLUGINS_UNDEFINED:ADB, ADP, ADQM, ADG}
 # настройки сетевых подключений через HTTP-протокол
   http:
 # номер порта сервиса исполнения запросов
