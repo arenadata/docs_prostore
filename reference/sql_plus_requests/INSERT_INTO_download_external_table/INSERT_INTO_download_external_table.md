@@ -12,10 +12,10 @@ has_toc: false
 
 Запрос позволяет выгрузить данные, выбранные [SELECT](../SELECT/SELECT.md)-подзапросом 
 к [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md), 
-во внешний приемник данных. Данные можно выгрузить из [логических таблиц](../../../overview/main_concepts/logical_table/logical_table.md)
+во внешний приемник данных. Данные можно выгружать из [логических таблиц](../../../overview/main_concepts/logical_table/logical_table.md)
 и [логических представлений](../../../overview/main_concepts/logical_view/logical_view.md). Выгрузка данных из 
 [материализованных представлений](../../../overview/main_concepts/materialized_view/materialized_view.md)
-недоступна. 
+недоступна.
 
 Данные можно выгрузить из [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../../overview/main_concepts/main_concepts.md), 
 выбранной для выгрузки данных в [конфигурации](../../../maintenance/configuration/configuration.md) (см. параметр 
