@@ -59,7 +59,7 @@ has_toc: false
 | JOIN с подзапросом | + | − | + | +
 | LEAST | − | − | − | −
 | LENGTH | − | − | − | −
-| LIKELY | − | − | − | −
+| LIKE | + | + | + | +
 | LN | + | + | − | +
 | LOG | − | − | − | −
 | LOWER | + | + | + | +
@@ -77,7 +77,7 @@ has_toc: false
 | RANDOM | − | − | − | −
 | REPLACE | + | + | + | +
 | RIGHT JOIN | + | + | − | +
-| ROUND | +<br>для аргумента типа FLOAT | + | − | +<br>для аргумента типа FLOAT
+| ROUND | +<br>для аргумента типа FLOAT | + | + | +<br>для аргумента типа FLOAT
 | SIGN | +<br>для аргумента типа FLOAT | − | − | +<br>для аргумента типа FLOAT
 | SIN | + | + | − | +
 | SQRT | + | + | − | +
