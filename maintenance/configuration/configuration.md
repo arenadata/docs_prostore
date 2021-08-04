@@ -34,7 +34,7 @@ has_children: false
 logging:
 # задание уровня важности сообщений, журналируемых в лог-файле
   level:
-io.arenadata.dtm.query.execution: TRACE
+io.arenadata.dtm.query.execution: ${DTM_LOGGING_LEVEL:TRACE}
 ```
 
 ### Настройки управления DTM {#dtm_parameters}

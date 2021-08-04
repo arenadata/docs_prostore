@@ -35,6 +35,7 @@ has_children: false
     и `ADB_PREPARED_CACHE`;
   * значения следующих параметров расширены новой СУБД ADP: `CORE_PLUGINS_ACTIVE`, `DTM_CORE_PLUGINS_RELATIONAL`,
     `DTM_CORE_PLUGINS_ANALYTICAL`, `DTM_CORE_PLUGINS_DICTIONARY`, `DTM_CORE_PLUGINS_UNDEFINED`;
+  * добавлен параметр `DTM_LOGGING_LEVEL` для управления уровнем логирования;
 * добавлен раздел [Схемы развертывания](../maintenance/deployment_diagrams/deployment_diagrams.md).
 
 ## Архивные версии документации {#archive}
