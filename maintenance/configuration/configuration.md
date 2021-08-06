@@ -320,9 +320,9 @@ adqm:
 # тип интерфейса для загрузки данных в ADQM
     loadType: ${ADQM_MPPW_LOAD_TYPE:REST}
 # сетевой адрес и путь к REST-интерфейсу для загрузки новых данных в ADQM
-    restStartLoadUrl: ${ADQM_REST_START_LOAD_URL:http://10.92.3.86:8090/newdata/adqm/start}
+    restStartLoadUrl: ${ADQM_REST_START_LOAD_URL:http://10.92.3.86:8090/newdata/start}
 # сетевой адрес и путь к REST-интерфейсу для остановки загрузки данных в ADQM
-    restStopLoadUrl: ${ADQM_REST_STOP_LOAD_URL:http://10.92.3.86:8090/newdata/adqm/stop}
+    restStopLoadUrl: ${ADQM_REST_STOP_LOAD_URL:http://10.92.3.86:8090/newdata/stop}
 # сетевой адрес и путь для получения информации о версии коннектора
     versionUrl: ${ADQM_MPPW_CONNECTOR_VERSION_URL:http://10.92.3.86:8090/versions}
 # наименование коньсюмер-группы для загрузки данных в ADQM через REST API
