@@ -34,7 +34,7 @@ has_toc: false
 SELECT column_list FROM [INFORMATION_SCHEMA.]system_view_name [AS alias_name]
 ```
 
-Описание параметров запроса см. [ниже](#parameters).
+Описание параметров запроса см. [ниже](#parameters123).
 
 Префикс `INFORMATION_SCHEMA` перед именем системного представления опционален, если до этого был выполнен 
 запрос [USE INFORMATION_SCHEMA](../USE_INFORMATION_SCHEMA/USE_INFORMATION_SCHEMA.md). Для имен системных 
