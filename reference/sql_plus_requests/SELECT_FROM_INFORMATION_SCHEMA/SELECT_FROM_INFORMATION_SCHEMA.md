@@ -37,7 +37,7 @@ SELECT column_list FROM [INFORMATION_SCHEMA.]system_view_name [AS alias_name]
 Описание параметров запроса см. [ниже](#parameters123).
 
 Префикс `INFORMATION_SCHEMA` перед именем системного представления опционален, если до этого был выполнен 
-запрос [USE INFORMATION_SCHEMA](../USE_INFORMATION_SCHEMA/USE_INFORMATION_SCHEMA.md). Для имен системных 
+запрос [USE INFORMATION_SCHEMA](../USE_INFORMATION_SCHEMA/USE_INFORMATION_SCHEMA12345.md). Для имен системных 
 представлений и столбцов можно использовать псевдонимы.
 
 В запросе поддерживаются следующие ключевые слова, которые должны быть указаны в порядке их перечисления:
