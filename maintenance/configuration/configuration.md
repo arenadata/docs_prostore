@@ -119,7 +119,7 @@ timeZone: ${CORE_TIME_ZONE:UTC}
 # настройки Zookeeper
     zookeeper:
 # сетевой адрес хоста Zookeeper для служебной БД
-      connection-string: ${ZOOKEEPER_DS_ADDRESS:10.92.3.47}
+      connection-string: ${ZOOKEEPER_DS_ADDRESS:localhost}
 # интервал времени ожидания (в миллисекундах) соединения с хостом Zookeeper для служебной БД до достижения тайм-аута
       connection-timeout-ms: ${ZOOKEEPER_DS_CONNECTION_TIMEOUT_MS:30000}
 # интервал времени бездействия (в миллисекундах) в сессии хоста Zookeeper для служебной БД до достижения тайм-аута
@@ -138,7 +138,7 @@ timeZone: ${CORE_TIME_ZONE:UTC}
     cluster:
       zookeeper:
 # сетевой адрес хоста Zookeeper для брокера сообщений Kafka
-        connection-string: ${ZOOKEEPER_KAFKA_ADDRESS:10.92.3.47}
+        connection-string: ${ZOOKEEPER_KAFKA_ADDRESS:localhost}
 # интервал времени ожидания (в миллисекундах) соединения с хостом Zookeeper для брокера сообщений Kafka до достижения тайм-аута
         connection-timeout-ms: ${ZOOKEEPER_KAFKA_CONNECTION_TIMEOUT_MS:30000}
 # интервал времени бездействия (в миллисекундах) в сессии хоста Zookeeper для брокера сообщений Kafka до достижения тайм-аута
@@ -158,9 +158,9 @@ timeZone: ${CORE_TIME_ZONE:UTC}
 # настройки подключения к сервису мониторинга статусов Kafka 
     statusMonitor:
 # сетевой адрес и путь для получения информации о статусе сервиса
-      statusUrl: ${STATUS_MONITOR_URL:http://127.0.0.1:9095/status}
+      statusUrl: ${STATUS_MONITOR_URL:http://localhost:9095/status}
 # сетевой адрес и путь для получения информации о версии сервиса
-      versionUrl: ${STATUS_MONITOR_VERSION_URL:http://127.0.0.1:9095/versions}
+      versionUrl: ${STATUS_MONITOR_VERSION_URL:http://localhost:9095/versions}
 # настройки при использовании фреймворка vertx
   vertx:
     pool:   
@@ -197,7 +197,7 @@ adb:
 # пароль для авторизации в ADB
     password: ${ADB_PASS:dtm}
 # сетевой адрес хоста с ADB
-    host: ${ADB_HOST:10.92.3.105}
+    host: ${ADB_HOST:localhost}
 # сетевой адрес порта на хосте с ADB
     port: ${ADB_PORT:5432}
 # максимальное количество подключений к ADB в одном потоке; 
@@ -236,7 +236,7 @@ adg:
   tarantool:
     db:
 # сетевой адрес хоста с ADG
-      host: ${TARANTOOL_DB_HOST:10.92.3.120}
+      host: ${TARANTOOL_DB_HOST:localhost}
 # сетевой адрес порта на хосте с ADG
       port: ${TARANTOOL_DB_PORT:3306}
 # имя пользователя/логин для авторизации в ADG
@@ -252,7 +252,7 @@ adg:
 # настройки картриджа Tatantool
     cartridge:
 # сетевой путь и порт к картриджу Tarantool
-      url: ${TARANTOOL_CATRIDGE_URL:http://10.92.3.120:8086}
+      url: ${TARANTOOL_CATRIDGE_URL:http://localhost:8086}
 # настройки механизма загрузки данных
   mppw:
 # наименование консьюмер-группы ADG для взаимодействия с брокером сообщений Kafka
@@ -295,7 +295,7 @@ adqm:
 # пароль для авторизации в ADQM
     password: ${ADQM_PASS:}
 # сетевой адрес хоста с ADQM и номер порта на хосте
-    hosts: ${ADQM_HOSTS:10.92.3.30:8123}
+    hosts: ${ADQM_HOSTS:localhost:8123}
 # интервал времени ожидания отклика соединения с ADQM до тайм-аута
     socketTimeout: ${ADQM_SOCKET_TIMEOUT:30000}
 # интервал времени ожидания завершения обмена данными с ADQM до тайм-аута
@@ -307,24 +307,24 @@ adqm:
 # настройки механизма выгрузки данных из ADQM
   mppr:
 # сетевой адрес и путь для запросов на выгрузку данных
-    loadingUrl: ${ADQM_MPPR_CONNECTOR_URL:http://10.92.3.14:8086/query}
+    loadingUrl: ${ADQM_MPPR_CONNECTOR_URL:http://localhost:8086/query}
 # сетевой адрес и путь для получения информации о версии коннектора
-    versionUrl: ${ADQM_MPPR_CONNECTOR_VERSION_URL:http://10.92.3.14:8086/versions}
+    versionUrl: ${ADQM_MPPR_CONNECTOR_VERSION_URL:http://localhost:8086/versions}
 # настройки механизма загрузки данных ADQM
   mppw:
 # наименование консьюмер-группы ADQM для загрузки данных в ADQM
 # не используется
     consumerGroup: ${ADQM_CONSUMER_GROUP:adqm}
 # сетевой адрес брокера сообщений Kafka
-    kafkaBrokers: ${ADQM_BROKERS:10.92.3.31:9092}
+    kafkaBrokers: ${ADQM_BROKERS:localhost:9092}
 # тип интерфейса для загрузки данных в ADQM
     loadType: ${ADQM_MPPW_LOAD_TYPE:REST}
 # сетевой адрес и путь к REST-интерфейсу для загрузки новых данных в ADQM
-    restStartLoadUrl: ${ADQM_REST_START_LOAD_URL:http://10.92.3.86:8090/newdata/start}
+    restStartLoadUrl: ${ADQM_REST_START_LOAD_URL:http://localhost:8090/newdata/start}
 # сетевой адрес и путь к REST-интерфейсу для остановки загрузки данных в ADQM
-    restStopLoadUrl: ${ADQM_REST_STOP_LOAD_URL:http://10.92.3.86:8090/newdata/stop}
+    restStopLoadUrl: ${ADQM_REST_STOP_LOAD_URL:http://localhost:8090/newdata/stop}
 # сетевой адрес и путь для получения информации о версии коннектора
-    versionUrl: ${ADQM_MPPW_CONNECTOR_VERSION_URL:http://10.92.3.86:8090/versions}
+    versionUrl: ${ADQM_MPPW_CONNECTOR_VERSION_URL:http://localhost:8090/versions}
 # наименование коньсюмер-группы для загрузки данных в ADQM через REST API
     restLoadConsumerGroup: ${ADQM_REST_LOAD_GROUP:adb-emulator-load-adqm}
 # настройки для подключений веб-клиентов
@@ -384,7 +384,7 @@ adp:
 # настройки cервиса мониторинга статусов Kafka
 monitor:
 # список адресов брокеров сообщений Kafka
-brokersList: ${STATUS_MONITOR_BROKERS:10.92.3.31:9092}
+brokersList: ${STATUS_MONITOR_BROKERS:localhost:9092}
 # количество потребителей (консьюмеров) cервиса мониторинга Kafka
 consumersCount: ${STATUS_MONITOR_CONSUMERS:8}
 ```
