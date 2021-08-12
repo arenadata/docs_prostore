@@ -37,7 +37,7 @@ CONFIG_STORAGE_ADD('datasource_alias')
 
 ## Параметры {#parameters}
 
-*   `datasource_alias` — псевдоним СУБД хранилища. Возможные значения: `adb`, `adqm`, `adg`.
+*   `datasource_alias` — псевдоним СУБД хранилища. Возможные значения: `adb`, `adqm`, `adg`, `adp`.
 
 ## Пример {#examples}
 
