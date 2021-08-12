@@ -17,7 +17,7 @@ has_toc: false
     *   ADB версии 6.15.0;
     *   ADQM версии 20.4.4.18;
     *   ADG версии 2.7.2;
-    *   ADP версии 13.3;
+    *   PostgreSQL версии 13.3;
     *   ADS:
         *   ADS версии 1.5;
         *   Kafka версии 2.4;
@@ -31,6 +31,6 @@ has_toc: false
 | ADB | <https://docs.arenadata.io/adb/requirements/online.html#id2>
 | ADQM | <https://docs.arenadata.io/adqm/requirements/index.html#clickhouse>
 | ADG (Tarantool) | <https://www.tarantool.io/en/sizing_calculator/>
-| ADP | <https://postgrespro.ru/docs/postgresql/13/install-requirements>
+| PostgreSQL | <https://postgrespro.ru/docs/postgresql/13/install-requirements>
 | Kafka | <https://docs.arenadata.io/ads/Requirements/min.html>
 | Zookeeper | <https://docs.arenadata.io/ads/Requirements/min.html>
