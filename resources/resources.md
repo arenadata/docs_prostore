@@ -15,4 +15,4 @@ has_children: false
 - [github-репозиторий Kafka Tarantool loader](https://github.com/arenadata/kafka-tarantool-loader)
 - [github-репозиторий Kafka ADB connector](https://github.com/arenadata/kafka-adb-os)
    - [github-репозиторий Apache Avro fork](https://github.com/arenadata/avro/tree/1.10.2_arenadata1/lang/c)
-
+- [github-репозиторий Kafka Postgres connector](https://github.com/arenadata/kafka-postgres-connector)

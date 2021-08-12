@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: Настройка JSON-логов
-nav_order: 3
+nav_order: 4
 parent: Эксплуатация
 has_children: false
 ---
@@ -20,16 +20,16 @@ has_children: false
 
 1. Перед объявлением `appender` добавьте строки:
 
-```xml
-<conversionRule conversionWord="vcl"
+    ```xml
+    <conversionRule conversionWord="vcl"
                 converterClass="io.reactiverse.contextual.logging.LogbackConverter"/>
-```
+    ```
 
 2. В секцию `appender.providers.pattern` добавьте строку:
 
-```xml
-"requestId": "%vcl{requestId:-no_id}"
-```
+    ```xml
+    "requestId": "%vcl{requestId:-no_id}"
+    ```
 
 <a id="ex_logback"></a>
 Ниже показан пример файла _logback.xml_ с включенным отображением идентификаторов запросов:

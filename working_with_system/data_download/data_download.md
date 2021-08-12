@@ -9,19 +9,23 @@ has_children: false
 # Выгрузка данных {#data_download}
 
 Система позволяет выгружать актуальные и архивные данные, а также совокупность изменений, выполненных 
-в рамках указанных дельт. Возможные способы выбора данных к выгрузке описаны в секции 
-[FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time) раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
+в рамках указанных дельт. Данные можно выгружать из [логических таблиц](../../overview/main_concepts/logical_table/logical_table.md)
+и [логических представлений](../../overview/main_concepts/logical_view/logical_view.md). Выгрузка данных из
+[материализованных представлений](../../overview/main_concepts/materialized_view/materialized_view.md) недоступна.
+Возможные способы выбора выгружаемых данных см. в секции [FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time) 
+раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
 
-Для выгрузки данных нужен существующий топик Kafka. Если в брокере сообщений Kafka настроено 
-автоматическое создание топиков, то дополнительные действия не требуются. Иначе необходимо создать топик, 
-если он еще не создан. Подробнее о создании топиков см. в документации Kafka:
+Данные можно выгрузить из [СУБД](../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../overview/main_concepts/main_concepts.md),
+выбранной для выгрузки данных в [конфигурации](../../maintenance/configuration/configuration.md) системы (см. параметр
+`EDML_DATASOURCE`), или любой указанной СУБД хранилища. По умолчанию, если в запросе не указана СУБД для выгрузки,
+данные выгружаются из СУБД, заданной в конфигурации. Чтобы выгрузить данные из другой СУБД, нужно добавить
+в запрос ключевое слово `DATASOURCE_TYPE` с псевдонимом СУБД.
+
+Для выгрузки данных нужен топик Kafka. Если в брокере сообщений Kafka настроено автоматическое создание топиков, 
+то дополнительные действия не требуются. Иначе необходимо создать топик, если он еще не создан. Подробнее о создании 
+топиков см. в документации Kafka:
 *   раздел [Quick Start](https://kafka.apache.org/documentation/#quickstart),
 *   раздел [Adding and removing topics](https://kafka.apache.org/documentation/#basic_ops_add_topic).
-
-**Примечание:** выгрузка данных возможна из [логических таблиц](../../overview/main_concepts/logical_table/logical_table.md) 
-и [логических представлений](../../overview/main_concepts/logical_view/logical_view.md).
-Выгрузка данных из [материализованных представлений](../../overview/main_concepts/materialized_view/materialized_view.md)
-недоступна.
 
 Чтобы выгрузить данные из логической таблицы или логического представления во внешнюю информационную систему:
 1.  [Создайте](../../reference/sql_plus_requests/CREATE_DOWNLOAD_EXTERNAL_TABLE/CREATE_DOWNLOAD_EXTERNAL_TABLE.md) 
@@ -39,7 +43,7 @@ has_children: false
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
 USE sales
 
--- создание внешней таблицы выгрузки
+-- создание внешней таблицы выгрузки sales_ext_download
 CREATE DOWNLOAD EXTERNAL TABLE sales_ext_download (
   identification_number INT,
   transaction_date TIMESTAMP,
@@ -53,5 +57,22 @@ FORMAT 'AVRO'
 CHUNK_SIZE 1000
 
 -- запуск выгрузки данных из логической таблицы sales
-INSERT INTO sales_ext_download SELECT * FROM sales WHERE product_units > 2
+INSERT INTO sales_ext_download 
+SELECT * FROM sales WHERE product_units > 2 FOR SYSTEM_TIME AS OF DELTA_NUM 10
+
+-- создание внешней таблицы выгрузки stores_ext_download
+CREATE DOWNLOAD EXTERNAL TABLE sales.stores_ext_download (
+identification_number INT NOT NULL,
+category VARCHAR(256) NOT NULL,
+region VARCHAR(256) NOT NULL,
+address VARCHAR(256) NOT NULL,
+description VARCHAR(256)
+) 
+LOCATION  'kafka://$kafka/stores_out'
+FORMAT 'AVRO'
+CHUNK_SIZE 1000
+
+-- запуск выгрузки данных из логической таблицы stores
+INSERT INTO stores_ext_download 
+SELECT * FROM stores WHERE region = 'Москва' DATASOURCE_TYPE = 'adqm'
 ```
