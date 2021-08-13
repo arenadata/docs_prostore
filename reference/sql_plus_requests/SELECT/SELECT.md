@@ -20,15 +20,20 @@ has_toc: false
 {:toc}
 </details>
 
-Запрос позволяет выбрать данные из [логических таблиц](../../../overview/main_concepts/logical_table/logical_table.md), 
-[логических представлений](../../../overview/main_concepts/logical_view/logical_view.md) 
-и (или) [материализованных представлений](../../../overview/main_concepts/materialized_view/materialized_view.md). 
-Запрос можно использовать как самостоятельный запрос для [чтения данных](../../../working_with_system/data_reading/data_reading.md), 
-а также в качестве подзапроса в следующих запросах:
-*   в [запросе на выгрузку данных](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md),
-*   в запросе на [создание](../CREATE_VIEW/CREATE_VIEW.md) или [обновление](../ALTER_VIEW/ALTER_VIEW.md) логического представления,
-*   в запросе на [создание материализованного представления](../CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md).
-
+Запрос позволяет выбрать данные из
+[логических таблиц](../../../overview/main_concepts/logical_table/logical_table.md),
+[логических представлений](../../../overview/main_concepts/logical_view/logical_view.md)
+и (или) [материализованных представлений](../../../overview/main_concepts/materialized_view/materialized_view.md) 
+или получить информацию о выполнении запроса к данным. 
+Запрос можно использовать: 
+* как самостоятельный запрос:
+  * для [чтения данных](../../../working_with_system/data_reading/data_reading.md),
+  * для получения информации о выполнении запроса по чтению данных,
+* как подзапрос в следующих запросах:
+  * на [выгрузку данных](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md),
+  * на [создание](../CREATE_VIEW/CREATE_VIEW.md) или [обновление](../ALTER_VIEW/ALTER_VIEW.md) логического представления,
+  * на [создание материализованного представления](../CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md).
+    
 С помощью запроса можно выбрать данные любой из категорий:
 *   актуальные данные;
 *   архивные данные, которые были актуальны в указанный момент времени;
@@ -37,7 +42,7 @@ has_toc: false
 Запрос обрабатывается в порядке, описанном в разделе [Порядок обработки запросов на чтение данных](../../../overview/interactions/llr_processing/llr_processing.md).
 
 В ответе возвращается:
-*   объект ResultSet c выбранными записями при успешном выполнении запроса;
+*   объект ResultSet c выбранными записями или информацией о выполнении запроса при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
 ## Синтаксис {#syntax}
@@ -47,6 +52,7 @@ SELECT column_list
 FROM [db_name.]entity_name
 [FOR SYSTEM_TIME time_expression [AS alias_name]]
 [DATASOURCE_TYPE = datasource_alias]
+[ESTIMATE_ONLY]
 ```
 
 Где:
@@ -90,7 +96,9 @@ FROM [db_name.]entity_name
      секции [Ключевое слово OFFSET](#offset);
 9.   <a id="param_datasource_type"></a>`DATASOURCE_TYPE` — для указания [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
     [хранилища](../../../overview/main_concepts/data_storage/data_storage.md), 
-    из которой выбираются данные.
+    из которой выбираются данные;
+10. `ESTIMATE_ONLY` — для получения информации о выполнении запроса к данным, а не получения самих данных.
+     Описание см. в секции [Ключевое слово ESTIMATE_ONLY](#estimate).
      
 ### Ключевое слово FOR SYSTEM_TIME {#for_system_time}
 
@@ -158,6 +166,104 @@ FROM [db_name.]entity_name
 OFFSET <value_2> [ ROW | ROWS ]
 ```
 
+### Ключевое слово ESTIMATE_ONLY {#estimate}
+
+Ключевое слово `ESTIMATE_ONLY` позволяет запросить информацию о выполнении запроса к данным, а не сами данные. 
+То есть вместо выборки данных из таблицы или представления запрос возвращает следующую информацию: 
+* план выполнения запроса (только для ADB и ADP),
+* модифицированный запрос для целевой СУБД хранилища.
+
+Пример запроса см. [ниже](#estimate_example).
+
+В ответе возвращается объект ResultSet с одной строкой, содержащей JSON-строку в следующем формате:
+```json
+{
+  "Plugin": "<псевдоним_СУБД>",
+  "Estimation": <план_выполнения_запроса>,
+  "Query": <модифицированный_запрос>
+}
+```
+
+План выполнения запроса — это результат команды EXPLAIN, выполненной для запроса в СУБД хранилища. 
+Команда доступна только в ADB и ADP, и ее результаты различаются между СУБД. 
+Подробнее о команде EXPLAIN в ADB см. в [документации Greenplum](https://gpdb.docs.pivotal.io/6-17/ref_guide/sql_commands/EXPLAIN.html), 
+о команде в ADP — в [документации PostgreSQL](https://www.postgresql.org/docs/13/using-explain.html).
+
+Модифицированный запрос — это запрос, подготовленный системой на основе исходного запроса из
+внешней системы с учетом специфики целевой СУБД. Именно модифицированный запрос система отправляет в СУБД
+хранилища для выбора данных. В случае запроса с `ESTIMATE_ONLY` модифицированный запрос подготавливается,
+но не исполняется для выбора данных.
+
+Ниже показан пример JSON-строки в ответе из ADB. Для наглядности пример представлен в виде дерева, 
+а не плоской строки.
+
+```json
+{
+  "Plugin": "ADB",
+  "Estimation": [
+    {
+      "Plan": {
+        "Node Type": "Gather Motion",
+        "Senders": 4,
+        "Receivers": 1,
+        "Slice": 1,
+        "Segments": 4,
+        "Gang Type": "primary reader",
+        "Startup Cost": 0.00,
+        "Total Cost": 433.70,
+        "Plan Rows": 50000,
+        "Plan Width": 8,
+        "Plans": [
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Slice": 1,
+            "Segments": 4,
+            "Gang Type": "primary reader",
+            "Relation Name": "sales_actual",
+            "Alias": "sales_actual",
+            "Startup Cost": 0.00,
+            "Total Cost": 432.18,
+            "Plan Rows": 50000,
+            "Plan Width": 8
+          }
+        ]
+      },
+      "Settings": {
+        "Optimizer": "Pivotal Optimizer (GPORCA)"
+      }
+    }
+  ],
+  "Query": "SELECT * FROM (SELECT id FROM sales.sales_actual WHERE sys_from <= 98 AND COALESCE(sys_to, 9223372036854775807) >= 98)"
+}
+
+```
+
+Ниже показан пример JSON-строки в ответе из ADP. Для наглядности пример представлен в виде дерева,
+а не плоской строки.
+```json
+{
+  "Plugin": "ADP",
+  "Estimation": [
+    {
+      "Plan": {
+        "Node Type": "Seq Scan",
+        "Parallel Aware": false,
+        "Relation Name": "sales_actual",
+        "Alias": "sales_actual",
+        "Startup Cost": 0.00,
+        "Total Cost": 18.80,
+        "Plan Rows": 880,
+        "Plan Width": 64
+      }
+    }
+  ],
+  "Query": "SELECT * FROM (SELECT id FROM sales.sales_actual WHERE sys_from <= 98 AND COALESCE(sys_to, 9223372036854775807) >= 98)"
+}
+
+
+```
+
 ## Ограничения {#restrictions}
 
 *   Запрос может обращаться либо к логической БД, либо к сервисной БД (см. [SELECT FROM INFORMATION_SCHEMA](../SELECT_FROM_INFORMATION_SCHEMA/SELECT_FROM_INFORMATION_SCHEMA.md)), 
@@ -195,6 +301,17 @@ FROM sales.sales AS s
 GROUP BY (s.store_id)
 ORDER BY product_amount DESC
 LIMIT 20
+```
+
+### ESTIMATE_ONLY {#estimate_example}
+
+Запрос на получение информации о выполнении запроса:
+```sql
+SELECT s.store_id, SUM(s.product_units) AS product_amount
+FROM sales.sales AS s
+GROUP BY (s.store_id)
+ORDER BY product_amount DESC
+ESTIMATE_ONLY
 ```
 
 ### OFFSET {#offset_example}
