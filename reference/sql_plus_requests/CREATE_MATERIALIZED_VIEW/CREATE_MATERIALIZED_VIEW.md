@@ -21,23 +21,22 @@ has_toc: false
 </details>
 
 Запрос позволяет создать [материализованное представление](../../../overview/main_concepts/materialized_view/materialized_view.md) 
-в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md). 
-В зависимости от параметров запроса данные материализованного представления размещаются в указанных или всех 
-[СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
-[хранилища](../../../overview/main_concepts/data_storage/data_storage.md).
-
-**Примечание:** в текущей версии возможно создание материализованных представлений в ADG на основе данных ADB. 
+в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md).
 
 В ответе возвращается:
 *   пустой объект ResultSet при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
-При успешном выполнении запроса материализованное представление появляется в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md). 
-Соответствующие [физические таблицы](../../../overview/main_concepts/physical_table/physical_table.md) 
-появляются в СУБД хранилища, указанных в запросе.
+Для размещения данных материализованного представления только в некоторых 
+[СУБД](../../../introduction/supported_DBMS/supported_DBMS.md)
+[хранилища](../../../overview/main_concepts/data_storage/data_storage.md) можно указать
+ключевое слово `DATASOURCE_TYPE` (см. секцию [Ключевое слово DATASOURCE_TYPE](#datasource_type)).
 
-**Примечание:** изменение материализованного представления недоступно. Для замены некорректного
-материализованного представления необходимо удалить его и создать новое.
+**Примечание:** создание материализованных представлений возможно на основе данных ADB 
+с размещением в ADG. 
+
+**Примечание:** изменение материализованного представления недоступно. Для замены материализованного 
+представления необходимо удалить его и создать новое.
 
 ## Синтаксис {#syntax}
 
@@ -51,10 +50,10 @@ CREATE MATERIALIZED VIEW [db_name.]materialized_view_name (
 DATASOURCE_TYPE (datasource_aliases)
 AS SELECT query
 DATASOURCE_TYPE = origin_datasource_alias
+[LOGICAL_ONLY]
 ```
 
-## Параметры {#parameters}
-
+Где:
 *   `db_name` — имя логической базы данных, в которой создается материализованное представление. Параметр 
     опционален, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `materialized_view_name` — имя создаваемого логического представления, уникальное среди логических 
@@ -72,7 +71,23 @@ DATASOURCE_TYPE = origin_datasource_alias
 *   `query` — [SELECT](../SELECT/SELECT.md)-подзапрос, на основе которого строится представление;
 *   `origin_datasource_alias` — псевдоним СУБД, которая служит источником данных. 
     Возможные значения: `'adb'`. Значение указывается в одинарных кавычках.
-    
+
+### Ключевое слово DATASOURCE_TYPE {#datasource_type}
+
+Ключевое слово `DATASOURCE_TYPE` позволяет указать СУБД хранилища, в которых необходимо
+размещать данные материализованного представления. В текущей версии данные представления могут 
+размещаться только в ADG.
+
+### Ключевое слово LOGICAL_ONLY {#logical_only}
+
+Ключевое слово `LOGICAL_ONLY` позволяет создать материализованное представление только на логическом уровне
+(в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md)), без
+создания связанных [физических таблиц](../../../overview/main_concepts/physical_table/physical_table.md)
+в хранилище данных. Это может быть полезно, например, при изменении физической и логических схем данных.
+
+По умолчанию, если ключевое слово не указано, система создает материализованное представление
+и связанные с ним физические таблицы.
+
 ## Ограничения {#restrictions}
 
 *   Имена столбцов должны быть уникальны в рамках представления.
@@ -88,10 +103,7 @@ DATASOURCE_TYPE = origin_datasource_alias
 
 ## Примеры {#examples}
 
-### Представление на основе одной таблицы с условием {#example_with_condition}
-
-Создание материализованного представления на основе одной логической таблицы (`sales`) с размещением данных 
-в ADG:
+### Создание представления на основе одной таблицы с условием {#example_with_condition}
 
 ```sql
 CREATE MATERIALIZED VIEW sales.sales_december_2020 (
@@ -110,9 +122,8 @@ AS SELECT * FROM sales.sales
 DATASOURCE_TYPE = 'adb'
 ```
 
-### Представление на основе одной таблицы с условием, агрегацией и группировкой {#example_with_group_by}
+### Создание представления на основе одной таблицы с условием, агрегацией и группировкой {#example_with_group_by}
 
-Создание материализованного представления на основе одной логической таблицы (`sales`) с агрегацией и группировкой:
 ```sql
 CREATE MATERIALIZED VIEW sales.sales_by_stores (
 store_id INT NOT NULL,
@@ -128,9 +139,8 @@ AS SELECT store_id, product_code, SUM(product_units) as product_units FROM sales
 DATASOURCE_TYPE = 'adb'
 ```
 
-### Представление на основе двух таблиц {#example_with_join}
+### Создание представления на основе двух таблиц {#example_with_join}
 
-Создание материализованного представления на основе соединения двух логических таблиц (`sales` и `stores`):
 ```sql
 CREATE MATERIALIZED VIEW sales.sales_and_stores (
   identification_number INT NOT NULL,
@@ -152,4 +162,21 @@ AS SELECT
  JOIN sales.stores AS st
  ON s.store_id = st.identification_number
 DATASOURCE_TYPE = 'adb'
+```
+
+### Создание представления только на логическом уровне {#logical_example}
+
+```sql
+CREATE MATERIALIZED VIEW sales.stores_by_sold_products_matview (
+  store_id INT NOT NULL,
+  product_amount INT NOT NULL,
+  PRIMARY KEY (store_id)
+)
+DISTRIBUTED BY (store_id)
+DATASOURCE_TYPE (adg)
+AS SELECT store_id, SUM(product_units) AS product_amount
+  FROM sales.sales
+  GROUP BY store_id
+DATASOURCE_TYPE = 'adb'
+LOGICAL_ONLY
 ```

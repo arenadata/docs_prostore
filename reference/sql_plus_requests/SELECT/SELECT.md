@@ -178,9 +178,9 @@ OFFSET <value_2> [ ROW | ROWS ]
 В ответе возвращается объект ResultSet с одной строкой, содержащей JSON-строку в следующем формате:
 ```json
 {
-  "Plugin": "<псевдоним_СУБД>",
-  "Estimation": <план_выполнения_запроса>,
-  "Query": <модифицированный_запрос>
+  "plugin": "<псевдоним_СУБД>",
+  "estimation": <план_выполнения_запроса>,
+  "query": <модифицированный_запрос>
 }
 ```
 
@@ -199,8 +199,8 @@ OFFSET <value_2> [ ROW | ROWS ]
 
 ```json
 {
-  "Plugin": "ADB",
-  "Estimation": [
+  "plugin": "ADB",
+  "estimation": [
     {
       "Plan": {
         "Node Type": "Gather Motion",
@@ -234,7 +234,7 @@ OFFSET <value_2> [ ROW | ROWS ]
       }
     }
   ],
-  "Query": "SELECT * FROM (SELECT id FROM sales.sales_actual WHERE sys_from <= 98 AND COALESCE(sys_to, 9223372036854775807) >= 98)"
+  "query": "SELECT * FROM (SELECT id FROM sales.sales_actual WHERE sys_from <= 98 AND COALESCE(sys_to, 9223372036854775807) >= 98)"
 }
 
 ```
@@ -243,8 +243,8 @@ OFFSET <value_2> [ ROW | ROWS ]
 а не плоской строки.
 ```json
 {
-  "Plugin": "ADP",
-  "Estimation": [
+  "plugin": "ADP",
+  "estimation": [
     {
       "Plan": {
         "Node Type": "Seq Scan",
@@ -258,7 +258,7 @@ OFFSET <value_2> [ ROW | ROWS ]
       }
     }
   ],
-  "Query": "SELECT * FROM (SELECT id FROM sales.sales_actual WHERE sys_from <= 98 AND COALESCE(sys_to, 9223372036854775807) >= 98)"
+  "query": "SELECT * FROM (SELECT id FROM sales.sales_actual WHERE sys_from <= 98 AND COALESCE(sys_to, 9223372036854775807) >= 98)"
 }
 
 

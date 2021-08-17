@@ -12,12 +12,26 @@ has_children: false
 Чтобы создать [материализованное представление](../../../overview/main_concepts/materialized_view/materialized_view.md) 
 в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [CREATE MATERIALIZED VIEW](../../../reference/sql_plus_requests/CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md) 
-(см. пример [ниже](#examples)). При успешном выполнении запроса материализованное представление появляется 
-в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
+(см. пример [ниже](#examples)):
+* без ключевого слова `LOGICAL_ONLY` — чтобы создать материализованное представление 
+  в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md) и
+  связанные [физические таблицы](../../../overview/main_concepts/physical_table/physical_table.md) —
+  в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md).
+  Созданное таким образом материализованное представление готово для чтения данных;
+* с ключевым словом `LOGICAL_ONLY` — чтобы создать материализованное представление только на логическом уровне
+  (в логической схеме данных). Создание сущностей только на логическом уровне может быть полезно, например,
+  при изменении физической и логических схем данных.
+  
+**Примечание:** в текущей версии возможно создание материализованных представлений в ADG на основе данных ADB.
 
-Наличие материализованного представления можно проверить, как описано в разделе [Проверка наличия материализованного представления](../entity_presence_check/entity_presence_check.md#mat_view_check).
+Наличие материализованного представления можно проверить, как описано в разделе 
+[Проверка наличия материализованного представления](../entity_presence_check/entity_presence_check.md#mat_view_check).
+Наличие физических таблиц, связанных с материализованным представлением, можно проверить, как описано в разделе 
+[Проверка месторасположения логической сущности](../../../working_with_system/other_features/datasource_check/datasource_check.md).
 
-## Пример {#examples}
+## Примеры {#examples}
+
+### Создание материализованного представления {#non-logical_example}
 
 ```sql
 -- выбор базы данных sales по умолчанию
@@ -44,4 +58,21 @@ AS SELECT
  JOIN sales.stores AS st
  ON s.store_id = st.identification_number
 DATASOURCE_TYPE = 'adb'
+```
+
+### Создание материализованного представления только на логическом уровне {#logical_example}
+
+```sql
+CREATE MATERIALIZED VIEW sales.stores_by_sold_products_matview (
+  store_id INT NOT NULL,
+  product_amount INT NOT NULL,
+  PRIMARY KEY (store_id)
+)
+DISTRIBUTED BY (store_id)
+DATASOURCE_TYPE (adg)
+AS SELECT store_id, SUM(product_units) AS product_amount
+  FROM sales.sales
+  GROUP BY store_id
+DATASOURCE_TYPE = 'adb'
+LOGICAL_ONLY
 ```

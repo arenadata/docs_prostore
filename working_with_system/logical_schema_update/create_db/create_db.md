@@ -11,8 +11,14 @@ has_children: false
 
 Чтобы создать [логическую базу данных](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [CREATE DATABASE](../../../reference/sql_plus_requests/CREATE_DATABASE/CREATE_DATABASE.md) 
-(см. пример [ниже](#creating_db_example)). В случае успешного выполнения запроса 
-логическая база данных появляется в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
+(см. примеры [ниже](#creating_db_example)):
+* без ключевого слова `LOGICAL_ONLY` — чтобы создать логическую базу данных
+  в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md) и
+  связанную физическую базу данных — в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md).
+  Созданная таким образом логическая таблица готова для загрузки, выгрузки и чтения данных;
+* с ключевым словом `LOGICAL_ONLY` — чтобы создать логическую базу данных только на логическом уровне
+  (в логической схеме данных). Создание сущностей только на логическом уровне может быть полезно, например,
+  при изменении физической и логических схем данных.
 
 Наличие логической базы данных можно проверить, как описано в разделе [Проверка наличия логической базы данных](../entity_presence_check/entity_presence_check.md#db_check).
 
@@ -21,16 +27,20 @@ has_children: false
 
 ## Примеры {#examples}
 
-### Пример запроса на создание логической базы данных {#creating_db_example}
+### Создание логической базы данных {#creating_db_example}
 
 ``` sql
--- создание логической базы данных sales
 CREATE DATABASE sales
 ```
 
-### Пример запроса на выбор логической БД по умолчанию {#using_db_example}
+### Создание логической базы данных только на логическом уровне {#logical_creating_db_example}
 
 ``` sql
--- выбор логической базы данных sales в качестве базы данных по умолчанию
+CREATE DATABASE sales1 LOGICAL_ONLY
+```
+
+### Выбор логической БД по умолчанию {#using_db_example}
+
+``` sql
 USE SALES
 ```

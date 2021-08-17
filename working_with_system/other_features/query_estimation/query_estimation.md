@@ -2,7 +2,7 @@
 layout: default
 title: Получение информации о SELECT-запросе
 nav_order: 2
-parent: Другие функции
+parent: Другие действия
 grand_parent: Работа с системой
 has_children: false
 has_toc: false

@@ -2,7 +2,7 @@
 layout: default
 title: Определение логической БД по умолчанию
 nav_order: 1
-parent: Другие функции
+parent: Другие действия
 grand_parent: Работа с системой
 has_children: false
 has_toc: false

@@ -21,25 +21,22 @@ has_toc: false
 </details>
 
 Запрос позволяет создать [логическую таблицу](../../../overview/main_concepts/logical_table/logical_table.md) 
-в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md). 
-В зависимости от параметров запроса данные логической таблицы размещаются в указанных или всех 
-[СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
-[хранилища](../../../overview/main_concepts/data_storage/data_storage.md).
-
-**Совет:** рекомендуется создавать логическую таблицу с размещением данных, как минимум, в СУБД хранилища, из которой планируется 
-выгружать данные. Данные могут размещаться в любых СУБД хранилища, однако, если они размещаются вне СУБД выгрузки, их выгрузка недоступна.
-Подробнее о СУБД, из которых возможна выгрузка, см. в разделе [INSERT INTO download_external_table](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md).
+в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md).
 
 В ответе возвращается:
 *   пустой объект ResultSet при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
-При успешном выполнении запроса таблица появляется в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md). 
-Соответствующие [физические таблицы](../../../overview/main_concepts/physical_table/physical_table.md) 
-появляются в СУБД хранилища, указанных в запросе, или, если СУБД не указаны в запросе, — во всех СУБД хранилища.
+Для размещения данных логической таблицы только в некоторых [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md)
+[хранилища](../../../overview/main_concepts/data_storage/data_storage.md) можно указать 
+ключевое слово `DATASOURCE_TYPE` (см. секцию [Ключевое слово DATASOURCE_TYPE](#datasource_type)).
 
-**Примечание:** изменение логической таблицы недоступно. Для замены некорректной таблицы необходимо 
-удалить ее и создать новую.
+**Совет:** рекомендуется создавать логическую таблицу с размещением данных, как минимум, в СУБД хранилища, 
+из которой планируется выгрузка данных. Выгрузка данных недоступна, если они размещены вне СУБД выгрузки. 
+Подробнее о СУБД, из которых можно выгружать данные, см. в разделе [INSERT INTO download_external_table](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md).
+
+**Примечание:** изменение логической таблицы недоступно. Для замены таблицы необходимо удалить ее и 
+создать новую.
 
 ## Синтаксис {#syntax}
 
@@ -51,10 +48,10 @@ CREATE TABLE [db_name.]table_name (
   PRIMARY KEY (column_list_1)
 ) DISTRIBUTED BY (column_list_2)
 [DATASOURCE_TYPE (datasource_aliases)]
+[LOGICAL_ONLY]
 ```
 
-## Параметры {#parameters}
-
+Где:
 *   `db_name` — имя логической базы данных, в которой создается логическая таблица. Указывается 
     опционально, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `table_name` — имя создаваемой логической таблицы, уникальное среди логических сущностей логической БД;
@@ -68,6 +65,23 @@ CREATE TABLE [db_name.]table_name (
 *   `datasource_aliases` — список псевдонимов СУБД хранилища, в которых нужно разместить данные таблицы. 
     Элементы списка перечисляются через запятую. Возможные значения: `adb`, `adqm`, `adg`.
     Значения можно указывать без кавычек (например, `adb`) или двойных кавычках (например, `"adb"`).
+    
+### Ключевое слово DATASOURCE_TYPE {#datasource_type}
+
+Ключевое слово `DATASOURCE_TYPE` позволяет указать СУБД хранилища, в которых необходимо 
+размещать данные логической таблицы.
+
+По умолчанию, если ключевое слово не указано, данные таблицы размещаются во всех доступных СУБД хранилища.
+
+### Ключевое слово LOGICAL_ONLY {#logical_only}
+
+Ключевое слово `LOGICAL_ONLY` позволяет создать логическую таблицу только на логическом уровне
+(в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md)), без
+создания связанных [физических таблиц](../../../overview/main_concepts/physical_table/physical_table.md)
+в хранилище данных. Это может быть полезно, например, при изменении физической и логических схем данных.
+
+По умолчанию, если ключевое слово не указано, система создает логическую таблицу
+и связанные с ней физические таблицы.
 
 ## Ограничения {#restrictions}
 
@@ -79,9 +93,8 @@ CREATE TABLE [db_name.]table_name (
 
 ## Примеры {#examples}
 
-### Таблица с размещением данных во всех СУБД хранилища {#example_with_all_dbms}
+### Создание таблицы с размещением данных во всех СУБД хранилища {#example_with_all_dbms}
 
-Создание логической таблицы с размещением данных во всех СУБД хранилища:
 ```sql
 CREATE TABLE sales.sales (
   identification_number INT NOT NULL,
@@ -95,9 +108,8 @@ CREATE TABLE sales.sales (
 DISTRIBUTED BY (identification_number)
 ```
 
-### Таблица с составным первичным ключом {#example_with_compound_pk}
+### Создание таблицы с составным первичным ключом {#example_with_compound_pk}
 
-Создание логической таблицы с составным первичным ключом и размещением данных во всех СУБД хранилища:
 ```sql
 CREATE TABLE sales.stores (
   identification_number INT NOT NULL,
@@ -110,9 +122,8 @@ CREATE TABLE sales.stores (
 DISTRIBUTED BY (identification_number)
 ```
 
-### Таблица с размещением данных в ADQM и ADG {#example_with_adqm_adg}
+### Создание таблицы с размещением данных в ADQM и ADG {#example_with_adqm_adg}
 
-Создание логической таблицы с размещением данных в ADQM и ADG (без размещения в ADB):
 ```sql
 CREATE TABLE sales.clients (
   identification_number INT NOT NULL,
@@ -123,4 +134,20 @@ CREATE TABLE sales.clients (
   PRIMARY KEY (identification_number)
 ) DISTRIBUTED BY (identification_number)
 DATASOURCE_TYPE (adqm,adg)
+```
+
+### Создание таблицы только на логическом уровне {#logical_example}
+
+```sql
+CREATE TABLE sales.sales1 (
+  identification_number INT NOT NULL,
+  transaction_date TIMESTAMP NOT NULL,
+  product_code VARCHAR(256) NOT NULL,
+  product_units INT NOT NULL,
+  store_id INT NOT NULL,
+  description VARCHAR(256),
+  PRIMARY KEY (identification_number)
+)
+DISTRIBUTED BY (identification_number)
+LOGICAL_ONLY
 ```
