@@ -12,8 +12,8 @@ has_toc: false
 
 Чтобы создать [внешнюю таблицу загрузки](../../../overview/main_concepts/external_table/external_table.md) 
 в [логической БД](../../../overview/main_concepts/logical_db/logical_db.md), 
-выполните запрос [CREATE UPLOAD EXTERNAL TABLE](../../../reference/sql_plus_requests/CREATE_UPLOAD_EXTERNAL_TABLE/CREATE_UPLOAD_EXTERNAL_TABLE.md) 
-(см. пример [ниже](#examples)). При успешном выполнении запроса внешняя таблица загрузки появляется в 
+выполните запрос [CREATE UPLOAD EXTERNAL TABLE](../../../reference/sql_plus_requests/CREATE_UPLOAD_EXTERNAL_TABLE/CREATE_UPLOAD_EXTERNAL_TABLE.md). 
+При успешном выполнении запроса внешняя таблица загрузки появляется в 
 [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md). 
 
 **Совет:** для удобства разделения таблиц загрузки и выгрузки рекомендуется задавать имя таблицы, 

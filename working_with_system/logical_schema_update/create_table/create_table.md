@@ -11,21 +11,15 @@ has_children: false
 
 Чтобы создать [логическую таблицу](../../../overview/main_concepts/logical_table/logical_table.md) 
 в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md), 
-выполните запрос [CREATE TABLE](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md) 
-(см. примеры [ниже](#examples)):
-* без ключевого слова `LOGICAL_ONLY` — чтобы создать логическую таблицу 
-  в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md) и 
-  связанные [физические таблицы](../../../overview/main_concepts/physical_table/physical_table.md) — 
-  в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md). 
-  Созданная таким образом логическая таблица готова для загрузки, выгрузки и чтения данных;
-* с ключевым словом `LOGICAL_ONLY` — чтобы создать логическую таблицу только на логическом уровне 
-  (в логической схеме данных). Создание сущностей только на логическом уровне может быть полезно, например, 
-  при изменении физической и логических схем данных.
+выполните запрос [CREATE TABLE](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md).
 
-Если данные логической таблицы нужно размещать только в некоторых [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
-хранилища, добавьте в запрос ключевое слово `DATASOURCE_TYPE` с псевдонимами требуемых СУБД 
-(см. пример [ниже](#adqm_adg_example)). По умолчанию, если ключевое слово не указано в запросе, 
-данные таблицы размещаются во всех доступных СУБД хранилища.
+* Если данные логической таблицы нужно размещать только в некоторых [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
+  [хранилища](../../../overview/main_concepts/data_storage/data_storage.md), добавьте в запрос ключевое слово 
+  [DATASOURCE_TYPE](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md#datasource_type) с псевдонимами 
+  требуемых СУБД.
+* Если логическую таблицу нужно создать только на логическом уровне, без 
+  создания связанных [физических таблиц](../../../overview/main_concepts/physical_table/physical_table.md) 
+  в хранилище, добавьте в запрос ключевое слово [LOGICAL_ONLY](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md#logical_only).
   
 Наличие логической таблицы можно проверить, как описано в разделе 
 [Проверка наличия логической таблицы](../entity_presence_check/entity_presence_check.md#table_check). Наличие 

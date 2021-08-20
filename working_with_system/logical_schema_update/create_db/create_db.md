@@ -11,19 +11,15 @@ has_children: false
 
 Чтобы создать [логическую базу данных](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [CREATE DATABASE](../../../reference/sql_plus_requests/CREATE_DATABASE/CREATE_DATABASE.md) 
-(см. примеры [ниже](#creating_db_example)):
-* без ключевого слова `LOGICAL_ONLY` — чтобы создать логическую базу данных
-  в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md) и
-  связанную физическую базу данных — в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md).
-  Созданная таким образом логическая таблица готова для загрузки, выгрузки и чтения данных;
-* с ключевым словом `LOGICAL_ONLY` — чтобы создать логическую базу данных только на логическом уровне
-  (в логической схеме данных). Создание сущностей только на логическом уровне может быть полезно, например,
-  при изменении физической и логических схем данных.
-
+(см. примеры [ниже](#creating_db_example)). Если логическую базу данных нужно создать только на логическом уровне, без
+создания связанной физической базы данных в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md),
+добавьте в запрос ключевое слово 
+[LOGICAL_ONLY](../../../reference/sql_plus_requests/CREATE_DATABASE/CREATE_DATABASE.md#logical_only).
+  
 Наличие логической базы данных можно проверить, как описано в разделе [Проверка наличия логической базы данных](../entity_presence_check/entity_presence_check.md#db_check).
 
-**Совет:** для удобства написания последующих запросов к этой логической базе данных ее можно выбрать 
-в качестве [используемой по умолчанию](../../other_features/default_db_set-up/default_db_set-up.md).
+**Совет:** для удобства написания последующих запросов к этой логической базе данных можно выбрать 
+ее в качестве [используемой по умолчанию](../../other_features/default_db_set-up/default_db_set-up.md).
 
 ## Примеры {#examples}
 

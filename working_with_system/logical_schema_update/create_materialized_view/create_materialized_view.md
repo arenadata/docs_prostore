@@ -11,17 +11,12 @@ has_children: false
 
 Чтобы создать [материализованное представление](../../../overview/main_concepts/materialized_view/materialized_view.md) 
 в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md), 
-выполните запрос [CREATE MATERIALIZED VIEW](../../../reference/sql_plus_requests/CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md) 
-(см. пример [ниже](#examples)):
-* без ключевого слова `LOGICAL_ONLY` — чтобы создать материализованное представление 
-  в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md) и
-  связанные [физические таблицы](../../../overview/main_concepts/physical_table/physical_table.md) —
-  в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md).
-  Созданное таким образом материализованное представление готово для чтения данных;
-* с ключевым словом `LOGICAL_ONLY` — чтобы создать материализованное представление только на логическом уровне
-  (в логической схеме данных). Создание сущностей только на логическом уровне может быть полезно, например,
-  при изменении физической и логических схем данных.
-  
+выполните запрос [CREATE MATERIALIZED VIEW](../../../reference/sql_plus_requests/CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md).
+Если материализованное представление нужно создать только на логическом уровне, без 
+создания связанных [физических таблиц](../../../overview/main_concepts/physical_table/physical_table.md) 
+в хранилище, добавьте в запрос ключевое слово 
+[LOGICAL_ONLY](../../../reference/sql_plus_requests/CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md#logical_only).
+
 **Примечание:** в текущей версии возможно создание материализованных представлений в ADG на основе данных ADB.
 
 Наличие материализованного представления можно проверить, как описано в разделе 
