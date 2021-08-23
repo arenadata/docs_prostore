@@ -13,7 +13,7 @@ has_children: false
 в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [CREATE MATERIALIZED VIEW](../../../reference/sql_plus_requests/CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md).
 Если материализованное представление нужно создать только на логическом уровне, без 
-создания связанных [физических таблиц](../../../overview/main_concepts/physical_table/physical_table.md) 
+пересоздания связанных [физических таблиц](../../../overview/main_concepts/physical_table/physical_table.md) 
 в хранилище, добавьте в запрос ключевое слово 
 [LOGICAL_ONLY](../../../reference/sql_plus_requests/CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md#logical_only).
 

@@ -18,7 +18,7 @@ has_children: false
   [DATASOURCE_TYPE](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md#datasource_type) с псевдонимами 
   требуемых СУБД.
 * Если логическую таблицу нужно создать только на логическом уровне, без 
-  создания связанных [физических таблиц](../../../overview/main_concepts/physical_table/physical_table.md) 
+  пересоздания связанных [физических таблиц](../../../overview/main_concepts/physical_table/physical_table.md) 
   в хранилище, добавьте в запрос ключевое слово [LOGICAL_ONLY](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md#logical_only).
   
 Наличие логической таблицы можно проверить, как описано в разделе 

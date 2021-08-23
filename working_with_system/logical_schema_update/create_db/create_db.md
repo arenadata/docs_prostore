@@ -12,7 +12,7 @@ has_children: false
 Чтобы создать [логическую базу данных](../../../overview/main_concepts/logical_db/logical_db.md), 
 выполните запрос [CREATE DATABASE](../../../reference/sql_plus_requests/CREATE_DATABASE/CREATE_DATABASE.md) 
 (см. примеры [ниже](#creating_db_example)). Если логическую базу данных нужно создать только на логическом уровне, без
-создания связанной физической базы данных в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md),
+пересоздания связанной физической базы данных в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md),
 добавьте в запрос ключевое слово 
 [LOGICAL_ONLY](../../../reference/sql_plus_requests/CREATE_DATABASE/CREATE_DATABASE.md#logical_only).
   
