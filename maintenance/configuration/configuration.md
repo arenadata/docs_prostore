@@ -162,7 +162,9 @@ timeZone: ${CORE_TIME_ZONE:UTC}
 # сетевой адрес и путь для получения информации о версии сервиса
       versionUrl: ${STATUS_MONITOR_VERSION_URL:http://localhost:9095/versions}
 # настройки при использовании фреймворка vertx
-  vertx:
+  vertx:  
+# время в (секундах), после которого заблокированный поток пишет stacktrace
+    blocking-stacktrace-time: ${DTM_VERTX_BLOCKING_STACKTRACE_TIME:1}
     pool:   
 # максимальный размер пула потоков, выполняющих долгие операции
       worker-pool: ${DTM_CORE_WORKER_POOL_SIZE:20}
