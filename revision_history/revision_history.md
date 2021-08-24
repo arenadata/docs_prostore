@@ -17,17 +17,41 @@ has_children: false
 {:toc}
 </details>
 
-## Текущая версия документации (5.0) {#current}
+## Текущая версия документации (5.1) {#current}
 
 Изменения:
+* добавлено ключевое слово [ESTIMATE_ONLY](../reference/sql_plus_requests/SELECT/SELECT.md#estimate), 
+  доступное в [SELECT](../reference/sql_plus_requests/SELECT/SELECT.md)-запросах;
+* добавлено ключевое слово `LOGICAL_ONLY`, доступное в запросах на создание и удаление логической БД, 
+  логической таблицы и материализованного представления;
+* обновлено описание запросов [CHECK_DATA](../reference/sql_plus_requests/CHECK_DATA/CHECK_DATA.md) и
+  [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md): 
+  * добавлен коэффициент нормализации, повышающий максимально допустимое количество записей в
+    проверяемых дельтах;
+  * изменен расчет контрольных сумм: теперь они считаются по дельтам, а не отдельным операциям записи; 
+* обновлено описание запроса [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md):
+  * изменен расчет контрольной суммы по таблице/представлению: теперь расчет аналогичен тому, который 
+    выполняется для CHECK_DATA;
+  * изменен расчет контрольной суммы по логической БД: теперь контрольные суммы таблиц складываются, 
+    а не проходят дополнительный этап хеширования;
+* в [конфигурацию](../maintenance/configuration/configuration.md) добавлен параметр 
+  `DTM_VERTX_BLOCKING_STACKTRACE_TIME`;
+* в главу «Работа с системой» добавлены разделы 
+  [Получение информации о SELECT-запросе](../working_with_system/other_features/query_estimation/query_estimation.md) и 
+  [Проверка месторасположения логической сущности](../working_with_system/other_features/datasource_check/datasource_check.md).
+  
+## Архивные версии документации {#archive}
 
-* добавлена [СУБД хранилища](../introduction/supported_DBMS/supported_DBMS.md) нового типа — ADP — 
+### Версия 5.0
+
+Изменения:
+* добавлена [СУБД хранилища](../introduction/supported_DBMS/supported_DBMS.md) нового типа — ADP —
   на основе PostgreSQL;
-* добавлена выгрузка данных из СУБД хранилища, указанной в запросе 
+* добавлена выгрузка данных из СУБД хранилища, указанной в запросе
   (см. [INSERT INTO download_external_table](../reference/sql_plus_requests/INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md));
-* в [системное представление tables](../reference/system_views/system_views.md#tables) добавлен столбец 
+* в [системное представление tables](../reference/system_views/system_views.md#tables) добавлен столбец
   `table_datasource_type`;
-* обновлено описание запроса [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md): теперь запрос 
+* обновлено описание запроса [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md): теперь запрос
   поддерживает расчет контрольной суммы по материализованному представлению;
 * обновлена [конфигурация](../maintenance/configuration/configuration.md):
   * добавлены параметры для управления СУБД ADP;
@@ -38,8 +62,6 @@ has_children: false
   * добавлен параметр `DTM_LOGGING_LEVEL` для управления уровнем логирования;
   * конкретные IP-адреса заменены на `localhost`;
 * добавлен раздел [Схемы развертывания](../maintenance/deployment_diagrams/deployment_diagrams.md).
-
-## Архивные версии документации {#archive}
 
 ### Версия 4.1
 
