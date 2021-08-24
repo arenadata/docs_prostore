@@ -63,6 +63,8 @@ CHECK_TABLE([db_name.]table_name)
 CHECK_TABLE(sales.sales)
 ```
 
+### Ответ при успешной проверке {#success_examples}
+
 На рисунках ниже показаны примеры ответов в случае успешной проверки: на первом рисунке — по таблице,
 данные которой размещены во всех СУБД хранилища, на втором — по таблице, данные которой размещены только в ADB.
 
@@ -76,10 +78,23 @@ CHECK_TABLE(sales.sales)
 *Ответ CHECK_TABLE с проверкой только в ADB*
 {: .figure-caption-center}
 
-На рисунке ниже показан пример ответа при наличии расхождений. Проверка прошла успешно для ADG и ADQM,
-а в ADB найдено несоответствие — столбец `description` отсутствует в одной из физических таблиц.
+### Ответ при наличии расхождений {#failure_examples}
+
+На рисунке ниже показан пример ответа при наличии расхождений, которые вызваны тем, что в физической таблице 
+ADB отсутствует столбец `description`.
 
 ![](check_table_with_inconsistency.png)
+{: .figure-center}
+*Ответ CHECK_TABLE с найденными расхождениями*
+{: .figure-caption-center}
+
+На рисунке ниже показан пример ответа при наличии расхождений, которые вызваны тем, что 
+логическая таблица, размещаемая в ADB, была логически пересоздана для ADB, ADP и ADQM. Подробнее 
+о создании логической таблицы только на логическом уровне см. в секции 
+[LOGICAL_ONLY](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md#logical_only) раздела
+[CREATE TABLE](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md).
+
+![](check_table_with_inconsistency_logical_only.png){:height="40%" width="40%"}
 {: .figure-center}
 *Ответ CHECK_TABLE с найденными расхождениями*
 {: .figure-caption-center}
