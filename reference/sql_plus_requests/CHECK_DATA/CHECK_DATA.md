@@ -102,7 +102,7 @@ CHECK_DATA(sales.sales, 4, [identification_number, transaction_date, product_cod
 На рисунке ниже показан пример ответа на запрос `CHECK_DATA` по столбцам таблицы при наличии расхождений: 
 контрольная сумма дельте 10 в ADB отличается от контрольной суммы в ADG и ADQM.
 
-![](check_data_with_inconsistency.png)
+![](check_data_with_inconsistency.png){:height="80%" width="80%"}
 {: .figure-center}
 *Ответ CHECK_DATA с найденными расхождениями*
 {: .figure-caption-center}
@@ -116,7 +116,7 @@ CHECK_DATA(sales.sales, 12, 100, [identification_number, transaction_date, produ
 
 На рисунке ниже показан пример ответа на такой запрос.
 
-![](check_data_normalization.png)
+![](check_data_normalization.png){:height="80%" width="80%"}
 {: .figure-center}
 *Запрос CHECK_DATA с коэффициентом нормализации*
 {: .figure-caption-center}
