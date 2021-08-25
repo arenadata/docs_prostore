@@ -192,7 +192,7 @@ SQL-клиента. Внешние таблицы не отображаются 
 {: .figure-caption-center}
 
 <a id="img_download_table_in_tree"></a>
-![](download_table_in_tree.png){:height="50%" width="50%"}
+![](download_table_in_tree.png){:height="46%" width="46%"}
 {: .figure-center}
 *Внешняя таблица выгрузки в дереве объектов*
 {: .figure-caption-center}

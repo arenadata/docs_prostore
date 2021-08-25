@@ -90,7 +90,7 @@ ADB отсутствует столбец `description`.
 
 На рисунке ниже показан пример ответа при наличии расхождений, которые вызваны тем, что 
 логическая таблица, размещаемая в ADB, была логически пересоздана для ADB, ADP и ADQM. Подробнее 
-о создании логической таблицы только на логическом уровне см. в секции 
+о пересоздании логической таблицы только на логическом уровне см. в секции 
 [LOGICAL_ONLY](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md#logical_only) раздела
 [CREATE TABLE](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md).
 
