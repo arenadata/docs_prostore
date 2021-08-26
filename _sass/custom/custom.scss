@@ -36,3 +36,24 @@ li:first-child {
 h2 {
   padding-bottom: 0.6em;
 }
+
+
+.note-wrapper {
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 12px 12px 12px;
+    border-radius: 6px;
+    //background-color: rgba(39,40,44,.05);
+    background-color: rgba(245,246,250,1);
+}
+
+.warning-wrapper {
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 12px 12px 12px;
+    border-radius: 6px;
+    background-color: rgba(18,151,107,.1);
+}
+
