@@ -37,25 +37,30 @@ h2 {
   padding-bottom: 0.6em;
 }
 
+// custom styles for notes
 
 .note-wrapper {
-    display: block;
-    box-sizing: border-box;
-    max-width: 100%;
-    padding: 0.9em 0.9em 0.9em;
-    border-radius: 4px;
-    background-color: rgba(18,151,107,.1);
-    font-size: 80%;
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0.9em 0.9em 0.9em 3.1em;
+  border-radius: 4px;
+  background-color: rgba(18,151,107,.1);
+  font-size: 90%;
+  position: relative;
+  overflow: hidden;
 }
 
 .note-wrapper::before {
+  display: inline-block;
   content: url("icons8-info-512.png");
   float: left;
   transform: scale(.025);
   width: 0.7em;
   height: 0.7em;
-  margin: -0.1em 1.6em 1.6em 0;
-  display: inline-block;
+  position: absolute;
+  left: 0.9em;
+  top: 0.9em;
 }
 
 
