@@ -11,7 +11,8 @@ has_toc: false
 # CREATE VIEW
 
 Запрос позволяет создать или заменить [логическое представление](../../../overview/main_concepts/logical_view/logical_view.md) 
-в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md).
+в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md). Логическое представление 
+можно создать на основе данных одной или нескольких [логических таблиц](../../../overview/main_concepts/logical_table/logical_table.md).
 
 В ответе возвращается:
 *   пустой объект ResultSet при успешном выполнении запроса;

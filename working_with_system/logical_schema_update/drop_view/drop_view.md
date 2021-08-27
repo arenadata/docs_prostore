@@ -11,9 +11,7 @@ has_children: false
 
 Чтобы удалить [логическое представление](../../../overview/main_concepts/logical_view/logical_view.md) 
 из [логической БД](../../../overview/main_concepts/logical_db/logical_db.md), 
-выполните запрос [DROP VIEW](../../../reference/sql_plus_requests/DROP_VIEW/DROP_VIEW.md) 
-(см. пример [ниже](#examples)).
-
+выполните запрос [DROP VIEW](../../../reference/sql_plus_requests/DROP_VIEW/DROP_VIEW.md).
 При успешном выполнении запроса логическое представление удаляется из [логической схемы данных](../../../overview/main_concepts/logical_schema/logical_schema.md). 
 Удаление логического представления никак не отражается в [хранилище](../../../overview/main_concepts/data_storage/data_storage.md).
 

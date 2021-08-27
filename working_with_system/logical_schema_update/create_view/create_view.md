@@ -9,12 +9,10 @@ has_children: false
 
 # Создание логического представления {#download_format}
 
-Логическое представление можно создать на основе данных одной или нескольких [логических таблиц](../../../overview/main_concepts/logical_table/logical_table.md).
-
 Чтобы создать [логическое представление](../../../overview/main_concepts/logical_view/logical_view.md) 
 в [логической БД](../../../overview/main_concepts/logical_db/logical_db.md), 
-выполните запрос [CREATE VIEW](../../../reference/sql_plus_requests/CREATE_VIEW/CREATE_VIEW.md) 
-(см. пример [ниже](#examples)). При успешном выполнении запроса логическое представление появляется в 
+выполните запрос [CREATE VIEW](../../../reference/sql_plus_requests/CREATE_VIEW/CREATE_VIEW.md). 
+При успешном выполнении запроса логическое представление появляется в 
 [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
 
 Наличие логического представления можно проверить, как описано в разделе [Проверка наличия логического представления](../entity_presence_check/entity_presence_check.md#view_check).
