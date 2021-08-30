@@ -9,9 +9,9 @@ has_children: false
 # Выгрузка данных {#data_download}
 
 Система позволяет выгружать актуальные и архивные данные, а также совокупность изменений, выполненных 
-в рамках указанных дельт. Данные можно выгружать из [логических таблиц](../../overview/main_concepts/logical_table/logical_table.md)
-и [логических представлений](../../overview/main_concepts/logical_view/logical_view.md). Выгрузка данных из
-[материализованных представлений](../../overview/main_concepts/materialized_view/materialized_view.md) недоступна.
+в рамках указанных дельт. Данные можно выгружать из [логических таблиц](../../overview/main_concepts/logical_table/logical_table.md), 
+а также [логических](../../overview/main_concepts/logical_view/logical_view.md) и 
+[материализованных представлений](../../overview/main_concepts/materialized_view/materialized_view.md).
 Возможные способы выбора выгружаемых данных см. в секции [FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time) 
 раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
 
@@ -27,7 +27,7 @@ has_children: false
 *   раздел [Quick Start](https://kafka.apache.org/documentation/#quickstart),
 *   раздел [Adding and removing topics](https://kafka.apache.org/documentation/#basic_ops_add_topic).
 
-Чтобы выгрузить данные из логической таблицы или логического представления во внешнюю информационную систему:
+Чтобы выгрузить данные из таблицы или представления во внешнюю информационную систему:
 1.  [Создайте](../../reference/sql_plus_requests/CREATE_DOWNLOAD_EXTERNAL_TABLE/CREATE_DOWNLOAD_EXTERNAL_TABLE.md) 
     [внешнюю таблицу](../../overview/main_concepts/external_table/external_table.md) 
     выгрузки, если она еще не создана.

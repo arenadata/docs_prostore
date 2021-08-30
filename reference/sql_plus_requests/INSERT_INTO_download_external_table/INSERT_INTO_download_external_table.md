@@ -12,10 +12,9 @@ has_toc: false
 
 Запрос позволяет выгрузить данные, выбранные [SELECT](../SELECT/SELECT.md)-подзапросом 
 к [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md), 
-во внешний приемник данных. Данные можно выгружать из [логических таблиц](../../../overview/main_concepts/logical_table/logical_table.md)
-и [логических представлений](../../../overview/main_concepts/logical_view/logical_view.md). Выгрузка данных из 
-[материализованных представлений](../../../overview/main_concepts/materialized_view/materialized_view.md)
-недоступна.
+во внешний приемник данных. Данные можно выгружать из [логических таблиц](../../../overview/main_concepts/logical_table/logical_table.md), 
+[логических](../../../overview/main_concepts/logical_view/logical_view.md) и 
+[материализованных представлений](../../../overview/main_concepts/materialized_view/materialized_view.md).
 
 Данные можно выгрузить из [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../../overview/main_concepts/main_concepts.md), 
 выбранной для выгрузки данных в [конфигурации](../../../maintenance/configuration/configuration.md) (см. параметр 
@@ -30,8 +29,8 @@ has_toc: false
 *   исключение при неуспешном выполнении запроса.
 
 При успешном выполнении запроса данные выгружаются в том формате и в тот приемник данных, которые были указаны 
-[при создании внешней таблицы выгрузки](../CREATE_DOWNLOAD_EXTERNAL_TABLE/CREATE_DOWNLOAD_EXTERNAL_TABLE.md). Формат данных соответствует 
-описанному в разделе [Формат выгрузки данных](../../download_format/download_format.md).
+[при создании внешней таблицы выгрузки](../CREATE_DOWNLOAD_EXTERNAL_TABLE/CREATE_DOWNLOAD_EXTERNAL_TABLE.md). Формат 
+данных соответствует описанному в разделе [Формат выгрузки данных](../../download_format/download_format.md).
 
 **Примечания:**
 
@@ -75,4 +74,11 @@ SELECT * FROM sales.sales WHERE sales.product_units > 2
 ```sql
 INSERT INTO sales.stores_ext_download 
 SELECT * FROM sales.stores WHERE region = 'Москва' DATASOURCE_TYPE = 'adqm'
+```
+
+### Выгрузка из материализованного представления {#matview_example}
+
+```sql
+INSERT INTO sales.sales_by_stores_ext_download
+SELECT * FROM sales.sales_by_stores WHERE product_code IN ('ABC0002', 'ABC0003', 'ABC0004')
 ```
