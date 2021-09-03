@@ -1,6 +1,6 @@
 ﻿---
 layout: default
-title: Выгружаемые типы данных
+title: Выгружаемые типы данных Avro
 nav_order: 3
 parent: Поддерживаемые типы данных
 grand_parent: Справочная информация
@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# Выгружаемые типы данных {#download_data_types}
+# Выгружаемые типы данных Avro {#download_data_types}
 
 Типы данных Avro, выгружаемые из системы, зависят от СУБД хранилища, из которой выгружаются данные. 
 В таблице ниже для каждого [логического типа данных](../logical_data_types/logical_data_types.md) 

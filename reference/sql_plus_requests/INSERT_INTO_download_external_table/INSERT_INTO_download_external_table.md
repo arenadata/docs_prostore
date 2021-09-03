@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: INSERT INTO download_external_table
-nav_order: 26
+nav_order: 27
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -9,6 +9,16 @@ has_toc: false
 ---
 
 # INSERT INTO download_external_table
+{: .no_toc }
+
+<details markdown="block">
+  <summary>
+    Содержание раздела
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
 
 Запрос позволяет выгрузить данные, выбранные [SELECT](../SELECT/SELECT.md)-подзапросом 
 к [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md), 
@@ -16,6 +26,9 @@ has_toc: false
 и [логических представлений](../../../overview/main_concepts/logical_view/logical_view.md). Выгрузка данных из 
 [материализованных представлений](../../../overview/main_concepts/materialized_view/materialized_view.md)
 недоступна.
+
+**Примечание:** для получения небольшого объема данных можно использовать 
+[запрос данных](../../../working_with_system/data_reading/data_reading.md).
 
 Данные можно выгрузить из [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../../overview/main_concepts/main_concepts.md), 
 выбранной для выгрузки данных в [конфигурации](../../../maintenance/configuration/configuration.md) (см. параметр 
@@ -53,7 +66,7 @@ INSERT INTO [db_name.]ext_table_name SELECT query
 *   `db_name` — имя логической базы данных, из которой выгружаются данные. Параметр опционален, если выбрана 
     логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `ext_table_name` — имя внешней таблицы выгрузки;
-*   `query` — [SELECT](../SELECT/SELECT.md)-подзапрос для выбора выгружаемых данных. Если в подзапросе указано ключевое 
+*   <a id="param_datasource_type"></a>`query` — [SELECT](../SELECT/SELECT.md)-подзапрос для выбора выгружаемых данных. Если в подзапросе указано ключевое 
     слово `DATASOURCE_TYPE` с псевдонимом СУБД хранилища, данные выгружаются из этой СУБД, иначе — из СУБД,
     выбранной для выгрузки в конфигурации системы.
 
