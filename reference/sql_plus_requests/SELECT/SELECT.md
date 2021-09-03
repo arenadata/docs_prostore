@@ -313,7 +313,7 @@ ESTIMATE_ONLY
 
 ### COLLATE {#collate_example}
 
-Запрос строк с указанным значением без учета регистра:
+Запрос строк с указанными значениями без учета регистра:
 ```sql
 SELECT * from sales.sales 
 WHERE product_code = 'ABC1234' AND product_code <> 'abc4567' COLLATE "unicode_ci"
