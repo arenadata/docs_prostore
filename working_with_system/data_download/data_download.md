@@ -30,7 +30,7 @@ has_children: false
 *   раздел [Quick Start](https://kafka.apache.org/documentation/#quickstart),
 *   раздел [Adding and removing topics](https://kafka.apache.org/documentation/#basic_ops_add_topic).
 
-Чтобы выгрузить данные из логической таблицы или логического представления во внешнюю информационную систему:
+Чтобы выгрузить данные из таблицы или представления во внешнюю информационную систему:
 1.  [Создайте](../../reference/sql_plus_requests/CREATE_DOWNLOAD_EXTERNAL_TABLE/CREATE_DOWNLOAD_EXTERNAL_TABLE.md) 
     [внешнюю таблицу](../../overview/main_concepts/external_table/external_table.md) 
     выгрузки, если она еще не создана.
