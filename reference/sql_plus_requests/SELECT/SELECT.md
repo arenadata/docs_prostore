@@ -79,7 +79,8 @@ FROM [db_name.]entity_name
 2.   `JOIN ON` — для соединения данных нескольких логических таблиц и (или) представлений из одной или
      нескольких [логических БД](../../../overview/main_concepts/logical_db/logical_db.md). 
      Возможные префиксы см. в секции [Возможные типы соединений (префиксы JOIN)](#join_prefixes);
-3.   `WHERE` — для указания условий выбора данных;
+3.   `WHERE` — для указания условий выбора данных. Условия в запросах к ADG могут включать ключевое слово 
+     [COLLATE](#collate);
 4.   `GROUP BY` — для группировки данных;
 5.   `HAVING` — для указания условий выбора сгруппированных данных;
 6.   `ORDER BY` — для сортировки данных;
@@ -135,6 +136,20 @@ FROM [db_name.]entity_name
 *   `RIGHT [OUTER]` — правое внешнее соединение,
 *   `FULL [OUTER]` — полное внешнее соединение,
 *   `CROSS` — декартово произведение таблиц или представлений, ключи соединения не указываются.
+
+### Ключевое слово COLLATE {#collate}
+
+Ключевое слово `COLLATE` позволяет задать правило сопоставления символьных строк, например, 
+приравнять строки в верхнем и нижнем регистрах. Ключевое слово доступно в условии, определяемом 
+ключевым словом `WHERE`.
+
+Ключевое слово `COLLATE` поддерживается только для запросов к ADG. Это означает, что для его корректной работы 
+в запросе нужно либо указать ADG в качестве источника данных (`DATASOURCE_TYPE = 'adg'`), либо обращаться к 
+логической сущности, данные которой размещены только в ADG.
+
+Подробнее о правилах сопоставления символьных строк в ADG см. в 
+[документации Tarantool](https://www.tarantool.io/ru/doc/latest/reference/reference_sql/sql_statements_and_clauses/#sql-collate-clause). 
+Пример запроса см. [ниже](#collate_example).
 
 ### Ключевое слово OFFSET {#offset}
 
@@ -295,6 +310,15 @@ FROM sales.sales AS s
 GROUP BY (s.store_id)
 ORDER BY product_amount DESC
 ESTIMATE_ONLY
+```
+
+### COLLATE {#collate_example}
+
+Запрос строк с указанным значением без учета регистра:
+```sql
+SELECT * from sales.sales 
+WHERE product_code = 'ABC1234' COLLATE "unicode_ci"
+DATASOURCE_TYPE = 'adg'
 ```
 
 ### OFFSET {#offset_example}
