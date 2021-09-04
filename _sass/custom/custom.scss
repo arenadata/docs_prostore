@@ -53,9 +53,10 @@ h2 {
 
 .note-wrapper::before {
   display: inline-block;
-  content: url("icons8-info-512.png");
+  content: url("outline_info_black_48dp.png");
+  opacity: 0.8;
   float: left;
-  transform: scale(.025);
+  transform: scale(.16);
   width: 0.7em;
   height: 0.7em;
   position: absolute;
@@ -63,4 +64,52 @@ h2 {
   top: 0.9em;
 }
 
+.warning-wrapper {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0.9em 0.9em 0.9em 3.1em;
+  border-radius: 4px;
+  background-color: rgba(18,151,107,.1);
+  font-size: 90%;
+  position: relative;
+  overflow: hidden;
+}
 
+.warning-wrapper::before {
+  display: inline-block;
+  content: url("round_warning_amber_black_48dp.png");
+  opacity: 0.8;
+  float: left;
+  transform: scale(.16);
+  width: 0.7em;
+  height: 0.7em;
+  position: absolute;
+  left: 0.9em;
+  top: 0.9em;
+}
+
+.tip-wrapper {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0.9em 0.9em 0.9em 3.1em;
+  border-radius: 4px;
+  background-color: rgba(18,151,107,.1);
+  font-size: 90%;
+  position: relative;
+  overflow: hidden;
+}
+
+.tip-wrapper::before {
+  display: inline-block;
+  content: url("outline_tips_and_updates_black_48dp.png");
+  opacity: 0.8;
+  float: left;
+  transform: scale(.16);
+  width: 0.7em;
+  height: 0.7em;
+  position: absolute;
+  left: 0.9em;
+  top: 0.9em;
+}
