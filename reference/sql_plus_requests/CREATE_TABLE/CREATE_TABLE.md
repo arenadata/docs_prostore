@@ -33,7 +33,8 @@ has_toc: false
 
 **Совет:** рекомендуется создавать логическую таблицу с размещением данных, как минимум, в СУБД хранилища, 
 из которой планируется выгрузка данных. Иначе выгрузка данных из таблицы будет недоступна. 
-Подробнее о СУБД, из которых можно выгружать данные, см. в разделе [INSERT INTO download_external_table](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md).
+Подробнее о СУБД, из которых можно выгружать данные, см. в разделе 
+[INSERT INTO download_external_table](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md).
 
 **Примечание:** изменение логической таблицы недоступно. Для замены таблицы необходимо удалить ее и 
 создать новую.

@@ -11,8 +11,9 @@ has_toc: false
 # BEGIN DELTA
 
 Запрос позволяет открыть новую горячую [дельту](../../../overview/main_concepts/delta/delta.md) 
-для последующей загрузки данных. Номер открываемой дельты может быть указан в запросе или установлен 
-системой.
+перед [загрузкой](../../../working_with_system/data_upload/data_upload.md) или 
+[обновлением](../../../working_with_system/data_update/data_update.md) данных. Номер открываемой дельты может быть 
+указан в запросе или установлен системой.
 
 Перед выполнением запроса необходимо определить логическую базу данных, 
 [используемую по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md), 
@@ -29,11 +30,13 @@ has_toc: false
 с номером, следующим по порядку за номером последней закрытой дельты.
 
 После успешного выполнения запроса можно выполнять запросы 
-[INSERT INTO logical_table](../INSERT_INTO_logical_table/INSERT_INTO_logical_table.md) на загрузку данных. 
-Подробнее о порядке выполнения запросов для загрузки данных см. в разделе 
-[Загрузка данных](../../../working_with_system/data_upload/data_upload.md).
+[INSERT INTO logical_table](../INSERT_INTO_logical_table/INSERT_INTO_logical_table.md), 
+[UPSERT](../UPSERT/UPSERT.md) и [DELETE](../DELETE/DELETE.md) на загрузку и обновление данных. 
+Подробнее о порядке выполнения действий для загрузки данных см. в разделе 
+[Загрузка данных](../../../working_with_system/data_upload/data_upload.md), для обновления данных — в разделе 
+[Обновление данных](../../../working_with_system/data_update/data_update.md).
 
-Если нужно отменить все изменения данных, загруженные в рамках открытой дельты, выполните запрос 
+Если нужно отменить все изменения данных, внесенные в открытой дельте, выполните запрос 
 [ROLLBACK DELTA](../ROLLBACK_DELTA/ROLLBACK_DELTA.md).
 
 ## Синтаксис {#syntax}
@@ -48,8 +51,7 @@ BEGIN DELTA
 BEGIN DELTA SET delta_number
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `delta_number` — целочисленный номер открываемой дельты, равный номеру последней закрытой дельты + 1. 
     Номер последней закрытой дельты можно узнать с помощью запроса 
     [GET_DELTA_OK](../GET_DELTA_OK/GET_DELTA_OK.md).

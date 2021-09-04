@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: Порядок обработки запросов на чтение данных
-nav_order: 4
+nav_order: 5
 parent: Связи с другими системами и компонентами
 grand_parent: Обзор понятий, компонентов и связей
 has_children: false

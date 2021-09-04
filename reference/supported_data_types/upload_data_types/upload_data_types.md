@@ -1,6 +1,6 @@
 ﻿---
 layout: default
-title: Загружаемые типы данных
+title: Загружаемые типы данных Avro
 nav_order: 2
 parent: Поддерживаемые типы данных
 grand_parent: Справочная информация
@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# Загружаемые типы данных {#upload_data_types}
+# Загружаемые типы данных Avro {#upload_data_types}
 
 Система поддерживает загрузку типов данных Avro, перечисленных в таблице ниже. Для каждого типа данных 
 Avro указан соответствующий [логический тип данных](../logical_data_types/logical_data_types.md).
