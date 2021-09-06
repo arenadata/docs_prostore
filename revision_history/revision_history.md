@@ -17,31 +17,45 @@ has_children: false
 {:toc}
 </details>
 
-## Текущая версия документации (5.1) {#current}
+## Текущая версия документации (5.2) {#current}
 
 Изменения:
-* добавлено ключевое слово [ESTIMATE_ONLY](../reference/sql_plus_requests/SELECT/SELECT.md#estimate), 
-  доступное в [SELECT](../reference/sql_plus_requests/SELECT/SELECT.md)-запросах;
-* добавлено ключевое слово `LOGICAL_ONLY`, доступное в запросах на создание и удаление логической БД, 
-  логической таблицы и материализованного представления;
-* обновлено описание запросов [CHECK_DATA](../reference/sql_plus_requests/CHECK_DATA/CHECK_DATA.md) и
-  [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md): 
-  * добавлен коэффициент нормализации, повышающий максимально допустимое количество записей в
-    проверяемых дельтах;
-  * изменен расчет контрольных сумм: теперь они считаются по дельтам, а не отдельным операциям записи; 
-* обновлено описание запроса [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md):
-  * изменен расчет контрольной суммы по таблице/представлению: теперь расчет аналогичен тому, который 
-    выполняется для CHECK_DATA;
-  * изменен расчет контрольной суммы по логической БД: теперь контрольные суммы таблиц складываются, 
-    а не проходят дополнительный этап хеширования;
-* в [конфигурацию](../maintenance/configuration/configuration.md) добавлен параметр 
-  `DTM_VERTX_BLOCKING_STACKTRACE_TIME`;
-* в главу «Работа с системой» добавлены разделы 
-  [Получение информации о SELECT-запросе](../working_with_system/other_features/query_estimation/query_estimation.md) и 
-  [Проверка месторасположения логической сущности](../working_with_system/other_features/datasource_check/datasource_check.md);
-* в главу «Эксплуатация» добавлен раздел [Часовые пояса системы и компонентов](../maintenance/time_zones/time_zones.md).
+* добавлена функция обновления данных — альтернатива загрузке в случае небольших объемов данных; описание доступно 
+в следующие разделах:
+  * [Обновление данных](../working_with_system/data_update/data_update.md);
+  * [Порядок обработки запросов на обновление данных](../overview/interactions/llw_processing/llw_processing.md);
+  * [UPSERT](../reference/sql_plus_requests/UPSERT/UPSERT.md);
+  * [DELETE](../reference/sql_plus_requests/DELETE/DELETE.md);
+* добавлено ключевое слово [COLLATE](../reference/sql_plus_requests/SELECT/SELECT.md#collate), 
+  доступное в [SELECT](../reference/sql_plus_requests/SELECT/SELECT.md)-запросах к ADG;
+* добавлена возможность [выгрузки данных](../working_with_system/data_download/data_download.md) 
+  из материализованных представлений.
   
 ## Архивные версии документации {#archive}
+
+### Версия 5.1
+
+Изменения:
+* добавлено ключевое слово [ESTIMATE_ONLY](../reference/sql_plus_requests/SELECT/SELECT.md#estimate),
+  доступное в [SELECT](../reference/sql_plus_requests/SELECT/SELECT.md)-запросах;
+* добавлено ключевое слово `LOGICAL_ONLY`, доступное в запросах на создание и удаление логической БД,
+  логической таблицы и материализованного представления;
+* обновлено описание запросов [CHECK_DATA](../reference/sql_plus_requests/CHECK_DATA/CHECK_DATA.md) и
+  [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md):
+  * добавлен коэффициент нормализации, повышающий максимально допустимое количество записей в
+    проверяемых дельтах;
+  * изменен расчет контрольных сумм: теперь они считаются по дельтам, а не отдельным операциям записи;
+* обновлено описание запроса [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md):
+  * изменен расчет контрольной суммы по таблице/представлению: теперь расчет аналогичен тому, который
+    выполняется для CHECK_DATA;
+  * изменен расчет контрольной суммы по логической БД: теперь контрольные суммы таблиц складываются,
+    а не проходят дополнительный этап хеширования;
+* в [конфигурацию](../maintenance/configuration/configuration.md) добавлен параметр
+  `DTM_VERTX_BLOCKING_STACKTRACE_TIME`;
+* в главу «Работа с системой» добавлены разделы
+  [Получение информации о SELECT-запросе](../working_with_system/other_features/query_estimation/query_estimation.md) и
+  [Проверка месторасположения логической сущности](../working_with_system/other_features/datasource_check/datasource_check.md);
+* в главу «Эксплуатация» добавлен раздел [Часовые пояса системы и компонентов](../maintenance/time_zones/time_zones.md).
 
 ### Версия 5.0
 
