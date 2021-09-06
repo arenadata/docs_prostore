@@ -28,8 +28,9 @@ has_toc: false
 [указанному при создании внешней таблицы загрузки](../CREATE_UPLOAD_EXTERNAL_TABLE/CREATE_UPLOAD_EXTERNAL_TABLE.md) и 
 описанному в разделе [Формат загрузки данных](../../upload_format/upload_format.md).
 
-**Примечание:** для загрузки небольшого объема данных можно использовать 
+Для загрузки небольшого объема данных можно использовать 
 [обновление данных](../../../working_with_system/data_update/data_update.md).
+{: .note-wrapper}
 
 Перед выполнением запроса необходимо создать [внешнюю таблицу](../../../overview/main_concepts/external_table/external_table.md),
 загрузить данные в топик Kafka и открыть [дельту](../../../overview/main_concepts/delta/delta.md).
@@ -44,10 +45,11 @@ has_toc: false
 выбранные для размещения данных таблицы. Месторасположение данных таблицы можно задавать запросами 
 [CREATE TABLE](../CREATE_TABLE/CREATE_TABLE.md) и [DROP TABLE](../DROP_TABLE/DROP_TABLE.md).
 
-**Примечание:** загрузка данных возможна только в логическую таблицу.
+Загрузка данных возможна только в логическую таблицу.
 Загрузка данных в [логические](../../../overview/main_concepts/logical_view/logical_view.md)
 и [материализованные представления](../../../overview/main_concepts/materialized_view/materialized_view.md)
 недоступна.
+{: .note-wrapper}
 
 ## Синтаксис {#syntax}
 

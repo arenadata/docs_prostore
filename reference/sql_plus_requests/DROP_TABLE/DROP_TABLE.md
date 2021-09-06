@@ -31,10 +31,11 @@ has_toc: false
 [хранилища](../../../overview/main_concepts/data_storage/data_storage.md) можно указать
 ключевое слово `DATASOURCE_TYPE` (см. секцию [Ключевое слово DATASOURCE_TYPE](#datasource_type)).
 
-**Внимание:** удаленные данные невозможно восстановить средствами системы. Удаление данных из СУБД хранилища, 
+Удаленные данные невозможно восстановить средствами системы. Удаление данных из СУБД хранилища, 
 используемых для выгрузки данных, приведет к невозможности [выгрузки](../../../working_with_system/data_download/data_download.md) 
 этих данных. Подробнее о СУБД, из которых можно выгружать данные, см. в разделе 
 [INSERT INTO download_external_table](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md).
+{: .warning-wrapper}
 
 ## Синтаксис {#syntax}
 

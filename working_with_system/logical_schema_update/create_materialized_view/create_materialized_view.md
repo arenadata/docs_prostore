@@ -17,7 +17,8 @@ has_children: false
 в хранилище, добавьте в запрос ключевое слово 
 [LOGICAL_ONLY](../../../reference/sql_plus_requests/CREATE_MATERIALIZED_VIEW/CREATE_MATERIALIZED_VIEW.md#logical_only).
 
-**Примечание:** в текущей версии возможно создание материализованных представлений в ADG на основе данных ADB.
+В текущей версии возможно создание материализованных представлений в ADG на основе данных ADB.
+{: .note-wrapper}
 
 Наличие материализованного представления можно проверить, как описано в разделе 
 [Проверка наличия материализованного представления](../entity_presence_check/entity_presence_check.md#mat_view_check).

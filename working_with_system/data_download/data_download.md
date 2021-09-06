@@ -13,8 +13,9 @@ has_children: false
 и [логических представлений](../../overview/main_concepts/logical_view/logical_view.md). Выгрузка данных из
 [материализованных представлений](../../overview/main_concepts/materialized_view/materialized_view.md) недоступна.
 
-**Примечание:** под большим объемом данных подразумевается количество записей от нескольких сотен до нескольких миллионов.
+Под большим объемом данных подразумевается количество записей от нескольких сотен до нескольких миллионов.
 Для получения небольшого объема данных можно использовать функцию [запроса данных](../data_reading/data_reading.md).
+{: .note-wrapper}
 
 Данные можно выгрузить из [СУБД](../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../overview/main_concepts/main_concepts.md),
 выбранной для выгрузки данных в [конфигурации](../../maintenance/configuration/configuration.md) системы (см. параметр

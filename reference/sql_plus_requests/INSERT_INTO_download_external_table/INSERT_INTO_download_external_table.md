@@ -26,8 +26,9 @@ has_toc: false
 [логических](../../../overview/main_concepts/logical_view/logical_view.md) и 
 [материализованных представлений](../../../overview/main_concepts/materialized_view/materialized_view.md).
 
-**Примечание:** для получения небольшого объема данных можно использовать 
+Для получения небольшого объема данных можно использовать 
 [запрос данных](../../../working_with_system/data_reading/data_reading.md).
+{: .note-wrapper}
 
 Данные можно выгрузить из [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../../overview/main_concepts/main_concepts.md), 
 выбранной для выгрузки данных в [конфигурации](../../../maintenance/configuration/configuration.md) (см. параметр 

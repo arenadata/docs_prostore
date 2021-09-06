@@ -13,8 +13,9 @@ has_toc: false
 выполненных в указанных дельтах. Возможные способы выбора данных описаны в секции 
 [FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time) раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
 
-**Примечание:** под небольшим объемом данных подразумевается результат, содержащий десятки строк.
+Под небольшим объемом данных подразумевается результат, содержащий десятки строк.
 Для получения большого объема данных следует использовать [выгрузку данных](../data_download/data_download.md).
+{: .note-wrapper}
 
 Чтобы запросить данные из [логических таблиц](../../overview/main_concepts/logical_table/logical_table.md), 
 [логических представлений](../../overview/main_concepts/logical_view/logical_view.md) 
