@@ -30,7 +30,7 @@ has_toc: false
 и [материализованные представления](../../../overview/main_concepts/materialized_view/materialized_view.md)
 недоступна.
 
-Для обновления разнородных данных и (или) большого объема данных следует использовать
+Для обновления большого объема данных следует использовать 
 [загрузку данных](../../../working_with_system/data_upload/data_upload.md).
 {: .note-wrapper}
 

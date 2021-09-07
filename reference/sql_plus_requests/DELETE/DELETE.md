@@ -29,7 +29,7 @@ has_toc: false
 и [материализованных представлениях](../../../overview/main_concepts/materialized_view/materialized_view.md)
 недоступна.
 
-Для обновления разнородных данных и (или) большого объема данных следует использовать 
+Для обновления большого объема данных следует использовать 
 [загрузку данных](../../../working_with_system/data_upload/data_upload.md).
 {: .note-wrapper}
 
@@ -40,14 +40,15 @@ has_toc: false
 ## Синтаксис {#syntax}
 
 ```sql
-DELETE FROM [db_name.]table_name WHERE filter_expression
+DELETE FROM [db_name.]table_name [WHERE filter_expression]
 ```
 
 Параметры:
 *   `db_name` — имя логической базы данных. Опционально, если выбрана логическая БД,
     [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `table_name` — имя логической таблицы, данные которой архивируются;
-*   `filter_expression` — условие выбора записей, подлежащих архивации.
+*   `filter_expression` — условие выбора записей, подлежащих архивации. Если ключевое слово WHERE и условие не указаны, 
+    архивируются все актуальные данные таблицы.
 
 ## Ограничения {#restrictions}
 
