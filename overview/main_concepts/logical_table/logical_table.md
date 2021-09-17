@@ -37,6 +37,7 @@ _Логическая таблица_ — структурированная с�
 таблицы можно [создавать](../../../working_with_system/logical_schema_update/create_table/create_table.md) 
 и [удалять](../../../working_with_system/logical_schema_update/drop_table/drop_table.md). 
 Данные логической таблицы можно [загружать](../../../working_with_system/data_upload/data_upload.md), 
+[обновлять](../../../working_with_system/data_update/data_update.md),
 [запрашивать](../../../working_with_system/data_reading/data_reading.md) и 
 [выгружать](../../../working_with_system/data_download/data_download.md).
 

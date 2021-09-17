@@ -61,7 +61,9 @@ _Материализованное представление_ — структ
 Из материализованного представления можно [запрашивать](../../../working_with_system/data_reading/data_reading.md) 
 и [выгружать](../../../working_with_system/data_download/data_download.md) данные — так же, как из логических таблиц и 
 [логических представлений](../logical_view/logical_view.md). 
-[Загрузка](../../../working_with_system/data_upload/data_upload.md) данных в материализованные представления не поддерживается.
+[Загрузка](../../../working_with_system/data_upload/data_upload.md) и 
+[обновление](../../../working_with_system/data_update/data_update.md) данных недоступны для 
+материализованных представлений.
 
 При запросе или выгрузке данных из материализованного представления можно указать [момент времени](../../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time), 
 по состоянию на который запрашиваются данные. Если момент времени не указан, система возвращает (выгружает) данные, актуальные
