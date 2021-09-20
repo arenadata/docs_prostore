@@ -17,27 +17,44 @@ has_toc: false
 *   пустой объект ResultSet при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
-После успешного выполнения запроса можно создавать [логические таблицы](../../../overview/main_concepts/logical_table/logical_table.md), 
-[логические представления](../../../overview/main_concepts/logical_view/logical_view.md) 
-и [внешние таблицы](../../../overview/main_concepts/external_table/external_table.md) 
-в созданной логической базе данных.
-
-**Совет:** перед наполнением созданной логической базы данных 
-[выберите ее в качестве используемой по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md) 
-— это позволит не указывать имя логической БД перед именами логических сущностей в запросах к ней.
+**Совет:** перед работой с логической базой данных выберите ее в качестве [используемой по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md) 
+— это позволит обращаться к логическим сущностям без имени логической БД.
 
 ## Синтаксис {#syntax}
+
+Создание логической БД:
 
 ```sql
 CREATE DATABASE db_name
 ```
 
-## Параметры {#parameters}
+Создание логической БД только на логическом уровне:
 
+```sql
+CREATE DATABASE db_name LOGICAL_ONLY
+```
+
+Где:
 *   `db_name` — имя создаваемой логической базы данных. Может содержать латинские буквы, цифры и символы подчеркивания (“_”).
 
-## Пример {#examples}
+### Ключевое слово LOGICAL_ONLY {#logical_only}
+
+Ключевое слово `LOGICAL_ONLY` позволяет создать логическую базу данных только на логическом уровне
+(в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md)), без 
+пересоздания связанной физической базы данных в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md).
+
+Если ключевое слово не указано, создается как логическая, так и связанная с ней физическая база данных.
+
+## Примеры {#examples}
+
+### Создание логической БД {#non-logical_example}
 
 ```sql
 CREATE DATABASE sales
+```
+
+### Создание логической БД только на логическом уровне {#logical_example}
+
+```sql
+CREATE DATABASE sales1 LOGICAL_ONLY
 ```

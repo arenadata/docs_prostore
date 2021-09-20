@@ -11,8 +11,8 @@ has_children: false
 
 Чтобы создать [внешнюю таблицу выгрузки](../../../overview/main_concepts/external_table/external_table.md) 
 в [логической БД](../../../overview/main_concepts/logical_db/logical_db.md), 
-выполните запрос [CREATE DOWNLOAD EXTERNAL TABLE](../../../reference/sql_plus_requests/CREATE_DOWNLOAD_EXTERNAL_TABLE/CREATE_DOWNLOAD_EXTERNAL_TABLE.md) 
-(см. пример [ниже](#examples)). При успешном выполнении запроса внешняя таблица загрузки появляется 
+выполните запрос [CREATE DOWNLOAD EXTERNAL TABLE](../../../reference/sql_plus_requests/CREATE_DOWNLOAD_EXTERNAL_TABLE/CREATE_DOWNLOAD_EXTERNAL_TABLE.md). 
+При успешном выполнении запроса внешняя таблица загрузки появляется 
 в [логической схеме данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
 
 **Совет:** для удобства разделения таблиц выгрузки и загрузки рекомендуется задавать имя таблицы, 

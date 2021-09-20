@@ -1,9 +1,9 @@
 ﻿---
 layout: default
-title: Другие функции
+title: Другие действия
 nav_order: 6
 parent: Работа с системой
 has_children: true
 ---
 
-# Другие функции {#other_features}
+# Другие действия {#other_features}

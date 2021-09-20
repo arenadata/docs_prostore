@@ -10,31 +10,33 @@ has_children: false
 # Запрос метаданных логической схемы {#request_from_schema}
 
 Чтобы запросить метаданные объектов [логической схемы данных](../../../overview/main_concepts/logical_schema/logical_schema.md), 
-выполните запрос [SELECT FROM INFORMATION_SCHEMA](../../../reference/sql_plus_requests/SELECT_FROM_INFORMATION_SCHEMA/SELECT_FROM_INFORMATION_SCHEMA.md) 
-(см. примеры [ниже](#examples)). Доступно получение информации о сущностях и их свойствах, перечисленных 
+выполните запрос [SELECT FROM INFORMATION_SCHEMA](../../../reference/sql_plus_requests/SELECT_FROM_INFORMATION_SCHEMA/SELECT_FROM_INFORMATION_SCHEMA.md). 
+Доступно получение информации о сущностях и их свойствах, перечисленных 
 в разделе [Системные представления (INFORMATION_SCHEMA)](../../../reference/system_views/system_views.md).
 
 ## Примеры {#examples}
 
-Запрос списка всех [логических БД](../../../overview/main_concepts/logical_db/logical_db.md) 
-[окружения](../../../overview/main_concepts/environment/environment.md) 
-с лексической сортировкой по возрастанию:
+### Запрос списка логических БД окружения {#db_list_example}
+
 ```sql
 SELECT schema_name FROM INFORMATION_SCHEMA.schemata
 ORDER BY schema_name
 ```
 
-Запрос информации о логических сущностях логической БД `SALES`:
+### Запрос списка сущностей в логической БД {#entity_list_example}
+
 ```sql
 SELECT * FROM INFORMATION_SCHEMA.tables
 WHERE table_schema = 'SALES'
 ```
 
-Запрос списка имен, типов и столбцов логических сущностей окружения:
+### Запрос списка столбцов сущностей в логической БД {#column_list_example}
+
 ```sql
 SELECT TC.table_schema, TC.table_name, TT.table_type, TC.column_name
 FROM information_schema.columns AS TC
 JOIN information_schema.tables AS TT
-  ON TC.table_schema = TT.table_schema and TC.table_name = TT.table_name
+  ON TC.table_schema = TT.table_schema and TC.table_name = TT.table_name  
+WHERE TT.table_schema = 'SALES'   
 ORDER BY TC.table_schema, TC.table_name
 ```

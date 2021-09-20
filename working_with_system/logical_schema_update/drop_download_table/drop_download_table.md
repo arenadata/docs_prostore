@@ -10,8 +10,8 @@ has_children: false
 # Удаление внешней таблицы выгрузки {#drop_download_table}
 
 Чтобы удалить [внешнюю таблицу выгрузки](../../../overview/main_concepts/external_table/external_table.md), 
-выполните запрос [DROP DOWNLOAD EXTERNAL TABLE](../../../reference/sql_plus_requests/DROP_DOWNLOAD_EXTERNAL_TABLE/DROP_DOWNLOAD_EXTERNAL_TABLE.md) 
-(см. пример [ниже](#examples)). При успешном выполнении запроса внешняя таблица выгрузки удаляется из 
+выполните запрос [DROP DOWNLOAD EXTERNAL TABLE](../../../reference/sql_plus_requests/DROP_DOWNLOAD_EXTERNAL_TABLE/DROP_DOWNLOAD_EXTERNAL_TABLE.md). 
+При успешном выполнении запроса внешняя таблица выгрузки удаляется из 
 [логической схемы данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
 
 Наличие внешней таблицы можно проверить, как описано в разделе [Проверка наличия внешней таблицы](../entity_presence_check/entity_presence_check.md#ext_table_check).

@@ -9,18 +9,27 @@ has_children: false
 
 # Удаление логической базы данных {#drop_db}
 
-Чтобы удалить [логическую базу данных](../../../overview/main_concepts/logical_db/logical_db.md), 
+Чтобы удалить [логическую базу данных](../../../overview/main_concepts/logical_db/logical_db.md) и ее данные, 
 выполните запрос [DROP DATABASE](../../../reference/sql_plus_requests/DROP_DATABASE/DROP_DATABASE.md) 
-(см. пример [ниже](#examples)).
+(см. примеры [ниже](#examples)). Если нужно удалить логическую базу данных только на логическом уровне, без
+удаления связанной физической базы данных и размещенных в ней данных из 
+[хранилища](../../../overview/main_concepts/data_storage/data_storage.md),
+добавьте в запрос ключевое слово
+[LOGICAL_ONLY](../../../reference/sql_plus_requests/DROP_DATABASE/DROP_DATABASE.md#logical_only).
 
-При успешном выполнении запроса все данные, связанные с логической БД, удаляются из хранилища, и 
-все соответствующие логические сущности удаляются из [схемы данных](../../../overview/main_concepts/logical_schema/logical_schema.md).
+Наличие логической базы данных можно проверить, как описано в разделе 
+[Проверка наличия логической базы данных](../entity_presence_check/entity_presence_check.md#db_check).
 
-Наличие логической базы данных можно проверить, как описано в разделе [Проверка наличия логической базы данных](../entity_presence_check/entity_presence_check.md#db_check).
+## Примеры {#examples}
 
-## Пример {#examples}
+### Удаление логической базы данных {#deleting_db_example}
 
 ``` sql
--- удаление логической базы данных sales
 DROP DATABASE sales
+```
+
+### Удаление логической базы данных только на логическом уровне {#logical_deleting_db_example}
+
+``` sql
+DROP DATABASE sales1 LOGICAL_ONLY
 ```
