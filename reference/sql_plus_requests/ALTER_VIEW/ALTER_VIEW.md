@@ -27,8 +27,7 @@ has_toc: false
 ALTER VIEW [db_name.]view_name AS SELECT query
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `db_name` — имя логической базы данных, в которой находится логическое представление. 
     Указывается опционально, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `view_name` — имя изменяемого логического представления;
@@ -37,12 +36,12 @@ ALTER VIEW [db_name.]view_name AS SELECT query
 
 ## Ограничения {#restrictions}
 
-В подзапросе `query` не допускается использование:
-*   логических представлений,
-*   [системных представлений](../../system_views/system_views.md) 
-    INFORMATION_SCHEMA,
-*   ключевого слова [FOR SYSTEM_TIME](../SELECT/SELECT.md#for_system_time),
-*   ключевого слова [DATASOURCE_TYPE](../SELECT/SELECT.md#param_datasource_type).
+*   Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
+*   В подзапросе `query` не допускается использование:
+    *   логических представлений,
+    *   [системных представлений](../../system_views/system_views.md) INFORMATION_SCHEMA,
+    *   ключевого слова [FOR SYSTEM_TIME](../SELECT/SELECT.md#for_system_time),
+    *   ключевого слова [DATASOURCE_TYPE](../SELECT/SELECT.md#param_datasource_type).
 
 ## Пример {#examples}
 

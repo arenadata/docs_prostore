@@ -58,8 +58,8 @@ has_toc: false
 TRUNCATE HISTORY [db_name.]table_name FOR SYSTEM_TIME AS OF date_time_expression
 [WHERE filter_expression]
 ```
-## Параметры {#parameters}
 
+Параметры:
 *   `db_name` — имя логической базы данных. Указывается опционально, если выбрана логическая БД, 
     [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `table_name` — имя логической таблицы, из которой удаляются записи;
@@ -69,6 +69,10 @@ TRUNCATE HISTORY [db_name.]table_name FOR SYSTEM_TIME AS OF date_time_expression
         см. в разделе [Форматы даты и времени](../../timestamp_formats/timestamp_formats.md);
     *   `'infinite'` — удаление всех актуальных и архивных записей;
 *   `filter_expression` — условие выбора записей, подлежащих удалению.
+
+## Ограничения {#restrictions}
+
+Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
 
 ## Пример {#examples}
 

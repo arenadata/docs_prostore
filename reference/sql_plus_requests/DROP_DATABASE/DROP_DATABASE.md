@@ -35,7 +35,7 @@ DROP DATABASE db_name
 DROP DATABASE db_name LOGICAL_ONLY
 ```
 
-Где:
+Параметры:
 *   `db_name` — имя удаляемой логической базы данных.
 
 ### Ключевое слово LOGICAL_ONLY {#logical_only}
@@ -49,7 +49,7 @@ DROP DATABASE db_name LOGICAL_ONLY
 
 ## Ограничения {#restrictions}
 
-Не допускается удаление системной базы данных с именем `INFORMATION_SCHEMA`.
+Недоступно удаление сервисной базы данных `INFORMATION_SCHEMA`.
 
 ## Примеры {#examples}
 

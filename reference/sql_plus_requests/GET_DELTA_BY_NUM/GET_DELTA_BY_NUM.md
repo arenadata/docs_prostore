@@ -30,6 +30,5 @@ has_toc: false
 GET_DELTA_BY_NUM(delta_num)
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `delta_num` — целый неотрицательный номер дельты.

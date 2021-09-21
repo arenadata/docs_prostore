@@ -55,7 +55,7 @@ DATASOURCE_TYPE = origin_datasource_alias
 [LOGICAL_ONLY]
 ```
 
-Где:
+Параметры:
 *   `db_name` — имя логической базы данных, в которой создается материализованное представление. Параметр 
     опционален, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `materialized_view_name` — имя создаваемого логического представления, уникальное среди логических 
@@ -92,6 +92,7 @@ DATASOURCE_TYPE = origin_datasource_alias
 
 ## Ограничения {#restrictions}
 
+*   Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
 *   Имена столбцов должны быть уникальны в рамках представления.
 *   Столбцы не могут иметь имена, зарезервированные для служебного использования: `sys_op`, `sys_from`, 
     `sys_to`, `sys_close_date`, `bucket_id`, `sign`.

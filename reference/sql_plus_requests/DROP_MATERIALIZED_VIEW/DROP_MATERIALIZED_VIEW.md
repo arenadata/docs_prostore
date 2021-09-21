@@ -35,7 +35,7 @@ DROP MATERIALIZED VIEW [IF EXISTS] [db_name.]materialized_view_name
 [LOGICAL_ONLY]
 ```
 
-Где:
+Параметры:
 *   `db_name` — имя логической базы данных, из которой удаляется материализованное представление. 
     Параметр опционален, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `table_name` — имя удаляемого материализованного представления;
@@ -69,6 +69,10 @@ DROP MATERIALIZED VIEW [IF EXISTS] [db_name.]materialized_view_name
 
 Если ключевое слово не указано, удаляется как материализованное представление, так и связанные с ним 
 физические таблицы.
+
+## Ограничения {#restrictions}
+
+Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
 
 ## Примеры {#examples}
 
