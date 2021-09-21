@@ -12,14 +12,15 @@ has_toc: false
 
 Запрос на обновление данных в [логической таблице](../../main_concepts/logical_table/logical_table.md) 
 обрабатывается в следующем порядке:
-1.  Внешняя информационная система формирует запрос [UPSERT](../../../reference/sql_plus_requests/UPSERT/UPSERT.md) 
-    или [DELETE](../../../reference/sql_plus_requests/DELETE/DELETE.md), используя JDBC-драйвер DTM.
+1.  Внешняя информационная система формирует запрос [UPSERT](../../../reference/sql_plus_requests/UPSERT/UPSERT.md), 
+    [DELETE](../../../reference/sql_plus_requests/DELETE/DELETE.md) или 
+    [UPSERT SELECT](../../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md), используя JDBC-драйвер DTM.
 2.  Запрос поступает в сервис исполнения запросов DTM.
 3.  Сервис исполнения запросов анализирует запрос и сохраняет информацию о процессе обновления данных в 
     [сервисной базе данных](../../main_concepts/service_db/service_db.md).
 4.  Сервис исполнения запросов отправляет запрос на обновление данных в каждую из целевых 
     [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
-    [хранилища](../../main_concepts/data_storage/data_storage.md). Под целевыми подразумеваются 
+    [хранилища](../../main_concepts/data_storage/data_storage.md). Под целевыми понимаются 
     СУБД, в которых размещаются данные логической таблицы 
     (см. [CREATE TABLE](../../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md)).
 5.  По завершении загрузки всех данных сервис исполнения запросов отправляет в целевые СУБД команду 

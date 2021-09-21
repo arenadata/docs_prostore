@@ -26,14 +26,12 @@ has_toc: false
     на открытие [дельты](../../overview/main_concepts/delta/delta.md),
     если она еще не открыта.
 5.  Выполните запрос на обновление данных:
-      * [UPSERT](../../reference/sql_plus_requests/UPSERT/UPSERT.md) — 
+      * [UPSERT](../../reference/sql_plus_requests/UPSERT/UPSERT.md) или 
+        [UPSERT SELECT](../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md) — 
         для добавления новых или изменения актуальных данных;
       * [DELETE](../../reference/sql_plus_requests/DELETE/DELETE.md) — для архивации актуальных данных.
 6.  Если необходимо, обновите и (или) загрузите другие данные. 
-    В рамках одной открытой дельты можно выполнять произвольное количество запросов 
-    [UPSERT](../../reference/sql_plus_requests/UPSERT/UPSERT.md),
-    [DELETE](../../reference/sql_plus_requests/DELETE/DELETE.md) и 
-    [INSERT INTO logical_table](../../reference/sql_plus_requests/INSERT_INTO_logical_table/INSERT_INTO_logical_table.md). 
+    В рамках одной открытой дельты можно выполнять произвольное количество запросов на обновление и загрузку данных. 
     При этом не допускается загрузка различных состояний объекта (то есть различных записей с одинаковым первичным ключом) 
     в одной дельте.
 7.  Выполните запрос [COMMIT DELTA](../../reference/sql_plus_requests/COMMIT_DELTA/COMMIT_DELTA.md)
@@ -62,6 +60,22 @@ VALUES (100011, '2021-08-21 23:34:10', 'ABC0001', 2, 123, 'Покупка по �
 
 -- архивация записей логической таблицы sales о покупках в магазине, который был закрыт
 DELETE FROM sales WHERE store_id = 234
+
+-- создание логической таблицы sales_july_2021, которая будет содержать данные о продажах за июль 2021
+CREATE TABLE sales_july_2021 (
+id INT NOT NULL,
+transaction_date TIMESTAMP NOT NULL,
+product_code VARCHAR(256) NOT NULL,
+product_units INT NOT NULL,
+store_id INT NOT NULL,
+description VARCHAR(256),
+PRIMARY KEY (id)
+) DISTRIBUTED BY (id)
+
+-- вставка данных из таблицы sales в новую таблицу sales_july_2021 
+UPSERT INTO sales_july_2021 
+SELECT * FROM sales WHERE CAST(EXTRACT(MONTH FROM transaction_date) AS INT) = 7 AND 
+  CAST(EXTRACT(YEAR FROM transaction_date) AS INT) = 2021
 
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA
