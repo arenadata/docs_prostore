@@ -52,6 +52,16 @@ has_toc: false
 *Удаление архивной записи по запросу с меткой времени*
 {: .figure-caption-center}
 
+![](truncate_history-2.svg)
+{: .figure-center}
+*Удаление архивной записи по запросу с меткой времени*
+{: .figure-caption-center}
+
+![](truncate_history-3.svg)
+{: .figure-center}
+*Удаление архивной записи по запросу с меткой времени*
+{: .figure-caption-center}
+
 ## Синтаксис {#syntax}
 
 ```sql

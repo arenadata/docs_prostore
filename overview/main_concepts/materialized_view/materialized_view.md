@@ -135,3 +135,8 @@ DATASOURCE_TYPE = 'adb'
 {: .figure-center}
 *Пример синхронизации материализованного представления*
 {: .figure-caption-center}
+
+![](synchronization_example-2.svg)
+{: .figure-center}
+*Пример синхронизации материализованного представления*
+{: .figure-caption-center}
