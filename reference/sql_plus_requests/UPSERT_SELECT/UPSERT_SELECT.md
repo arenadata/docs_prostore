@@ -62,7 +62,7 @@ UPSERT INTO [db_name.]table_name SELECT query
 ```
 
 Вставка данных только в некоторые столбцы логической таблицы 
-(с заполнением остальных столбцов значениями `null`):
+(с заполнением остальных столбцов значениями, которые определены в СУБД хранилища как значения по умолчанию):
 ```sql
 UPSERT INTO [db_name.]table_name (column_list) SELECT query
 ```
@@ -97,7 +97,7 @@ UPSERT INTO [db_name.]table_name (column_list) SELECT query
 
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-USE sales
+USE sales;
 
 -- создание логической таблицы sales_july_2021, которая будет содержать данные о продажах за июль 2021
 CREATE TABLE sales_july_2021 (
@@ -108,25 +108,25 @@ product_units INT NOT NULL,
 store_id INT NOT NULL,
 description VARCHAR(256),
 PRIMARY KEY (id)
-) DISTRIBUTED BY (id)
+) DISTRIBUTED BY (id);
 
 -- открытие новой (горячей) дельты
-BEGIN DELTA
+BEGIN DELTA;
 
 -- вставка данных из таблицы sales в новую таблицу sales_july_2021 
 UPSERT INTO sales_july_2021 
 SELECT * FROM sales WHERE CAST(EXTRACT(MONTH FROM transaction_date) AS INT) = 7 AND 
-  CAST(EXTRACT(YEAR FROM transaction_date) AS INT) = 2021
+  CAST(EXTRACT(YEAR FROM transaction_date) AS INT) = 2021;
 
 -- закрытие дельты (фиксация изменений)
-COMMIT DELTA
+COMMIT DELTA;
 ```
 
 ### Вставка данных в указанные столбцы таблицы {#some_columns_example}
 
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-USE sales
+USE sales;
 
 -- создание логической таблицы current_stores, которая будет содержать выборку из таблицы stores
 CREATE TABLE current_stores (
@@ -137,27 +137,27 @@ CREATE TABLE current_stores (
   description VARCHAR(256),
   PRIMARY KEY (id)
 )
-DISTRIBUTED BY (id)
+DISTRIBUTED BY (id);
 
 -- открытие новой (горячей) дельты
-BEGIN DELTA
+BEGIN DELTA;
 
 -- вставка данных в логическую таблицу current_stores без указания значения столбца description
 UPSERT INTO current_stores (id, category, region, address)
-SELECT * FROM stores FOR SYSTEM_TIME AS OF DELTA_NUM 10
+SELECT * FROM stores FOR SYSTEM_TIME AS OF DELTA_NUM 10;
 
 -- закрытие дельты (фиксация изменений)
-COMMIT DELTA
+COMMIT DELTA;
 ```
 
 ### Вставка данных из таблицы другой логической БД {#other_db_example}
 
 ```sql
 -- создание новой логической БД sales_new
-CREATE DATABASE sales_new
+CREATE DATABASE sales_new;
 
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-USE sales_new
+USE sales_new;
 
 -- создание таблицы sales в новой логической БД
 CREATE TABLE sales (
@@ -168,23 +168,23 @@ product_units INT NOT NULL,
 store_id INT NOT NULL,
 description VARCHAR(256),
 PRIMARY KEY (id)
-) DISTRIBUTED BY (id)
+) DISTRIBUTED BY (id);
 
 -- открытие новой (горячей) дельты
-BEGIN DELTA
+BEGIN DELTA;
 
 -- вставка данных в логическую таблицу sales из аналогичной таблицы другой логической БД
-UPSERT INTO sales SELECT * FROM sales.sales WHERE store_id BETWEEN 1234 AND 4567
+UPSERT INTO sales SELECT * FROM sales.sales WHERE store_id BETWEEN 1234 AND 4567;
 
 -- закрытие дельты (фиксация изменений)
-COMMIT DELTA
+COMMIT DELTA;
 ```
 
 ### Вставка данных из указанной СУБД {#datasource_type_example}
 
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-USE sales
+USE sales;
 
 -- создание таблицы sales_store_123, которая будет содержать данные продаж одного магазина, с размещением в ADB и ADG
 CREATE TABLE sales_store_123 (
@@ -196,14 +196,14 @@ store_id INT NOT NULL,
 description VARCHAR(256),
 PRIMARY KEY (id)
 ) DISTRIBUTED BY (id)
-DATASOURCE_TYPE (adb, adg)
+DATASOURCE_TYPE (adb, adg);
 
 -- открытие новой (горячей) дельты
-BEGIN DELTA
+BEGIN DELTA;
 
 -- вставка данных в логическую таблицу sales_store_123, где источником данных служит ADQM
-UPSERT INTO sales_store_123 SELECT * FROM sales WHERE store_id = 123 DATASOURCE_TYPE = 'adb'
+UPSERT INTO sales_store_123 SELECT * FROM sales WHERE store_id = 123 DATASOURCE_TYPE = 'adb';
 
 -- закрытие дельты (фиксация изменений)
-COMMIT DELTA
+COMMIT DELTA;
 ```
