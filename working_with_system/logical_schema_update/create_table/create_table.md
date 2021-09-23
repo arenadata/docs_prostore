@@ -32,7 +32,7 @@ has_children: false
 
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- создание таблицы sales
 CREATE TABLE sales (
@@ -44,7 +44,7 @@ CREATE TABLE sales (
   description VARCHAR(256),
   PRIMARY KEY (identification_number)
 )
-DISTRIBUTED BY (identification_number)
+DISTRIBUTED BY (identification_number);
 ```
 
 ### Создание логической таблицы только на логическом уровне {#logical_example}

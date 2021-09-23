@@ -60,7 +60,7 @@ has_toc: false
 ## Примеры {#examples}
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-USE sales
+USE sales;
 
 -- создание логической таблицы sales
 CREATE TABLE sales (
@@ -72,7 +72,7 @@ CREATE TABLE sales (
   description VARCHAR(256),
   PRIMARY KEY (identification_number)
 )
-DISTRIBUTED BY (identification_number)
+DISTRIBUTED BY (identification_number);
 
 -- создание внешней таблицы загрузки
 CREATE UPLOAD EXTERNAL TABLE sales_ext_upload (
@@ -85,14 +85,14 @@ CREATE UPLOAD EXTERNAL TABLE sales_ext_upload (
 )
 LOCATION  'kafka://zk1:2181,zk2:2181,zk3:2181/sales'
 FORMAT 'AVRO'
-MESSAGE_LIMIT 1000
+MESSAGE_LIMIT 1000;
 
 -- открытие новой (горячей) дельты
-BEGIN DELTA
+BEGIN DELTA;
 
 -- запуск загрузки данных в логическую таблицу sales
-INSERT INTO sales SELECT * FROM sales.sales_ext_upload
+INSERT INTO sales SELECT * FROM sales.sales_ext_upload;
 
 -- закрытие дельты (фиксация изменений)
-COMMIT DELTA
+COMMIT DELTA;
 ```

@@ -20,8 +20,8 @@ has_children: false
 
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- удаление внешней таблицы выгрузки
-DROP DOWNLOAD EXTERNAL TABLE sales_ext_download
+DROP DOWNLOAD EXTERNAL TABLE sales_ext_download;
 ```

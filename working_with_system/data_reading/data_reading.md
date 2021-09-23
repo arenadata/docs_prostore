@@ -38,20 +38,20 @@ has_toc: false
 
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-USE sales
+USE sales;
 
 -- запрос данных из логической таблицы sales
 SELECT s.store_id, SUM(s.product_units) AS product_amount
 FROM sales AS s
 GROUP BY (s.store_id)
 ORDER BY product_amount DESC
-LIMIT 20
+LIMIT 20;
 
 -- запрос данных из логического представления stores_by_sold_products
 SELECT sold.store_id, sold.product_amount
-FROM stores_by_sold_products AS sold
+FROM stores_by_sold_products AS sold;
 
 -- запрос данных из материализованного представления sales_by_stores
 SELECT * FROM sales_by_stores
-WHERE store_id IN (1234, 1235, 1236)
+WHERE store_id IN (1234, 1235, 1236);
 ```

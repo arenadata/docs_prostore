@@ -367,7 +367,7 @@ INNER JOIN sales2.sales FOR SYSTEM_TIME AS OF LATEST_UNCOMMITTED_DELTA AS s
 дельт:
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-use sales
+use sales;
 
 -- запрос данных из логической таблицы prices
 SELECT
@@ -386,5 +386,5 @@ FULL JOIN (select product_code,
 WHERE p1.product_code is NOT NULL
 ORDER BY diff DESC
 LIMIT 50
-DATASOURCE_TYPE = 'adb'
+DATASOURCE_TYPE = 'adb';
 ```

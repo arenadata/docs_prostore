@@ -45,7 +45,7 @@ has_children: false
 ## Пример {#example}
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-USE sales
+USE sales;
 
 -- создание внешней таблицы выгрузки sales_ext_download
 CREATE DOWNLOAD EXTERNAL TABLE sales_ext_download (
@@ -58,11 +58,11 @@ CREATE DOWNLOAD EXTERNAL TABLE sales_ext_download (
 )
 LOCATION  'kafka://zk1:2181,zk2:2181,zk3:2181/sales_out'
 FORMAT 'AVRO'
-CHUNK_SIZE 1000
+CHUNK_SIZE 1000;
 
 -- запуск выгрузки данных из логической таблицы sales
 INSERT INTO sales_ext_download 
-SELECT * FROM sales WHERE product_units > 2 FOR SYSTEM_TIME AS OF DELTA_NUM 10
+SELECT * FROM sales WHERE product_units > 2 FOR SYSTEM_TIME AS OF DELTA_NUM 10;
 
 -- создание внешней таблицы выгрузки stores_ext_download
 CREATE DOWNLOAD EXTERNAL TABLE sales.stores_ext_download (
@@ -74,9 +74,9 @@ description VARCHAR(256)
 ) 
 LOCATION  'kafka://$kafka/stores_out'
 FORMAT 'AVRO'
-CHUNK_SIZE 1000
+CHUNK_SIZE 1000;
 
 -- запуск выгрузки данных из логической таблицы stores
 INSERT INTO stores_ext_download 
-SELECT * FROM stores WHERE region = 'Москва' DATASOURCE_TYPE = 'adqm'
+SELECT * FROM stores WHERE region = 'Москва' DATASOURCE_TYPE = 'adqm';
 ```

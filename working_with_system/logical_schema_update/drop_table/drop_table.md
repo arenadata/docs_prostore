@@ -32,10 +32,10 @@ has_children: false
 
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- удаление таблицы sales из СУБД ADQM
-DROP TABLE sales DATASOURCE_TYPE = 'adqm'
+DROP TABLE sales DATASOURCE_TYPE = 'adqm';
 ```
 
 ### Удаление логической таблицы из всех СУБД {#all_db_example}

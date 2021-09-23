@@ -29,7 +29,7 @@ has_children: false
 
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- создание внешней таблицы выгрузки
 CREATE DOWNLOAD EXTERNAL TABLE sales.sales_ext_download (
@@ -42,5 +42,5 @@ CREATE DOWNLOAD EXTERNAL TABLE sales.sales_ext_download (
 )
 LOCATION  'kafka://zk1:2181,zk2:2181,zk3:2181/sales_out'
 FORMAT 'AVRO'
-CHUNK_SIZE 1000
+CHUNK_SIZE 1000;
 ```

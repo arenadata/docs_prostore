@@ -98,8 +98,11 @@ DROP TABLE IF EXISTS sales.sales_unknown_existence
 ### Удаление таблицы с удалением данных из ADB и ADG {#adb_adg_example}
 
 ```sql
-DROP TABLE sales.stores DATASOURCE_TYPE = adb
-DROP TABLE sales.stores DATASOURCE_TYPE = adg
+-- удаление таблицы из ADB
+DROP TABLE sales.stores DATASOURCE_TYPE = adb;
+
+-- удаление таблицы из ADG
+DROP TABLE sales.stores DATASOURCE_TYPE = adg;
 ```
 
 ### Удаление таблицы только на логическом уровне {#logical_example}

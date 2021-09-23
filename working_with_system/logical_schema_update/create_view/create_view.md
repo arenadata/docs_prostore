@@ -21,7 +21,7 @@ has_children: false
 
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- создание представления stores_by_sold_products
 CREATE VIEW stores_by_sold_products AS
@@ -29,5 +29,5 @@ CREATE VIEW stores_by_sold_products AS
   FROM sales.sales
   GROUP BY store_id
   ORDER BY product_amount DESC
-  LIMIT 30
+  LIMIT 30;
 ```

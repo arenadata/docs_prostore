@@ -30,10 +30,10 @@ has_toc: false
 
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- создание внешней таблицы загрузки
-CREATE UPLOAD EXTERNAL TABLE sales_ext_upload (
+CREATE UPLOAD EXTERNAL TABLE sales.sales_ext_upload (
   identification_number INT,
   transaction_date TIMESTAMP,
   product_code VARCHAR(256),
@@ -43,5 +43,5 @@ CREATE UPLOAD EXTERNAL TABLE sales_ext_upload (
 )
 LOCATION  'kafka://zk1:2181,zk2:2181,zk3:2181/sales'
 FORMAT 'AVRO'
-MESSAGE_LIMIT 1000
+MESSAGE_LIMIT 1000;
 ```

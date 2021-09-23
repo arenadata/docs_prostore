@@ -16,11 +16,13 @@ has_children: false
 
 При успешном выполнении запроса логическое представление изменит свой вид.
 
-## Пример {#examples}
+## Примеры {#examples}
+
+### Создание логического представления {#creating_example}
 
 ```sql
 -- выбор sales как логической базы данных по умолчанию
-USE sales
+USE sales;
 
 -- создание логического представления
 CREATE VIEW stores_by_sold_products AS
@@ -28,17 +30,23 @@ CREATE VIEW stores_by_sold_products AS
   FROM sales
   GROUP BY store_id
   ORDER BY product_amount DESC
-  LIMIT 10
+  LIMIT 10;
+```
 
--- изменение логического представления
+### Изменение логического представления {#altering_example}
+
+```sql
 ALTER VIEW stores_by_sold_products AS
   SELECT store_id, SUM(product_units) AS product_amount
   FROM sales
   GROUP BY store_id
   ORDER BY product_amount ASC
   LIMIT 20
+```
 
--- пересоздание логического представления
+### Пересоздание логического представления {#recreation_example}
+
+```sql
 CREATE OR REPLACE VIEW stores_by_sold_products AS
   SELECT store_id, SUM(product_units) AS product_amount
   FROM sales

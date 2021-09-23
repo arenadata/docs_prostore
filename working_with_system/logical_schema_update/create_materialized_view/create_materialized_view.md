@@ -31,7 +31,7 @@ has_children: false
 
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- создание материализованного представления sales_and_stores
 CREATE MATERIALIZED VIEW sales.sales_and_stores (
@@ -53,7 +53,7 @@ AS SELECT
  FROM sales.sales AS s
  JOIN sales.stores AS st
  ON s.store_id = st.identification_number
-DATASOURCE_TYPE = 'adb'
+DATASOURCE_TYPE = 'adb';
 ```
 
 ### Создание материализованного представления только на логическом уровне {#logical_example}

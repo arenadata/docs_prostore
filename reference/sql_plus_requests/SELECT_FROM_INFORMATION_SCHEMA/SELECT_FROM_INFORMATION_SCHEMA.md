@@ -77,16 +77,14 @@ SELECT column_list FROM [INFORMATION_SCHEMA.]system_view_name [AS alias_name]
 [окружения](../../../overview/main_concepts/environment/environment.md) 
 с лексической сортировкой по возрастанию:
 ```sql
-SELECT schema_name FROM INFORMATION_SCHEMA.schemata
-ORDER BY schema_name
+SELECT schema_name FROM INFORMATION_SCHEMA.schemata ORDER BY schema_name
 ```
 
 ### Запрос информации о сущностях логической БД {#entity_list_example}
 
 Запрос информации о логических сущностях логической БД `SALES`:
 ```sql
-SELECT * FROM INFORMATION_SCHEMA.tables
-WHERE table_schema = 'SALES'
+SELECT * FROM INFORMATION_SCHEMA.tables WHERE table_schema = 'SALES'
 ```
 
 ### Запрос имен, типов и столбцов логических сущностей {#entity_info_example}

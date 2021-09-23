@@ -60,14 +60,14 @@ DELETE FROM [db_name.]table_name [WHERE filter_expression]
 
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-USE sales
+USE sales;
 
 -- открытие новой (горячей) дельты
-BEGIN DELTA
+BEGIN DELTA;
 
 -- архивация записей логической таблицы sales о покупках в магазине, который был закрыт
-DELETE FROM sales WHERE store_id = 234
+DELETE FROM sales WHERE store_id = 234;
 
 -- закрытие дельты (фиксация изменений)
-COMMIT DELTA
+COMMIT DELTA;
 ```
