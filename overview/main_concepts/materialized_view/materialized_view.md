@@ -120,7 +120,7 @@ PRIMARY KEY (store_id, product_code)
 )
 DISTRIBUTED BY (store_id)
 DATASOURCE_TYPE (adg)
-AS SELECT store_id, product_code, SUM(product_units) as quantity FROM sales.sales
+AS SELECT store_id, product_code, SUM(product_units) FROM sales.sales
    WHERE product_code <> 'ABC0001'
    GROUP BY store_id, product_code
 DATASOURCE_TYPE = 'adb'
@@ -131,12 +131,12 @@ DATASOURCE_TYPE = 'adb'
 `product_code`. При этом неважно, когда было создано материализованное представление: до дельты 0, после дельты 1 или 
 в какой-то момент между этими дельтами.
 
-![](synchronization_example_delta0.svg)
+![](synchronization_example_delta0.svg){:height="70%" width="70%"}
 {: .figure-center}
 *Состояние данных на момент дельты 0*
 {: .figure-caption-center}
 
-![](synchronization_example_delta1.svg)
+![](synchronization_example_delta1.svg){:height="70%" width="70%"}
 {: .figure-center}
 *Состояние данных на момент дельты 1*
 {: .figure-caption-center}
