@@ -107,10 +107,10 @@ _Материализованное представление_ — структ
 Рассмотрим пример со следующими условиями:
 * логическая БД `sales` содержит логическую таблицу `sales` и материализованное представление `sales_by_stores`;
 * логическая БД содержит две дельты:
-  * дельта 0: в таблицу `sales` загружено две записи;
-  * дельта 1: в таблицу `sales` загружено еще две записи с другими первичными ключами (новые записи);
+  * дельта 0: в таблицу `sales` загружено две записи (с идентификаторами 100 и 101);
+  * дельта 1: в таблицу `sales` загружено еще две записи (с идентификаторами 102 и 103);
 * материализованное представление `sales_by_stores` содержит результат агрегации и группировки данных таблицы `sales` и 
-построено на основе запроса:
+построено на основе следующего запроса:
 ```sql
 CREATE MATERIALIZED VIEW sales.sales_by_stores (
 store_id INT NOT NULL,
@@ -120,18 +120,23 @@ PRIMARY KEY (store_id, product_code)
 )
 DISTRIBUTED BY (store_id)
 DATASOURCE_TYPE (adg)
-AS SELECT store_id, product_code, SUM(product_units) as product_units FROM sales.sales
+AS SELECT store_id, product_code, SUM(product_units) FROM sales.sales
    WHERE product_code <> 'ABC0001'
    GROUP BY store_id, product_code
 DATASOURCE_TYPE = 'adb'
 ```
 
-На рисунке ниже показан порядок синхронизации материализованного представления `sales_by_stores`. В каждой дельте
+На рисунках ниже показан порядок синхронизации материализованного представления `sales_by_stores`. В каждой дельте
 рассчитывается и сохраняется сумма по столбцу `product_units` таблицы `sales` с группировкой по столбцам `store_id` и 
 `product_code`. При этом неважно, когда было создано материализованное представление: до дельты 0, после дельты 1 или 
 в какой-то момент между этими дельтами.
 
-![](synchronization_example.svg)
+![](synchronization_example_delta0.svg){:height="70%" width="70%"}
 {: .figure-center}
-*Пример синхронизации материализованного представления*
+*Состояние данных на момент дельты 0*
+{: .figure-caption-center}
+
+![](synchronization_example_delta1.svg){:height="70%" width="70%"}
+{: .figure-center}
+*Состояние данных на момент дельты 1*
 {: .figure-caption-center}
