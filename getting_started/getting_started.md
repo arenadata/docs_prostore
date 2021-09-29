@@ -504,7 +504,14 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 }
 ```
 </details>
-бинарный AVRO-файл `kafka_upload_sales.avro` ([выгрузить](./kafka_upload_sales.avro))
+
+<details markdown="block">
+  <summary>
+    бинарный AVRO-файл `kafka_upload_sales.avro`
+  </summary>
+  {: .text-delta } 
+[выгрузить](./kafka_upload_sales.avro)
+</details>
 
 ### Задание конфигурации kafka-топика, которая не использует поле ключа:
 
@@ -512,7 +519,9 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 {: .figure-center}
 *Конфигурация kafka-топика, которая не использует поле ключа.*
 {: .figure-caption-center}
-### Загрузка avro-файла kafka_upload_sales.avro в поле “значение” Kafka-топика salesTopic с помощью программы Offset Explorer 2.1:
+### Загрузка avro-файла kafka_upload_sales.avro
+
+Загрузка avro-файла kafka_upload_sales.avro в поле “значение” Kafka-топика salesTopic с помощью программы Offset Explorer 2.1:
 
 ![](load_Topic_Offset_Explorer.png)
 {: .figure-center}
