@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: Приступая к работе
-nav_order: 0
+nav_order: 0.5
 has_children: false
 has_toc: false
 ---
@@ -118,7 +118,7 @@ java -Dspring.profiles.active=default -Dserver.port=9095 -jar dtm-status-monitor
 # запуск файла dtm-query-execution-core-<version>.jar (например, dtm-query-execution-core-5.1.0.jar):
 cd ~/prostore/dtm-query-execution-core/target
 java -jar dtm-query-execution-core-<version>.jar
-Подключение к Prostore с помощью SQL-клиента (см раздел Подключение с помощью SQL-клиента):
+Подключение к Prostore с помощью SQL-клиента (см раздел [Подключение с помощью SQL-клиента](../working_with_system/connection/connection_via_sql_client/connection_via_sql_client.md)):
 ```
 
 Рис.1. Настройки JDBC-подключения SQL-клиента DBeaver к Prostore. 
