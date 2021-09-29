@@ -356,9 +356,10 @@ cd ~/prostore/dtm-query-execution-core/target
 java -jar dtm-query-execution-core-<version>.jar
 ```
 Подключение к Prostore с помощью SQL-клиента (см раздел [Подключение с помощью SQL-клиента](../working_with_system/connection/connection_via_sql_client/connection_via_sql_client.md)):
-
-Рис.1. Настройки JDBC-подключения SQL-клиента DBeaver к Prostore. 
- 
+![](connect_DBeaver_settings.png)
+{: .figure-center}
+*Настройки JDBC-подключения SQL-клиента DBeaver к Prostore.*
+{: .figure-caption-center}
 
 ## Демонстрационный сценарий
 
@@ -411,8 +412,12 @@ CREATE VIEW stores_by_sold_products AS
 cd /opt/kafka/bin
 bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic salesTopic --zookeeper localhost:2181
 ```
-Рис.2. Создание Kafka-топика с помощью программы Offset Explorer 2.1.
-## Создание бинарного avro-файла kafka_upload_sales.avro (приложение F) из avro-схемы и данных.
+![](create_Topic_Offset_Explorer.png)
+{: .figure-center}
+*Создание Kafka-топика с помощью программы Offset Explorer 2.1.*
+{: .figure-caption-center}
+
+### Создание бинарного avro-файла kafka_upload_sales.avro из avro-схемы и данных.
 
 <details markdown="block">
   <summary>
@@ -496,18 +501,21 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 }
 ```
 </details>
+бинарный AVRO-файл `kafka_upload_sales.avro` ([выгрузить](./kafka_upload_sales.avro))
 
-  <summary>
-    бинарный AVRO-файл `kafka_upload_sales.avro` ([выгрузить](./kafka_upload_sales.avro))
-  </summary>
 ### Задание конфигурации kafka-топика, которая не использует поле ключа:
 
-
-Рис.3. Конфигурация kafka-топика, которая не использует поле ключа.
+![](config_Topic_Offset_Explorer.png)
+{: .figure-center}
+*Конфигурация kafka-топика, которая не использует поле ключа.*
+{: .figure-caption-center}
 ### Загрузка avro-файла kafka_upload_sales.avro в поле “значение” Kafka-топика salesTopic с помощью программы Offset Explorer 2.1:
 
+![](load_Topic_Offset_Explorer.png)
+{: .figure-center}
+*Загрузка avro-файла в Kafka-топик*
+{: .figure-caption-center}
 
-Рис.4. Загрузка avro-файла в Kafka-топик
  
 
 ### Загрузка данных:
