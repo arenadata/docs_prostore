@@ -1,12 +1,12 @@
 ﻿---
 layout: default
-title: Приступая к работе
+title: Начало работы с системой
 nav_order: 0
 has_children: false
 has_toc: false
 ---
 
-# Приступая к работе
+# Начало работы с системой
 {: .no_toc }
 
 <details markdown="block">
@@ -18,7 +18,7 @@ has_toc: false
 {:toc}
 </details>
 
-## Предустановленные программные средства:
+## Предустановленные программные средства
 *   OC Centos 7;
 *   yum-utils;
 *   curl;
@@ -31,14 +31,14 @@ has_toc: false
 *   Apache Kafka (например, в каталоге /opt/kafka);
 *   Apache Avro (например, в каталоге /opt/avro);
 *   SQL-клиент, например DBeaver;
-*   Браузер kafka-топиков, например Offset Explorer 2.1.
+*   Браузер топиков Kafka, например Offset Explorer 2.1.
 
-## Сборка Prostore:
+## Сборка Prostore
 
 ```plaintext
 # клонирование репозитория Prostore
 git clone https://github.com/arenadata/prostore
-# Запуск сборки Prostore средствами Apache Maven
+# запуск сборки Prostore средствами Apache Maven
 cd ~/prostore
 mvn clean
 mvn install -DskipTests=true
@@ -185,21 +185,21 @@ adp:
 Далее конфигурационный файл `application.yml` обозначается термином "конфигурация Prostore".
 
 
-## Настройка СУБД Postgres:
+## Настройка СУБД Postgres
 
 ```plaintext
 # создание в СУБД Postgres SUPERUSER-пользователя c именем и паролем,
-# указаннымыми в конфигурации Prostore
+# указанными в конфигурации Prostore
 # (значения параметров (adp: datasource: user: ${ADP_USERNAME:dtm}) и (adp: datasource: password: ${ADP_PASS:dtm}) соответственно)
 cd /
 sudo -u postgres psql -c 'CREATE ROLE dtm WITH LOGIN SUPERUSER'
 sudo -u postgres psql -c "ALTER ROLE dtm WITH PASSWORD 'dtm'"
 # создание базы данных с именем test, указанным в конфигурации Prostore (env: name: ${DTM_NAME:test})
 sudo -u postgres psql -c 'CREATE DATABASE test'
-# перезапуск сервиса Postgresql:
+# перезапуск сервиса Postgresql
 sudo systemctl reload postgresql-13
 ```
-## Сборка и установка коннектора Kafka-Postgres:
+## Сборка и установка коннектора Kafka-Postgres
 
 ```plaintext
 # клонирование репозитория kafka-postgres-connector
@@ -320,7 +320,7 @@ kafka:
       value.serializer: org.apache.kafka.common.serialization.ByteArraySerializer
 ```
 </details>
-## Запуск сервисов Apache Zookeeper и Apache Kafka:
+## Запуск сервисов Apache Zookeeper и Apache Kafka
 
 ```plaintext
 # запуск одного экземпляра сервера ZooKeeper, если он еще не запущен
@@ -329,7 +329,7 @@ sudo systemctl start zookeeper
 sudo systemctl start kafka
 sudo systemctl status kafka
 ```
-## Запуск коннектора Kafka-Postgres:
+## Запуск коннектора Kafka-Postgres
 
 ```plaintext
 # запуск kafka-postgres-writer в отдельном окне терминала 
@@ -339,7 +339,7 @@ java -Dspring.profiles.active=default -jar kafka-postgres-writer-<version>.jar
 cd ~/kafka-postgres-connector/kafka-postgres-reader/target
 java -Dspring.profiles.active=default -jar kafka-postgres-reader-<version>.jar
 ```
-## Запуск службы dtm-status-monitor:
+## Запуск службы dtm-status-monitor
 
 ```plaintext
 # создание символической ссылки на файл конфигурации dtm-status-monitor
@@ -348,16 +348,16 @@ sudo ln -s ~/prostore/dtm-status-monitor/src/main/resources/application.yml ~/pr
 cd ~/prostore/dtm-status-monitor/target
 java -Dspring.profiles.active=default -Dserver.port=9095 -jar dtm-status-monitor-<version>.jar
 ```
-## Запуск Prostore:
+## Запуск Prostore
 
 ```plaintext
-# запуск файла dtm-query-execution-core-<version>.jar (например, dtm-query-execution-core-5.1.0.jar):
+# запуск файла dtm-query-execution-core-<version>.jar (например, dtm-query-execution-core-5.1.0.jar)
 cd ~/prostore/dtm-query-execution-core/target
 java -jar dtm-query-execution-core-<version>.jar
 ```
-## Подключение к Prostore с помощью SQL-клиента:
+## Подключение к Prostore с помощью SQL-клиента
 
-(см раздел [Подключение с помощью SQL-клиента](../working_with_system/connection/connection_via_sql_client/connection_via_sql_client.md))
+(Порядок подключения описан в разделе [Подключение с помощью SQL-клиента](../working_with_system/connection/connection_via_sql_client/connection_via_sql_client.md))
 
 ![](connect_DBeaver_settings.png)
 {: .figure-center}
@@ -366,7 +366,7 @@ java -jar dtm-query-execution-core-<version>.jar
 
 ## Демонстрационный сценарий
 
-### Создание необходимых логических сущностей:
+### Создание необходимых логических сущностей
 
 ```sql
 -- создание логической базы данных
@@ -408,8 +408,8 @@ CREATE VIEW stores_by_sold_products AS
   ORDER BY product_amount DESC
   LIMIT 30;
 ```
-### Создание топика Kafka для последующей загрузки данных:
-Создание Kafka-топика salesTopic с помощью программы Offset Explorer (Kafka tool) или в терминале
+### Создание топика Kafka для последующей загрузки данных
+Создание топика Kafka "salesTopic" с помощью программы Offset Explorer (Kafka tool) или в терминале:
 
 ```plaintext
 cd /opt/kafka/bin
@@ -417,10 +417,10 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 ```
 ![](create_Topic_Offset_Explorer.png)
 {: .figure-center}
-*Создание Kafka-топика с помощью программы Offset Explorer 2.1.*
+*Создание топика Kafka с помощью программы Offset Explorer 2.1.*
 {: .figure-caption-center}
 
-### Создание бинарного avro-файла kafka_upload_sales.avro из avro-схемы и данных.
+### Создание бинарного avro-файла kafka_upload_sales.avro из avro-схемы и данных
 
 <details markdown="block">
   <summary>
@@ -510,27 +510,27 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
     бинарный AVRO-файл `kafka_upload_sales.avro`
   </summary>
   {: .text-delta } 
-[выгрузить](./kafka_upload_sales.avro)
+[сохранить](./kafka_upload_sales.avro) бинарный файл
 </details>
 
-### Задание конфигурации kafka-топика, которая не использует поле ключа:
+### Задание конфигурации топика Kafka
 
 ![](config_Topic_Offset_Explorer.png)
 {: .figure-center}
-*Конфигурация kafka-топика, которая не использует поле ключа.*
+*Конфигурация топика Kafka, которая не использует поле ключа*
 {: .figure-caption-center}
 ### Загрузка avro-файла kafka_upload_sales.avro
 
-Загрузка avro-файла kafka_upload_sales.avro в поле “значение” Kafka-топика salesTopic с помощью программы Offset Explorer 2.1:
+Загрузка avro-файла kafka_upload_sales.avro в поле “значение” топика Kafka "salesTopic" с помощью программы Offset Explorer 2.1:
 
 ![](load_Topic_Offset_Explorer.png)
 {: .figure-center}
-*Загрузка avro-файла в Kafka-топик*
+*Загрузка avro-файла в топик Kafka*
 {: .figure-caption-center}
 
  
 
-### Загрузка данных:
+### Загрузка данных
 
 ```sql
 -- открытие новой (горячей) дельты
@@ -540,7 +540,7 @@ INSERT INTO sales SELECT * FROM sales.sales_ext_upload;
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA;
 ```
-### Вставка данных:
+### Вставка данных
 
 ```sql
 -- открытие новой (горячей) дельты
@@ -558,14 +558,14 @@ VALUES
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA;
 ```
-### Выборка данных:
+### Выборка данных
 
 ```sql
--- запрос с неявным указанием столбцов и ключевым словом WHERE:
+-- запрос с неявным указанием столбцов и ключевым словом WHERE
 SELECT * FROM sales.sales
 WHERE store_id = 1000000123;
 
--- запрос с агрегацией, группировкой и сортировкой данных, а также выбором первых 5 строк:
+-- запрос с агрегацией, группировкой и сортировкой данных, а также выбором первых 5 строк
 SELECT s.store_id, SUM(s.product_units) AS product_amount
 FROM sales.sales AS s
 GROUP BY (s.store_id)
@@ -575,10 +575,10 @@ LIMIT 5;
 -- запрос к логическому представлению stores_by_sold_products
 SELECT * from stores_by_sold_products;
 ```
-### Подготовка данных к выгрузке и выгрузка в kafka-топик salesTopicOut:
+### Выгрузка в топик Kafka
 
 ```sql
--- создание внешней таблицы выгрузки
+-- создание внешней таблицы выгрузки в топик Kafka "salesTopicOut"
 CREATE DOWNLOAD EXTERNAL TABLE sales.sales_ext_download (
   identification_number INT,
   transaction_date TIMESTAMP,
@@ -595,7 +595,7 @@ CHUNK_SIZE 1000;
 INSERT INTO sales_ext_download 
 SELECT * FROM sales WHERE product_units > 2;
 ```
-### Удаление логических сущностей:
+### Удаление логических сущностей
 
 ```sql
 -- удаление внешней таблицы загрузки
