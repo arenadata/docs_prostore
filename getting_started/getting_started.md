@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: Начало работы с системой
-nav_order: 0
+nav_order: 2.5
 has_children: false
 has_toc: false
 ---
@@ -17,6 +17,9 @@ has_toc: false
 1. TOC
 {:toc}
 </details>
+
+В данном разделе описаны шаги по развёртыванию среды в конфигурации, предполагающей единственное хранилище - СУБД PostgreSQL. 
+Дополнительная информация приведена в разделе [Схемы развёртывания](../maintenance/deployment_diagrams/deployment_diagrams.md).
 
 ## Предустановленные программные средства
 *   OC Centos 7;
@@ -190,11 +193,11 @@ adp:
 ```plaintext
 # создание в СУБД Postgres SUPERUSER-пользователя c именем и паролем,
 # указанными в конфигурации Prostore
-# (значения параметров (adp: datasource: user: ${ADP_USERNAME:dtm}) и (adp: datasource: password: ${ADP_PASS:dtm}) соответственно)
+# (значения параметров (adp:datasource:user) и (adp:datasource:password) соответственно)
 cd /
 sudo -u postgres psql -c 'CREATE ROLE dtm WITH LOGIN SUPERUSER'
 sudo -u postgres psql -c "ALTER ROLE dtm WITH PASSWORD 'dtm'"
-# создание базы данных с именем test, указанным в конфигурации Prostore (env: name: ${DTM_NAME:test})
+# создание базы данных с именем test, указанным в конфигурации Prostore (env: name)
 sudo -u postgres psql -c 'CREATE DATABASE test'
 # перезапуск сервиса Postgresql
 sudo systemctl reload postgresql-13
@@ -210,10 +213,10 @@ mvn clean
 mvn install -DskipTests=true
 # приведение конфигурационных файлов kafka-postgres-writer и kafka-postgres-reader к виду,
 # показанному ниже, чтобы значения параметров совпадали со значениями соответствующих параметров конфигурации Prostore
-# datasource: postgres: database: ${POSTGRES_DB_NAME:} ~ env: name: ${DTM_NAME:},
-# datasource: postgres: user: ${POSTGRES_USERNAME:}    ~ adp: datasource: user: ${ADP_USERNAME:},
-# datasource: postgres: password: ${POSTGRES_PASS:}    ~ adp: datasource: password: ${ADP_PASS:},
-# datasource: postgres: hosts: ${POSTGRES_HOSTS:}      ~ adp: datasource: host: ${ADP_HOST:}, adp: datasource: port: ${ADP_PORT:}
+# datasource: postgres: database ~ env: name,
+# datasource: postgres: user     ~ adp: datasource: user,
+# datasource: postgres: password ~ adp: datasource: password,
+# datasource: postgres: hosts    ~ adp: datasource: host, adp: datasource: port
 sudo nano ~/kafka-postgres-connector/kafka-postgres-writer/src/main/resources/application-default.yml
 sudo nano ~/kafka-postgres-connector/kafka-postgres-reader/src/main/resources/application-default.yml
 # создание символических ссылок на файлы конфигурации
@@ -357,12 +360,8 @@ java -jar dtm-query-execution-core-<version>.jar
 ```
 ## Подключение к Prostore с помощью SQL-клиента
 
-(Порядок подключения описан в разделе [Подключение с помощью SQL-клиента](../working_with_system/connection/connection_via_sql_client/connection_via_sql_client.md))
+Порядок подключения описан в разделе [Подключение с помощью SQL-клиента](../working_with_system/connection/connection_via_sql_client/connection_via_sql_client.md).
 
-![](connect_DBeaver_settings.png)
-{: .figure-center}
-*Настройки JDBC-подключения SQL-клиента DBeaver к Prostore.*
-{: .figure-caption-center}
 
 ## Демонстрационный сценарий
 
