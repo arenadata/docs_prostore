@@ -370,10 +370,8 @@ java -jar dtm-query-execution-core-<version>.jar
 ```sql
 -- создание логической базы данных
 CREATE DATABASE sales;
-
 -- выбор логической БД по умолчанию
 USE sales;
-
 -- создание логической таблицы в БД sales
 CREATE TABLE sales (
   identification_number INT NOT NULL,
@@ -385,7 +383,6 @@ CREATE TABLE sales (
   PRIMARY KEY (identification_number)
 )
 DISTRIBUTED BY (identification_number);
-
 -- создание внешней таблицы загрузки
 CREATE UPLOAD EXTERNAL TABLE sales_ext_upload (
   identification_number INT,
@@ -398,7 +395,6 @@ CREATE UPLOAD EXTERNAL TABLE sales_ext_upload (
 LOCATION  'kafka://localhost:2181/salesTopic'
 FORMAT 'AVRO'
 MESSAGE_LIMIT 1000;
-
 -- создание логического представления stores_by_sold_products
 CREATE VIEW stores_by_sold_products AS
   SELECT store_id, SUM(product_units) AS product_amount
@@ -406,7 +402,6 @@ CREATE VIEW stores_by_sold_products AS
   GROUP BY store_id
   ORDER BY product_amount DESC
   LIMIT 30;
-  
 -- создание внешней таблицы выгрузки в топик Kafka "salesTopicOut"
 CREATE DOWNLOAD EXTERNAL TABLE sales.sales_ext_download (
   identification_number INT,
