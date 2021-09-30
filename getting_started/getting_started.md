@@ -406,6 +406,19 @@ CREATE VIEW stores_by_sold_products AS
   GROUP BY store_id
   ORDER BY product_amount DESC
   LIMIT 30;
+  
+-- создание внешней таблицы выгрузки в топик Kafka "salesTopicOut"
+CREATE DOWNLOAD EXTERNAL TABLE sales.sales_ext_download (
+  identification_number INT,
+  transaction_date TIMESTAMP,
+  product_code VARCHAR(256),
+  product_units INT,
+  store_id INT,
+  description VARCHAR(256)
+)
+LOCATION  'kafka://localhost:2181/salesTopicOut'
+FORMAT 'AVRO'
+CHUNK_SIZE 1000;
 ```
 ### Создание топика Kafka для последующей загрузки данных
 Создание топика Kafka "salesTopic" с помощью программы Offset Explorer (Kafka tool) или в терминале:
@@ -577,19 +590,6 @@ SELECT * from stores_by_sold_products;
 ### Выгрузка в топик Kafka
 
 ```sql
--- создание внешней таблицы выгрузки в топик Kafka "salesTopicOut"
-CREATE DOWNLOAD EXTERNAL TABLE sales.sales_ext_download (
-  identification_number INT,
-  transaction_date TIMESTAMP,
-  product_code VARCHAR(256),
-  product_units INT,
-  store_id INT,
-  description VARCHAR(256)
-)
-LOCATION  'kafka://localhost:2181/salesTopicOut'
-FORMAT 'AVRO'
-CHUNK_SIZE 1000;
-
 -- запуск выгрузки данных из логической таблицы sales
 INSERT INTO sales_ext_download 
 SELECT * FROM sales WHERE product_units > 2;
