@@ -1,12 +1,12 @@
 ﻿---
 layout: default
-title: Начало работы с системой
+title: Знакомство с системой
 nav_order: 2.5
 has_children: false
 has_toc: false
 ---
 
-# Начало работы с системой
+# Знакомство с системой
 {: .no_toc }
 
 <details markdown="block">
@@ -424,7 +424,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 ```
 ![](create_Topic_Offset_Explorer.png)
 {: .figure-center}
-*Создание топика Kafka с помощью программы Offset Explorer 2.1.*
+*Создание топика Kafka с помощью программы Offset Explorer*
 {: .figure-caption-center}
 
 ### Создание бинарного avro-файла kafka_upload_sales.avro из avro-схемы и данных
@@ -528,7 +528,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 {: .figure-caption-center}
 ### Загрузка avro-файла kafka_upload_sales.avro
 
-Загрузка avro-файла kafka_upload_sales.avro в поле “значение” топика Kafka "salesTopic" с помощью программы Offset Explorer 2.1:
+Загрузка avro-файла kafka_upload_sales.avro в поле “значение” топика Kafka "salesTopic" с помощью программы Offset Explorer:
 
 ![](load_Topic_Offset_Explorer.png)
 {: .figure-center}
