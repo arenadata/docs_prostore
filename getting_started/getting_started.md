@@ -576,14 +576,12 @@ COMMIT DELTA;
 -- запрос с неявным указанием столбцов и ключевым словом WHERE
 SELECT * FROM sales.sales
 WHERE store_id = 1000000123;
-
 -- запрос с агрегацией, группировкой и сортировкой данных, а также выбором первых 5 строк
 SELECT s.store_id, SUM(s.product_units) AS product_amount
 FROM sales.sales AS s
 GROUP BY (s.store_id)
 ORDER BY product_amount DESC
 LIMIT 5;
-
 -- запрос к логическому представлению stores_by_sold_products
 SELECT * from stores_by_sold_products;
 ```
@@ -599,16 +597,12 @@ SELECT * FROM sales WHERE product_units > 2;
 ```sql
 -- удаление внешней таблицы загрузки
 DROP UPLOAD EXTERNAL TABLE sales_ext_upload;
-
 -- удаление логического представления stores_by_sold_products
 DROP VIEW stores_by_sold_products;
-
 -- удаление внешней таблицы выгрузки
 DROP DOWNLOAD EXTERNAL TABLE sales_ext_download;
-
 -- удаление логической таблицы из всех СУБД
 DROP TABLE sales.sales;
-
 -- удаление логической базы данных
 DROP DATABASE sales;
 ```
