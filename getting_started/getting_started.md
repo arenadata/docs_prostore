@@ -516,9 +516,6 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 [сохранить](./kafka_upload_sales.avro) бинарный файл
 </details>
 
-### Задание конфигурации топика Kafka
-
-
 ### Загрузка avro-файла kafka_upload_sales.avro
 
 Загрузка avro-файла kafka_upload_sales.avro в поле “значение” топика Kafka "salesTopic" с помощью браузера топиков Kafka:
