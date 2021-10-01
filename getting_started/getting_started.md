@@ -524,7 +524,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 ```plaintext
 #получение docker-образа kafkacat
 sudo docker pull edenhill/kcat:1.7.0
-#запуск docker-образа kafkacat в топик salesTopic
+#запуск docker-образа kafkacat для загрузки в топик salesTopic
 #avro-файла /opt/kafka/sales/kafka_upload_sales.avro
 sudo docker run -it --network host \
 --volume /opt/kafka/sales/kafka_upload_sales.avro:/data/kafka_upload_sales.avro \
