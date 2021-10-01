@@ -417,6 +417,7 @@ FORMAT 'AVRO'
 CHUNK_SIZE 1000;
 ```
 ### Создание топика Kafka для последующей загрузки данных
+
 Создание топика Kafka "salesTopic" в терминале:
 
 ```plaintext
