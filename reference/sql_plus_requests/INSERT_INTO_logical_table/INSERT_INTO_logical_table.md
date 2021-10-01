@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: INSERT INTO logical_table
-nav_order: 28
+nav_order: 30
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false

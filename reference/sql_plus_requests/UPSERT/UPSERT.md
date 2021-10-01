@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: UPSERT
-nav_order: 34
+nav_order: 37
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
