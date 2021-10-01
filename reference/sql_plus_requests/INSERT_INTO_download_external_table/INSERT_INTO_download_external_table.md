@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: INSERT INTO download_external_table
-nav_order: 27
+nav_order: 29
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -31,9 +31,9 @@ has_toc: false
 {: .note-wrapper}
 
 Данные можно выгрузить из [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../../overview/main_concepts/main_concepts.md), 
-выбранной для выгрузки данных в [конфигурации](../../../maintenance/configuration/configuration.md) (см. параметр 
+выбранной для выгрузки данных в [конфигурации системы](../../../maintenance/configuration/system/system.md) (см. параметр 
 `EDML_DATASOURCE`), или любой указанной СУБД хранилища. Если в запросе не указана СУБД для выгрузки, 
-данные выгружаются из СУБД, заданной в конфигурации. Чтобы выгрузить данные из другой СУБД, нужно добавить 
+данные выгружаются из СУБД, заданной в конфигурации системы. Чтобы выгрузить данные из другой СУБД, нужно добавить 
 в запрос ключевое слово `DATASOURCE_TYPE` с псевдонимом СУБД.
 
 Запрос обрабатывается в порядке, описанном в разделе 

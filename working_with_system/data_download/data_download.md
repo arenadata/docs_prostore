@@ -18,7 +18,7 @@ has_children: false
 {: .note-wrapper}
 
 Данные можно выгрузить из [СУБД](../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../overview/main_concepts/main_concepts.md),
-выбранной для выгрузки данных в [конфигурации](../../maintenance/configuration/configuration.md) системы (см. параметр
+выбранной для выгрузки данных в [конфигурации системы](../../maintenance/configuration/system/system.md) (см. параметр
 `EDML_DATASOURCE`), или любой 
 [указанной СУБД хранилища](../../reference/sql_plus_requests/INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md#param_datasource_type).
 Возможные способы выбора выгружаемых данных см. в секции [FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time)

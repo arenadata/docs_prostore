@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: ROLLBACK DELTA
-nav_order: 30
+nav_order: 33
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -37,8 +37,7 @@ has_toc: false
    [обновления данных](../../../working_with_system/data_update/data_update.md).
    <br>При этом операции, вызванные функцией загрузки данных, останавливаются асинхронно, и система периодически 
    проверяет, остались ли неостановленные операции записи. Проверка запускается раз в интервал, равный значению 
-   параметра `DELTA_ROLLBACK_STATUS_CALLS_MS` в [конфигурации](../../../maintenance/configuration/configuration.md) 
-   системы.
+   параметра `DELTA_ROLLBACK_STATUS_CALLS_MS` в [конфигурации системы](../../../maintenance/configuration/system/system.md).
 2. Отменяются все операции записи горячей дельты: остановленные, завершенные успешно и завершенные с ошибкой. 
    При этом отменяются все связанные изменения данных.
 3. Горячая дельта удаляется из [сервисной базы данных](../../../overview/main_concepts/service_db/service_db.md),

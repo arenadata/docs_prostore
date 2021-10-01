@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: CONFIG_STORAGE_ADD
-nav_order: 9
+nav_order: 10
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -17,7 +17,7 @@ has_toc: false
 данные в нее.
 
 Перед выполнением запроса необходимо добавить параметры СУБД 
-в [конфигурацию](../../../maintenance/configuration/configuration.md) системы.
+в [конфигурацию системы](../../../maintenance/configuration/system/system.md).
 {: .note-wrapper}
 
 В ответе возвращается:

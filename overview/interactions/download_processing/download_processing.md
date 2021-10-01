@@ -17,7 +17,7 @@ has_toc: false
 3.  Сервис исполнения запросов анализирует запрос и запрашивает актуальную информацию о 
     [логической схеме данных](../../main_concepts/logical_schema/logical_schema.md) 
     в [сервисной базе данных](../../main_concepts/service_db/service_db.md).
-4.  Сервис исполнения запросов на основании [конфигурации](../../../maintenance/configuration/configuration.md) 
+4.  Сервис исполнения запросов на основании [конфигурации системы](../../../maintenance/configuration/system/system.md) 
     определяет, для какой [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
     [хранилища](../../main_concepts/data_storage/data_storage.md) данных предназначен запрос, 
     и отправляет в соответствующий коннектор команду на выгрузку данных из этой СУБД.
