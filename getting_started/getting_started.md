@@ -1,12 +1,12 @@
 ﻿---
 layout: default
-title: Знакомство с системой
+title: Сборка и развёртывание
 nav_order: 2.5
 has_children: false
 has_toc: false
 ---
 
-# Знакомство с системой
+# Сборка и развёртывание
 {: .no_toc }
 
 <details markdown="block">
@@ -34,7 +34,7 @@ has_toc: false
 *   Apache Kafka (например, в каталоге /opt/kafka);
 *   Apache Avro (например, в каталоге /opt/avro);
 *   SQL-клиент, например DBeaver;
-*   Браузер топиков Kafka, например Offset Explorer 2.1.
+*   Браузер топиков Kafka с возможностью загрузки бинарных данных.
 
 ## Сборка Prostore
 
@@ -416,16 +416,13 @@ FORMAT 'AVRO'
 CHUNK_SIZE 1000;
 ```
 ### Создание топика Kafka для последующей загрузки данных
-Создание топика Kafka "salesTopic" с помощью программы Offset Explorer (Kafka tool) или в терминале:
+
+Создание топика Kafka "salesTopic" в терминале:
 
 ```plaintext
 cd /opt/kafka/bin
 bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic salesTopic --zookeeper localhost:2181
 ```
-![](create_Topic_Offset_Explorer.png)
-{: .figure-center}
-*Создание топика Kafka с помощью программы Offset Explorer*
-{: .figure-caption-center}
 
 ### Создание бинарного avro-файла kafka_upload_sales.avro из avro-схемы и данных
 
@@ -520,23 +517,10 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 [сохранить](./kafka_upload_sales.avro) бинарный файл
 </details>
 
-### Задание конфигурации топика Kafka
-
-![](config_Topic_Offset_Explorer.png)
-{: .figure-center}
-*Конфигурация топика Kafka, которая не использует поле ключа*
-{: .figure-caption-center}
 ### Загрузка avro-файла kafka_upload_sales.avro
 
-Загрузка avro-файла kafka_upload_sales.avro в поле “значение” топика Kafka "salesTopic" с помощью программы Offset Explorer:
-
-![](load_Topic_Offset_Explorer.png)
-{: .figure-center}
-*Загрузка avro-файла в топик Kafka*
-{: .figure-caption-center}
-
+Загрузка avro-файла kafka_upload_sales.avro в поле “значение” топика Kafka "salesTopic" с помощью браузера топиков Kafka:
  
-
 ### Загрузка данных
 
 ```sql
