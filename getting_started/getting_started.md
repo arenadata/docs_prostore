@@ -34,7 +34,8 @@ has_toc: false
 *   Apache Kafka (например, в каталоге /opt/kafka);
 *   Apache Avro (например, в каталоге /opt/avro);
 *   SQL-клиент, например DBeaver;
-*   Браузер топиков Kafka с возможностью загрузки бинарных данных.
+*   docker;
+*   Браузер топиков Kafka с возможностью загрузки бинарных данных, например kafkacat.
 
 ## Сборка Prostore
 
@@ -518,7 +519,16 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 
 ### Загрузка avro-файла kafka_upload_sales.avro
 
-Загрузка avro-файла kafka_upload_sales.avro в поле “значение” топика Kafka "salesTopic" с помощью браузера топиков Kafka:
+Загрузка avro-файла kafka_upload_sales.avro в топик Kafka "salesTopic" через терминал с помощью kafkacat:
+```plaintext
+#получение docker-образа kafkacat
+sudo docker pull edenhill/kcat:1.7.0
+#запуск docker-образа kafkacat для в топик salesTopic
+#avro-файла /opt/kafka/sales/kafka_upload_sales.avro
+sudo docker run -it --network host \
+--volume /opt/kafka/sales/kafka_upload_sales.avro:/data/kafka_upload_sales.avro \
+edenhill/kcat:1.7.0 -b localhost:9092 -t salesTopic -P /data/kafka_upload_sales.avro
+ ```
  
 ### Загрузка данных
 
