@@ -115,7 +115,7 @@ DATASOURCE_TYPE = 'ADQM'
 SELECT *
 FROM sales.sales AS s
 FULL JOIN sales.stores AS st
-ON s.store_id = st.identification_number
+ON s.store_id = st.id
 ORDER BY s.store_id
 LIMIT 5
 DATASOURCE_TYPE = 'ADG'
@@ -142,7 +142,7 @@ SELECT *
 FROM sales.sales AS s
 INNER JOIN
 (SELECT * FROM sales.stores) AS st
-ON s.store_id = st.identification_number
+ON s.store_id = st.id
 ORDER BY s.store_id
 DATASOURCE_TYPE = 'ADQM'
 ```
@@ -153,8 +153,8 @@ DATASOURCE_TYPE = 'ADQM'
 SELECT *
 FROM sales.sales AS s
 RIGHT JOIN sales.stores AS st
-ON s.store_id = st.identification_number
-ORDER BY st.identification_number
+ON s.store_id = st.id
+ORDER BY st.id
 LIMIT 5
 DATASOURCE_TYPE = 'ADG'
 ```
