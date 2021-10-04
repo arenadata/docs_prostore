@@ -96,42 +96,42 @@ CREATE TABLE [db_name.]table_name (
 
 ```sql
 CREATE TABLE sales.sales (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   transaction_date TIMESTAMP NOT NULL,
   product_code VARCHAR(256) NOT NULL,
   product_units INT NOT NULL,
   store_id INT NOT NULL,
   description VARCHAR(256),
-  PRIMARY KEY (identification_number)
+  PRIMARY KEY (id)
 )
-DISTRIBUTED BY (identification_number)
+DISTRIBUTED BY (id)
 ```
 
 ### Создание таблицы с составным первичным ключом {#example_with_compound_pk}
 
 ```sql
 CREATE TABLE sales.stores (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   category VARCHAR(256) NOT NULL,
   region VARCHAR(256) NOT NULL,
   address VARCHAR(256) NOT NULL,
   description VARCHAR(256),
-  PRIMARY KEY (identification_number, region)
+  PRIMARY KEY (id, region)
 )
-DISTRIBUTED BY (identification_number)
+DISTRIBUTED BY (id)
 ```
 
 ### Создание таблицы с размещением данных в ADQM и ADG {#example_with_adqm_adg}
 
 ```sql
 CREATE TABLE sales.clients (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   first_name VARCHAR(256) NOT NULL,
   last_name VARCHAR(256) NOT NULL,
   patronymic_name VARCHAR(256),
   birth_date DATE,
-  PRIMARY KEY (identification_number)
-) DISTRIBUTED BY (identification_number)
+  PRIMARY KEY (id)
+) DISTRIBUTED BY (id)
 DATASOURCE_TYPE (adqm,adg)
 ```
 
@@ -139,14 +139,14 @@ DATASOURCE_TYPE (adqm,adg)
 
 ```sql
 CREATE TABLE sales.sales1 (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   transaction_date TIMESTAMP NOT NULL,
   product_code VARCHAR(256) NOT NULL,
   product_units INT NOT NULL,
   store_id INT NOT NULL,
   description VARCHAR(256),
-  PRIMARY KEY (identification_number)
+  PRIMARY KEY (id)
 )
-DISTRIBUTED BY (identification_number)
+DISTRIBUTED BY (id)
 LOGICAL_ONLY
 ```

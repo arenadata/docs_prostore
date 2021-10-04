@@ -107,15 +107,15 @@ DATASOURCE_TYPE = origin_datasource_alias
 
 ```sql
 CREATE MATERIALIZED VIEW sales.sales_december_2020 (
-identification_number INT NOT NULL,
+id INT NOT NULL,
 transaction_date TIMESTAMP NOT NULL,
 product_code VARCHAR(256) NOT NULL,
 product_units INT NOT NULL,
 store_id INT NOT NULL,
 description VARCHAR(256),
-PRIMARY KEY (identification_number)
+PRIMARY KEY (id)
 )
-DISTRIBUTED BY (identification_number)
+DISTRIBUTED BY (id)
 DATASOURCE_TYPE (adg)
 AS SELECT * FROM sales.sales
    WHERE transaction_date BETWEEN '2020-12-01' AND '2020-12-31'
@@ -143,7 +143,7 @@ DATASOURCE_TYPE = 'adb'
 
 ```sql
 CREATE MATERIALIZED VIEW sales.sales_and_stores (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   transaction_date TIMESTAMP NOT NULL,
   product_code VARCHAR(256) NOT NULL,
   product_units INT NOT NULL,
@@ -151,16 +151,16 @@ CREATE MATERIALIZED VIEW sales.sales_and_stores (
   store_id INT NOT NULL,
   store_category VARCHAR(256) NOT NULL,
   region VARCHAR(256) NOT NULL,
-  PRIMARY KEY (identification_number, region)
+  PRIMARY KEY (id, region)
 )
-DISTRIBUTED BY (identification_number)
+DISTRIBUTED BY (id)
 DATASOURCE_TYPE (adg)
 AS SELECT
- s.identification_number, s.transaction_date, s.product_code, s.product_units, s.description,
- st.identification_number AS store_id, st.category as store_category, st.region
+ s.id, s.transaction_date, s.product_code, s.product_units, s.description,
+ st.id AS store_id, st.category as store_category, st.region
  FROM sales.sales AS s
  JOIN sales.stores AS st
- ON s.store_id = st.identification_number
+ ON s.store_id = st.id
 DATASOURCE_TYPE = 'adb'
 ```
 
