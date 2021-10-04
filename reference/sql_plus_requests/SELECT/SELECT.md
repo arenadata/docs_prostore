@@ -333,10 +333,10 @@ SELECT * from sales.sales FETCH NEXT 20 ROWS ONLY OFFSET 9
 
 ### ORDER BY, LIMIT и OFFSET {#offset_and_order_by_example}
 
-Запрос 20 строк, упорядоченных по значению `identification_number` и выбираемых начиная с десятой строки 
+Запрос 20 строк, упорядоченных по значению `id` и выбираемых начиная с десятой строки 
 результата:
 ```sql
-SELECT * from sales.sales ORDER BY identification_number LIMIT 20 OFFSET 9
+SELECT * from sales.sales ORDER BY id LIMIT 20 OFFSET 9
 ```
 
 Такое сочетание ключевых слов позволяет выбирать данные порциями с сохранением их порядка.
@@ -353,12 +353,12 @@ SELECT * FROM sales.sales_and_stores FOR SYSTEM_TIME AS OF DELTA_NUM 9
 Запрос с соединением данных двух логических таблиц из двух различных логических БД:
 ```sql
 SELECT
-  st.identification_number,
+  st.id,
   st.category,
   s.product_code
 FROM sales.stores FOR SYSTEM_TIME AS OF LATEST_UNCOMMITTED_DELTA AS st
 INNER JOIN sales2.sales FOR SYSTEM_TIME AS OF LATEST_UNCOMMITTED_DELTA AS s
-  ON st.identification_number = s.store_id
+  ON st.id = s.store_id
 ```
 
 ### Соединение изменений из разных дельт {#deltas_example}

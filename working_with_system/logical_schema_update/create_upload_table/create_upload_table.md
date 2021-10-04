@@ -34,7 +34,7 @@ USE sales;
 
 -- создание внешней таблицы загрузки
 CREATE UPLOAD EXTERNAL TABLE sales.sales_ext_upload (
-  identification_number INT,
+  id INT,
   transaction_date TIMESTAMP,
   product_code VARCHAR(256),
   product_units INT,

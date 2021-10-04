@@ -68,7 +68,7 @@ CHECK_DATA([db_name.]table_name, delta_number[, normalization][, square-brackete
     увеличивается пропорционально. Если количество записей в какой-либо из дельт больше допустимого, в ответе
     возвращается исключение;
 *   `square_bracketed_column_list` (опциональный) — список проверяемых столбцов таблицы. Элементы списка должны быть 
-    указаны в квадратных скобках через запятую, например `[identification_number, transaction_date]`. 
+    указаны в квадратных скобках через запятую, например `[id, transaction_date]`. 
     Если столбцы указаны, проверяется контрольная сумма загруженных записей в каждой дельте, иначе — 
     количество таких записей.
     
@@ -100,9 +100,9 @@ CHECK_DATA(sales.stores75, 0)
 
 ### Запрос с перечислением столбцов {#example_with_columns}
 
-Проверка целостности данных столбцов `identification_number`, `transaction_date` и `product_code` таблицы `sales`:
+Проверка целостности данных столбцов `id`, `transaction_date` и `product_code` таблицы `sales`:
 ```sql
-CHECK_DATA(sales.sales, 10, [identification_number, transaction_date, product_code])
+CHECK_DATA(sales.sales, 10, [id, transaction_date, product_code])
 ```
 
 На рисунке ниже показан пример ответа на запрос `CHECK_DATA` по столбцам таблицы при наличии расхождений: 
@@ -117,7 +117,7 @@ CHECK_DATA(sales.sales, 10, [identification_number, transaction_date, product_co
 
 Проверка целостности данных некоторых столбцов таблицы `sales` с коэффициентом нормализации 100:
 ```sql
-CHECK_DATA(sales.sales, 12, 100, [identification_number, transaction_date, product_code])
+CHECK_DATA(sales.sales, 12, 100, [id, transaction_date, product_code])
 ```
 
 На рисунке ниже показан пример ответа на такой запрос.
@@ -171,7 +171,7 @@ CHECK_DATA(sales.sales, 12, 100, [identification_number, transaction_date, produ
 
 Рассмотрим пример расчета контрольной суммы таблицы `sales` в дельте, в которой была загружена одна 
 запись со следующими значениями:
-* `identification_number` = 10021, 
+* `id` = 10021, 
 * `transaction_date` = 2020-11-17 21:11:12, 
 * `product_code` = ABC1830.
 

@@ -71,7 +71,7 @@ has_toc: false
   "type": "record",
   "fields": [
     {
-      "name": "identification_number",
+      "name": "id",
       "type": "long"
     },
     {
@@ -113,7 +113,7 @@ has_toc: false
 ```json
 [
   {
-    "identification_number": 1000111,
+    "id": 1000111,
     "transaction_date": 1614269474000000,
     "product_code": "ABC102101",
     "product_units": 2,
@@ -122,7 +122,7 @@ has_toc: false
     "sys_op": 0
   },
   {
-    "identification_number": 1000112,
+    "id": 1000112,
     "transaction_date": 1614334214000000,
     "product_code": "ABC102001",
     "product_units": 1,
@@ -131,7 +131,7 @@ has_toc: false
     "sys_op": 0
   },
   {
-    "identification_number": 1000020,
+    "id": 1000020,
     "transaction_date": 1614636614000000,
     "product_code": "ABC102010",
     "product_units": 4,

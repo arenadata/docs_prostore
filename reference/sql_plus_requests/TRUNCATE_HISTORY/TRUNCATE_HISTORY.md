@@ -82,8 +82,8 @@ TRUNCATE HISTORY sales.sales FOR SYSTEM_TIME AS OF '2019-12-23 15:15:14'
 WHERE product_units < 10
 ```
 Удаление всех актуальных и архивных записей таблицы `stores`, в которых значение столбца 
-`identification_number` равно `123456`:
+`id` равно `123456`:
 ```sql
 TRUNCATE HISTORY sales.stores FOR SYSTEM_TIME AS OF 'infinite'
-WHERE identification_number = 123456
+WHERE id = 123456
 ```

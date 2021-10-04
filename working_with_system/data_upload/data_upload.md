@@ -61,19 +61,19 @@ USE sales;
 
 -- создание логической таблицы sales
 CREATE TABLE sales (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   transaction_date TIMESTAMP NOT NULL,
   product_code VARCHAR(256) NOT NULL,
   product_units INT NOT NULL,
   store_id INT NOT NULL,
   description VARCHAR(256),
-  PRIMARY KEY (identification_number)
+  PRIMARY KEY (id)
 )
-DISTRIBUTED BY (identification_number);
+DISTRIBUTED BY (id);
 
 -- создание внешней таблицы загрузки
 CREATE UPLOAD EXTERNAL TABLE sales_ext_upload (
-  identification_number INT,
+  id INT,
   transaction_date TIMESTAMP,
   product_code VARCHAR(256),
   product_units INT,

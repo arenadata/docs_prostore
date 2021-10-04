@@ -49,7 +49,7 @@ USE sales;
 
 -- создание внешней таблицы выгрузки sales_ext_download
 CREATE DOWNLOAD EXTERNAL TABLE sales_ext_download (
-  identification_number INT,
+  id INT,
   transaction_date TIMESTAMP,
   product_code VARCHAR(256),
   product_units INT,
@@ -66,7 +66,7 @@ SELECT * FROM sales WHERE product_units > 2 FOR SYSTEM_TIME AS OF DELTA_NUM 10;
 
 -- создание внешней таблицы выгрузки stores_ext_download
 CREATE DOWNLOAD EXTERNAL TABLE sales.stores_ext_download (
-identification_number INT NOT NULL,
+id INT NOT NULL,
 category VARCHAR(256) NOT NULL,
 region VARCHAR(256) NOT NULL,
 address VARCHAR(256) NOT NULL,

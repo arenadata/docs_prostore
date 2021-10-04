@@ -109,7 +109,7 @@ BEGIN DELTA;
 
 -- вставка двух записей в логическую таблицу sales (без указания значения столбца description)
 UPSERT INTO sales.sales 
-       (identification_number, transaction_date, product_code, product_units, store_id)
+       (id, transaction_date, product_code, product_units, store_id)
 VALUES (100014, '2021-08-23 09:34:10', 'ABC0003', 3, 123), 
        (100012, '2021-08-23 20:05:56', 'ABC0001', 6, 234);
 

@@ -64,7 +64,7 @@ has_toc: false
   "type": "record",
   "fields": [
     {
-      "name": "identification_number",
+      "name": "id",
       "type": "long"
     },
     {
@@ -98,7 +98,7 @@ has_toc: false
 ```json
 [
   {
-    "identification_number": 1000111,
+    "id": 1000111,
     "transaction_date": 1614269474000000,
     "product_code": "ABC102101",
     "product_units": 2,
@@ -106,7 +106,7 @@ has_toc: false
     "description": "Покупка по акции 1+1"
   },
   {
-    "identification_number": 1000112,
+    "id": 1000112,
     "transaction_date": 1614334214000000,
     "product_code": "ABC102001",
     "product_units": 1,
