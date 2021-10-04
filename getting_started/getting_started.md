@@ -352,13 +352,27 @@ sudo ln -s ~/prostore/dtm-status-monitor/src/main/resources/application.yml ~/pr
 cd ~/prostore/dtm-status-monitor/target
 java -Dspring.profiles.active=default -Dserver.port=9095 -jar dtm-status-monitor-<version>.jar
 ```
+***Примечание:*** Запуск службы dtm-status-monitor без указания порта `-Dserver.port`
+ приведёт к конкуренции с сервисом Prostore за использование последним порта по умолчанию `8080`.
+
 ## Запуск Prostore
+
+Запуск со значением по умолчанию (8080) для порта (management:server:port) в конфигурации Prostore:
 
 ```plaintext
 # запуск файла dtm-query-execution-core-<version>.jar (например, dtm-query-execution-core-5.1.0.jar)
 cd ~/prostore/dtm-query-execution-core/target
 java -jar dtm-query-execution-core-<version>.jar
 ```
+
+Запуск с иным заданным значением <DTM_METRICS_PORT> для порта (management:server:port) в конфигурации Prostore:
+
+```plaintext
+# запуск файла dtm-query-execution-core-<version>.jar с использованием порта <DTM_METRICS_PORT>
+cd ~/prostore/dtm-query-execution-core/target
+java -Dserver.port=<DTM_METRICS_PORT> -jar dtm-query-execution-core-<version>.jar
+```
+
 ## Подключение к Prostore с помощью SQL-клиента
 
 Порядок подключения описан в разделе [Подключение с помощью SQL-клиента](../working_with_system/connection/connection_via_sql_client/connection_via_sql_client.md).
@@ -375,18 +389,18 @@ CREATE DATABASE sales;
 USE sales;
 -- создание логической таблицы в БД sales
 CREATE TABLE sales (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   transaction_date TIMESTAMP NOT NULL,
   product_code VARCHAR(256) NOT NULL,
   product_units INT NOT NULL,
   store_id INT NOT NULL,
   description VARCHAR(256),
-  PRIMARY KEY (identification_number)
+  PRIMARY KEY (id)
 )
-DISTRIBUTED BY (identification_number);
+DISTRIBUTED BY (id);
 -- создание внешней таблицы загрузки
 CREATE UPLOAD EXTERNAL TABLE sales_ext_upload (
-  identification_number INT,
+  id INT,
   transaction_date TIMESTAMP,
   product_code VARCHAR(256),
   product_units INT,
@@ -405,7 +419,7 @@ CREATE VIEW stores_by_sold_products AS
   LIMIT 30;
 -- создание внешней таблицы выгрузки в топик Kafka "salesTopicOut"
 CREATE DOWNLOAD EXTERNAL TABLE sales.sales_ext_download (
-  identification_number INT,
+  id INT,
   transaction_date TIMESTAMP,
   product_code VARCHAR(256),
   product_units INT,
@@ -439,7 +453,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
   "type": "record",
   "fields": [
     {
-	  "name": "identification_number",
+	  "name": "id",
 	  "type": "long"
     },
     {
@@ -481,7 +495,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
   {: .text-delta }
 ```json
 {
-  "identification_number": 1000111,
+  "id": 1000111,
   "transaction_date": 1614269474000000,
   "product_code": "ABC102101",
   "product_units": 2,
@@ -490,7 +504,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
   "sys_op": 0
 }
 {
-  "identification_number": 1000112,
+  "id": 1000112,
   "transaction_date": 1614334214000000,
   "product_code": "ABC102001",
   "product_units": 1,
@@ -499,7 +513,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
   "sys_op": 0
 }
 {
-  "identification_number": 1000020,
+  "id": 1000020,
   "transaction_date": 1614636614000000,
   "product_code": "ABC102010",
   "product_units": 4,
@@ -548,7 +562,7 @@ COMMIT DELTA;
 BEGIN DELTA;
 -- запуск вставки данных в логическую таблицу sales
 UPSERT INTO sales.sales
-(identification_number, transaction_date, product_code, product_units, store_id, description)
+(id, transaction_date, product_code, product_units, store_id, description)
 VALUES
 (2000111, '2020-05-01 13:14:16', 'ABC202010', 7, 1000000123, 'Покупка без акций'),
 (2000112, '2020-05-02 16:13:17', 'ABC202011', 11, 1000000456, 'Покупка без акций'),
