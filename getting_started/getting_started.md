@@ -586,14 +586,8 @@ SELECT * FROM sales WHERE product_units > 2;
 ```sql
 -- удаление внешней таблицы загрузки
 DROP UPLOAD EXTERNAL TABLE sales_ext_upload;
--- удаление логического представления stores_by_sold_products
-DROP VIEW stores_by_sold_products;
 -- удаление внешней таблицы выгрузки
 DROP DOWNLOAD EXTERNAL TABLE sales_ext_download;
--- удаление логической таблицы из всех СУБД
-DROP TABLE sales.sales;
--- удаление логической базы данных
-DROP DATABASE sales;
 ```
 
 
