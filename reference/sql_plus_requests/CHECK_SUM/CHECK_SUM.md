@@ -84,7 +84,7 @@ CHECK_SUM(delta_num[, normalization][, [db_name.]entity_name[, square-bracketed_
 
 Расчет контрольной суммы по трем столбцам таблицы `sales` в десятой дельте:
 ```sql
-CHECK_SUM(10,sales.sales,[identification_number, transaction_date, product_code])
+CHECK_SUM(10,sales.sales,[id, transaction_date, product_code])
 ```
 
 На рисунках ниже показаны примеры ответов на запрос `CHECK_SUM` с перечислением столбцов: 

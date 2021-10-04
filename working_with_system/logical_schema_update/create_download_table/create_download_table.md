@@ -31,7 +31,7 @@ USE sales
 
 -- создание внешней таблицы выгрузки
 CREATE DOWNLOAD EXTERNAL TABLE sales.sales_ext_download (
-  identification_number INT,
+  id INT,
   transaction_date TIMESTAMP,
   product_code VARCHAR(256),
   product_units INT,

@@ -64,20 +64,20 @@ has_toc: false
 ```sql
 SELECT * FROM sales.sales AS s
 JOIN sales.stores AS st
-ON s.store_id = st.identification_number
+ON s.store_id = st.id
 ```
 
-Реляционный запрос, который включает агрегацию, группировку и чтение по ключу (`st.identification_number`):
+Реляционный запрос, который включает агрегацию, группировку и чтение по ключу (`st.id`):
 ```sql
 SELECT
-st.identification_number,
+st.id,
 st.category,
 SUM(s.product_units) AS product_amount
 FROM sales.stores AS st
 JOIN sales.sales AS s
-ON st.identification_number = s.store_id
-WHERE st.identification_number <> 10004
-GROUP BY st.identification_number, st.category
+ON st.id = s.store_id
+WHERE st.id <> 10004
+GROUP BY st.id, st.category
 ORDER BY product_amount DESC
 ```
 
@@ -91,11 +91,11 @@ GROUP BY s.product_code
 ORDER BY product_amount ASC
 ```
 
-Запрос агрегации и группировки, который включает чтение по ключу (`s.identification_number`):
+Запрос агрегации и группировки, который включает чтение по ключу (`s.id`):
 ```sql
 SELECT s.product_code, SUM(s.product_units) AS product_amount
 FROM sales.sales AS s
-WHERE s.identification_number > 20000
+WHERE s.id > 20000
 GROUP BY s.product_code
 ```
 
@@ -103,7 +103,7 @@ GROUP BY s.product_code
 
 ```sql
 SELECT * FROM sales.sales as s
-WHERE s.identification_number BETWEEN 1001 AND 2000
+WHERE s.id BETWEEN 1001 AND 2000
 ```
 
 ### Запрос неопределенной категории {#undefined}

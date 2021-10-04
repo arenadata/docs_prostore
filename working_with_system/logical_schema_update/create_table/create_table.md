@@ -36,30 +36,30 @@ USE sales
 
 -- создание таблицы sales
 CREATE TABLE sales (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   transaction_date TIMESTAMP NOT NULL,
   product_code VARCHAR(256) NOT NULL,
   product_units INT NOT NULL,
   store_id INT NOT NULL,
   description VARCHAR(256),
-  PRIMARY KEY (identification_number)
+  PRIMARY KEY (id)
 )
-DISTRIBUTED BY (identification_number)
+DISTRIBUTED BY (id);
 ```
 
 ### Создание логической таблицы только на логическом уровне {#logical_example}
 
 ```sql
 CREATE TABLE sales.sales1 (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   transaction_date TIMESTAMP NOT NULL,
   product_code VARCHAR(256) NOT NULL,
   product_units INT NOT NULL,
   store_id INT NOT NULL,
   description VARCHAR(256),
-  PRIMARY KEY (identification_number)
+  PRIMARY KEY (id)
 )
-DISTRIBUTED BY (identification_number)
+DISTRIBUTED BY (id)
 LOGICAL_ONLY
 ```
 
@@ -67,12 +67,12 @@ LOGICAL_ONLY
 
 ```sql
 CREATE TABLE sales.clients (
-  identification_number INT NOT NULL,
+  id INT NOT NULL,
   first_name VARCHAR(256) NOT NULL,
   last_name VARCHAR(256) NOT NULL,
   patronymic_name VARCHAR(256),
   birth_date DATE,
-  PRIMARY KEY (identification_number)
-) DISTRIBUTED BY (identification_number)
+  PRIMARY KEY (id)
+) DISTRIBUTED BY (id)
 DATASOURCE_TYPE (adqm,adg)
 ```
