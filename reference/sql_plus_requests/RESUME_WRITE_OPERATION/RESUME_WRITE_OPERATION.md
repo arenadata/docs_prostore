@@ -1,6 +1,6 @@
 ﻿---
 layout: default
-title: RESUME WRITE OPERATION
+title: RESUME_WRITE_OPERATION
 nav_order: 31
 parent: Запросы SQL+
 grand_parent: Справочная информация
@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# RESUME WRITE OPERATION
+# RESUME_WRITE_OPERATION
 
 Запрос позволяет возобновить обработку заблокированных 
 [операций записи](../../../overview/main_concepts/write_operation/write_operation.md) горячей 
