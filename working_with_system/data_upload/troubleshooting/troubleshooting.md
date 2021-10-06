@@ -10,29 +10,20 @@ has_toc: false
 
 # Разбор ошибок загрузки и обновления данных {#upload_troubleshooting}
 
-При возникновении ошибок во время [загрузки](../../data_upload/data_upload.md) или 
+В случае возникновения ошибок во время [загрузки](../../data_upload/data_upload.md) или 
 [обновления данных](../../data_update/data_update.md) система отменяет неуспешные 
-[операции записи](../../../overview/main_concepts/write_operation/write_operation.md) и возвращает данные 
-в состояние, которое предшествовало загрузке или обновлению. Однако в случае сбоя (например, неполадок в сети) операция 
-может остаться заблокированной в состоянии выполнения или отмены. В этом случае нужно не только устранить причину ошибки, 
-но и привести горячую [дельту](../../../overview/main_concepts/delta/delta.md) в корректное состояние, возобновив и (или) отменив 
-заблокированные операции.
+[операции записи](../../../overview/main_concepts/write_operation/write_operation.md) (далее — операции) и возвращает данные 
+в состояние, которое предшествовало загрузке или обновлению. Основные причины ошибок см. в [секции ниже](##error_reasons).
 
-Все действия по устранению ошибок загрузки и обновления данных необходимо выполнять после завершения загрузки и обновления 
-данных, то есть после получения ответа на соответствующий запрос.
-{: .note-wrapper}
-
-Чтобы устранить ошибки загрузки и обновления данных:
-1. Выполните запрос [GET_WRITE_OPERATIONS](../../../reference/sql_plus_requests/GET_WRITE_OPERATIONS/GET_WRITE_OPERATIONS.md).
-   *  Если в ответе присутствуют операции записи со статусом 0 («Выполняется») и исходным запросом 
-      [UPSERT](../../../reference/sql_plus_requests/UPSERT/UPSERT.md), 
-      [UPSERT SELECT](../../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md) или 
-      [DELETE](../../../reference/sql_plus_requests/DELETE/DELETE.md), выполните запрос
-      [ROLLBACK DELTA](../../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md) для отмены изменений по 
-      **всем** операциям горячей дельты.
-   * Иначе выполните запрос [RESUME_WRITE_OPERATION](../../../reference/sql_plus_requests/RESUME_WRITE_OPERATION/RESUME_WRITE_OPERATION.md)
-     для возобновления заблокированных операций записи.
-2. Устраните причину ошибки и повторите загрузку данных. Основные причины ошибок см. ниже.
+При необходимости используйте следующие запросы для управления процессами загрузки и обновления данных:
+* [GET_WRITE_OPERATIONS](../../../reference/sql_plus_requests/GET_WRITE_OPERATIONS/GET_WRITE_OPERATIONS.md) — возвращает 
+  информацию обо всех операциях горячей [дельты](../../../overview/main_concepts/delta/delta.md);
+* [RESUME_WRITE_OPERATION](../../../reference/sql_plus_requests/RESUME_WRITE_OPERATION/RESUME_WRITE_OPERATION.md) — 
+  возобновляет обработку операций горячей дельты, находящихся в статусе «Выполняется» и «Ошибка»;
+* [ROLLBACK CRASHED_WRITE_OPERATIONS](../../../reference/sql_plus_requests/ROLLBACK_CRASHED_WRITE_OPERATIONS/ROLLBACK_CRASHED_WRITE_OPERATIONS.md) — 
+  возобновляет обработку операций горячей дельты, находящихся в статусе «Ошибка»;
+* [ROLLBACK DELTA](../../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md) — отменяет все операции 
+  горячей дельты.
 
 ## Основные причины ошибок загрузки и обновления данных {#error_reasons}
 
@@ -42,19 +33,24 @@ has_toc: false
   [логической таблицей](../../../overview/main_concepts/logical_table/logical_table.md) или 
   [внешней таблицей](../../../overview/main_concepts/external_table/external_table.md) загрузки (кроме поля `sys_op`, 
   которое должно присутствовать в сообщениях, но должно отсутствовать в таблицах);
-* недостаточная продолжительность одного или нескольких интервалов ожидания, используемых при работе с брокером сообщений 
-  Kafka (см. параметры <> в [конфигурации системы](../../../maintenance/configuration/system/system.md));
-* расхождение времени между серверами инсталляции;
+* некорректный [путь к топику Kafka](../../../reference/path_to_kafka_topic/path_to_kafka_topic.md) в настройках 
+  внешней таблицы загрузки;
+* недостаточная продолжительность одного или нескольких интервалов ожидания, заданных в
+  [конфигурации системы](../../../maintenance/configuration/system/system.md) и используемых при работе с брокером 
+  сообщений Kafka;
 * некорректные настройки сервиса мониторинга статусов Kafka в конфигурации системы;
-* некорректная установка коннектора для загрузки данных;
-* некорректный путь к топику Kafka в настройках внешней таблицы загрузки.
+* расхождения времени между серверами инсталляции;
+* некорректная установка коннектора, предназначенного для загрузки данных.
 
-
+Интервалы ожидания при работе с брокером сообщений Kafka настраиваются с помощью параметров конфигурации 
+`EDML_FIRST_OFFSET_TIMEOUT_MS` и `EDML_CHANGE_OFFSET_TIMEOUT_MS`, а также параметра `ADB_MPPW_FDW_TIMEOUT_MS`, который 
+используется только для ADB.
+{: .note-wrapper}
 
 Основные причины ошибок обновления данных:
-* несоответствие порядка, количества и (или) типов столбцов между логической таблицей-приемником данных и запросом на 
+* несоответствие порядка, количества или типов столбцов между логической таблицей-приемником данных и запросом на 
 обновление данных;
-* отсутствие в запросе значений для обязательных столбцов;
-* указание в запросе UPSERT SELECT тех [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
-  [хранилища](../../../overview/main_concepts/data_storage/data_storage.md), для которых недоступна вставка данных 
-  (подробнее см. в разделе [UPSERT SELECT](../../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md)). 
+* отсутствие в запросе значений обязательных столбцов;
+* указание в запросе [UPSERT SELECT](../../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md) тех 
+  [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
+  [хранилища](../../../overview/main_concepts/data_storage/data_storage.md), для которых недоступна вставка данных. 
