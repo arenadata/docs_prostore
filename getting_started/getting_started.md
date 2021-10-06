@@ -1,4 +1,4 @@
-﻿---
+---
 layout: default
 title: Сборка и развёртывание
 nav_order: 2.5
@@ -218,15 +218,15 @@ mvn install -DskipTests=true
 # datasource: postgres: user     ~ adp: datasource: user,
 # datasource: postgres: password ~ adp: datasource: password,
 # datasource: postgres: hosts    ~ adp: datasource: host, adp: datasource: port
-sudo nano ~/kafka-postgres-connector/kafka-postgres-writer/src/main/resources/application-default.yml
-sudo nano ~/kafka-postgres-connector/kafka-postgres-reader/src/main/resources/application-default.yml
+sudo nano ~/kafka-postgres-connector/kafka-postgres-writer/src/main/resources/application.yml
+sudo nano ~/kafka-postgres-connector/kafka-postgres-reader/src/main/resources/application.yml
 # создание символических ссылок на файлы конфигурации
-sudo ln -s ~/kafka-postgres-connector/kafka-postrges-writer/src/main/resources/application-default.yml ~/kafka-postgres-connector/kafka-postrges-writer/target/application-default.yml
-sudo ln -s ~/kafka-postgres-connector/kafka-postrges-reader/src/main/resources/application-default.yml ~/kafka-postgres-connector/kafka-postrges-reader/target/application-default.yml
+sudo ln -s ~/kafka-postgres-connector/kafka-postrges-writer/src/main/resources/application-default.yml ~/kafka-postgres-connector/kafka-postrges-writer/target/application.yml
+sudo ln -s ~/kafka-postgres-connector/kafka-postrges-reader/src/main/resources/application-default.yml ~/kafka-postgres-connector/kafka-postrges-reader/target/application.yml
 ```
 <details markdown="block">
   <summary>
-    конфигурационный файл kafka-postgres-writer `application-default.yml`
+    конфигурационный файл kafka-postgres-writer `application.yml`
   </summary>
   {: .text-delta }
 ```yml
@@ -285,7 +285,7 @@ datasource:
 
 <details markdown="block">
   <summary>
-    конфигурационный файл kafka-postgres-reader `application-default.yml`
+    конфигурационный файл kafka-postgres-reader `application.yml`
   </summary>
   {: .text-delta }
 ```yml
