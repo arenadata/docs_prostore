@@ -221,8 +221,8 @@ mvn install -DskipTests=true
 sudo nano ~/kafka-postgres-connector/kafka-postgres-writer/src/main/resources/application.yml
 sudo nano ~/kafka-postgres-connector/kafka-postgres-reader/src/main/resources/application.yml
 # создание символических ссылок на файлы конфигурации
-sudo ln -s ~/kafka-postgres-connector/kafka-postrges-writer/src/main/resources/application-default.yml ~/kafka-postgres-connector/kafka-postrges-writer/target/application.yml
-sudo ln -s ~/kafka-postgres-connector/kafka-postrges-reader/src/main/resources/application-default.yml ~/kafka-postgres-connector/kafka-postrges-reader/target/application.yml
+sudo ln -s ~/kafka-postgres-connector/kafka-postrges-writer/src/main/resources/application.yml ~/kafka-postgres-connector/kafka-postrges-writer/target/application.yml
+sudo ln -s ~/kafka-postgres-connector/kafka-postrges-reader/src/main/resources/application.yml ~/kafka-postgres-connector/kafka-postrges-reader/target/application.yml
 ```
 <details markdown="block">
   <summary>
