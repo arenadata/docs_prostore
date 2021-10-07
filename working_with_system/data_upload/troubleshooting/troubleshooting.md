@@ -19,7 +19,7 @@ has_toc: false
 * [GET_WRITE_OPERATIONS](../../../reference/sql_plus_requests/GET_WRITE_OPERATIONS/GET_WRITE_OPERATIONS.md) — возвращает 
   информацию обо всех операциях горячей [дельты](../../../overview/main_concepts/delta/delta.md);
 * [RESUME_WRITE_OPERATION](../../../reference/sql_plus_requests/RESUME_WRITE_OPERATION/RESUME_WRITE_OPERATION.md) — 
-  возобновляет обработку операций горячей дельты, находящихся в статусе «Выполняется» и «Ошибка»;
+  возобновляет обработку операций горячей дельты, находящихся в статусах «Выполняется» и «Ошибка»;
 * [ROLLBACK CRASHED_WRITE_OPERATIONS](../../../reference/sql_plus_requests/ROLLBACK_CRASHED_WRITE_OPERATIONS/ROLLBACK_CRASHED_WRITE_OPERATIONS.md) — 
   возобновляет обработку операций горячей дельты, находящихся в статусе «Ошибка»;
 * [ROLLBACK DELTA](../../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md) — отменяет все операции 
@@ -48,9 +48,11 @@ has_toc: false
 {: .note-wrapper}
 
 Основные причины ошибок обновления данных:
-* несоответствие порядка, количества или типов столбцов между логической таблицей-приемником данных и запросом на 
+* несоответствие порядка, количества или типов столбцов между логической таблицей-приёмником данных и запросом на 
 обновление данных;
-* отсутствие в запросе значений обязательных столбцов;
+* отсутствие в запросе [UPSERT](../../../reference/sql_plus_requests/UPSERT/UPSERT.md) или 
+  [UPSERT SELECT](../../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md) значений обязательных столбцов 
+  логической таблицы;
 * указание в запросе [UPSERT SELECT](../../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md) тех 
   [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md) 
   [хранилища](../../../overview/main_concepts/data_storage/data_storage.md), для которых недоступна вставка данных. 
