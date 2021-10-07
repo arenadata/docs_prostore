@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: Разбор ошибок загрузки и обновления данных
-nav_order: 4
+nav_order: 2
 parent: Другие действия
 grand_parent: Работа с системой
 has_children: false
@@ -11,11 +11,12 @@ has_toc: false
 # Разбор ошибок загрузки и обновления данных {#upload_troubleshooting}
 
 В случае возникновения ошибок во время [загрузки](../../data_upload/data_upload.md) или 
-[обновления данных](../../data_update/data_update.md) система отменяет неуспешные 
-[операции записи](../../../overview/main_concepts/write_operation/write_operation.md) (далее — операции) и возвращает данные 
-в состояние, которое предшествовало загрузке или обновлению. Основные причины ошибок см. в [секции ниже](##error_reasons).
+[обновления данных](../../data_update/data_update.md) система отменяет 
+[операции записи](../../../overview/main_concepts/write_operation/write_operation.md) (далее — операции), которые 
+не удалось успешно завершить, и возвращает данные в состояние, предшествовавшее загрузке или обновлению. 
+Основные причины ошибок см. в [секции ниже](##error_reasons).
 
-При необходимости используйте следующие запросы для управления процессами загрузки и обновления данных:
+При необходимости используйте запросы для управления процессами загрузки и обновления данных:
 * [GET_WRITE_OPERATIONS](../../../reference/sql_plus_requests/GET_WRITE_OPERATIONS/GET_WRITE_OPERATIONS.md) — возвращает 
   информацию обо всех операциях горячей [дельты](../../../overview/main_concepts/delta/delta.md);
 * [RESUME_WRITE_OPERATION](../../../reference/sql_plus_requests/RESUME_WRITE_OPERATION/RESUME_WRITE_OPERATION.md) — 
