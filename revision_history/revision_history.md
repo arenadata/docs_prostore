@@ -25,11 +25,28 @@ has_children: false
   * [Обновление данных](../working_with_system/data_update/data_update.md);
   * [Порядок обработки запросов на обновление данных](../overview/interactions/llw_processing/llw_processing.md);
   * [UPSERT](../reference/sql_plus_requests/UPSERT/UPSERT.md);
+  * [UPSERT SELECT](../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md);
   * [DELETE](../reference/sql_plus_requests/DELETE/DELETE.md);
+* добавлены новые запросы:
+  * [CONFIG_SHOW](../reference/sql_plus_requests/CONFIG_SHOW/CONFIG_SHOW.md);
+  * [GET_WRITE_OPERATIONS](../reference/sql_plus_requests/GET_WRITE_OPERATIONS/GET_WRITE_OPERATIONS.md);
+  * [RESUME_WRITE_OPERATION](../reference/sql_plus_requests/RESUME_WRITE_OPERATION/RESUME_WRITE_OPERATION.md);
 * добавлено ключевое слово [COLLATE](../reference/sql_plus_requests/SELECT/SELECT.md#collate), 
   доступное в [SELECT](../reference/sql_plus_requests/SELECT/SELECT.md)-запросах к ADG;
 * добавлена возможность [выгрузки данных](../working_with_system/data_download/data_download.md) 
-  из материализованных представлений.
+  из материализованных представлений;
+* добавлен раздел [Разбор ошибок загрузки и обновления данных](../working_with_system/other_features/troubleshooting/troubleshooting.md);
+* ограничено исполнение [запросов по управлению схемой данных](../working_with_system/logical_schema_update/logical_schema_update.md) 
+  в сервисной базе данных `INFORMATION_SCHEMA`;
+* обновлена [конфигурация системы](../maintenance/configuration/system/system.md):
+  * добавлен параметр `AUTO_RESTORE_STATE`;
+  * удален параметр `CORE_TIME_ZONE` (больше не используется);
+* добавлен раздел [Конфигурация коннекторов](../maintenance/configuration/connectors/connectors.md);
+* описание конфигурационных параметров системы перенесено из раздела 
+  [Конфигурация](../maintenance/configuration/configuration.md) в раздел 
+  [Конфигурация системы](../maintenance/configuration/system/system.md);
+* скорректировано описание служебного поля `sys_op`: поле должно отсутствовать во внешней таблице загрузки и логической 
+  таблице и должно присутствовать в загружаемых сообщениях топика Kafka.
   
 ## Архивные версии документации {#archive}
 
