@@ -22,7 +22,7 @@ has_toc: false
 * `status` — статус операции записи. Возможные значения: 0 — выполняется, 1 — успешно завершена, 
   2 — ошибка (операция отменяется); 3 — отменена;
 * `destination_table_name` — имя 
-  [логической таблицы](../../../overview/main_concepts/logical_table/logical_table.md)-приёмника данных;
+  [логической таблицы](../../../overview/main_concepts/logical_table/logical_table.md)-приемника данных;
 * `external_table_name` — имя [внешней таблицы](../../../overview/main_concepts/external_table/external_table.md) 
   загрузки, которая была задействована в операции записи. Значение отсутствует, если внешняя таблица не была 
   задействована в операции (например, операция была запущена функцией 
