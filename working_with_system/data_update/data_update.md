@@ -19,6 +19,10 @@ has_toc: false
 Для обновления большого объема данных следует использовать [загрузку данных](../data_upload/data_upload.md).
 {: .note-wrapper}
 
+Запрос обновления данных [UPSERT SELECT](../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md) 
+не поддерживается для ADG.
+{: .note-wrapper}
+
 Чтобы обновить данные в логической таблице:
 2.  [Создайте](../../reference/sql_plus_requests/CREATE_TABLE/CREATE_TABLE.md)
     логическую таблицу, если она еще не создана.
@@ -30,8 +34,9 @@ has_toc: false
         [UPSERT SELECT](../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md) — 
         для добавления новых или изменения актуальных данных;
       * [DELETE](../../reference/sql_plus_requests/DELETE/DELETE.md) — для архивации актуальных данных.
-6.  Если необходимо, обновите и (или) загрузите другие данные. 
-    В рамках одной открытой дельты можно выполнять произвольное количество запросов на обновление и загрузку данных. 
+6.  Если необходимо, обновите или загрузите другие данные. 
+    <br>В открытой дельте можно выполнить произвольное количество запросов на обновление и загрузку данных, 
+    а также [отменить все изменения](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md). 
     При этом не допускается загрузка различных состояний объекта (то есть различных записей с одинаковым первичным ключом) 
     в одной дельте.
 7.  Выполните запрос [COMMIT DELTA](../../reference/sql_plus_requests/COMMIT_DELTA/COMMIT_DELTA.md)
@@ -39,9 +44,6 @@ has_toc: false
 
 При успешном выполнении действий состояние данных системы обновляется, как описано в разделе 
 [Версионирование данных](data_versioning/data_versioning.md).
-
-Пока дельта не закрыта, все изменения данных, выполненные в рамках нее, можно отменить
-(см. [ROLLBACK DELTA](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md)).
 
 ## Примеры {#examples}
 
