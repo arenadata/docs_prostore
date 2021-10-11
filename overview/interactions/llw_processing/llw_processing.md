@@ -14,8 +14,8 @@ has_toc: false
 обрабатывается в следующем порядке:
 1.  Внешняя информационная система формирует запрос [UPSERT](../../../reference/sql_plus_requests/UPSERT/UPSERT.md), 
     [DELETE](../../../reference/sql_plus_requests/DELETE/DELETE.md) или 
-    [UPSERT SELECT](../../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md), используя JDBC-драйвер DTM.
-2.  Запрос поступает в сервис исполнения запросов DTM.
+    [UPSERT SELECT](../../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md), используя JDBC-драйвер Prostore.
+2.  Запрос поступает в сервис исполнения запросов Prostore.
 3.  Сервис исполнения запросов анализирует запрос и сохраняет информацию о процессе обновления данных в 
     [сервисной базе данных](../../main_concepts/service_db/service_db.md).
 4.  Сервис исполнения запросов отправляет запрос на обновление данных в каждую из целевых 

@@ -38,16 +38,16 @@ logging:
     io.arenadata.dtm.query.execution: ${DTM_LOGGING_LEVEL:TRACE}
 ```
 
-### Настройки управления DTM {#dtm_parameters}
+### Настройки управления Prostore {#prostore_parameters}
 ```yaml
-# настройки управления DTM
+# настройки управления Prostore
 management:
 # номер порта сервиса метрик
   server:
     port: ${DTM_METRICS_PORT:8080}
-# настройки конечных точек DTM
+# настройки конечных точек Prostore
   endpoints:
-# признак генерации метрик со стороны DTM
+# признак генерации метрик со стороны Prostore
     enabled-by-default: ${DTM_METRICS_ENABLED:true}
 # настройки видимости метрик через веб-соединения
     web:
@@ -95,7 +95,7 @@ core:
     autoRestoreState: ${AUTO_RESTORE_STATE:true}    
 # настройки синхронизации материализованных представлений
   matviewsync:
-# периодичность запуска синхронизации в миллисекундах
+# периодичность запуска синхронизации в миллисекундах; если значение равно 0, синхронизация отключена
     periodMs: ${MATERIALIZED_VIEWS_SYNC_PERIOD_MS:5000}
 # максимальное количество попыток синхронизации представления, после перезапуска системы счетчик обнуляется
     retryCount: ${MATERIALIZED_VIEWS_RETRY_COUNT:10}

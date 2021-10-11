@@ -12,8 +12,8 @@ has_toc: false
 
 Запрос на выгрузку данных обрабатывается в следующем порядке:
 1.  Внешняя информационная система формирует запрос [INSERT INTO download_external_table](../../../reference/sql_plus_requests/INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md), 
-    используя JDBC-драйвер DTM.
-2.  Запрос поступает в сервис исполнения запросов DTM.
+    используя JDBC-драйвер Prostore.
+2.  Запрос поступает в сервис исполнения запросов Prostore.
 3.  Сервис исполнения запросов анализирует запрос и запрашивает актуальную информацию о 
     [логической схеме данных](../../main_concepts/logical_schema/logical_schema.md) 
     в [сервисной базе данных](../../main_concepts/service_db/service_db.md).
