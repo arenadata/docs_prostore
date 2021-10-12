@@ -102,7 +102,7 @@ UPSERT INTO [db_name.]table_name (column_list) SELECT query
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
 USE sales;
 
--- создание логической таблицы sales_july_2021, которая будет содержать данные о продажах за июль 2021
+-- создание логической таблицы sales_july_2021, которая будет содержать данные о продажах за июль 2021 и размещаться в ADB
 CREATE TABLE sales_july_2021 (
 id INT NOT NULL,
 transaction_date TIMESTAMP NOT NULL,
@@ -111,7 +111,8 @@ product_units INT NOT NULL,
 store_id INT NOT NULL,
 description VARCHAR(256),
 PRIMARY KEY (id)
-) DISTRIBUTED BY (id);
+) DISTRIBUTED BY (id)
+DATASOURCE_TYPE (adb);
 
 -- открытие новой (горячей) дельты
 BEGIN DELTA;
@@ -119,19 +120,19 @@ BEGIN DELTA;
 -- вставка данных из таблицы sales в новую таблицу sales_july_2021 
 UPSERT INTO sales_july_2021 
 SELECT * FROM sales WHERE CAST(EXTRACT(MONTH FROM transaction_date) AS INT) = 7 AND 
-  CAST(EXTRACT(YEAR FROM transaction_date) AS INT) = 2021;
+  CAST(EXTRACT(YEAR FROM transaction_date) AS INT) = 2021 DATASOURCE_TYPE = 'adb';
 
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA;
 ```
 
-### Вставка данных в указанные столбцы таблицы {#some_columns_example}
+### Вставка данных в некоторые столбцы таблицы {#some_columns_example}
 
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
 USE sales;
 
--- создание логической таблицы current_stores, которая будет содержать выборку из таблицы stores
+-- создание логической таблицы current_stores, которая будет содержать выборку из таблицы stores и размещаться в ADQM
 CREATE TABLE current_stores (
   id INT NOT NULL,
   category VARCHAR(256),
@@ -140,14 +141,15 @@ CREATE TABLE current_stores (
   description VARCHAR(256),
   PRIMARY KEY (id)
 )
-DISTRIBUTED BY (id);
+DISTRIBUTED BY (id)
+DATASOURCE_TYPE (adqm);
 
 -- открытие новой (горячей) дельты
 BEGIN DELTA;
 
--- вставка данных в логическую таблицу current_stores без указания значения столбца description
+-- вставка данных, размещенных в ADQM, в логическую таблицу current_stores без указания значения столбца description
 UPSERT INTO current_stores (id, category, region, address)
-SELECT * FROM stores FOR SYSTEM_TIME AS OF DELTA_NUM 10;
+SELECT id, category, region, address FROM stores FOR SYSTEM_TIME AS OF DELTA_NUM 10 DATASOURCE_TYPE = 'adqm';
 
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA;
@@ -159,7 +161,7 @@ COMMIT DELTA;
 -- создание новой логической БД sales_new
 CREATE DATABASE sales_new;
 
--- выбор логической базы данных sales в качестве базы данных по умолчанию
+-- выбор логической базы данных sales в качестве базы данных по умолчанию с размещением данных в ADP
 USE sales_new;
 
 -- создание таблицы sales в новой логической БД
@@ -171,31 +173,34 @@ product_units INT NOT NULL,
 store_id INT NOT NULL,
 description VARCHAR(256),
 PRIMARY KEY (id)
-) DISTRIBUTED BY (id);
+) DISTRIBUTED BY (id)
+DATASOURCE_TYPE (adp);
 
 -- открытие новой (горячей) дельты
 BEGIN DELTA;
 
 -- вставка данных в логическую таблицу sales из аналогичной таблицы другой логической БД
-UPSERT INTO sales SELECT * FROM sales.sales WHERE store_id BETWEEN 1234 AND 4567;
+UPSERT INTO sales SELECT * FROM sales.sales WHERE store_id BETWEEN 1234 AND 4567 DATASOURCE_TYPE = 'adp';
 
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA;
 ```
 
-### Вставка данных из указанной СУБД {#datasource_type_example}
+### Вставка данных из логического представления {#view_example}
 
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
 USE sales;
 
--- создание таблицы sales_store_123, которая будет содержать данные продаж одного магазина, с размещением в ADB и ADG
-CREATE TABLE sales_store_123 (
+-- создание логического представления basic_stores с данными о магазинах категории basic
+CREATE VIEW basic_stores AS SELECT * FROM stores WHERE category = 'basic';
+
+-- создание таблицы basic_stores_table, которая будет содержать данные о магазинах категории basic, с размещением в ADB и ADG
+CREATE TABLE basic_stores_table (
 id INT NOT NULL,
-transaction_date TIMESTAMP NOT NULL,
-product_code VARCHAR(256) NOT NULL,
-product_units INT NOT NULL,
-store_id INT NOT NULL,
+category VARCHAR(256),
+region VARCHAR(256),
+address VARCHAR(256),
 description VARCHAR(256),
 PRIMARY KEY (id)
 ) DISTRIBUTED BY (id)
@@ -204,9 +209,10 @@ DATASOURCE_TYPE (adb, adg);
 -- открытие новой (горячей) дельты
 BEGIN DELTA;
 
--- вставка данных в логическую таблицу sales_store_123, где источником данных служит ADB
-UPSERT INTO sales_store_123 SELECT * FROM sales WHERE store_id = 123 DATASOURCE_TYPE = 'adb';
+-- вставка данных, размещенных в ADB, в логическую таблицу basic_stores_table
+UPSERT INTO basic_stores_table SELECT * FROM basic_stores DATASOURCE_TYPE = 'adb';
 
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA;
 ```
+

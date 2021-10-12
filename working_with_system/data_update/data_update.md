@@ -63,7 +63,7 @@ VALUES (100011, '2021-08-21 23:34:10', 'ABC0001', 2, 123, 'Покупка по �
 -- архивация записей логической таблицы sales о покупках в магазине, который был закрыт
 DELETE FROM sales WHERE store_id = 234;
 
--- создание логической таблицы sales_july_2021, которая будет содержать данные о продажах за июль 2021
+-- создание логической таблицы sales_july_2021, которая будет содержать данные о продажах за июль 2021 и размещаться в ADB
 CREATE TABLE sales_july_2021 (
 id INT NOT NULL,
 transaction_date TIMESTAMP NOT NULL,
@@ -73,11 +73,12 @@ store_id INT NOT NULL,
 description VARCHAR(256),
 PRIMARY KEY (id)
 ) DISTRIBUTED BY (id)
+DATASOURCE_TYPE (adb);
 
 -- вставка данных из таблицы sales в новую таблицу sales_july_2021 
 UPSERT INTO sales_july_2021 
 SELECT * FROM sales WHERE CAST(EXTRACT(MONTH FROM transaction_date) AS INT) = 7 AND 
-  CAST(EXTRACT(YEAR FROM transaction_date) AS INT) = 2021
+  CAST(EXTRACT(YEAR FROM transaction_date) AS INT) = 2021 DATASOURCE_TYPE = 'adb';
 
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA;
