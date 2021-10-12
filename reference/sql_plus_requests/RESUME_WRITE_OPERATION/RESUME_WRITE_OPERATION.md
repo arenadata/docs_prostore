@@ -14,7 +14,7 @@ has_toc: false
 [операций записи](../../../overview/main_concepts/write_operation/write_operation.md) горячей
 [дельты](../../../overview/main_concepts/delta/delta.md) со статусами «Выполняется» и «Ошибка» (далее —
 незавершенные операции). Если операция имеет статус «Ошибка», то запускается отмена этой операции; если операция имеет 
-статус «Выполняется», то запускается загрузка данных в [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md)
+статус «Выполняется», то возобновляется отслеживание загрузки данных в [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md)
 [хранилища](../../../overview/main_concepts/data_storage/data_storage.md).
 Аналогичный процесс автоматически выполняется для всех незавершенных операций 
 [при рестарте системы](../../../overview/interactions/restart_processing/restart_processing.md).
