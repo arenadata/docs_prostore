@@ -187,7 +187,7 @@ core:
 # настройки отката дельты
   delta:
 # периодичность (в миллисекундах) проверки операций записи, требующих остановки
-    rollback-status-calls-ms: ${DELTA_ROLLBACK_STATUS_CALLS_MS:2000}      
+    rollback-status-calls-ms: ${DELTA_ROLLBACK_STATUS_CALLS_MS:2000}
 ```
 
 ### Настройки СУБД ADB {#adb_parameters}
@@ -277,7 +277,7 @@ adg:
     timeout: ${ADG_CIRCUIT_BREAKER_TIMEOUT:30000}
 # использование паттерна fallback при отказе
     fallbackOnFailure: ${ADG_CIRCUIT_BREAKER_FALLBACK_ON_FAILURE:false}
-# время (в миллисекундах) до сброса по паттерну timeout
+# время ожидания (в миллисекундах) до сброса по паттерну timeout
     resetTimeout: ${ADG_CIRCUIT_BREAKER_RESET_TIMEOUT:10000}
 # настройки для подключений веб-клиентов
   web-client:

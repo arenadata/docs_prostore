@@ -14,7 +14,7 @@ has_toc: false
 [обновления данных](../../data_update/data_update.md) система отменяет 
 [операции записи](../../../overview/main_concepts/write_operation/write_operation.md) (далее — операции), которые 
 не удалось успешно завершить, и возвращает данные в состояние, предшествовавшее загрузке или обновлению. 
-Основные причины ошибок см. в [секции ниже](##error_reasons).
+Основные причины ошибок см. в [секции ниже](#error_reasons).
 
 При необходимости используйте запросы для управления процессами загрузки и обновления данных:
 * [GET_WRITE_OPERATIONS](../../../reference/sql_plus_requests/GET_WRITE_OPERATIONS/GET_WRITE_OPERATIONS.md) — возвращает 
