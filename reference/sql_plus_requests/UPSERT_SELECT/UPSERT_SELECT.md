@@ -32,8 +32,8 @@ has_toc: false
 
 Источником данных служит одна [СУБД](../../../introduction/supported_DBMS/supported_DBMS.md)
 [хранилища](../../../overview/main_concepts/data_storage/data_storage.md): указанная в запросе или, если такая 
-не указана, — СУБД хранилища, наиболее оптимальная для исполнения запроса среди тех, где размещены данные целевой 
-таблицы. Подробнее о выборе оптимальной СУБД для исполнения запроса см. в разделе
+не указана, — СУБД хранилища, наиболее оптимальная для исполнения запроса. Подробнее о выборе оптимальной СУБД для 
+исполнения запроса см. в разделе
 [Маршрутизация запросов к данным](../../../working_with_system/data_reading/routing/routing.md).
 
 Вставка данных возможна, если выполнено любое из условий:
@@ -83,9 +83,8 @@ UPSERT INTO [db_name.]table_name (column_list) SELECT query
   в логической таблице;
 * `query` — [SELECT](../SELECT/SELECT.md)-подзапрос для выбора данных. Если в подзапросе указано ключевое слово 
   `DATASOURCE_TYPE` с псевдонимом СУБД хранилища, данные выбираются из указанной СУБД, иначе — из СУБД, 
-  которая является 
-  [наиболее оптимальной](../../../working_with_system/data_reading/routing/routing.md) для исполнения запроса 
-  среди тех, где размещены данные целевой таблицы.
+  которая является [наиболее оптимальной](../../../working_with_system/data_reading/routing/routing.md) 
+  для исполнения запроса.
 
 ## Ограничения {#restrictions}
 
@@ -102,7 +101,7 @@ UPSERT INTO [db_name.]table_name (column_list) SELECT query
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
 USE sales;
 
--- создание логической таблицы sales_july_2021, которая будет содержать данные о продажах за июль 2021 и размещаться в ADB
+-- создание логической таблицы sales_july_2021 с данными о продажах за июль 2021 (с размещением данных в ADB)
 CREATE TABLE sales_july_2021 (
 id INT NOT NULL,
 transaction_date TIMESTAMP NOT NULL,
@@ -117,7 +116,7 @@ DATASOURCE_TYPE (adb);
 -- открытие новой (горячей) дельты
 BEGIN DELTA;
 
--- вставка данных из таблицы sales в новую таблицу sales_july_2021 
+-- вставка данных из таблицы sales в таблицу sales_july_2021 
 UPSERT INTO sales_july_2021 
 SELECT * FROM sales WHERE CAST(EXTRACT(MONTH FROM transaction_date) AS INT) = 7 AND 
   CAST(EXTRACT(YEAR FROM transaction_date) AS INT) = 2021 DATASOURCE_TYPE = 'adb';
@@ -132,7 +131,7 @@ COMMIT DELTA;
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
 USE sales;
 
--- создание логической таблицы current_stores, которая будет содержать выборку из таблицы stores и размещаться в ADQM
+-- создание логической таблицы current_stores с выборкой из таблицы stores (с размещением данных в ADQM)
 CREATE TABLE current_stores (
   id INT NOT NULL,
   category VARCHAR(256),
@@ -147,7 +146,7 @@ DATASOURCE_TYPE (adqm);
 -- открытие новой (горячей) дельты
 BEGIN DELTA;
 
--- вставка данных, размещенных в ADQM, в логическую таблицу current_stores без указания значения столбца description
+-- вставка данных в таблицу current_stores без указания значения столбца description
 UPSERT INTO current_stores (id, category, region, address)
 SELECT id, category, region, address FROM stores FOR SYSTEM_TIME AS OF DELTA_NUM 10 DATASOURCE_TYPE = 'adqm';
 
@@ -161,10 +160,10 @@ COMMIT DELTA;
 -- создание новой логической БД sales_new
 CREATE DATABASE sales_new;
 
--- выбор логической базы данных sales в качестве базы данных по умолчанию с размещением данных в ADP
+-- выбор логической базы данных sales в качестве базы данных по умолчанию
 USE sales_new;
 
--- создание таблицы sales в новой логической БД
+-- создание логической таблицы sales в логической БД sales_new (с размещением данных в ADP)
 CREATE TABLE sales (
 id INT NOT NULL,
 transaction_date TIMESTAMP NOT NULL,
@@ -179,7 +178,7 @@ DATASOURCE_TYPE (adp);
 -- открытие новой (горячей) дельты
 BEGIN DELTA;
 
--- вставка данных в логическую таблицу sales из аналогичной таблицы другой логической БД
+-- вставка данных в таблицу sales из аналогичной таблицы другой логической БД
 UPSERT INTO sales SELECT * FROM sales.sales WHERE store_id BETWEEN 1234 AND 4567 DATASOURCE_TYPE = 'adp';
 
 -- закрытие дельты (фиксация изменений)
@@ -195,7 +194,7 @@ USE sales;
 -- создание логического представления basic_stores с данными о магазинах категории basic
 CREATE VIEW basic_stores AS SELECT * FROM stores WHERE category = 'basic';
 
--- создание таблицы basic_stores_table, которая будет содержать данные о магазинах категории basic, с размещением в ADB и ADG
+-- создание таблицы basic_stores_table с данными о магазинах категории basic (с размещением данных в ADB и ADG)
 CREATE TABLE basic_stores_table (
 id INT NOT NULL,
 category VARCHAR(256),
@@ -209,7 +208,7 @@ DATASOURCE_TYPE (adb, adg);
 -- открытие новой (горячей) дельты
 BEGIN DELTA;
 
--- вставка данных, размещенных в ADB, в логическую таблицу basic_stores_table
+-- вставка данных в таблицу basic_stores_table
 UPSERT INTO basic_stores_table SELECT * FROM basic_stores DATASOURCE_TYPE = 'adb';
 
 -- закрытие дельты (фиксация изменений)
