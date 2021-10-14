@@ -64,18 +64,53 @@ core:
   plugins:
 # список используемых СУБД
     active: ${CORE_PLUGINS_ACTIVE:ADG, ADB, ADP, ADQM}
-# порядок выбора СУБД в зависимости от категории SQL-запроса
+# порядок выбора СУБД хранилища для исполнения SELECT-запросов
     category:
+# порядок выбора СУБД в зависимости от категории запроса; настройки используются, если отсутствует секция plugins.category.autoSelect      
       mapping:
 # порядок для общих реляционных запросов
         RELATIONAL: ${DTM_CORE_PLUGINS_RELATIONAL:ADB, ADP, ADQM, ADG}
-# порядок для запросов аналитики
+# порядок для аналитических запросов
         ANALYTICAL: ${DTM_CORE_PLUGINS_ANALYTICAL:ADQM, ADB, ADP, ADG}
 # порядок для запросов ключ-значение
         DICTIONARY: ${DTM_CORE_PLUGINS_DICTIONARY:ADG, ADB, ADP, ADQM}
 # порядок для других категорий запросов
-        UNDEFINED:  ${DTM_CORE_PLUGINS_UNDEFINED:ADB, ADP, ADQM, ADG}
-# настройки сетевых подключений через HTTP-протокол
+        UNDEFINED:  ${DTM_CORE_PLUGINS_UNDEFINED:ADB, ADP, ADQM, ADG}        
+# порядок выбора СУБД в зависимости от категории и подкатегории запроса   
+      autoSelect:
+# порядок для общих реляционных запросов        
+        RELATIONAL:
+# порядок для запросов, предназначенных для одного узла кластера        
+          ShardOne: ${DTM_CORE_PLUGINS_AUTOSELECT_RELATIONAL_SHARDONE:ADG, ADB, ADP, ADQM}
+# порядок для запросов, предназначенных для нескольких узлов кластера (от 1 до всех)
+          ShardSet: ${DTM_CORE_PLUGINS_AUTOSELECT_RELATIONAL_SHARDSET:ADG, ADB, ADP, ADQM}
+# порядок для запросов, предназначенных для всех узлов кластера
+          ShardAll: ${DTM_CORE_PLUGINS_AUTOSELECT_RELATIONAL_SHARDALL:ADB, ADP, ADQM, ADG}
+# порядок для аналитических запросов          
+        ANALYTICAL:
+# порядок для запросов, предназначенных для одного узла кластера 
+          ShardOne: ${DTM_CORE_PLUGINS_AUTOSELECT_ANALYTICAL_SHARDONE:ADQM, ADB, ADP, ADG}
+# порядок для запросов, предназначенных для нескольких узлов кластера (от 1 до всех)
+          ShardSet: ${DTM_CORE_PLUGINS_AUTOSELECT_ANALYTICAL_SHARDSET:ADQM, ADB, ADP, ADG}
+# порядок для запросов, предназначенных для всех узлов кластера
+          ShardAll: ${DTM_CORE_PLUGINS_AUTOSELECT_ANALYTICAL_SHARDALL:ADQM, ADB, ADP, ADG}
+# порядок для запросов ключ-значение          
+        DICTIONARY:
+# порядок для запросов, предназначенных для одного узла кластера 
+          ShardOne: ${DTM_CORE_PLUGINS_AUTOSELECT_DICTIONARY_SHARDONE:ADG, ADB, ADP, ADQM}
+# порядок для запросов, предназначенных для нескольких узлов кластера (от 1 до всех)
+          ShardSet: ${DTM_CORE_PLUGINS_AUTOSELECT_DICTIONARY_SHARDSET:ADG, ADB, ADP, ADQM}
+# порядок для запросов, предназначенных для всех узлов кластера
+          ShardAll: ${DTM_CORE_PLUGINS_AUTOSELECT_DICTIONARY_SHARDALL:ADG, ADB, ADP, ADQM}
+# порядок для других категорий запросов          
+        UNDEFINED:
+# порядок для запросов, предназначенных для одного узла кластера 
+          ShardOne: ${DTM_CORE_PLUGINS_AUTOSELECT_UNDEFINED_SHARDONE:ADG, ADB, ADP, ADQM}
+# порядок для запросов, предназначенных для нескольких узлов кластера (от 1 до всех)
+          ShardSet: ${DTM_CORE_PLUGINS_AUTOSELECT_UNDEFINED_SHARDSET:ADG, ADB, ADP, ADQM}
+# порядок для запросов, предназначенных для всех узлов кластера
+          ShardAll: ${DTM_CORE_PLUGINS_AUTOSELECT_UNDEFINED_SHARDALL:ADB, ADP, ADQM, ADG}
+  # настройки сетевых подключений через HTTP-протокол
   http:
 # номер порта сервиса исполнения запросов
     port: ${DTM_CORE_HTTP_PORT:9090}

@@ -35,6 +35,8 @@ has_children: false
   доступное в [SELECT](../reference/sql_plus_requests/SELECT/SELECT.md)-запросах к ADG;
 * добавлена возможность [выгрузки данных](../working_with_system/data_download/data_download.md) 
   из материализованных представлений;
+* изменена [маршрутизация SELECT-запросов](../working_with_system/data_reading/routing/routing.md): теперь учитывается 
+  не только категория запроса, но и для скольки узлов кластера предназначен запрос;
 * добавлен раздел [Разбор ошибок загрузки и обновления данных](../working_with_system/other_features/troubleshooting/troubleshooting.md);
 * ограничено исполнение [запросов по управлению схемой данных](../working_with_system/logical_schema_update/logical_schema_update.md) 
   в сервисной базе данных `INFORMATION_SCHEMA`;
