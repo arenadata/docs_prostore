@@ -251,6 +251,12 @@ adb:
     preparedStatementsCacheSqlLimit: ${ADB_PREPARED_CACHE_SQL_LIMIT:2048}
 # признак кэширования запросов prepared statement
     preparedStatementsCache: ${ADB_PREPARED_CACHE:true}
+# максимальное количество попыток восстановить соединение (0 — неограниченно)
+    maxReconnections: ${ADB_MAX_RECONNECTIONS:0}
+# максимальное количество запросов, проходящих через соединение перед его переподключением (0 - неограниченно)
+    queriesByConnectLimit: ${ADB_QUERIES_BY_CONNECT_LIMIT:1000}
+# интервал (в миллисекундах) между попытками восстановить соединение (0 — без интервала)
+    reconnectionInterval: ${ADB_RECONNECTION_INTERVAL:5000}
 # настройки механизма загрузки данных в ADB
   mppw:
 # имя консьюмер-группы ADB для взаимодействия с брокером сообщений Kafka

@@ -41,7 +41,8 @@ has_children: false
 * ограничено исполнение [запросов по управлению схемой данных](../working_with_system/logical_schema_update/logical_schema_update.md) 
   в сервисной базе данных `INFORMATION_SCHEMA`;
 * обновлена [конфигурация системы](../maintenance/configuration/system/system.md):
-  * добавлен параметр `AUTO_RESTORE_STATE`;
+  * добавлены параметры `AUTO_RESTORE_STATE`, `ADB_MAX_RECONNECTIONS`, `ADB_QUERIES_BY_CONNECT_LIMIT` и 
+    `ADB_RECONNECTION_INTERVAL`;
   * удален параметр `CORE_TIME_ZONE` (больше не используется);
 * добавлен раздел [Конфигурация коннекторов](../maintenance/configuration/connectors/connectors.md);
 * описание конфигурационных параметров системы перенесено из раздела 
