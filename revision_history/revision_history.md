@@ -43,6 +43,8 @@ has_children: false
 * обновлена [конфигурация системы](../maintenance/configuration/system/system.md):
   * добавлены параметры `AUTO_RESTORE_STATE`, `ADB_MAX_RECONNECTIONS`, `ADB_QUERIES_BY_CONNECT_LIMIT` и 
     `ADB_RECONNECTION_INTERVAL`;
+  * добавлена секция параметров `autoSelect` для настройки порядка выбора СУБД в зависимости от категории и
+    подкатегории запросов;
   * удален параметр `CORE_TIME_ZONE` (больше не используется);
 * добавлен раздел [Конфигурация коннекторов](../maintenance/configuration/connectors/connectors.md);
 * описание конфигурационных параметров системы перенесено из раздела 
