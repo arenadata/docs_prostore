@@ -24,7 +24,7 @@ has_children: false
 в следующие разделах:
   * [Обновление данных](../working_with_system/data_update/data_update.md);
   * [Порядок обработки запросов на обновление данных](../overview/interactions/llw_processing/llw_processing.md);
-  * [UPSERT](../reference/sql_plus_requests/UPSERT/UPSERT.md);
+  * [UPSERT VALUES](../reference/sql_plus_requests/UPSERT_VALUES/UPSERT_VALUES.md);
   * [UPSERT SELECT](../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md);
   * [DELETE](../reference/sql_plus_requests/DELETE/DELETE.md);
 * добавлены новые запросы:

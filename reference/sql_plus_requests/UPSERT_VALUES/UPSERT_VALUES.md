@@ -1,6 +1,6 @@
 ﻿---
 layout: default
-title: UPSERT
+title: UPSERT VALUES
 nav_order: 37
 parent: Запросы SQL+
 grand_parent: Справочная информация
@@ -8,7 +8,7 @@ has_children: false
 has_toc: false
 ---
 
-# UPSERT
+# UPSERT VALUES
 {: .no_toc }
 
 <details markdown="block">

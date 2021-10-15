@@ -12,7 +12,7 @@ has_toc: false
 
 Запрос на обновление данных в [логической таблице](../../main_concepts/logical_table/logical_table.md) 
 обрабатывается в следующем порядке:
-1.  Внешняя информационная система формирует запрос [UPSERT](../../../reference/sql_plus_requests/UPSERT/UPSERT.md), 
+1.  Внешняя информационная система формирует запрос [UPSERT VALUES](../../../reference/sql_plus_requests/UPSERT_VALUES/UPSERT_VALUES.md), 
     [DELETE](../../../reference/sql_plus_requests/DELETE/DELETE.md) или 
     [UPSERT SELECT](../../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md), используя JDBC-драйвер Prostore.
 2.  Запрос поступает в сервис исполнения запросов Prostore.

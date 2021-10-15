@@ -30,7 +30,7 @@ has_toc: false
     на открытие [дельты](../../overview/main_concepts/delta/delta.md),
     если она еще не открыта.
 5.  Выполните запрос на обновление данных:
-      * [UPSERT](../../reference/sql_plus_requests/UPSERT/UPSERT.md) или 
+      * [UPSERT VALUES](../../reference/sql_plus_requests/UPSERT_VALUES/UPSERT_VALUES.md) или 
         [UPSERT SELECT](../../reference/sql_plus_requests/UPSERT_SELECT/UPSERT_SELECT.md) — 
         для добавления новых или изменения актуальных данных;
       * [DELETE](../../reference/sql_plus_requests/DELETE/DELETE.md) — для архивации актуальных данных.
