@@ -18,7 +18,8 @@ has_toc: false
 
 При необходимости используйте запросы для управления процессами загрузки и обновления данных:
 * [GET_WRITE_OPERATIONS](../../../reference/sql_plus_requests/GET_WRITE_OPERATIONS/GET_WRITE_OPERATIONS.md) — возвращает 
-  информацию обо всех операциях горячей [дельты](../../../overview/main_concepts/delta/delta.md);
+  информацию об операциях горячей [дельты](../../../overview/main_concepts/delta/delta.md), находящихся в статусах 
+  «Выполняется» и «Ошибка»;
 * [RESUME_WRITE_OPERATION](../../../reference/sql_plus_requests/RESUME_WRITE_OPERATION/RESUME_WRITE_OPERATION.md) — 
   возобновляет обработку операций горячей дельты, находящихся в статусах «Выполняется» и «Ошибка»;
 * [ROLLBACK CRASHED_WRITE_OPERATIONS](../../../reference/sql_plus_requests/ROLLBACK_CRASHED_WRITE_OPERATIONS/ROLLBACK_CRASHED_WRITE_OPERATIONS.md) — 
