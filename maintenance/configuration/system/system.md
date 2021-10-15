@@ -81,9 +81,9 @@ core:
 # порядок для общих реляционных запросов        
         RELATIONAL:
 # порядок для запросов, предназначенных для одного узла кластера        
-          ShardOne: ${DTM_CORE_PLUGINS_AUTOSELECT_RELATIONAL_SHARDONE:ADG, ADB, ADP, ADQM}
+          ShardOne: ${DTM_CORE_PLUGINS_AUTOSELECT_RELATIONAL_SHARDONE:ADB, ADP, ADQM, ADG}
 # порядок для запросов, предназначенных для нескольких узлов кластера (от 1 до всех)
-          ShardSet: ${DTM_CORE_PLUGINS_AUTOSELECT_RELATIONAL_SHARDSET:ADG, ADB, ADP, ADQM}
+          ShardSet: ${DTM_CORE_PLUGINS_AUTOSELECT_RELATIONAL_SHARDSET:ADB, ADP, ADQM, ADG}
 # порядок для запросов, предназначенных для всех узлов кластера
           ShardAll: ${DTM_CORE_PLUGINS_AUTOSELECT_RELATIONAL_SHARDALL:ADB, ADP, ADQM, ADG}
 # порядок для аналитических запросов          
@@ -105,9 +105,9 @@ core:
 # порядок для других категорий запросов          
         UNDEFINED:
 # порядок для запросов, предназначенных для одного узла кластера 
-          ShardOne: ${DTM_CORE_PLUGINS_AUTOSELECT_UNDEFINED_SHARDONE:ADG, ADB, ADP, ADQM}
+          ShardOne: ${DTM_CORE_PLUGINS_AUTOSELECT_UNDEFINED_SHARDONE:ADB, ADP, ADQM, ADG}
 # порядок для запросов, предназначенных для нескольких узлов кластера (от 1 до всех)
-          ShardSet: ${DTM_CORE_PLUGINS_AUTOSELECT_UNDEFINED_SHARDSET:ADG, ADB, ADP, ADQM}
+          ShardSet: ${DTM_CORE_PLUGINS_AUTOSELECT_UNDEFINED_SHARDSET:ADB, ADP, ADQM, ADG}
 # порядок для запросов, предназначенных для всех узлов кластера
           ShardAll: ${DTM_CORE_PLUGINS_AUTOSELECT_UNDEFINED_SHARDALL:ADB, ADP, ADQM, ADG}
   # настройки сетевых подключений через HTTP-протокол
