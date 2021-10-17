@@ -36,6 +36,7 @@ has_children: false
     а не проходят дополнительный этап хеширования;
 * в [конфигурацию](../maintenance/configuration/configuration.md) добавлен параметр 
   `DTM_VERTX_BLOCKING_STACKTRACE_TIME`;
+* добавлена глава «Сборка и развертывание»;
 * в главу «Работа с системой» добавлены разделы 
   [Получение информации о SELECT-запросе](../working_with_system/other_features/query_estimation/query_estimation.md) и 
   [Проверка месторасположения логической сущности](../working_with_system/other_features/datasource_check/datasource_check.md);
