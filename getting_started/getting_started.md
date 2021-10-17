@@ -1,4 +1,4 @@
-﻿---
+---
 layout: default
 title: Сборка и развёртывание
 nav_order: 2.5
@@ -39,13 +39,12 @@ has_toc: false
 
 ## Сборка Prostore
 
-```plaintext
+```shell
 # клонирование репозитория Prostore
-git clone https://github.com/arenadata/prostore
+git clone https://github.com/arenadata/prostore ~/
 # запуск сборки Prostore средствами Apache Maven
 cd ~/prostore
-mvn clean
-mvn install -DskipTests=true
+mvn clean install -DskipTests=true
 # создание символической ссылки на файл конфигурации
 sudo ln -s ~/prostore/dtm-query-execution-core/config/application.yml ~/prostore/dtm-query-execution-core/target/application.yml
 # приведение конфигурационного файла к виду, показанному ниже
@@ -191,7 +190,7 @@ adp:
 
 ## Настройка СУБД Postgres
 
-```plaintext
+```shell
 # создание в СУБД Postgres SUPERUSER-пользователя c именем и паролем,
 # указанными в конфигурации Prostore
 # (значения параметров (adp:datasource:user) и (adp:datasource:password) соответственно)
@@ -205,28 +204,27 @@ sudo systemctl reload postgresql-13
 ```
 ## Сборка и установка коннектора Kafka-Postgres
 
-```plaintext
+```shell
 # клонирование репозитория kafka-postgres-connector
-git clone https://github.com/arenadata/kafka-postgres-connector
+git clone https://github.com/arenadata/kafka-postgres-connector ~/
 # запуск сборки коннектора kafka-postgres средствами Apache Maven
 cd ~/kafka-postgres-connector
-mvn clean
-mvn install -DskipTests=true
+mvn clean install -DskipTests=true
 # приведение конфигурационных файлов kafka-postgres-writer и kafka-postgres-reader к виду,
 # показанному ниже, чтобы значения параметров совпадали со значениями соответствующих параметров конфигурации Prostore
 # datasource: postgres: database ~ env: name,
 # datasource: postgres: user     ~ adp: datasource: user,
 # datasource: postgres: password ~ adp: datasource: password,
 # datasource: postgres: hosts    ~ adp: datasource: host, adp: datasource: port
-sudo nano ~/kafka-postgres-connector/kafka-postgres-writer/src/main/resources/application-default.yml
-sudo nano ~/kafka-postgres-connector/kafka-postgres-reader/src/main/resources/application-default.yml
+sudo nano ~/kafka-postgres-connector/kafka-postgres-writer/src/main/resources/application.yml
+sudo nano ~/kafka-postgres-connector/kafka-postgres-reader/src/main/resources/application.yml
 # создание символических ссылок на файлы конфигурации
-sudo ln -s ~/kafka-postgres-connector/kafka-postrges-writer/src/main/resources/application-default.yml ~/kafka-postgres-connector/kafka-postrges-writer/target/application-default.yml
-sudo ln -s ~/kafka-postgres-connector/kafka-postrges-reader/src/main/resources/application-default.yml ~/kafka-postgres-connector/kafka-postrges-reader/target/application-default.yml
+sudo ln -s ~/kafka-postgres-connector/kafka-postrges-writer/src/main/resources/application.yml ~/kafka-postgres-connector/kafka-postrges-writer/target/application.yml
+sudo ln -s ~/kafka-postgres-connector/kafka-postrges-reader/src/main/resources/application.yml ~/kafka-postgres-connector/kafka-postrges-reader/target/application.yml
 ```
 <details markdown="block">
   <summary>
-    конфигурационный файл kafka-postgres-writer `application-default.yml`
+    конфигурационный файл kafka-postgres-writer `application.yml`
   </summary>
   {: .text-delta }
 ```yml
@@ -285,7 +283,7 @@ datasource:
 
 <details markdown="block">
   <summary>
-    конфигурационный файл kafka-postgres-reader `application-default.yml`
+    конфигурационный файл kafka-postgres-reader `application.yml`
   </summary>
   {: .text-delta }
 ```yml
@@ -326,7 +324,7 @@ kafka:
 </details>
 ## Запуск сервисов Apache Zookeeper и Apache Kafka
 
-```plaintext
+```shell
 # запуск одного экземпляра сервера ZooKeeper, если он еще не запущен
 sudo systemctl start zookeeper
 # запуск сервера Kafka и проверка его состояния
@@ -335,22 +333,22 @@ sudo systemctl status kafka
 ```
 ## Запуск коннектора Kafka-Postgres
 
-```plaintext
+```shell
 # запуск kafka-postgres-writer в отдельном окне терминала 
 cd ~/kafka-postgres-connector/kafka-postgres-writer/target
-java -Dspring.profiles.active=default -jar kafka-postgres-writer-<version>.jar
+java -jar kafka-postgres-writer-<version>.jar
 # запуск kafka-postgres-reader в отдельном окне терминала
 cd ~/kafka-postgres-connector/kafka-postgres-reader/target
-java -Dspring.profiles.active=default -jar kafka-postgres-reader-<version>.jar
+java -jar kafka-postgres-reader-<version>.jar
 ```
 ## Запуск службы dtm-status-monitor
 
-```plaintext
+```shell
 # создание символической ссылки на файл конфигурации dtm-status-monitor
 sudo ln -s ~/prostore/dtm-status-monitor/src/main/resources/application.yml ~/prostore/dtm-status-monitor/target/application.yml
 # запуск dtm-status-monitor в отдельном окне терминала с указанием порта, заданного в конфигурации Prostore (core:kafka:statusMonitor)
 cd ~/prostore/dtm-status-monitor/target
-java -Dspring.profiles.active=default -Dserver.port=9095 -jar dtm-status-monitor-<version>.jar
+java -Dserver.port=9095 -jar dtm-status-monitor-<version>.jar
 ```
 ***Примечание:*** Запуск службы dtm-status-monitor без указания порта `-Dserver.port`
  приведёт к конкуренции с сервисом Prostore за использование последним порта по умолчанию `8080`.
@@ -359,7 +357,7 @@ java -Dspring.profiles.active=default -Dserver.port=9095 -jar dtm-status-monitor
 
 Запуск со значением по умолчанию (8080) для порта (management:server:port) в конфигурации Prostore:
 
-```plaintext
+```shell
 # запуск файла dtm-query-execution-core-<version>.jar (например, dtm-query-execution-core-5.1.0.jar)
 cd ~/prostore/dtm-query-execution-core/target
 java -jar dtm-query-execution-core-<version>.jar
@@ -367,7 +365,7 @@ java -jar dtm-query-execution-core-<version>.jar
 
 Запуск с иным заданным значением <DTM_METRICS_PORT> для порта (management:server:port) в конфигурации Prostore:
 
-```plaintext
+```shell
 # запуск файла dtm-query-execution-core-<version>.jar с использованием порта <DTM_METRICS_PORT>
 cd ~/prostore/dtm-query-execution-core/target
 java -Dserver.port=<DTM_METRICS_PORT> -jar dtm-query-execution-core-<version>.jar
@@ -434,7 +432,7 @@ CHUNK_SIZE 1000;
 
 Создание топика Kafka "salesTopic" в терминале:
 
-```plaintext
+```shell
 cd /opt/kafka/bin
 bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic salesTopic --zookeeper localhost:2181
 ```
@@ -535,7 +533,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 ### Загрузка avro-файла kafka_upload_sales.avro
 
 Загрузка avro-файла kafka_upload_sales.avro в топик Kafka "salesTopic" через терминал с помощью kafkacat:
-```plaintext
+```shell
 #получение docker-образа kafkacat
 sudo docker pull edenhill/kcat:1.7.0
 #запуск docker-образа kafkacat для загрузки в топик salesTopic
