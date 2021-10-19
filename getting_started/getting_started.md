@@ -356,7 +356,7 @@ java -Dserver.port=9095 -jar dtm-status-monitor-<version>.jar
 
 ## Запуск Prostore
 
-Запуск со значением по умолчанию (8080) для порта (management:server:port) в конфигурации Prostore:
+Запуск со значением по умолчанию (8080) для порта (server:port) в конфигурации Prostore:
 
 ```shell
 # запуск файла dtm-query-execution-core-<version>.jar (например, dtm-query-execution-core-5.1.0.jar)
