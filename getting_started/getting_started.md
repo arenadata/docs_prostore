@@ -76,9 +76,10 @@ logging:
   level:
     io.arenadata.dtm.query.execution: ${DTM_LOGGING_LEVEL:TRACE}
 
+server:
+  port: ${DTM_METRICS_PORT:8080}
+
 management:
-  server:
-    port: ${DTM_METRICS_PORT:8080}
   endpoints:
     enabled-by-default: ${DTM_METRICS_ENABLED:true}
     web:
@@ -110,7 +111,7 @@ core:
     maxConcurrent: ${MATERIALIZED_VIEWS_CONCURRENT:2}
 
   metrics:
-    isEnabled: ${DTM_CORE_METRICS_ENABLED:true}
+    enabled: ${DTM_CORE_METRICS_ENABLED:true}
 
   datasource:
     edml:
@@ -363,13 +364,7 @@ cd ~/prostore/dtm-query-execution-core/target
 java -jar dtm-query-execution-core-<version>.jar
 ```
 
-Запуск с иным заданным значением <DTM_METRICS_PORT> для порта (management:server:port) в конфигурации Prostore:
-
-```shell
-# запуск файла dtm-query-execution-core-<version>.jar с использованием порта <DTM_METRICS_PORT>
-cd ~/prostore/dtm-query-execution-core/target
-java -Dserver.port=<DTM_METRICS_PORT> -jar dtm-query-execution-core-<version>.jar
-```
+Запуск с иным заданным значением осуществляется путём изменения параметра (server:port) в конфигурации Prostore или задании переменной окружения <DTM_METRICS_PORT>.
 
 ## Подключение к Prostore с помощью SQL-клиента
 
