@@ -49,6 +49,8 @@ has_children: false
   * добавлена секция параметров `autoSelect` для настройки порядка выбора СУБД в зависимости от категории и
     подкатегории запросов;
   * удален параметр `CORE_TIME_ZONE` (больше не используется);
+  * путь к параметру `DTM_METRICS_PORT` изменен с `management.server.port` на `server.port`;
+  * путь к параметру `DTM_CORE_METRICS_ENABLED` изменен c `core.metrics.isEnabled` на `core.metrics.еnabled`;
 * добавлен раздел [Конфигурация коннекторов](../maintenance/configuration/connectors/connectors.md);
 * описание конфигурационных параметров системы перенесено из раздела 
   [Конфигурация](../maintenance/configuration/configuration.md) в раздел 

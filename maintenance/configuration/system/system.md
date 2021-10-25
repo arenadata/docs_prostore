@@ -40,11 +40,12 @@ logging:
 
 ### Настройки управления Prostore {#prostore_parameters}
 ```yaml
+# настройки сервера Prostore
+server:
+# номер порта сервиса метрик  
+  port: ${DTM_METRICS_PORT:8080}
 # настройки управления Prostore
 management:
-# номер порта сервиса метрик
-  server:
-    port: ${DTM_METRICS_PORT:8080}
 # настройки конечных точек Prostore
   endpoints:
 # признак генерации метрик со стороны Prostore
@@ -138,7 +139,8 @@ core:
     maxConcurrent: ${MATERIALIZED_VIEWS_CONCURRENT:2}
 # настройки генерации метрики сервиса исполнения запросов
   metrics:
-    isEnabled: ${DTM_CORE_METRICS_ENABLED:true}
+# признак генерации метрики сервиса исполнения запросов
+    enabled: ${DTM_CORE_METRICS_ENABLED:true}
 # настройки источника данных
   datasource:
 # настройки для EDML-операторов
