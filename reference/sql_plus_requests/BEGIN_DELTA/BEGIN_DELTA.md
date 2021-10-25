@@ -34,8 +34,8 @@ has_toc: false
 [Загрузка данных](../../../working_with_system/data_upload/data_upload.md), для обновления данных — в разделе 
 [Обновление данных](../../../working_with_system/data_update/data_update.md).
 
-Если нужно отменить все изменения данных, внесенные в открытой дельте, выполните запрос 
-[ROLLBACK DELTA](../ROLLBACK_DELTA/ROLLBACK_DELTA.md).
+Изменения данных открытой дельты можно отменить с помощью запроса [ROLLBACK DELTA](../ROLLBACK_DELTA/ROLLBACK_DELTA.md).
+{: .note-wrapper}
 
 ## Синтаксис {#syntax}
 

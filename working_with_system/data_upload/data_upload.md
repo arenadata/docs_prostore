@@ -42,7 +42,7 @@ has_toc: false
     определяющую параметры загрузки.
 6.  Если необходимо, загрузите и (или) обновите другие данные.
     <br>В открытой дельте можно выполнить произвольное количество запросов на обновление и загрузку данных,
-    а также [отменить все изменения](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md). 
+    а также [отменить изменения](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md). 
     При этом не допускается добавление информации о различных состояниях одного объекта (то есть различных записей с 
     одинаковым первичным ключом) в одной дельте.
 7.  Выполните запрос [COMMIT DELTA](../../reference/sql_plus_requests/COMMIT_DELTA/COMMIT_DELTA.md) 
@@ -51,9 +51,10 @@ has_toc: false
 При успешном выполнении действий состояние данных системы обновляется, как описано в разделе 
 [Версионирование данных](data_versioning/data_versioning.md).
 
-Пока дельта не закрыта, все изменения данных, выполненные в рамках нее, можно отменить 
-(см. [ROLLBACK DELTA](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md)). 
+Пока дельта не закрыта, изменения данных этой дельты можно отменить 
+с помощью запроса [ROLLBACK DELTA](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md). 
 Созданные внешние таблицы загрузки можно использовать повторно или удалить.
+{: .note-wrapper}
 
 ## Примеры {#examples}
 ```sql

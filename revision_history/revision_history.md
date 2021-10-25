@@ -40,6 +40,9 @@ has_children: false
 * добавлен раздел [Разбор ошибок загрузки и обновления данных](../working_with_system/other_features/troubleshooting/troubleshooting.md);
 * ограничено исполнение [запросов по управлению схемой данных](../working_with_system/logical_schema_update/logical_schema_update.md) 
   в сервисной базе данных `INFORMATION_SCHEMA`;
+* изменен перечень операций, отменяемых запросом [ROLLBACK DELTA](../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md): 
+  отменяются все завершенные операции (как операции загрузки данных, так и обновления данных), а также 
+  незавершенные операции загрузки данных; незавершенные операции обновления данных не отменяются;
 * обновлена [конфигурация системы](../maintenance/configuration/system/system.md):
   * добавлены параметры `AUTO_RESTORE_STATE`, `ADB_MAX_RECONNECTIONS`, `ADB_QUERIES_BY_CONNECT_LIMIT` и 
     `ADB_RECONNECTION_INTERVAL`;

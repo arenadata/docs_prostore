@@ -36,7 +36,7 @@ has_toc: false
       * [DELETE](../../reference/sql_plus_requests/DELETE/DELETE.md) — для архивации актуальных данных.
 6.  Если необходимо, обновите или загрузите другие данные. 
     <br>В открытой дельте можно выполнить произвольное количество запросов на обновление и загрузку данных, 
-    а также [отменить все изменения](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md). 
+    а также [отменить изменения](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md). 
     При этом не допускается загрузка различных состояний объекта (то есть различных записей с одинаковым первичным ключом) 
     в одной дельте.
 7.  Выполните запрос [COMMIT DELTA](../../reference/sql_plus_requests/COMMIT_DELTA/COMMIT_DELTA.md)
@@ -44,6 +44,11 @@ has_toc: false
 
 При успешном выполнении действий состояние данных системы обновляется, как описано в разделе 
 [Версионирование данных](../data_upload/data_versioning/data_versioning.md).
+
+Изменения по всем завершенным [операциям записи](../../overview/main_concepts/write_operation/write_operation.md) можно 
+отменить с помощью запроса [ROLLBACK DELTA](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md). 
+Изменения по незавершенным операциям обновления данных отменить невозможно.
+{: .note-wrapper}
 
 ## Примеры {#examples}
 

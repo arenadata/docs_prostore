@@ -24,7 +24,7 @@ has_toc: false
   возобновляет обработку операций горячей дельты, находящихся в статусах «Выполняется» и «Ошибка»;
 * [ROLLBACK CRASHED_WRITE_OPERATIONS](../../../reference/sql_plus_requests/ROLLBACK_CRASHED_WRITE_OPERATIONS/ROLLBACK_CRASHED_WRITE_OPERATIONS.md) — 
   возобновляет обработку операций горячей дельты, находящихся в статусе «Ошибка»;
-* [ROLLBACK DELTA](../../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md) — отменяет все операции 
+* [ROLLBACK DELTA](../../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md) — отменяет операции 
   горячей дельты.
 
 ## Основные причины ошибок загрузки и обновления данных {#error_reasons}
