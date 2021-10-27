@@ -6,7 +6,7 @@ has_children: false
 has_toc: false
 ---
 
-# Сборка и развёртывание
+# Сборка и развёртывание {#build_and_deploy}
 {: .no_toc }
 
 <details markdown="block">
@@ -21,7 +21,7 @@ has_toc: false
 В этом разделе описаны шаги по развёртыванию среды в конфигурации, предполагающей единственное хранилище — СУБД PostgreSQL. 
 Дополнительная информация приведена в разделе [Схемы развёртывания](../maintenance/deployment_diagrams/deployment_diagrams.md).
 
-## Предустановленные программные средства
+## Предустановленные программные средства {#preinstalled_software}
 *   OC Centos 7;
 *   yum-utils;
 *   curl;
@@ -37,7 +37,7 @@ has_toc: false
 *   docker;
 *   Браузер топиков Kafka с возможностью загрузки бинарных данных, например kafkacat.
 
-## Сборка Prostore
+## Сборка Prostore {#prostore_build}
 
 ```shell
 # клонирование репозитория Prostore
@@ -189,7 +189,7 @@ adp:
 Далее конфигурационный файл `application.yml` обозначается термином "конфигурация Prostore".
 
 
-## Настройка СУБД Postgres
+## Настройка СУБД Postgres {#postgres_setup}
 
 ```shell
 # создание в СУБД Postgres SUPERUSER-пользователя c именем и паролем,
@@ -204,7 +204,7 @@ sudo -u postgres psql -c 'CREATE DATABASE test'
 sudo systemctl reload postgresql-13
 ```
 
-## Сборка и установка коннектора Kafka-Postgres
+## Сборка и установка коннектора Kafka-Postgres {#kafka_postgres_connector_build_deploy}
 
 ```shell
 # клонирование репозитория kafka-postgres-connector
@@ -324,7 +324,7 @@ kafka:
       value.serializer: org.apache.kafka.common.serialization.ByteArraySerializer
 ```
 </details>
-## Запуск сервисов Apache Zookeeper и Apache Kafka
+## Запуск сервисов Apache Zookeeper и Apache Kafka {#zookeeper_kafka_execution}
 
 ```shell
 # запуск одного экземпляра сервера ZooKeeper, если он еще не запущен
@@ -334,7 +334,7 @@ sudo systemctl start kafka
 sudo systemctl status kafka
 ```
 
-## Запуск коннектора Kafka-Postgres
+## Запуск коннектора Kafka-Postgres {#kafka_postgres_execution}
 
 ```shell
 # запуск kafka-postgres-writer в отдельном окне терминала 
@@ -345,7 +345,7 @@ cd ~/kafka-postgres-connector/kafka-postgres-reader/target
 java -jar kafka-postgres-reader-<version>.jar
 ```
 
-## Запуск службы dtm-status-monitor
+## Запуск службы dtm-status-monitor {#dtm_status_monitor_execution}
 
 ```shell
 # создание символической ссылки на файл конфигурации dtm-status-monitor
@@ -357,7 +357,7 @@ java -Dserver.port=9095 -jar dtm-status-monitor-<version>.jar
 ***Примечание:*** Запуск службы dtm-status-monitor без указания порта `-Dserver.port`
  приведёт к конкуренции с сервисом Prostore за использование последним порта по умолчанию `8080`.
 
-## Запуск Prostore
+## Запуск Prostore {#prostore_execution}
 
 Запуск со значением по умолчанию (8080) для порта (server:port) в конфигурации Prostore:
 
@@ -369,13 +369,13 @@ java -jar dtm-query-execution-core-<version>.jar
 
 Запуск с иным заданным значением осуществляется путём изменения параметра (server:port) в конфигурации Prostore или задании переменной окружения <DTM_METRICS_PORT>.
 
-## Подключение к Prostore с помощью SQL-клиента
+## Подключение к Prostore с помощью SQL-клиента {#sql_client_connection}
 
 Порядок подключения описан в разделе [Подключение с помощью SQL-клиента](../working_with_system/connection/connection_via_sql_client/connection_via_sql_client.md).
 
-## Демонстрационный сценарий
+## Демонстрационный сценарий {#demo_scenario}
 
-### Создание необходимых логических сущностей
+### Создание необходимых логических сущностей {#logical_entities_creation}
 
 ```sql
 -- создание логической базы данных
@@ -426,7 +426,7 @@ FORMAT 'AVRO'
 CHUNK_SIZE 1000;
 ```
 
-### Создание топика Kafka для последующей загрузки данных
+### Создание топика Kafka для последующей загрузки данных {#upload_kafka_topic_creation}
 
 Создание топика Kafka "salesTopic" в терминале:
 
@@ -435,7 +435,7 @@ cd /opt/kafka/bin
 bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic salesTopic --zookeeper localhost:2181
 ```
 
-### Создание бинарного avro-файла kafka_upload_sales.avro из avro-схемы и данных
+### Создание бинарного avro-файла kafka_upload_sales.avro из avro-схемы и данных {#avro_file_creation}
 
 <details markdown="block">
   <summary>
@@ -528,7 +528,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
 [Сохранить](./kafka_upload_sales.avro) бинарный файл
 </details>
 
-### Загрузка avro-файла kafka_upload_sales.avro
+### Загрузка avro-файла kafka_upload_sales.avro {#avro_file_upload}
 
 Загрузка avro-файла kafka_upload_sales.avro в топик Kafka "salesTopic" через терминал с помощью kafkacat:
 ```shell
@@ -541,7 +541,7 @@ sudo docker run -it --network host \
 edenhill/kcat:1.7.0 -b localhost:9092 -t salesTopic -P /data/kafka_upload_sales.avro
  ```
  
-### Загрузка данных
+### Загрузка данных {#data_upload}
 
 ```sql
 -- открытие новой (горячей) дельты
@@ -552,7 +552,7 @@ INSERT INTO sales SELECT * FROM sales.sales_ext_upload;
 COMMIT DELTA;
 ```
 
-### Вставка данных
+### Вставка данных {#data_upsert}
 
 ```sql
 -- открытие новой (горячей) дельты
@@ -571,7 +571,7 @@ VALUES
 COMMIT DELTA;
 ```
 
-### Выборка данных
+### Выборка данных {#data_selection}
 
 ```sql
 -- запрос с неявным указанием столбцов и ключевым словом WHERE
@@ -587,7 +587,7 @@ LIMIT 5;
 SELECT * from stores_by_sold_products;
 ```
 
-### Выгрузка в топик Kafka
+### Выгрузка в топик Kafka {#kafka_topic_download}
 
 ```sql
 -- запуск выгрузки данных из логической таблицы sales
@@ -595,7 +595,7 @@ INSERT INTO sales_ext_download
 SELECT * FROM sales WHERE product_units > 2;
 ```
 
-### Удаление логических сущностей
+### Удаление логических сущностей {#logical_entities_drop}
 
 ```sql
 -- удаление внешней таблицы загрузки
