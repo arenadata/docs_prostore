@@ -63,41 +63,37 @@ has_children: false
 
 ### Версия 5.1
 
+Версия 5.1 доступна в [архиве](https://arenadata.github.io/docs_prostore_archive/v5-1-0/).
+
 Изменения:
-* добавлено ключевое слово [ESTIMATE_ONLY](../reference/sql_plus_requests/SELECT/SELECT.md#estimate),
-  доступное в [SELECT](../reference/sql_plus_requests/SELECT/SELECT.md)-запросах;
+* добавлено ключевое слово `ESTIMATE_ONLY`, доступное в SELECT-запросах;
 * добавлено ключевое слово `LOGICAL_ONLY`, доступное в запросах на создание и удаление логической БД,
   логической таблицы и материализованного представления;
-* обновлено описание запросов [CHECK_DATA](../reference/sql_plus_requests/CHECK_DATA/CHECK_DATA.md) и
-  [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md):
+* обновлено описание запросов `CHECK_DATA` и `CHECK_SUM`:
   * добавлен коэффициент нормализации, повышающий максимально допустимое количество записей в
     проверяемых дельтах;
   * изменен расчет контрольных сумм: теперь они считаются по дельтам, а не отдельным операциям записи;
-* обновлено описание запроса [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md):
+* обновлено описание запроса `CHECK_SUM`:
   * изменен расчет контрольной суммы по таблице/представлению: теперь расчет аналогичен тому, который
     выполняется для CHECK_DATA;
   * изменен расчет контрольной суммы по логической БД: теперь контрольные суммы таблиц складываются,
     а не проходят дополнительный этап хеширования;
-* в [конфигурацию](../maintenance/configuration/configuration.md) добавлен параметр
-  `DTM_VERTX_BLOCKING_STACKTRACE_TIME`;
+* в конфигурацию добавлен параметр `DTM_VERTX_BLOCKING_STACKTRACE_TIME`;
 * добавлена глава «Сборка и развертывание»;
-* в главу «Работа с системой» добавлены разделы 
-  [Получение информации о SELECT-запросе](../working_with_system/other_features/query_estimation/query_estimation.md) и 
-  [Проверка месторасположения логической сущности](../working_with_system/other_features/datasource_check/datasource_check.md);
-* в главу «Эксплуатация» добавлен раздел [Часовые пояса системы и компонентов](../maintenance/time_zones/time_zones.md).
+* в главу «Работа с системой» добавлены разделы
+  «Получение информации о SELECT-запросе» и
+  «Проверка месторасположения логической сущности»;
+* в главу «Эксплуатация» добавлен раздел «Часовые пояса системы и компонентов».
 
 ### Версия 5.0
 
 Изменения:
-* добавлена [СУБД хранилища](../introduction/supported_DBMS/supported_DBMS.md) нового типа — ADP —
-  на основе PostgreSQL;
-* добавлена выгрузка данных из СУБД хранилища, указанной в запросе
-  (см. [INSERT INTO download_external_table](../reference/sql_plus_requests/INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md));
-* в [системное представление tables](../reference/system_views/system_views.md#tables) добавлен столбец
-  `table_datasource_type`;
-* обновлено описание запроса [CHECK_SUM](../reference/sql_plus_requests/CHECK_SUM/CHECK_SUM.md): теперь запрос
-  поддерживает расчет контрольной суммы по материализованному представлению;
-* обновлена [конфигурация](../maintenance/configuration/configuration.md):
+* добавлена СУБД хранилища нового типа — ADP — на основе PostgreSQL;
+* добавлена выгрузка данных из СУБД хранилища, указанной в запросе `INSERT INTO download_external_table`;
+* в системное представление tables добавлен столбец `table_datasource_type`;
+* обновлено описание запроса `CHECK_SUM`: теперь запрос поддерживает расчет контрольной суммы по материализованному 
+  представлению;
+* обновлена конфигурация:
   * добавлены параметры для управления СУБД ADP;
   * добавлены параметры запроса prepared statement для ADB: `ADB_PREPARED_CACHE_MAX_SIZE`, `ADB_PREPARED_CACHE_SQL_LIMIT`
     и `ADB_PREPARED_CACHE`;
@@ -105,7 +101,7 @@ has_children: false
     `DTM_CORE_PLUGINS_ANALYTICAL`, `DTM_CORE_PLUGINS_DICTIONARY`, `DTM_CORE_PLUGINS_UNDEFINED`;
   * добавлен параметр `DTM_LOGGING_LEVEL` для управления уровнем логирования;
   * конкретные IP-адреса заменены на `localhost`;
-* добавлен раздел [Схемы развертывания](../maintenance/deployment_diagrams/deployment_diagrams.md).
+* добавлен раздел «Схемы развертывания».
 
 ### Версия 4.1
 
