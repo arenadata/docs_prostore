@@ -57,8 +57,7 @@ CHECK_DATABASE()
 CHECK_DATABASE(db_name)
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `db_name` — имя логической базы данных, для таблиц которой выполняется проверка.
 
 ## Примеры {#examples}

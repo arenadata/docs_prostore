@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: CREATE TABLE
-nav_order: 13
+nav_order: 14
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -31,12 +31,15 @@ has_toc: false
 [хранилища](../../../overview/main_concepts/data_storage/data_storage.md) можно указать 
 ключевое слово `DATASOURCE_TYPE` (см. секцию [Ключевое слово DATASOURCE_TYPE](#datasource_type)).
 
-**Совет:** рекомендуется создавать логическую таблицу с размещением данных, как минимум, в СУБД хранилища, 
+Рекомендуется создавать логическую таблицу с размещением данных, как минимум, в СУБД хранилища, 
 из которой планируется выгрузка данных. Иначе выгрузка данных из таблицы будет недоступна. 
-Подробнее о СУБД, из которых можно выгружать данные, см. в разделе [INSERT INTO download_external_table](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md).
+Подробнее о СУБД, из которых можно выгружать данные, см. в разделе 
+[INSERT INTO download_external_table](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md).
+{: .tip-wrapper}
 
-**Примечание:** изменение логической таблицы недоступно. Для замены таблицы необходимо удалить ее и 
+Изменение логической таблицы недоступно. Для замены таблицы необходимо удалить ее и 
 создать новую.
+{: .note-wrapper}
 
 ## Синтаксис {#syntax}
 
@@ -51,7 +54,7 @@ CREATE TABLE [db_name.]table_name (
 [LOGICAL_ONLY]
 ```
 
-Где:
+Параметры:
 *   `db_name` — имя логической базы данных, в которой создается логическая таблица. Указывается 
     опционально, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `table_name` — имя создаваемой логической таблицы, уникальное среди логических сущностей логической БД;
@@ -84,6 +87,7 @@ CREATE TABLE [db_name.]table_name (
 
 ## Ограничения {#restrictions}
 
+*   Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
 *   Имена столбцов должны быть уникальны в рамках логической таблицы.
 *   Недопустимо использование зарезервированных имен столбцов: `sys_op`, `sys_from`, `sys_to`, 
     `sys_close_date`, `bucket_id`, `sign`.

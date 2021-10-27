@@ -50,8 +50,7 @@ has_toc: false
 CHECK_TABLE([db_name.]table_name)
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `db_name` — имя логической базы данных, которой принадлежит проверяемая логическая таблица. 
     Указывается опционально, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `table_name` — имя проверяемой логической таблицы.

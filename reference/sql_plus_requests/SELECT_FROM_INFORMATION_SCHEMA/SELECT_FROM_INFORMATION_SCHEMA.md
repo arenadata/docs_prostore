@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: SELECT FROM INFORMATION_SCHEMA
-nav_order: 31
+nav_order: 35
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -47,8 +47,9 @@ SELECT column_list FROM [INFORMATION_SCHEMA.]system_view_name [AS alias_name]
 *   `ORDER BY` — для сортировки данных;
 *   `LIMIT` — для ограничения количества возвращаемых строк.
 
-**Внимание:** строковые значения столбцов для ключевого слова `WHERE` необходимо указывать в верхнем регистре 
+Строковые значения столбцов для ключевого слова `WHERE` необходимо указывать в верхнем регистре 
 (например, `WHERE table_schema = 'SALES'`).
+{: .warning-wrapper}
 
 Поддерживаются следующие типы соединений системных представлений:
 *   `[INNER]` — внутреннее соединение,
@@ -76,16 +77,14 @@ SELECT column_list FROM [INFORMATION_SCHEMA.]system_view_name [AS alias_name]
 [окружения](../../../overview/main_concepts/environment/environment.md) 
 с лексической сортировкой по возрастанию:
 ```sql
-SELECT schema_name FROM INFORMATION_SCHEMA.schemata
-ORDER BY schema_name
+SELECT schema_name FROM INFORMATION_SCHEMA.schemata ORDER BY schema_name
 ```
 
 ### Запрос информации о сущностях логической БД {#entity_list_example}
 
 Запрос информации о логических сущностях логической БД `SALES`:
 ```sql
-SELECT * FROM INFORMATION_SCHEMA.tables
-WHERE table_schema = 'SALES'
+SELECT * FROM INFORMATION_SCHEMA.tables WHERE table_schema = 'SALES'
 ```
 
 ### Запрос имен, типов и столбцов логических сущностей {#entity_info_example}

@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: CREATE DOWNLOAD EXTERNAL TABLE
-nav_order: 11
+nav_order: 12
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -32,8 +32,9 @@ has_toc: false
 Подробнее о порядке выполнения действий для выгрузки данных см. в разделе 
 [Выгрузка данных](../../../working_with_system/data_download/data_download.md).
 
-**Примечание:** изменение внешней таблицы недоступно. Для замены внешней таблицы необходимо 
+Изменение внешней таблицы недоступно. Для замены внешней таблицы необходимо 
 удалить ее и создать новую.
+{: .note-wrapper}
 
 ## Синтаксис {#syntax}
 
@@ -48,8 +49,7 @@ FORMAT 'AVRO'
 [CHUNK_SIZE records_per_message]
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `db_name` — имя логической базы данных, в которой создается внешняя таблица. Указывается опционально, 
     если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `ext_table_name` — имя создаваемой внешней таблицы выгрузки. Для удобства различения таблиц выгрузки 
@@ -62,6 +62,10 @@ FORMAT 'AVRO'
     (см. [Формат пути к внешнему приемнику данных](../../path_to_kafka_topic/path_to_kafka_topic.md));
 *   `records_per_message` — максимальное количество записей, выгружаемых из хранилища в одном сообщении 
     топика Каfka.
+    
+## Ограничения {#restrictions}
+
+Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
 
 ## Пример {#examples}
 

@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: CONFIG_STORAGE_ADD
-nav_order: 9
+nav_order: 10
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -16,8 +16,9 @@ has_toc: false
 с размещением данных в этой СУБД и [загружать](../INSERT_INTO_logical_table/INSERT_INTO_logical_table.md) 
 данные в нее.
 
-**Примечание:** перед выполнением запроса необходимо добавить параметры СУБД 
-в [конфигурацию](../../../maintenance/configuration/configuration.md) системы.
+Перед выполнением запроса необходимо добавить параметры СУБД 
+в [конфигурацию системы](../../../maintenance/configuration/system/system.md).
+{: .note-wrapper}
 
 В ответе возвращается:
 *   пустой объект ResultSet при успешном выполнении запроса;
@@ -35,8 +36,7 @@ has_toc: false
 CONFIG_STORAGE_ADD('datasource_alias')
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `datasource_alias` — псевдоним СУБД хранилища. Возможные значения: `adb`, `adqm`, `adg`, `adp`.
 
 ## Пример {#examples}

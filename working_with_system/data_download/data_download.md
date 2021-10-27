@@ -1,33 +1,37 @@
 ﻿---
 layout: default
 title: Выгрузка данных
-nav_order: 4
+nav_order: 5
 parent: Работа с системой
 has_children: false
 ---
 
 # Выгрузка данных {#data_download}
 
-Система позволяет выгружать актуальные и архивные данные, а также совокупность изменений, выполненных 
-в рамках указанных дельт. Данные можно выгружать из [логических таблиц](../../overview/main_concepts/logical_table/logical_table.md)
+Система позволяет выгружать большие объемы данных, а также изменений, выполненных 
+в указанных дельтах. Данные можно выгружать из [логических таблиц](../../overview/main_concepts/logical_table/logical_table.md)
 и [логических представлений](../../overview/main_concepts/logical_view/logical_view.md). Выгрузка данных из
 [материализованных представлений](../../overview/main_concepts/materialized_view/materialized_view.md) недоступна.
-Возможные способы выбора выгружаемых данных см. в секции [FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time) 
-раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
+
+Под большим объемом данных подразумевается количество записей от нескольких сотен до нескольких миллионов.
+Для получения небольшого объема данных можно использовать функцию [запроса данных](../data_reading/data_reading.md).
+{: .note-wrapper}
 
 Данные можно выгрузить из [СУБД](../../introduction/supported_DBMS/supported_DBMS.md) [хранилища](../../overview/main_concepts/main_concepts.md),
-выбранной для выгрузки данных в [конфигурации](../../maintenance/configuration/configuration.md) системы (см. параметр
-`EDML_DATASOURCE`), или любой указанной СУБД хранилища. Если в запросе не указана СУБД для выгрузки,
-данные выгружаются из СУБД, заданной в конфигурации. Чтобы выгрузить данные из другой СУБД, нужно добавить
-в запрос ключевое слово `DATASOURCE_TYPE` с псевдонимом СУБД.
+выбранной для выгрузки данных в [конфигурации системы](../../maintenance/configuration/system/system.md) (см. параметр
+`EDML_DATASOURCE`), или любой 
+[указанной СУБД хранилища](../../reference/sql_plus_requests/INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md#param_datasource_type).
+Возможные способы выбора выгружаемых данных см. в секции [FOR SYSTEM_TIME](../../reference/sql_plus_requests/SELECT/SELECT.md#for_system_time)
+раздела [SELECT](../../reference/sql_plus_requests/SELECT/SELECT.md).
 
-Для выгрузки данных нужен топик Kafka. Если в брокере сообщений Kafka настроено автоматическое создание топиков, 
-то дополнительные действия не требуются. Иначе необходимо создать топик, если он еще не создан. Подробнее о создании 
+Данные выгружаются [в виде сообщений Kafka](../../reference/download_format/download_format.md), поэтому для их загрузки
+нужен топик Kafka. Если в брокере сообщений Kafka настроено автоматическое создание топиков, 
+то дополнительные действия не требуются. Иначе топик необходимо создать, если он отсутствует. Подробнее о создании 
 топиков см. в документации Kafka:
 *   раздел [Quick Start](https://kafka.apache.org/documentation/#quickstart),
 *   раздел [Adding and removing topics](https://kafka.apache.org/documentation/#basic_ops_add_topic).
 
-Чтобы выгрузить данные из логической таблицы или логического представления во внешнюю информационную систему:
+Чтобы выгрузить данные из таблицы или представления во внешнюю информационную систему:
 1.  [Создайте](../../reference/sql_plus_requests/CREATE_DOWNLOAD_EXTERNAL_TABLE/CREATE_DOWNLOAD_EXTERNAL_TABLE.md) 
     [внешнюю таблицу](../../overview/main_concepts/external_table/external_table.md) 
     выгрузки, если она еще не создана.
@@ -41,7 +45,7 @@ has_children: false
 ## Пример {#example}
 ```sql
 -- выбор логической базы данных sales в качестве базы данных по умолчанию
-USE sales
+USE sales;
 
 -- создание внешней таблицы выгрузки sales_ext_download
 CREATE DOWNLOAD EXTERNAL TABLE sales_ext_download (
@@ -54,11 +58,11 @@ CREATE DOWNLOAD EXTERNAL TABLE sales_ext_download (
 )
 LOCATION  'kafka://zk1:2181,zk2:2181,zk3:2181/sales_out'
 FORMAT 'AVRO'
-CHUNK_SIZE 1000
+CHUNK_SIZE 1000;
 
 -- запуск выгрузки данных из логической таблицы sales
 INSERT INTO sales_ext_download 
-SELECT * FROM sales WHERE product_units > 2 FOR SYSTEM_TIME AS OF DELTA_NUM 10
+SELECT * FROM sales WHERE product_units > 2 FOR SYSTEM_TIME AS OF DELTA_NUM 10;
 
 -- создание внешней таблицы выгрузки stores_ext_download
 CREATE DOWNLOAD EXTERNAL TABLE sales.stores_ext_download (
@@ -70,9 +74,9 @@ description VARCHAR(256)
 ) 
 LOCATION  'kafka://$kafka/stores_out'
 FORMAT 'AVRO'
-CHUNK_SIZE 1000
+CHUNK_SIZE 1000;
 
 -- запуск выгрузки данных из логической таблицы stores
 INSERT INTO stores_ext_download 
-SELECT * FROM stores WHERE region = 'Москва' DATASOURCE_TYPE = 'adqm'
+SELECT * FROM stores WHERE region = 'Москва' DATASOURCE_TYPE = 'adqm';
 ```

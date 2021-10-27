@@ -21,8 +21,8 @@ has_children: false
 
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- удаление представления stores_by_sold_products
-DROP VIEW stores_by_sold_products
+DROP VIEW stores_by_sold_products;
 ```

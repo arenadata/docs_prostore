@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: CREATE UPLOAD EXTERNAL TABLE
-nav_order: 14
+nav_order: 15
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -32,8 +32,9 @@ has_toc: false
 выполнения действий для загрузки данных см. в разделе 
 [Загрузка данных](../../../working_with_system/data_upload/data_upload.md).
 
-**Примечание:** изменение внешней таблицы недоступно. Для замены внешней таблицы необходимо 
+Изменение внешней таблицы недоступно. Для замены внешней таблицы необходимо 
 удалить ее и создать новую.
+{: .note-wrapper}
 
 ## Синтаксис {#syntax}
 
@@ -48,8 +49,7 @@ FORMAT 'AVRO'
 [MESSAGE_LIMIT messages_per_segment]
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `db_name` — имя логической базы данных, в которой создается внешняя таблица. Указание опционально, 
     если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `ext_table_name` — имя создаваемой внешней таблицы загрузки. Для удобства различения таблиц выгрузки 
@@ -64,7 +64,11 @@ FORMAT 'AVRO'
     в [хранилище](../../../overview/main_concepts/data_storage/data_storage.md) 
     в составе одного блока на один поток загрузки. Значение подбирается в зависимости от параметров 
     производительности инфраструктуры.
-    
+
+## Ограничения {#restrictions}
+
+Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
+
 ## Пример {#examples}
 
 ```sql

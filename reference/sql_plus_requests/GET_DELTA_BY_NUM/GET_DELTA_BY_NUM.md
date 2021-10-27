@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: GET_DELTA_BY_NUM
-nav_order: 23
+nav_order: 25
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -30,6 +30,5 @@ has_toc: false
 GET_DELTA_BY_NUM(delta_num)
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `delta_num` — целый неотрицательный номер дельты.

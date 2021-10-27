@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: CREATE MATERIALIZED VIEW
-nav_order: 12
+nav_order: 13
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -23,6 +23,10 @@ has_toc: false
 Запрос позволяет создать [материализованное представление](../../../overview/main_concepts/materialized_view/materialized_view.md) 
 в [логической базе данных](../../../overview/main_concepts/logical_db/logical_db.md).
 
+Создание материализованных представлений возможно на основе данных ADB
+с размещением в ADG.
+{: .note-wrapper}
+
 В ответе возвращается:
 *   пустой объект ResultSet при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
@@ -32,11 +36,9 @@ has_toc: false
 [хранилища](../../../overview/main_concepts/data_storage/data_storage.md) можно указать
 ключевое слово `DATASOURCE_TYPE` (см. секцию [Ключевое слово DATASOURCE_TYPE](#datasource_type)).
 
-**Примечание:** создание материализованных представлений возможно на основе данных ADB 
-с размещением в ADG. 
-
-**Примечание:** изменение материализованного представления недоступно. Для замены материализованного 
+Изменение материализованного представления недоступно. Для замены материализованного 
 представления необходимо удалить его и создать новое.
+{: .note-wrapper}
 
 ## Синтаксис {#syntax}
 
@@ -53,7 +55,7 @@ DATASOURCE_TYPE = origin_datasource_alias
 [LOGICAL_ONLY]
 ```
 
-Где:
+Параметры:
 *   `db_name` — имя логической базы данных, в которой создается материализованное представление. Параметр 
     опционален, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `materialized_view_name` — имя создаваемого логического представления, уникальное среди логических 
@@ -90,6 +92,7 @@ DATASOURCE_TYPE = origin_datasource_alias
 
 ## Ограничения {#restrictions}
 
+*   Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
 *   Имена столбцов должны быть уникальны в рамках представления.
 *   Столбцы не могут иметь имена, зарезервированные для служебного использования: `sys_op`, `sys_from`, 
     `sys_to`, `sys_close_date`, `bucket_id`, `sign`.

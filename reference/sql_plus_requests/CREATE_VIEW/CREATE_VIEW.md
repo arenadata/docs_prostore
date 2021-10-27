@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: CREATE VIEW
-nav_order: 15
+nav_order: 16
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -30,8 +30,7 @@ CREATE VIEW [db_name.]view_name AS SELECT query
 CREATE OR REPLACE VIEW [db_name.]view_name AS SELECT query
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `db_name` — имя логической базы данных, в которой создается или заменяется логическое представление. 
     Указывается опционально, если выбрана логическая БД, 
     [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
@@ -41,12 +40,12 @@ CREATE OR REPLACE VIEW [db_name.]view_name AS SELECT query
 
 ## Ограничения {#restrictions}
 
-В подзапросе `query` не допускается использование:
-*   логических представлений,
-*   [системных представлений](../../system_views/system_views.md) 
-    `INFORMATION_SCHEMA`,
-*   ключевого слова [FOR SYSTEM_TIME](../SELECT/SELECT.md#for_system_time),
-*   ключевого слова `DATASOURCE_TYPE`.
+*   Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
+*   В подзапросе `query` не допускается использование:
+    *   логических представлений,
+    *   [системных представлений](../../system_views/system_views.md) `INFORMATION_SCHEMA`,
+    *   ключевого слова [FOR SYSTEM_TIME](../SELECT/SELECT.md#for_system_time),
+    *   ключевого слова `DATASOURCE_TYPE`.
 
 ## Пример {#examples}
 

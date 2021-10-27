@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: GET_DELTA_BY_DATETIME
-nav_order: 22
+nav_order: 24
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -31,8 +31,7 @@ has_toc: false
 GET_DELTA_BY_DATETIME(date_time_expression)
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `date_time_expression` — момент даты-времени вида `'YYYY-MM-DD hh:mm:ss'`. Возможные форматы см. в разделе
     [Форматы даты и времени](../../timestamp_formats/timestamp_formats.md). 
 

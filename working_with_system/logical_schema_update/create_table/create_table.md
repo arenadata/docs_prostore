@@ -32,7 +32,7 @@ has_children: false
 
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- создание таблицы sales
 CREATE TABLE sales (

@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: DROP TABLE
-nav_order: 19
+nav_order: 21
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -31,10 +31,11 @@ has_toc: false
 [хранилища](../../../overview/main_concepts/data_storage/data_storage.md) можно указать
 ключевое слово `DATASOURCE_TYPE` (см. секцию [Ключевое слово DATASOURCE_TYPE](#datasource_type)).
 
-**Внимание:** удаленные данные невозможно восстановить средствами системы. Удаление данных из СУБД хранилища, 
+Удаленные данные невозможно восстановить средствами системы. Удаление данных из СУБД хранилища, 
 используемых для выгрузки данных, приведет к невозможности [выгрузки](../../../working_with_system/data_download/data_download.md) 
 этих данных. Подробнее о СУБД, из которых можно выгружать данные, см. в разделе 
 [INSERT INTO download_external_table](../INSERT_INTO_download_external_table/INSERT_INTO_download_external_table.md).
+{: .warning-wrapper}
 
 ## Синтаксис {#syntax}
 
@@ -44,7 +45,7 @@ DROP TABLE [IF EXISTS] [db_name.]table_name
 [LOGICAL_ONLY]
 ```
 
-Где: 
+Параметры: 
 *   `db_name` — имя логической базы данных, из которой удаляется логическая таблица. Указывается 
     опционально, если выбрана логическая БД, [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `table_name` — имя удаляемой логической таблицы;
@@ -75,7 +76,11 @@ DROP TABLE [IF EXISTS] [db_name.]table_name
 и размещенных в них данных из хранилища данных.
 
 Если ключевое слово не указано, удаляется как логическая, так и связанные с ней физические таблицы.
-    
+
+## Ограничения {#restrictions}
+
+Выполнение запроса недоступно в сервисной базе данных `INFORMATION_SCHEMA`.
+
 ## Примеры {#examples}
 
 ### Удаление таблицы с удалением данных из всех СУБД {#all_db_example}
@@ -93,8 +98,11 @@ DROP TABLE IF EXISTS sales.sales_unknown_existence
 ### Удаление таблицы с удалением данных из ADB и ADG {#adb_adg_example}
 
 ```sql
-DROP TABLE sales.stores DATASOURCE_TYPE = adb
-DROP TABLE sales.stores DATASOURCE_TYPE = adg
+-- удаление таблицы из ADB
+DROP TABLE sales.stores DATASOURCE_TYPE = adb;
+
+-- удаление таблицы из ADG
+DROP TABLE sales.stores DATASOURCE_TYPE = adg;
 ```
 
 ### Удаление таблицы только на логическом уровне {#logical_example}

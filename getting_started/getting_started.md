@@ -18,7 +18,7 @@ has_toc: false
 {:toc}
 </details>
 
-В данном разделе описаны шаги по развёртыванию среды в конфигурации, предполагающей единственное хранилище - СУБД PostgreSQL. 
+В этом разделе описаны шаги по развёртыванию среды в конфигурации, предполагающей единственное хранилище — СУБД PostgreSQL. 
 Дополнительная информация приведена в разделе [Схемы развёртывания](../maintenance/deployment_diagrams/deployment_diagrams.md).
 
 ## Предустановленные программные средства {#preinstalled_software}
@@ -203,6 +203,7 @@ sudo -u postgres psql -c 'CREATE DATABASE test'
 # перезапуск сервиса Postgresql
 sudo systemctl reload postgresql-13
 ```
+
 ## Сборка и установка коннектора Kafka-Postgres {#kafka_postgres_connector_build_deploy}
 
 ```shell
@@ -332,6 +333,7 @@ sudo systemctl start zookeeper
 sudo systemctl start kafka
 sudo systemctl status kafka
 ```
+
 ## Запуск коннектора Kafka-Postgres {#kafka_postgres_execution}
 
 ```shell
@@ -342,6 +344,7 @@ java -jar kafka-postgres-writer-<version>.jar
 cd ~/kafka-postgres-connector/kafka-postgres-reader/target
 java -jar kafka-postgres-reader-<version>.jar
 ```
+
 ## Запуск службы dtm-status-monitor {#dtm_status_monitor_execution}
 
 ```shell
@@ -369,7 +372,6 @@ java -jar dtm-query-execution-core-<version>.jar
 ## Подключение к Prostore с помощью SQL-клиента {#sql_client_connection}
 
 Порядок подключения описан в разделе [Подключение с помощью SQL-клиента](../working_with_system/connection/connection_via_sql_client/connection_via_sql_client.md).
-
 
 ## Демонстрационный сценарий {#demo_scenario}
 
@@ -423,6 +425,7 @@ LOCATION  'kafka://localhost:2181/salesTopicOut'
 FORMAT 'AVRO'
 CHUNK_SIZE 1000;
 ```
+
 ### Создание топика Kafka для последующей загрузки данных {#upload_kafka_topic_creation}
 
 Создание топика Kafka "salesTopic" в терминале:
@@ -522,7 +525,7 @@ bash kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic sale
     бинарный AVRO-файл `kafka_upload_sales.avro`
   </summary>
   {: .text-delta } 
-[сохранить](./kafka_upload_sales.avro) бинарный файл
+[Сохранить](./kafka_upload_sales.avro) бинарный файл
 </details>
 
 ### Загрузка avro-файла kafka_upload_sales.avro {#avro_file_upload}
@@ -548,6 +551,7 @@ INSERT INTO sales SELECT * FROM sales.sales_ext_upload;
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA;
 ```
+
 ### Вставка данных {#data_upsert}
 
 ```sql
@@ -566,6 +570,7 @@ VALUES
 -- закрытие дельты (фиксация изменений)
 COMMIT DELTA;
 ```
+
 ### Выборка данных {#data_selection}
 
 ```sql
@@ -581,6 +586,7 @@ LIMIT 5;
 -- запрос к логическому представлению stores_by_sold_products
 SELECT * from stores_by_sold_products;
 ```
+
 ### Выгрузка в топик Kafka {#kafka_topic_download}
 
 ```sql
@@ -588,6 +594,7 @@ SELECT * from stores_by_sold_products;
 INSERT INTO sales_ext_download 
 SELECT * FROM sales WHERE product_units > 2;
 ```
+
 ### Удаление логических сущностей {#logical_entities_drop}
 
 ```sql
@@ -596,5 +603,3 @@ DROP UPLOAD EXTERNAL TABLE sales_ext_upload;
 -- удаление внешней таблицы выгрузки
 DROP DOWNLOAD EXTERNAL TABLE sales_ext_download;
 ```
-
-

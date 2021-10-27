@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: INSERT INTO logical_table
-nav_order: 27
+nav_order: 30
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -22,16 +22,20 @@ has_toc: false
 
 Запрос позволяет загрузить данные в [логическую таблицу](../../../overview/main_concepts/logical_table/logical_table.md) 
 [логической базы данных](../../../overview/main_concepts/logical_db/logical_db.md) 
-из внешнего источника данных. Загружаемые данные должны соответствовать формату, 
-[указанному при создании внешней таблицы загрузки](../CREATE_UPLOAD_EXTERNAL_TABLE/CREATE_UPLOAD_EXTERNAL_TABLE.md) и описанному 
-в разделе [Формат загрузки данных](../../upload_format/upload_format.md).
+из внешнего источника данных. Запрос обрабатывается в порядке, описанном в разделе 
+[Порядок обработки запросов на загрузку данных](../../../overview/interactions/upload_processing/upload_processing.md).
+Загружаемые данные должны соответствовать формату, 
+[указанному при создании внешней таблицы загрузки](../CREATE_UPLOAD_EXTERNAL_TABLE/CREATE_UPLOAD_EXTERNAL_TABLE.md) и 
+описанному в разделе [Формат загрузки данных](../../upload_format/upload_format.md).
 
-**Примечание:** загрузка данных возможна только в логическую таблицу.
-Загрузка данных в [логические](../../../overview/main_concepts/logical_view/logical_view.md)
-и [материализованные представления](../../../overview/main_concepts/materialized_view/materialized_view.md)
-недоступна.
+Для загрузки небольшого объема данных можно использовать 
+[обновление данных](../../../working_with_system/data_update/data_update.md).
+{: .note-wrapper}
 
-Запрос обрабатывается в порядке, описанном в разделе [Порядок обработки запросов на загрузку данных](../../../overview/interactions/upload_processing/upload_processing.md).
+Перед выполнением запроса необходимо создать [внешнюю таблицу](../../../overview/main_concepts/external_table/external_table.md),
+загрузить данные в топик Kafka и открыть [дельту](../../../overview/main_concepts/delta/delta.md).
+Подробнее о порядке выполнения действий для загрузки данных см. в разделе 
+[Загрузка данных](../../../working_with_system/data_upload/data_upload.md).
 
 В ответе возвращается:
 *   пустой объект ResultSet при успешном выполнении запроса;
@@ -41,16 +45,11 @@ has_toc: false
 выбранные для размещения данных таблицы. Месторасположение данных таблицы можно задавать запросами 
 [CREATE TABLE](../CREATE_TABLE/CREATE_TABLE.md) и [DROP TABLE](../DROP_TABLE/DROP_TABLE.md).
 
-**Примечания**
-
-*   Перед выполнением запроса необходимо создать [внешнюю таблицу](../../../overview/main_concepts/external_table/external_table.md), 
-    загрузить данные в топик Kafka и открыть [дельту](../../../overview/main_concepts/delta/delta.md). 
-    Подробнее о порядке выполнения действий для загрузки данных см. в разделе [Загрузка данных](../../../working_with_system/data_upload/data_upload.md).
-*   Имена и порядок следования столбцов должны совпадать в топике Kafka, внешней таблице загрузке и 
-    запросе на загрузку данных. Исключением является служебное поле `sys_op`, которое обязательно 
-    для топика и опционально для внешней таблицы, но должно отсутствовать в запросе на загрузку данных 
-    при явном перечислении столбцов. Подробнее о требованиях к загружаемым данным см. в разделе 
-    [Формат загрузки данных](../../upload_format/upload_format.md).
+Загрузка данных возможна только в логическую таблицу.
+Загрузка данных в [логические](../../../overview/main_concepts/logical_view/logical_view.md)
+и [материализованные представления](../../../overview/main_concepts/materialized_view/materialized_view.md)
+недоступна.
+{: .note-wrapper}
 
 ## Синтаксис {#syntax}
 
@@ -64,30 +63,35 @@ INSERT INTO [db_name.]table_name SELECT column_list FROM [db_name.]ext_table_nam
 INSERT INTO [db_name.]table_name SELECT * FROM [db_name.]ext_table_name
 ```
 
-## Параметры {#parameters}
-
+Параметры:
 *   `db_name` — имя логической базы данных. Опционально, если выбрана логическая БД, 
     [используемая по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md);
 *   `table_name` — имя логической таблицы, в которую загружаются данные;
-*   `column_list` — список имен столбцов внешней таблицы загрузки. Должен включать все имена столбцов 
-    логической таблицы. Если внешняя таблица содержит служебное поле `sys_op`, оно не указывается;
+*   `column_list` — список имен всех столбцов внешней таблицы загрузки. 
+    Имена и порядок следования указанных столбцов должны совпадать с именами и порядком следования столбцов (полей) 
+    в логической таблице, куда загружаются данные, и топике Kafka, из которого загружаются данные;
 *   `ext_table_name` — имя внешней таблицы загрузки.
+
+В загружаемых сообщениях топика Kafka последним полем обязательно указывается служебное поле `sys_op`. 
+Соответствующий столбец `sys_op` отсутствует в логической таблице и внешней таблице загрузки, однако имена и порядок 
+всех остальных столбцов (полей) должны совпадать во всех трех объектах: в сообщении, логической и внешней таблицах 
+(см. раздел [Формат загрузки данных](../../upload_format/upload_format.md)).
+{: .note-wrapper}
 
 ## Ограничения {#restrictions}
 
-Выполнение запроса возможно только при наличии открытой дельты 
-(см. [BEGIN DELTA](../BEGIN_DELTA/BEGIN_DELTA.md)).
+Выполнение запроса возможно только при наличии открытой дельты (см. [BEGIN DELTA](../BEGIN_DELTA/BEGIN_DELTA.md)).
 
 ## Пример {#examples}
 
 Пример загрузки данных с открытием и закрытием дельты:
 ```sql
 -- открытие новой (горячей) дельты
-BEGIN DELTA
+BEGIN DELTA;
 
 -- запуск загрузки данных в логическую таблицу sales
-INSERT INTO sales.sales SELECT * FROM sales.sales_ext_upload
+INSERT INTO sales.sales SELECT * FROM sales.sales_ext_upload;
 
 -- закрытие дельты (фиксация изменений)
-COMMIT DELTA
+COMMIT DELTA;
 ```

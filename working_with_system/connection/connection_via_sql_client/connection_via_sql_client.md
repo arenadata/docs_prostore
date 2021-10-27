@@ -17,7 +17,7 @@ has_toc: false
 1. Откройте меню, отвечающее за добавление новых JDBC-драйверов. В SQL-клиенте DBeaver это меню 
    __Driver Management__, доступное в панели __Database Navigator__, в DataGrip — меню __Data Sources__.
 2. Добавьте новый драйвер со следующими настройками (см. рисунок [ниже](#img_driver_settings)):
-   + __(Driver) Name__ — произвольное имя драйвера, например DTM,
+   + __(Driver) Name__ — произвольное имя драйвера, например Prostore,
    + __(Class) Name__ — `io.arenadata.dtm.jdbc.DtmDriver`,
    + __URL Template__ — `jdbc:adtm://{host}:{port}/{database}`,
    + __Default Port__ (если параметр присутствует) — 9090 или 9092.
@@ -29,7 +29,7 @@ has_toc: false
 
 После завершения настройки подключитесь к системе с помощью SQL-клиента.
 
-На рисунке ниже показаны параметры JDBC-драйвера DTM в SQL-клиенте DBeaver.
+На рисунке ниже показаны параметры JDBC-драйвера Prostore в SQL-клиенте DBeaver.
 
 <a id="img_driver_settings"></a>
 ![](driver_parameters.png){:height="50%" width="50%"}
@@ -37,7 +37,7 @@ has_toc: false
 *Параметры JDBC-драйвера*
 {: .figure-caption-center}
 
-На рисунке ниже показаны параметры подключения к системе с использованием драйвера DTM.
+На рисунке ниже показаны параметры подключения к системе с использованием драйвера Prostore.
 
 ![](connection_parameters.png){:height="50%" width="50%"}
 {: .figure-center}

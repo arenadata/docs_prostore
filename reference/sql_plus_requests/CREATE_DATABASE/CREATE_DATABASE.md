@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: CREATE DATABASE
-nav_order: 10
+nav_order: 11
 parent: Запросы SQL+
 grand_parent: Справочная информация
 has_children: false
@@ -17,8 +17,9 @@ has_toc: false
 *   пустой объект ResultSet при успешном выполнении запроса;
 *   исключение при неуспешном выполнении запроса.
 
-**Совет:** перед работой с логической базой данных выберите ее в качестве [используемой по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md) 
+Перед работой с логической базой данных выберите ее в качестве [используемой по умолчанию](../../../working_with_system/other_features/default_db_set-up/default_db_set-up.md) 
 — это позволит обращаться к логическим сущностям без имени логической БД.
+{: .tip-wrapper}
 
 ## Синтаксис {#syntax}
 
@@ -34,7 +35,7 @@ CREATE DATABASE db_name
 CREATE DATABASE db_name LOGICAL_ONLY
 ```
 
-Где:
+Параметры:
 *   `db_name` — имя создаваемой логической базы данных. Может содержать латинские буквы, цифры и символы подчеркивания (“_”).
 
 ### Ключевое слово LOGICAL_ONLY {#logical_only}
@@ -44,6 +45,10 @@ CREATE DATABASE db_name LOGICAL_ONLY
 пересоздания связанной физической базы данных в [хранилище данных](../../../overview/main_concepts/data_storage/data_storage.md).
 
 Если ключевое слово не указано, создается как логическая, так и связанная с ней физическая база данных.
+
+## Ограничения {#restrictions}
+
+Недоступно создание логической базы данных с именем `INFORMATION_SCHEMA`, зарезервированным для сервисной БД.
 
 ## Примеры {#examples}
 

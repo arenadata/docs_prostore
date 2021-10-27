@@ -1,7 +1,7 @@
 ﻿---
 layout: default
 title: Получение информации о SELECT-запросе
-nav_order: 2
+nav_order: 4
 parent: Другие действия
 grand_parent: Работа с системой
 has_children: false

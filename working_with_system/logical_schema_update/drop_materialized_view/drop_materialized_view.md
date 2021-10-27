@@ -26,10 +26,10 @@ has_children: false
 ### Удаление материализованного представления из одной СУБД {#adg_example}
 ```sql
 -- выбор базы данных sales по умолчанию
-USE sales
+USE sales;
 
 -- удаление представления sales_and_stores
-DROP MATERIALIZED VIEW sales_and_stores DATASOURCE_TYPE = 'adg'
+DROP MATERIALIZED VIEW sales_and_stores DATASOURCE_TYPE = 'adg';
 ```
 
 ### Удаление материализованного представления из всех СУБД {#all_db_example}
