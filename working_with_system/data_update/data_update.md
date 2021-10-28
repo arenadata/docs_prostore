@@ -45,9 +45,9 @@ has_toc: false
 из ADG в ADG.
 {: .note-wrapper}
 
-Пока дельта не закрыта, изменения по всем завершенным [операциям записи](../../overview/main_concepts/write_operation/write_operation.md) 
-горячей дельты можно отменить с помощью запроса [ROLLBACK DELTA](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md). 
-Изменения по незавершенным операциям обновления данных отменить невозможно.
+Пока дельта не закрыта, изменения по всем ее завершенным [операциям записи](../../overview/main_concepts/write_operation/write_operation.md) 
+можно отменить с помощью запроса [ROLLBACK DELTA](../../reference/sql_plus_requests/ROLLBACK_DELTA/ROLLBACK_DELTA.md). 
+Изменения по незавершенным операциям отменить невозможно.
 {: .note-wrapper}
 
 ## Примеры {#examples}
