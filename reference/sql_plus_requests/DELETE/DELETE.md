@@ -29,9 +29,12 @@ has_toc: false
 и [материализованных представлениях](../../../overview/main_concepts/materialized_view/materialized_view.md)
 недоступна.
 
+Запрос не поддерживается для ADG.
+{: .note-wrapper}
+
 Для обновления большого объема данных следует использовать 
 [загрузку данных](../../../working_with_system/data_upload/data_upload.md).
-{: .note-wrapper}
+{: .tip-wrapper}
 
 В ответе возвращается:
 *   пустой объект ResultSet при успешном выполнении запроса;
