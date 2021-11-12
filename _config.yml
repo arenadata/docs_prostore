@@ -22,3 +22,4 @@ search_enabled: true
 
 search:
   rel_url: false
+  previews: 15
