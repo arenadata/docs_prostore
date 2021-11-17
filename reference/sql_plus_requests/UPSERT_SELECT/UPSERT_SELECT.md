@@ -189,7 +189,7 @@ USE sales;
 -- создание логического представления basic_stores с данными о магазинах категории basic
 CREATE VIEW basic_stores AS SELECT * FROM stores WHERE category = 'basic';
 
--- создание таблицы basic_stores_table с данными о магазинах категории basic (с размещением данных в ADB и ADG)
+-- создание таблицы basic_stores_table с данными о магазинах категории basic (с размещением данных в ADB)
 CREATE TABLE basic_stores_table (
 id INT NOT NULL,
 category VARCHAR(256),
@@ -198,7 +198,7 @@ address VARCHAR(256),
 description VARCHAR(256),
 PRIMARY KEY (id)
 ) DISTRIBUTED BY (id)
-DATASOURCE_TYPE (adb, adg);
+DATASOURCE_TYPE (adb);
 
 -- открытие новой (горячей) дельты
 BEGIN DELTA;
