@@ -41,7 +41,7 @@ has_toc: false
 
 ```shell
 # клонирование репозитория Prostore
-git clone https://github.com/arenadata/prostore ~/
+git clone https://github.com/arenadata/prostore ~/prostore
 # запуск сборки Prostore средствами Apache Maven
 cd ~/prostore
 mvn clean install -DskipTests=true
@@ -205,7 +205,7 @@ sudo systemctl reload postgresql-13
 
 ```shell
 # клонирование репозитория kafka-postgres-connector
-git clone https://github.com/arenadata/kafka-postgres-connector ~/
+git clone https://github.com/arenadata/kafka-postgres-connector ~/kafka-postgres-connector
 # запуск сборки коннектора kafka-postgres средствами Apache Maven
 cd ~/kafka-postgres-connector
 mvn clean install -DskipTests=true
