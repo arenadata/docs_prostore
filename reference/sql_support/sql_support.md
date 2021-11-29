@@ -29,39 +29,93 @@ has_toc: false
 
 *Функции и операторы даты и времени*
 
-| Функция | Запрос | СУБД
-|:-|:-:|:-:
-| `CURRENT_DATE` |```sql
+<details markdown="block">
+  <summary>
+    Функции и операторы даты/времени
+  </summary>
+  {: .text-delta }
+
+<table>
+<tr><td> Функция </td><td> Запрос </td><td> СУБД </td></tr>
+<tr><td>
+
+`CURRENT_DATE`
+  
+</td><td>
+
+```sql
 SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADP';
-``` | ADB, ADP 
+```
+
+</td><td>ADB, ADP</td></tr>
+<tr><td>
+
+`CURRENT_DATE`
   
-| `CURRENT_DATE` |```sql
+</td><td>
+
+```sql
 SELECT CURRENT_DATE FROM table1 datasource_type = 'ADB';
 SELECT CURRENT_DATE FROM table1 datasource_type = 'ADP';
-``` | ADB, ADP 
+```
+
+</td><td>ADB, ADP</td></tr>
+<tr><td>
   
-| `CURRENT_TIME` |```sql
+`CURRENT_TIME`
+ 
+ </td><td>
+   
+```sql
 SELECT CAST(CURRENT_TIME AS TIME) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_TIME AS TIME) FROM table1 datasource_type = 'ADP';
-``` | ADB, ADP 
+```
+ 
+</td><td>ADB, ADP</td></tr>
+<tr><td>
+
+`CURRENT_TIME`
+
+</td><td>
   
-| `CURRENT_TIME` |```sql
+```sql
 SELECT CURRENT_TIME FROM table1 datasource_type = 'ADB';
 SELECT CURRENT_TIME FROM table1 datasource_type = 'ADP';
-```| – 
+```
+
+</td><td>–</td></tr>
+<tr><td>
+
+`CURRENT_TIMESTAMP`
   
-| `CURRENT_TIMESTAMP` |```sql
+</td><td>
+  
+```sql
 SELECT CAST(CURRENT_TIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_TIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADP';
-```| ADB, ADP 
+```
+
+<tr><td>ADB, ADP</td></tr>
+<tr><td>
+
+`CURRENT_TIMESTAMP`
   
-| `CURRENT_TIMESTAMP` |```sql
+ </td><td>
+  
+```sql
 SELECT CURRENT_TIMESTAMP FROM table1 datasource_type = 'ADB';
 SELECT CURRENT_TIMESTAMP FROM table1 datasource_type = 'ADP';
-```| – 
+```
+
+</td><td>–</td></tr>
+<tr><td>
   
-| `EXTRACT(FROM DATE)` |```sql
+`EXTRACT(FROM DATE)`
+  
+</td><td>
+
+```sql
 SELECT CAST(EXTRACT(EPOCH FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(DOY FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(DOW FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
@@ -77,26 +131,47 @@ SELECT CAST(EXTRACT(MONTH FROM DATE '2001-02-16') AS INT) FROM table1 datasource
 SELECT CAST(EXTRACT(DAY FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT EXTRACT(DAY FROM DATE '2001-02-16') FROM table1 datasource_type = 'ADQM';
 SELECT CAST(EXTRACT(DAY FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
-```| ADB, ADQM, ADP 
-  
-| `EXTRACT(FROM DATE)` |```sql
+```
+
+</td><td>ADB, ADQM, ADP</td></tr>
+<tr><td>  
+
+`EXTRACT(FROM DATE)`
+
+</td><td>
+
+ ```sql
 SELECT CAST(EXTRACT(DECADE FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(DECADE FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
 SELECT CAST(EXTRACT(ISOYEAR FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(ISOYEAR FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
 SELECT CAST(EXTRACT(ISODOW FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(ISODOW FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
-```| ADB, ADP 
+```
   
-| `EXTRACT(FROM TIME)` |```sql
+</td><td>ADB, ADP</td></tr>
+<tr><td>  
+
+`EXTRACT(FROM TIME)`
+
+</td><td>
+
+```sql
 SELECT CAST(EXTRACT(HOUR FROM TIME '20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(MINUTE FROM TIME '20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(SECOND FROM TIME '20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(MILLISECOND FROM TIME '20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(MICROSECOND FROM TIME '20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
-```| ADB, ADP 
-  
-| `EXTRACT(FROM TIMESTAMP)` |```sql
+```
+
+</td><td>ADB, ADP</td></tr>
+<tr><td>
+
+| `EXTRACT(FROM TIMESTAMP)`
+
+</td><td>
+
+```sql
 SELECT CAST(EXTRACT(DOW FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'adb';
 SELECT CAST(EXTRACT(WEEK FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'adb';
 SELECT CAST(EXTRACT(CENTURY FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'adb';
@@ -116,66 +191,121 @@ SELECT CAST(EXTRACT(SECOND FROM TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM ta
 SELECT EXTRACT(SECOND FROM TIMESTAMP '2001-02-16 20:38:40') FROM table1 datasource_type = 'ADQM';
 SELECT CAST(EXTRACT(MILLISECOND FROM TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(MICROSECOND FROM TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
-```| ADB, ADQM, ADP 
-  
-| `LOCALTIME` |```sql
+```
+
+</td><td>ADB, ADQM, ADP</td></tr>
+<tr><td>
+
+`LOCALTIME`
+
+</td><td>
+
+```sql
 SELECT LOCALTIME FROM table1 datasource_type = 'ADB';
 SELECT LOCALTIME FROM table1 datasource_type = 'ADP';
 SELECT CAST(LOCALTIME AS TIME) FROM table1 datasource_type = 'ADB';
 SELECT CAST(LOCALTIME AS TIME) FROM table1 datasource_type = 'ADP';
-```| ADB, ADP
-  
-| `LOCALTIME(precision)` |```sql
+```
+
+</td><td>ADB, ADP</td></tr>
+<tr><td>
+
+`LOCALTIME(precision)`
+
+</td><td>  
+
+```sql
 SELECT LOCALTIME(3) FROM table1 datasource_type = 'ADB';
 SELECT LOCALTIME(3) FROM table1 datasource_type = 'ADP';
 SELECT CAST(LOCALTIME(3) AS TIME) FROM table1 datasource_type = 'ADB';
 SELECT CAST(LOCALTIME(3) AS TIME) FROM table1 datasource_type = 'ADP';
-```| ADB, ADP 
-  
-| `LOCALTIMESTAMP` |
+```
+
+</td><td>ADB, ADP</td></tr>
+<tr><td>
+
+`LOCALTIMESTAMP`
+
+</td><td>
+
 ```sql
 SELECT LOCALTIMESTAMP FROM table1 datasource_type = 'ADB';
 SELECT LOCALTIMESTAMP FROM table1 datasource_type = 'ADP';
 SELECT CAST(LOCALTIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADB';
 SELECT CAST(LOCALTIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADP';
 ```
-| ADB, ADP |
-| `LOCALTIMESTAMP(precision)` |
+
+</td><td>ADB, ADP</td></tr>
+<tr><td>
+
+`LOCALTIMESTAMP(precision)`
+
+</td><td>
+
 ```sql
 SELECT LOCALTIMESTAMP(3) FROM table1 datasource_type = 'ADB';
 SELECT LOCALTIMESTAMP(3) FROM table1 datasource_type = 'ADP';
 SELECT CAST(LOCALTIMESTAMP(3) AS TIMESTAMP) FROM table1 datasource_type = 'ADB';
 SELECT CAST(LOCALTIMESTAMP(3) AS TIMESTAMP) FROM table1 datasource_type = 'ADP';
 ```
-| ADB, ADP 
+
+</td><td>ADB, ADP</td></tr>
+<tr><td>
   
-| `MONTH()` |```sql
+`MONTH()`
+
+</td><td>
+
+```sql
 SELECT CAST(MONTH(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(MONTH(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
 SELECT CAST(MONTH(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(MONTH(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADP';
-```| ADB, ADP 
+```
+
+</td><td>ADB, ADP</td></tr>
+<tr><td>
+
+`QUARTER()`
+
+</td><td>
   
-| `QUARTER()` |```sql
+```sql
 SELECT CAST(QUARTER(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(QUARTER(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
 SELECT CAST(QUARTER(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(QUARTER(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADP';
-```| ADB, ADP 
-  
-| `WEEK()` |```sql
+```
+
+</td><td>ADB, ADP</td></tr>
+<tr><td>
+
+`WEEK()`
+
+</td><td>
+
+```sql
 SELECT CAST(WEEK(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(WEEK(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
 SELECT CAST(WEEK(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(WEEK(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADP';
-```| ADB, ADP 
-  
-| `YEAR()` |```sql
+```
+
+</td><td>ADB, ADP</td></tr> 
+<tr><td>
+
+`YEAR()`
+
+</td><td>
+
+```sql
 SELECT CAST(YEAR(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(YEAR(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
-```| ADB, ADQM, ADP 
+```
 
-
+</td><td>ADB, ADQM, ADP</td></tr> 
+</tr></table>
+</details>
 
 | Функция | Доступна в ADB | Доступна в ADQM | Доступна в ADG | Доступна в ADP
 |:-|:-:|:-:|:-:|:-:
