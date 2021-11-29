@@ -305,6 +305,7 @@ SELECT CAST(YEAR(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource
 
 </td><td>ADB, ADQM, ADP</td></tr> 
 </tr></table>
+
 </details>
 
 | Функция | Доступна в ADB | Доступна в ADQM | Доступна в ADG | Доступна в ADP
