@@ -38,10 +38,12 @@ has_toc: false
   
 </td><td>
 
+
 ```sql
 SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADP';
 ```
+
 
 </td><td>ADB, ADP</td></tr>
 <tr><td>
@@ -162,7 +164,7 @@ SELECT CAST(EXTRACT(MICROSECOND FROM TIME '20:38:40') AS INT) FROM table1 dataso
 </td><td>ADB, ADP</td></tr>
 <tr><td>
 
-| `EXTRACT(FROM TIMESTAMP)`
+`EXTRACT(FROM TIMESTAMP)`
 
 </td><td>
 
