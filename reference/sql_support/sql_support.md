@@ -91,7 +91,7 @@ SELECT CAST(CURRENT_TIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_TIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADP';
 ```
 
-<tr><td>ADB, ADP</td></tr>
+</td><td>ADB, ADP</td></tr>
 <tr><td>
 
 `CURRENT_TIMESTAMP`
