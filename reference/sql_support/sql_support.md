@@ -29,12 +29,6 @@ has_toc: false
 
 *Функции и операторы даты и времени*
 
-<details markdown="block">
-  <summary>
-    Функции и операторы даты/времени
-  </summary>
-  {: .text-delta }
-
 <table>
 <tr><td> Функция </td><td> Запрос </td><td> СУБД </td></tr>
 <tr><td>
@@ -305,8 +299,6 @@ SELECT CAST(YEAR(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource
 
 </td><td>ADB, ADQM, ADP</td></tr> 
 </table>
-
-</details>
 
 | Функция | Доступна в ADB | Доступна в ADQM | Доступна в ADG | Доступна в ADP
 |:-|:-:|:-:|:-:|:-:
