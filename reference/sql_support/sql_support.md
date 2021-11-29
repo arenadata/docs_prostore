@@ -29,6 +29,16 @@ has_toc: false
 
 *Функции и операторы даты и времени*
 
+<details markdown="block">
+  <summary>
+
+| ABS | + | + | + | +
+
+  </summary>
+  {: .text-delta }
+
+</details>
+
 
 <details markdown="block">
   <summary>
