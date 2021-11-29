@@ -32,18 +32,7 @@ has_toc: false
 <details markdown="block">
   <summary>
 
-| ABS | + | + | + | +
-
-  </summary>
-  {: .text-delta }
-
-</details>
-
-
-<details markdown="block">
-  <summary>
-
-`CURRENT_DATE`
+CURRENT_DATE
 
   </summary>
   {: .text-delta }
@@ -79,7 +68,7 @@ SELECT CURRENT_DATE FROM table1 datasource_type = 'ADP';
 
 <details markdown="block">
   <summary>
-`CURRENT_TIME`
+CURRENT_TIME
   </summary>
   {: .text-delta }
 
@@ -122,7 +111,7 @@ SELECT CURRENT_TIMESTAMP FROM table1 datasource_type = 'ADP';
 
 <details markdown="block">
   <summary>
-`EXTRACT(FROM DATE)`
+EXTRACT(FROM DATE)
   </summary>
   {: .text-delta }
 
@@ -165,7 +154,7 @@ SELECT CAST(EXTRACT(ISODOW FROM DATE '2001-02-16') AS INT) FROM table1 datasourc
 
 <details markdown="block">
   <summary>
-`EXTRACT(FROM TIME)`
+EXTRACT(FROM TIME)
   </summary>
   {: .text-delta }
 
@@ -185,7 +174,7 @@ SELECT CAST(EXTRACT(MICROSECOND FROM TIME '20:38:40') AS INT) FROM table1 dataso
 
 <details markdown="block">
   <summary>
-`EXTRACT(FROM TIME)`
+EXTRACT(FROM TIMESTAMP)
   </summary>
   {: .text-delta }
 
@@ -219,7 +208,7 @@ SELECT CAST(EXTRACT(MICROSECOND FROM TIMESTAMP '2001-02-16 20:38:40') AS INT) FR
 
 <details markdown="block">
   <summary>
-`LOCALTIME`, `LOCALTIME(precision)`
+LOCALTIME, LOCALTIME(precision)
   </summary>
   {: .text-delta }
 
@@ -249,7 +238,7 @@ SELECT CAST(LOCALTIME(3) AS TIME) FROM table1 datasource_type = 'ADP';
 
 <details markdown="block">
   <summary>
-`LOCALTIMESTAMP`, `LOCALTIMESTAMP(precision)`
+LOCALTIMESTAMP, LOCALTIMESTAMP(precision)
   </summary>
   {: .text-delta }
 
@@ -279,7 +268,7 @@ SELECT CAST(LOCALTIMESTAMP(3) AS TIMESTAMP) FROM table1 datasource_type = 'ADP';
 
 <details markdown="block">
   <summary>
-`MONTH()`, `QUARTER()`, `WEEK()`, `YEAR()`
+MONTH(), QUARTER(), WEEK(), YEAR()
   </summary>
   {: .text-delta }
 
@@ -326,6 +315,425 @@ SELECT CAST(YEAR(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource
 ---
 
 </details>
+
+*Системные функции и операторы*
+
+<details markdown="block">
+  <summary>
+
+CURRENT_USER, SESSION_USER, CURRENT_ROLE, CURRENT_SCHEMA
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADP
+
+```sql
+SELECT CURRENT_USER FROM table1 datasource_type = 'ADB';
+SELECT CURRENT_USER FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADP
+
+```sql
+SELECT SESSION_USER FROM table1 datasource_type = 'ADB';
+SELECT SESSION_USER FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADP
+
+```sql
+SELECT CURRENT_ROLE FROM table1 datasource_type = 'ADB';
+SELECT CURRENT_ROLE FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADP
+
+```sql
+SELECT CURRENT_SCHEMA FROM table1 datasource_type = 'ADB';
+SELECT CURRENT_SCHEMA FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+*Строковые функции и операторы*
+
+<details markdown="block">
+  <summary>
+
+POSITION
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADP
+
+```sql
+SELECT POSITION('c' IN 'abcdef') FROM table1 datasource_type = 'ADB';
+SELECT POSITION('z' IN 'abcdef') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
+
+UPPER
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADQM, ADG, ADP
+
+```sql
+SELECT UPPER('abcdef') FROM table1 datasource_type = 'ADB';
+SELECT UPPER('abcdef') FROM table1 datasource_type = 'ADQM';
+SELECT UPPER('abcdef') FROM table1 datasource_type = 'ADG';
+SELECT UPPER('abcdef') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
+
+LOWER
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADP
+
+```sql
+SELECT LOWER('ABCDEG') FROM table1 datasource_type = 'ADB';
+SELECT LOWER('ABCDEG') FROM table1 datasource_type = 'ADQM';
+SELECT LOWER('ABCDEG') FROM table1 datasource_type = 'ADG';
+SELECT LOWER('ABCDEG') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
+
+SUBSTRING
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADQM, ADP
+
+```sql
+SELECT SUBSTRING('ABCDEG', 3, 2) FROM table1 datasource_type = 'ADB';
+SELECT SUBSTRING('ABCDEG', 3, 2) FROM table1 datasource_type = 'ADQM';
+SELECT SUBSTRING('ABCDEG', 3, 2) FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
+
+COALESCE
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADG, ADP
+
+```sql
+SELECT COALESCE(boolean_col,true) from table1 datasource_type = 'ADB';
+SELECT COALESCE(boolean_col,true) from table1 datasource_type = 'ADG';
+SELECT COALESCE(boolean_col,true) from table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM, ADG, ADP
+
+```sql
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADB';
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADQM';
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADG';
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM, ADP
+
+```sql
+SELECT COALESCE(bigint_col,1) FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(bigint_col,1) FROM table1 datasource_type = 'ADQM';
+SELECT COALESCE(bigint_col,1) FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM, ADG, ADP
+
+```sql
+SELECT COALESCE(int32_col,1) FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(int32_col,1) FROM table1 datasource_type = 'ADQM';
+SELECT COALESCE(int32_col,1) FROM table1 datasource_type = 'ADG';
+SELECT COALESCE(int32_col,1) FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADP
+
+```sql
+SELECT COALESCE(float_col,1.0) FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(float_col,1.0) FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADP
+
+```sql
+SELECT COALESCE(double_col,1.0) FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(double_col,1.0) FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM, ADG, ADP
+
+```sql
+SELECT COALESCE(varchar_col,'1.0') FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(CAST(varchar_col AS VARCHAR),'1.0') FROM table1 datasource_type = 'ADQM';
+SELECT COALESCE(varchar_col,'1.0') FROM table1 datasource_type = 'ADG';
+SELECT COALESCE(varchar_col,'1.0') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM*, ADP
+
+```sql
+SELECT COALESCE(date_col,'2001-01-01') FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(date_col,'2001-01-01') FROM table1 datasource_type = 'ADQM';
+SELECT COALESCE(date_col,'2001-01-01') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM, ADP
+
+```sql
+SELECT COALESCE(date_col,CAST('2001-01-01' AS DATE)) FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(date_col,CAST('2001-01-01' AS DATE)) FROM table1 datasource_type = 'ADQM';
+SELECT COALESCE(date_col,CAST('2001-01-01' AS DATE)) FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM, ADP
+
+```sql
+SELECT COALESCE(time_col,'11:12:13') FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(time_col,'11:12:13') FROM table1 datasource_type = 'ADQM';
+SELECT COALESCE(time_col,'11:12:13') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM*, ADG, ADP
+
+```sql
+SELECT COALESCE(timestamp_col,'2001-01-01 11:12:13') FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(timestamp_col,'2001-01-01 11:12:13') FROM table1 datasource_type = 'ADQM';
+SELECT COALESCE(timestamp_col,'2001-01-01 11:12:13') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM, ADP
+
+```sql
+SELECT COALESCE(uuid_col,'1') FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(uuid_col,'1') FROM table1 datasource_type = 'ADQM';
+SELECT COALESCE(uuid_col,'1') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADG, ADP
+
+```sql
+SELECT COALESCE(char_col,'1') FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(char_col,'1') FROM table1 datasource_type = 'ADG';
+SELECT COALESCE(char_col,'1') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADQM, ADP
+
+```sql
+SELECT COALESCE(link_col,'http://www.google.com') FROM table1 datasource_type = 'ADB';
+SELECT COALESCE(link_col,'http://www.google.com') FROM table1 datasource_type = 'ADQM';
+SELECT COALESCE(link_col,'http://www.google.com') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
+
+TRIM
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADQM, ADG, ADP
+
+```sql
+SELECT TRIM('   ABC XYZ   ') FROM table1 datasource_type = 'ADB';
+SELECT TRIM('   ABC XYZ   ') FROM table1 datasource_type = 'ADQM';
+SELECT TRIM('   ABC XYZ   ') FROM table1 datasource_type = 'ADG';
+SELECT TRIM('   ABC XYZ   ') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+ADB, ADG, ADP
+
+```sql
+SELECT COALESCE(boolean_col,true) from table1 datasource_type = 'ADB';
+SELECT COALESCE(boolean_col,true) from table1 datasource_type = 'ADG';
+SELECT COALESCE(boolean_col,true) from table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
+
+REPLACE
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADQM, ADG, ADP
+
+```sql
+SELECT REPLACE('  abc xyz  ','ab', 'x') FROM table1 datasource_type = 'ADB';
+SELECT REPLACE('  abc xyz  ','ab', 'x') FROM table1 datasource_type = 'ADQM';
+SELECT REPLACE('  abc xyz  ','ab', 'x') FROM table1 datasource_type = 'ADG';
+SELECT REPLACE('  abc xyz  ','ab', 'x') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
+
+CONCATENATION
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADQM, ADG, ADP
+
+```sql
+SELECT 'abc' || 'xyz' FROM table1 datasource_type = 'ADB';
+SELECT 'abc' || 'xyz' FROM table1 datasource_type = 'ADQM';
+SELECT 'abc' || 'xyz' FROM table1 datasource_type = 'ADG';
+SELECT 'abc' || 'xyz' FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
+
+INITCAP
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADP
+
+```sql
+SELECT INITCAP('abc def ghi xyz') FROM table1 datasource_type = 'ADB';
+SELECT INITCAP('abc def ghi xyz') FROM table1 datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+*Математические функции и операторы
+
+<details markdown="block">
+  <summary>
+
+COALESCE
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADQM, ADG, ADP
+
+```sql
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADB';
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADQM';
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADG';
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
+
+COALESCE
+
+  </summary>
+  {: .text-delta }
+
+ADB, ADQM, ADG, ADP
+
+```sql
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADB';
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADQM';
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADG';
+SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADP';
+```
+
+---
+
+</details>
+
 
 
 | Функция | Доступна в ADB | Доступна в ADQM | Доступна в ADG | Доступна в ADP
