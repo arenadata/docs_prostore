@@ -26,11 +26,8 @@ has_toc: false
 имеют ограничения на использование некоторых функций в запросах, вызванные особенностями этих СУБД. 
 Наиболее полный синтаксис запросов доступен в ADB и ADP.
 
-<details markdown="block">
-  <summary>
-    Функции и операторы даты и времени
-  </summary>
-  {: .text-delta }
+
+*Функции и операторы даты и времени*
 
 | Функция | Запрос | СУБД
 |:-|:-:|:-:
@@ -178,7 +175,7 @@ SELECT CAST(YEAR(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(YEAR(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 ```| ADB, ADQM, ADP 
 
-</details>
+
 
 | Функция | Доступна в ADB | Доступна в ADQM | Доступна в ADG | Доступна в ADP
 |:-|:-:|:-:|:-:|:-:
