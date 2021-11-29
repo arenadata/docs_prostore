@@ -29,88 +29,81 @@ has_toc: false
 
 *Функции и операторы даты и времени*
 
-<table>
 
-<tr><td> Функция </td><td> Запрос </td><td> СУБД </td></tr>
-<tr><td>
-
+<details markdown="block">
+  <summary>
 `CURRENT_DATE`
-  
-</td><td>
+  </summary>
+  {: .text-delta }
 
+```sql
+SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADB';
+SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADP';
+```
+  
+---
 
 ```sql
 SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADP';
 ```
 
-
-</td><td>ADB, ADP</td></tr>
-<tr><td>
-
-`CURRENT_DATE`
-  
-</td><td>
+---
 
 ```sql
 SELECT CURRENT_DATE FROM table1 datasource_type = 'ADB';
 SELECT CURRENT_DATE FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
-  
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
 `CURRENT_TIME`
- 
- </td><td>
-   
+  </summary>
+  {: .text-delta }
+
 ```sql
 SELECT CAST(CURRENT_TIME AS TIME) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_TIME AS TIME) FROM table1 datasource_type = 'ADP';
 ```
- 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
 
-`CURRENT_TIME`
+---
 
-</td><td>
-  
+НЕ ПОДДЕРЖИВАЕТСЯ
+
 ```sql
-SELECT CURRENT_TIME FROM table1 datasource_type = 'ADB';
-SELECT CURRENT_TIME FROM table1 datasource_type = 'ADP';
+SELECT CURRENT_TIME FROM table1 datasource_type = '*';
 ```
 
-</td><td>–</td></tr>
-<tr><td>
+---
 
-`CURRENT_TIMESTAMP`
-  
-</td><td>
-  
 ```sql
 SELECT CAST(CURRENT_TIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_TIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
+---
 
-`CURRENT_TIMESTAMP`
-  
- </td><td>
-  
 ```sql
 SELECT CURRENT_TIMESTAMP FROM table1 datasource_type = 'ADB';
 SELECT CURRENT_TIMESTAMP FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>–</td></tr>
-<tr><td>
-  
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
 `EXTRACT(FROM DATE)`
-  
-</td><td>
+  </summary>
+  {: .text-delta }
+
+ADB, ADQM, ADP
+
 
 ```sql
 SELECT CAST(EXTRACT(EPOCH FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
@@ -130,12 +123,9 @@ SELECT EXTRACT(DAY FROM DATE '2001-02-16') FROM table1 datasource_type = 'ADQM';
 SELECT CAST(EXTRACT(DAY FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADQM, ADP</td></tr>
-<tr><td>  
+---
 
-`EXTRACT(FROM DATE)`
-
-</td><td>
+ADB, ADP
 
  ```sql
 SELECT CAST(EXTRACT(DECADE FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
@@ -145,13 +135,18 @@ SELECT CAST(EXTRACT(ISOYEAR FROM DATE '2001-02-16') AS INT) FROM table1 datasour
 SELECT CAST(EXTRACT(ISODOW FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(ISODOW FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
 ```
-  
-</td><td>ADB, ADP</td></tr>
-<tr><td>  
 
+---
+
+</details>
+
+<details markdown="block">
+  <summary>
 `EXTRACT(FROM TIME)`
+  </summary>
+  {: .text-delta }
 
-</td><td>
+ADB, ADP
 
 ```sql
 SELECT CAST(EXTRACT(HOUR FROM TIME '20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
@@ -161,17 +156,22 @@ SELECT CAST(EXTRACT(MILLISECOND FROM TIME '20:38:40') AS INT) FROM table1 dataso
 SELECT CAST(EXTRACT(MICROSECOND FROM TIME '20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 ```
 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
+---
 
-`EXTRACT(FROM TIMESTAMP)`
+</details>
 
-</td><td>
+<details markdown="block">
+  <summary>
+`EXTRACT(FROM TIME)`
+  </summary>
+  {: .text-delta }
+
+ADB, ADQM, ADP
 
 ```sql
-SELECT CAST(EXTRACT(DOW FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'adb';
-SELECT CAST(EXTRACT(WEEK FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'adb';
-SELECT CAST(EXTRACT(CENTURY FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'adb';
+SELECT CAST(EXTRACT(DOW FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'ADB';
+SELECT CAST(EXTRACT(WEEK FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'ADB';
+SELECT CAST(EXTRACT(CENTURY FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(EXTRACT(QUARTER FROM TIMESTAMP '2001-02-16 00:00:00') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT EXTRACT(QUARTER FROM TIMESTAMP '2001-02-16 20:38:40') FROM table1 datasource_type = 'ADQM';
 SELECT CAST(EXTRACT(YEAR FROM TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
@@ -190,12 +190,17 @@ SELECT CAST(EXTRACT(MILLISECOND FROM TIMESTAMP '2001-02-16 20:38:40') AS INT) FR
 SELECT CAST(EXTRACT(MICROSECOND FROM TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 ```
 
-</td><td>ADB, ADQM, ADP</td></tr>
-<tr><td>
+---
 
-`LOCALTIME`
+</details>
 
-</td><td>
+<details markdown="block">
+  <summary>
+`LOCALTIME`, `LOCALTIME(precision)`
+  </summary>
+  {: .text-delta }
+
+ADB, ADP
 
 ```sql
 SELECT LOCALTIME FROM table1 datasource_type = 'ADB';
@@ -204,12 +209,9 @@ SELECT CAST(LOCALTIME AS TIME) FROM table1 datasource_type = 'ADB';
 SELECT CAST(LOCALTIME AS TIME) FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
+---
 
-`LOCALTIME(precision)`
-
-</td><td>  
+ADB, ADP
 
 ```sql
 SELECT LOCALTIME(3) FROM table1 datasource_type = 'ADB';
@@ -218,12 +220,17 @@ SELECT CAST(LOCALTIME(3) AS TIME) FROM table1 datasource_type = 'ADB';
 SELECT CAST(LOCALTIME(3) AS TIME) FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
+---
 
-`LOCALTIMESTAMP`
+</details>
 
-</td><td>
+<details markdown="block">
+  <summary>
+`LOCALTIMESTAMP`, `LOCALTIMESTAMP(precision)`
+  </summary>
+  {: .text-delta }
+
+ADB, ADP
 
 ```sql
 SELECT LOCALTIMESTAMP FROM table1 datasource_type = 'ADB';
@@ -232,12 +239,9 @@ SELECT CAST(LOCALTIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADB';
 SELECT CAST(LOCALTIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
+---
 
-`LOCALTIMESTAMP(precision)`
-
-</td><td>
+ADB, ADP
 
 ```sql
 SELECT LOCALTIMESTAMP(3) FROM table1 datasource_type = 'ADB';
@@ -246,12 +250,17 @@ SELECT CAST(LOCALTIMESTAMP(3) AS TIMESTAMP) FROM table1 datasource_type = 'ADB';
 SELECT CAST(LOCALTIMESTAMP(3) AS TIMESTAMP) FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
-  
-`MONTH()`
+---
 
-</td><td>
+</details>
+
+<details markdown="block">
+  <summary>
+`MONTH()`, `QUARTER()`, `WEEK()`, `YEAR()`
+  </summary>
+  {: .text-delta }
+
+ADB, ADP
 
 ```sql
 SELECT CAST(MONTH(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
@@ -260,13 +269,10 @@ SELECT CAST(MONTH(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasourc
 SELECT CAST(MONTH(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
+---
 
-`QUARTER()`
+ADB, ADP
 
-</td><td>
-  
 ```sql
 SELECT CAST(QUARTER(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(QUARTER(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADP';
@@ -274,12 +280,9 @@ SELECT CAST(QUARTER(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasou
 SELECT CAST(QUARTER(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADP</td></tr>
-<tr><td>
+---
 
-`WEEK()`
-
-</td><td>
+ADB, ADP
 
 ```sql
 SELECT CAST(WEEK(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
@@ -288,21 +291,19 @@ SELECT CAST(WEEK(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource
 SELECT CAST(WEEK(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADP';
 ```
 
-</td><td>ADB, ADP</td></tr> 
-<tr><td>
+---
 
-`YEAR()`
-
-</td><td>
+ADB, ADP
 
 ```sql
 SELECT CAST(YEAR(DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
 SELECT CAST(YEAR(TIMESTAMP '2001-02-16 20:38:40') AS INT) FROM table1 datasource_type = 'ADB';
 ```
 
-</td><td>ADB, ADQM, ADP</td></tr> 
+---
 
-</table>
+</details>
+
 
 | Функция | Доступна в ADB | Доступна в ADQM | Доступна в ADG | Доступна в ADP
 |:-|:-:|:-:|:-:|:-:
