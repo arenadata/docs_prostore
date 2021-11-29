@@ -32,9 +32,13 @@ has_toc: false
 
 <details markdown="block">
   <summary>
+
 `CURRENT_DATE`
+
   </summary>
   {: .text-delta }
+
+ADB, ADP
 
 ```sql
 SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADB';
@@ -43,12 +47,16 @@ SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADP';
   
 ---
 
+ADB, ADP
+
 ```sql
 SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_DATE AS DATE) FROM table1 datasource_type = 'ADP';
 ```
 
 ---
+
+ADB, ADP
 
 ```sql
 SELECT CURRENT_DATE FROM table1 datasource_type = 'ADB';
@@ -65,6 +73,8 @@ SELECT CURRENT_DATE FROM table1 datasource_type = 'ADP';
   </summary>
   {: .text-delta }
 
+ADB, ADP
+
 ```sql
 SELECT CAST(CURRENT_TIME AS TIME) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_TIME AS TIME) FROM table1 datasource_type = 'ADP';
@@ -80,12 +90,16 @@ SELECT CURRENT_TIME FROM table1 datasource_type = '*';
 
 ---
 
+ADB, ADP
+
 ```sql
 SELECT CAST(CURRENT_TIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADB';
 SELECT CAST(CURRENT_TIMESTAMP AS TIMESTAMP) FROM table1 datasource_type = 'ADP';
 ```
 
 ---
+
+ADB, ADP
 
 ```sql
 SELECT CURRENT_TIMESTAMP FROM table1 datasource_type = 'ADB';
@@ -103,7 +117,6 @@ SELECT CURRENT_TIMESTAMP FROM table1 datasource_type = 'ADP';
   {: .text-delta }
 
 ADB, ADQM, ADP
-
 
 ```sql
 SELECT CAST(EXTRACT(EPOCH FROM DATE '2001-02-16') AS INT) FROM table1 datasource_type = 'ADB';
