@@ -690,12 +690,12 @@ SELECT INITCAP('abc def ghi xyz') FROM table1 datasource_type = 'ADP';
 
 </details>
 
-*Математические функции и операторы
+*Математические функции и операторы*
 
 <details markdown="block">
   <summary>
 
-COALESCE
+ABS
 
   </summary>
   {: .text-delta }
@@ -703,10 +703,10 @@ COALESCE
 ADB, ADQM, ADG, ADP
 
 ```sql
-SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADB';
-SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADQM';
-SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADG';
-SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADP';
+SELECT ABS(-2.0) FROM table1 datasource_type = 'ADB';
+SELECT ABS(-2) FROM table1 datasource_type = 'ADQM';
+SELECT ABS(2.0) FROM table1 datasource_type = 'ADG';
+SELECT ABS(-2.5) FROM table1 datasource_type = 'ADP';
 ```
 
 ---
@@ -716,7 +716,7 @@ SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADP';
 <details markdown="block">
   <summary>
 
-COALESCE
+ROUND
 
   </summary>
   {: .text-delta }
@@ -724,79 +724,12 @@ COALESCE
 ADB, ADQM, ADG, ADP
 
 ```sql
-SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADB';
-SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADQM';
-SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADG';
-SELECT COALESCE(int_col,1) from db99990.accounts datasource_type = 'ADP';
+SELECT ROUND(-2.5) FROM table1 datasource_type = 'ADB';
+SELECT ROUND(-2.3) FROM table1 datasource_type = 'ADQM';
+SELECT ROUND(-2.3) FROM table1 datasource_type = 'ADG';
+SELECT ROUND(2.5) FROM table1 datasource_type = 'ADP';
 ```
 
 ---
 
 </details>
-
-
-
-| Функция | Доступна в ADB | Доступна в ADQM | Доступна в ADG | Доступна в ADP
-|:-|:-:|:-:|:-:|:-:
-| ABS | + | + | + | +
-| ACOS | + | + | − | +
-| ASIN | + | + | − | +
-| ATAN | + | + | − | +
-| ATAN2 | + | − | − | +
-| AVG | − | − | − | −
-| BIT_AND | + | − | − | +
-| BIT_OR | + | − | − | +
-| CASE | + | + | + | +
-| CAST | + | + | + | +
-| CBRT | + | − | − | +
-| CEIL | +<br>для аргумента типа FLOAT | + | − | +<br>для аргумента типа FLOAT
-| CEILING | +<br>для аргумента типа FLOAT | + | − | +<br>для аргумента типа FLOAT
-| CHAR | − | − | − | −
-| COALESCE | + | + | + | +
-| COS | + | + | − | +
-| COUNT | + | + | + | +
-| CROSS JOIN | + | − | + | +
-| DEGREES | + | − | − | +
-| EXCEPT | − | − | − | −
-| EXP | + | + | − | +
-| FLOOR | +<br>для аргумента типа FLOAT | + | − | +<br>для аргумента типа FLOAT
-| FULL JOIN | + | +<br>при соединении по ключам шардирования | − | +
-| GREATEST | − | − | − | −
-| HEX | − | − | − | −
-| IFNULL | − | − | − | −
-| INTERSECT | − | − | − | −
-| JOIN для трех таблиц | + | − | + | +
-| JOIN с подзапросом | + | − | + | +
-| LEAST | − | − | − | −
-| LENGTH | − | − | − | −
-| LIKE | + | + | + | +
-| LN | + | + | − | +
-| LOG | − | − | − | −
-| LOWER | + | + | + | +
-| MAX | + | + | + | +
-| MIN | + | + | + | +
-| MOD | + | − | − | +
-| NULLIF | + | + | + | +
-| OCTET_LENGTH | − | − | − | −
-| PI | − | − | − | −
-| POSITION | + | − | − | +
-| POWER | + | + | − | +
-| PRINTF | − | − | − | −
-| QUOTE | − | − | − | −
-| RADIANS | + | − | − | +
-| RANDOM | − | − | − | −
-| REPLACE | + | + | + | +
-| RIGHT JOIN | + | + | − | +
-| ROUND | +<br>для аргумента типа FLOAT | + | + | +<br>для аргумента типа FLOAT
-| SIGN | +<br>для аргумента типа FLOAT | − | − | +<br>для аргумента типа FLOAT
-| SIN | + | + | − | +
-| SQRT | + | + | − | +
-| SUBSTRING | + | + | − | +
-| SUM | + | + | + | +
-| TAN | + | + | − | +
-| TRIM | + | + | + | +
-| TRUNC | − | − | − | −
-| TYPEOF | − | − | − | −
-| UNION | − | − | − | −
-| UPPER | + | + | + | +
-
