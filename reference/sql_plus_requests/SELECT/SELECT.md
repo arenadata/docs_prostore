@@ -125,9 +125,9 @@ FROM [db_name.]entity_name
 <a id="for_system_time_matview"></a>Следующие значения ключевого слова не поддерживаются в запросах 
 к материализованным представлениям:
 * `FOR SYSTEM_TIME AS OF LATEST_UNCOMMITTED_DELTA`;
-* `FOR SYSTEM_TIME AS OF STARTED IN (delta_num1, delta_num2)`, если хотя бы одна дельта из диапазона
+* `FOR SYSTEM_TIME STARTED IN (delta_num1, delta_num2)`, если хотя бы одна дельта из диапазона
   отсутствует в материализованном представлении;
-* `FOR SYSTEM_TIME AS OF FINISHED IN (delta_num1, delta_num2)`, если хотя бы одна дельта из диапазона
+* `FOR SYSTEM_TIME FINISHED IN (delta_num1, delta_num2)`, если хотя бы одна дельта из диапазона
   отсутствует в материализованном представлении.
   
 ### Поддерживаемые типы соединений (префиксы JOIN) {#join_prefixes}
