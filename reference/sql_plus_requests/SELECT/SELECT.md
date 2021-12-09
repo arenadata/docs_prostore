@@ -320,7 +320,7 @@ ESTIMATE_ONLY
 Запрос строк с указанными значениями без учета регистра:
 ```sql
 SELECT * from sales.sales 
-WHERE product_code = 'ABC1234' AND product_code <> 'abc4567' COLLATE "unicode_ci"
+WHERE product_code = 'ABC1234' AND product_code <> 'abc4567' COLLATE 'unicode_ci'
 DATASOURCE_TYPE = 'adg'
 ```
 
