@@ -121,7 +121,7 @@ PRIMARY KEY (id)
 DISTRIBUTED BY (id)
 DATASOURCE_TYPE (adg)
 AS SELECT * FROM sales.sales
-   WHERE transaction_date BETWEEN '2020-12-01' AND '2020-12-31'
+   WHERE cast(transaction_date as date) BETWEEN '2020-12-01' AND '2020-12-31'
 DATASOURCE_TYPE = 'adb'
 ```
 
