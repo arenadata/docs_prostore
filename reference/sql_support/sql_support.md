@@ -382,7 +382,7 @@ has_toc: false
 
 ### SIGN {#SignSQL}
 
-| RADIANS: ADB, ADP |
+| SIGN: ADB, ADP |
 |:---
 | `SELECT SIGN(-2.0) FROM table1 datasource_type = {'ADB' | 'ADP'};` |
 | `SELECT SIGN(CAST(-2 AS FLOAT)) FROM table1 datasource_type = {'ADB' | 'ADP'};` |
@@ -405,7 +405,7 @@ has_toc: false
 | `SELECT ATAN(0.5) FROM table1 datasource_type = {'ADB' | 'ADP' | 'ADQM'};` |
 | `SELECT ATAN2(3.0,2.0) FROM table1 datasource_type = {'ADB' | 'ADP' | 'ADQM'};` |
 
-### POWER, EXP*, LOG* {#PowerexplogSQL}
+### POWER, EXP\*, LOG\* {#PowerexplogSQL}
 
 | POWER, EXP, LN: ADB, ADQM*, ADP |
 |:---
