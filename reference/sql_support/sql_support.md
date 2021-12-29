@@ -328,7 +328,7 @@ has_toc: false
 ### ABS {#AbsSQL}
 
 | ABS: ADB, ADQM, ADG, ADP |
-|: ---
+|:---
 | `SELECT ABS(-2.0) FROM table1 datasource_type = {'ADB' | 'ADP' | 'ADG'};` |
 | `SELECT ABS(-2) FROM table1 datasource_type = 'ADQM';` |
 
