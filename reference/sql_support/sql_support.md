@@ -26,6 +26,28 @@ has_toc: false
 имеют ограничения на использование некоторых функций в запросах, вызванные особенностями этих СУБД. 
 Наиболее полный синтаксис запросов доступен в ADB и ADP.
 
+## Преобразование типов {#Typescast}
+
+### Неявное преобразование {#ImplicitcastSQL}
+
+| bigint_col to boolean: Не поддерживается
+|:---
+| `SELECT bigint_col = true FROM table1;` |
+
+| int_col to boolean: Не поддерживается
+|:---
+| `SELECT int_col = true FROM table1;` |
+
+| integer type to boolean within MATERIALIZED VIEW: Не поддерживается
+|:---
+| `CREATE MATERIALIZED VIEW matview1`<br>`(`<br>`  id int not null,`<br>`  int_col int,`<br>`  primary key (id)`<br>`)`<br>`DISTRIBUTED BY (id)`<br>`DATASOURCE_TYPE (adg, adqm)`<br>`AS`<br>`SELECT * FROM table1 a INNER JOIN table2 c ON a.int_col = true`<br>`DATASOURCE_TYPE = 'adb';` |
+
+### CAST {#CastSQL}
+
+| CAST (boolean as int32): Не поддерживается
+|:---
+| `SELECT CAST(boolean_col as int32) FROM table1;` |
+
 ## Функции и операторы соединения {#Joinfunctions}
 
 ### UNION {#UnionSQL}
